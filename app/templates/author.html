@@ -1,0 +1,64 @@
+{% extends "base.html" %} {% block content %}
+
+<!-- resume -->
+<section class="section">
+  <article class="media box">
+    <div class="media-left">
+      <figure class="image is-256x256">
+        <img src="{{ user.avatar(256) }}">
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+
+        <!-- username and icons -->
+        <nav class="level is-mobile">
+          <div class="level-left ">
+            {% if user.screen_name %}
+            <h1 class="title level-item">About {{ user.screen_name }}</h1>
+            {% else %}
+            <h1 class="title level-item">Hi, {{ user.username }}</h1>
+            {% endif %} {% if user.website %}
+            <a href="{{ user.website }}" class="level-item ">
+              <span class="icon is-medium ">
+                <i class="fas fa-link fa-lg "></i>
+              </span>
+            </a>
+            {% endif %} {% if user.github %}
+            <a href="{{ user.github }}" class="level-item ">
+              <span class="icon is-medium ">
+                <i class="fab fa-github fa-lg"></i>
+              </span>
+            </a>
+            {% endif %} {% if user.twitter %}
+            <a href="{{ user.twitter }}" class="level-item">
+              <span class="icon is-medium ">
+                <i class="fab fa-twitter fa-lg"></i>
+              </span>
+            </a>
+            {% endif %}
+          </div>
+        </nav>
+        <!-- resumé -->
+        {% if user.about_me %}
+        <p class="is-size-5">{{ user.about_me }}</p>
+        {% endif %} {% if user == current_user %}
+        <a href="{{ url_for('dashboard.edit_profile') }}" aria-current="page">Edit Profile</a>
+        {% endif %}
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- post list -->
+<section class="section ">
+  <h1 class="title">Blog Posts by {{ user.username }}</h1>
+  <hr> {% for post in posts %}
+  <p>
+    {{ post.author.username }} says:
+    <b>{{ post.body }}</b>
+  </p>
+  {% endfor %}
+</section>
+
+{% endblock %}

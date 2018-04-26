@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block content %} {% from "auth/_formhelper.html" import render_field %}
+<div class="hero">
+  <div class="container hero-body">
+    <div class="column is-4 is-offset-4">
+      <h1 class="title has-text-centered">Sing In</h1>
+      <div class="box">
+        <form action="" method="POST">
+          {{ form.hidden_tag() }}
+          <div class="field">
+            <label>{{ form.username.label }}</label>
+            <p class="control">{{ render_field(form.username, class_="input is-large is-info") }}</p>
+          </div>
+          <div class="field">
+            <label>{{ form.password.label }}</label>
+            <p class="control">{{ render_field(form.password, class_="input is-large is-info") }}</p>
+            <p class="control">{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+          </div>
+          <div class="field">
+            <p class="control">
+              <button class="button is-success is-block is-large is-fullwidth">Login</button>
+            </p>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

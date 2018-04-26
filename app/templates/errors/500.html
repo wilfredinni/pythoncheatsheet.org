@@ -1,0 +1,12 @@
+{% extends "base.html" %} {% block content %}
+
+<section class="section has-text-centered">
+    <div class="section">
+        <h1 class="is-size-1 has-text-grey">An unexpected error has occurred</h1>
+        <h1 class="subtitle has-text-grey">FThe administrator has been notified. Sorry for the inconvenience!</h1>
+        <p>
+            <a href="{{ url_for('main.index') }}">Back</a>
+        </p>
+    </div>
+</section>
+{% endblock %}

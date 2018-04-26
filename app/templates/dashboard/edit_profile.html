@@ -1,0 +1,95 @@
+{% extends "base.html" %} {% block content %} {% from "auth/_formhelper.html" import render_field %}
+
+<!-- submenu -->
+<section class="section">
+  <nav class="breadcrumb is-centered is-medium" aria-label="breadcrumbs">
+    <ul>
+      <li>
+        <a href="{{ url_for('dashboard.overview') }}">Overview</a>
+      </li>
+      <li class="is-active">
+        <a href="{{ url_for('dashboard.edit_profile') }}">Edit Profile</a>
+      </li>
+      <li>
+        <a href="#">New Post</a>
+      </li>
+      <li>
+        <a href="{{ url_for('dashboard.add_user') }}" aria-current="page">Add User</a>
+      </li>
+    </ul>
+  </nav>
+</section>
+
+<div class="column is-8 is-offset-2">
+
+  <!-- username -->
+  <form action="" method="POST">
+    {{ form.hidden_tag() }}
+    <div class="field">
+      <label>{{ form.username.label }}</label>
+      <p class="control">
+        {{ render_field(form.username, class_="input is-info", type="text") }}
+      </p>
+    </div>
+
+    <!-- screen name and email -->
+    <div class="field is-horizontal">
+      <div class="field-body">
+        <div class="field">
+          <label>{{ form.screen_name.label }}</label>
+          <p class="control">
+            {{ render_field(form.screen_name, class_="input is-info", type="text") }}
+          </p>
+        </div>
+        <div class="field">
+          <label>{{ form.email.label }}</label>
+          <p class="control">
+            {{ render_field(form.email, class_="input is-info", type="email") }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- social media -->
+    <div class="field is-horizontal">
+      <div class="field-body">
+        <div class="field">
+          <label>{{ form.twitter.label }}</label>
+          <p class="control">
+            {{ render_field(form.twitter, class_="input is-info", type="url") }}
+          </p>
+        </div>
+        <div class="field">
+          <label>{{ form.github.label }}</label>
+          <p class="control">
+            {{ render_field(form.github, class_="input is-info", type="url") }}
+          </p>
+        </div>
+        <div class="field">
+          <label>{{ form.website.label }}</label>
+          <p class="control">
+            {{ render_field(form.website, class_="input is-info", type="url") }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- about -->
+    <div class="field">
+      <label>{{ form.about_me.label }}</label>
+      <div class="control">
+        {{ render_field(form.about_me, class_="textarea is-info") }}
+      </div>
+    </div>
+
+    <!-- send -->
+    <div class="field">
+      <p class="control">
+        <button class="button is-success is-block is-large is-fullwidth">
+          Submit
+        </button>
+      </p>
+    </div>
+  </form>
+</div>
+{% endblock %}

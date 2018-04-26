@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block content %}
+
+<!-- submenu -->
+<section class="section">
+  <nav class="breadcrumb is-centered is-medium" aria-label="breadcrumbs">
+    <ul>
+      <li class="is-active">
+        <a href="{{ url_for('dashboard.overview') }}">Overview</a>
+      </li>
+      <li>
+        <a href="{{ url_for('dashboard.edit_profile') }}">Edit Profile</a>
+      </li>
+      <li>
+        <a href="#">New Post</a>
+      </li>
+      <li>
+        <a href="{{ url_for('dashboard.add_user') }}" aria-current="page">Add User</a>
+      </li>
+    </ul>
+  </nav>
+</section>
+
+<!-- welcome and last seen -->
+<section class="container has-text-centered">
+  {% if user.screen_name %}
+  <p class="title">Hi, {{ user.screen_name }}</p>
+  {% else %}
+  <h1 class="title">Hi, {{ user.username }}</h1>
+  {% endif %} {% if user.last_seen %}
+  <h1 class="subtitle">Last seen on: {{ user.last_seen }}</p>
+    {% endif %}
+</section>
+{% endblock %}
