@@ -1,7 +1,8 @@
 {% extends "base.html" %} {% block content %}
 
 <!-- resume -->
-<section class="section">
+
+<section class="section container">
   <article class="media box">
     <div class="media-left">
       <figure class="image is-256x256">
@@ -51,7 +52,7 @@
 </section>
 
 <!-- post list -->
-<section class="section ">
+<section class="section container">
   <h1 class="title">Blog Posts by {{ user.username }}</h1>
   {% for post in my_posts %}
   <p>{{ post.title }}</p>

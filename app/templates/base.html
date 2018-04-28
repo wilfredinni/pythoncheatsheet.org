@@ -1,62 +1,59 @@
 <!DOCTYPE html>
 
-<html>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ title }} - Pysheet</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
   <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-  <link rel="stylesheet" type="text/css" href="normalize.css" media="screen">
+
+  <!-- moment.js -->
+  {{ moment.include_jquery() }} {{ moment.include_moment() }}
 </head>
 
-<body>
-
-  <section class="hero is-primary">
-    <!-- Hero head: will stick at the top -->
-    <div class="hero-head">
-      <nav class="navbar">
-        <div class="container">
-          <div class="navbar-brand">
-            <a href="{{ url_for('main.index') }}" class="navbar-item">
-              Python Cheat Sheet
-            </a>
-            <span class="navbar-burger burger" data-target="navbarMenuHeroC">
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-          </div>
-          <div id="navbarMenuHeroA" class="navbar-menu">
-            <div class="navbar-end">
-              <a href="{{ url_for('main.index') }}" class="navbar-item">Home</a>
-              <a href="{{ url_for('main.blog') }}" class="navbar-item">Blog</a>
-              <a href="{{ url_for('main.about') }}" class="navbar-item">About</a>
-              {% if current_user.is_anonymous %}
-              <a href="{{ url_for('auth.login') }}" class="navbar-item">Login</a>
-              {% else %}
-              <a href="{{ url_for('main.author', username=current_user.username) }}" class="navbar-item">Profile</a>
-              <a href="{{ url_for('dashboard.overview') }}" class="navbar-item">Dashboard</a>
-              <a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout</a>
-              {% endif %}
-            </div>
+<!-- navbar -->
+<section class="hero is-primary">
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a href="{{ url_for('main.index') }}" class="navbar-item">
+            Python Cheat Sheet
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenuHeroC">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+          <div class="navbar-end">
+            <a href="{{ url_for('main.index') }}" class="navbar-item">Home</a>
+            <a href="{{ url_for('main.blog') }}" class="navbar-item">Blog</a>
+            <a href="{{ url_for('main.about') }}" class="navbar-item">About</a>
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('auth.login') }}" class="navbar-item">Login</a>
+            {% else %}
+            <a href="{{ url_for('main.author', username=current_user.username) }}" class="navbar-item">Profile</a>
+            <a href="{{ url_for('dashboard.overview') }}" class="navbar-item">Dashboard</a>
+            <a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout</a>
+            {% endif %}
           </div>
         </div>
-      </nav>
-    </div>
-  </section>
+      </div>
+    </nav>
+  </div>
+</section>
 
-  <section class="container">
-    {% with messages = get_flashed_messages() %} {% if messages %}
-    <ul>
-      {% for message in messages %}
-      <li>{{ message }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %} {% endwith %} {% block content %}{% endblock %}
-  </section>
-
-</body>
-
-</html>
+<!-- flashed msg -->
+{% block content %}
+<section class="container">
+  {% with messages = get_flashed_messages() %} {% if messages %}
+  <ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %} {% endwith %} {% endblock %}

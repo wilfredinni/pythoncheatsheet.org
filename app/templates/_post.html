@@ -2,24 +2,14 @@
     <p class="title has-text-centered">{{ post.title }}</p>
 
     <div class="level is-mobile">
-
-        <!-- date -->
-        <div class="level">
-            <p class="level-item ">
-                <p>{{ post.timestamp }} </p>
-            </p>
-
-            <!-- author -->
-            <p class="level-item">
-                <a href="{{ url_for('main.author', username=post.author.username) }}">{{ post.author.screen_name }}</a>
-            </p>
-
-        </div>
+        <!-- date and author -->
+        <p> {{ moment(post.timestamp).format('L') }} By
+            <a href="{{ url_for('main.author', username=post.author.username) }}">{{ post.author.screen_name }}</a>
+        </p>
     </div>
-    <p>{{ post.body }}
-        <a class=" is-info">Read more</a>
+    <p class="subtitle">{{ post.body }}
     </p>
-    <br>
-
-
+    <div class="buttons has-addons">
+        <span class="button is-primary">Read More</span>
+    </div>
 </section>
