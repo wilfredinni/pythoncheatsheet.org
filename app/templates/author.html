@@ -17,7 +17,7 @@
             {% if user.screen_name %}
             <h1 class="title level-item">About {{ user.screen_name }}</h1>
             {% else %}
-            <h1 class="title level-item">Hi, {{ user.username }}</h1>
+            <h1 class="title level-item">About {{ user.username }}</h1>
             {% endif %} {% if user.website %}
             <a href="{{ user.website }}" class="level-item ">
               <span class="icon is-medium ">
@@ -53,11 +53,8 @@
 <!-- post list -->
 <section class="section ">
   <h1 class="title">Blog Posts by {{ user.username }}</h1>
-  <hr> {% for post in posts %}
-  <p>
-    {{ post.author.username }} says:
-    <b>{{ post.body }}</b>
-  </p>
+  {% for post in my_posts %}
+  <p>{{ post.title }}</p>
   {% endfor %}
 </section>
 

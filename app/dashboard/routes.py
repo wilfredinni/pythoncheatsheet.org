@@ -1,8 +1,8 @@
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import login_required, current_user
 from app.dashboard import bp
-from app.dashboard.forms import RegistrationForm, EditProfileForm
-from app.models import User
+from app.dashboard.forms import RegistrationForm, EditProfileForm, PostForm
+from app.models import User, Post
 from app import db
 from datetime import datetime
 
@@ -17,9 +17,11 @@ def before_request():
 @bp.route('/overview')
 @login_required
 def overview():
-    user = User.query.filter_by(username=current_user.username).first_or_404()
-    return render_template(
-        'dashboard/overview.html', user=user, title='Dashboard')
+    user = User.query.filter_by(username=current_user.username).first()
+    my_posts = Post.query.filter_by(
+        user_id=current_user.id).order_by(Post.timestamp.desc())
+    return render_template('dashboard/overview.html', user=user,
+                           title='Dashboard', my_posts=my_posts)
 
 
 @bp.route('/add_user', methods=['GET', 'POST'])
@@ -61,3 +63,17 @@ def edit_profile():
         form.twitter.data = current_user.twitter
     return render_template('dashboard/edit_profile.html', title='Edit Profile',
                            form=form)
+
+
+@bp.route('/new_post', methods=['GET', 'POST'])
+def new_post():
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(body=form.post.data, author=current_user,
+                    title=form.title.data)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post is now live!')
+        return redirect(url_for('dashboard.overview'))
+    return render_template(
+        'dashboard/new_post.html', title='New Post', form=form)

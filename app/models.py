@@ -6,18 +6,20 @@ from app import db, login
 
 
 class User(UserMixin, db.Model):
+    # register
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     post = db.relationship('Post', backref='author', lazy='dynamic')
-    about_me = db.Column(db.String(280))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
 
-    screen_name = db.Column(db.String(64), index=True, unique=True)
-    website = db.Column(db.String(280), index=True, unique=True)
-    github = db.Column(db.String(280), index=True, unique=True)
-    twitter = db.Column(db.String(280), index=True, unique=True)
+    # profile edit & register
+    about_me = db.Column(db.String(280))
+    screen_name = db.Column(db.String(64), index=True)
+    website = db.Column(db.String(280), index=True)
+    github = db.Column(db.String(280), index=True)
+    twitter = db.Column(db.String(280), index=True)
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -38,7 +40,7 @@ class User(UserMixin, db.Model):
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    # title = db.Column(db.String(280), index=True)
+    title = db.Column(db.String(280), index=True, unique=True)
     body = db.Column(db.String())
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))

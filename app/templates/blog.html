@@ -1,8 +1,12 @@
 {% extends "base.html" %} {% block content %}
+
 <section class="section">
-    <div class="container">
-        <h1 class="title has-text-centered">Blog</h1>
-        <h1 class="subtitle has-text-centered">Up to 10 post per page.</h1>
-    </div>
+  {% for post in all_posts %}
+
+  <!-- post -->
+  {% include '_post.html' %}
+  <!-- end post -->
+
+  {% endfor %}
 </section>
 {% endblock %}

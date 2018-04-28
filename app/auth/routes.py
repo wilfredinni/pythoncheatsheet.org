@@ -30,7 +30,7 @@ def login():
 
 
 @bp.route('/register', methods=['GET', 'POST'])
-@login_required
+# @login_required
 def register():
     # prevent the logged user to navigates to the /register URL
     if current_user.is_authenticated:

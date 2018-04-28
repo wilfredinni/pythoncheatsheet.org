@@ -1,7 +1,7 @@
 from flask import render_template, url_for
 from flask_login import login_required, current_user
 from app.main import bp
-from app.models import User
+from app.models import User, Post
 
 
 @bp.route('/')
@@ -12,7 +12,8 @@ def index():
 
 @bp.route('/blog')
 def blog():
-    return render_template('blog.html', title='Blog')
+    all_posts = Post.query.order_by(Post.timestamp.desc()).all()
+    return render_template('blog.html', title='Blog', all_posts=all_posts)
 
 
 @bp.route('/about')
@@ -24,8 +25,7 @@ def about():
 def author(username):
     user = User.query.filter_by(username=username).first_or_404()
     author = 'About {}'.format(user.username)
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-    ]
-    return render_template('author.html', user=user, posts=posts, title=author)
+    my_posts = Post.query.filter_by(
+        user_id=user.id).order_by(Post.timestamp.desc())
+    return render_template(
+        'author.html', user=user, my_posts=my_posts, title=author)
