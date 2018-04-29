@@ -1,5 +1,6 @@
 {% extends "base.html" %} {% block content %}
 
+<!-- avatar -->
 <section class="section container column is-7 is-centered">
   <nav class="level">
     <p class="level-item has-text-centered">
@@ -35,7 +36,7 @@
     </nav>
   </div>
 
-  <!-- screen name -->
+  <!-- username or screen name -->
   {% if user.screen_name %}
   <h1 class="subtitle is-3 level-item">About {{ user.screen_name }}</h1>
   {% else %}

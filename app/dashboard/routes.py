@@ -22,7 +22,8 @@ def overview():
         user_id=current_user.id).order_by(Post.timestamp.desc())
     return render_template('dashboard/overview.html', user=user,
                            title='Dashboard', my_posts=my_posts,
-                           dashboard_active='is-active')
+                           dashboard_active='is-active',
+                           overview_active='is-active')
 
 
 @bp.route('/add_user', methods=['GET', 'POST'])
@@ -36,7 +37,8 @@ def add_user():
         db.session.commit()
         flash('User {} has been Added.'.format(form.username.data))
     return render_template('dashboard/add_user.html', title='Add User',
-                           form=form, dashboard_active='is-active')
+                           form=form, dashboard_active='is-active',
+                           add_active='is-active')
 
 
 @bp.route('/edit_profile', methods=['GET', 'POST'])
@@ -63,7 +65,8 @@ def edit_profile():
         form.github.data = current_user.github
         form.twitter.data = current_user.twitter
     return render_template('dashboard/edit_profile.html', title='Edit Profile',
-                           form=form, dashboard_active='is-active')
+                           form=form, dashboard_active='is-active',
+                           edit_active='is-active')
 
 
 @bp.route('/new_post', methods=['GET', 'POST'])
@@ -77,4 +80,5 @@ def new_post():
         flash('Your post is now live!')
         return redirect(url_for('dashboard.overview'))
     return render_template('dashboard/new_post.html', title='New Post',
-                           form=form, dashboard_active='is-active')
+                           form=form, dashboard_active='is-active',
+                           post_active='is-active')

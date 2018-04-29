@@ -45,7 +45,7 @@
       <a href="{{ url_for('dashboard.overview') }}" class="navbar-item">Dashboard</a>
     </li>
     <li>
-      <a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout</a>
+      <a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout ({{current_user.username}})</a>
     </li>
     {% endif %}
   </ul>
