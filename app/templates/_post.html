@@ -1,15 +1,35 @@
-<section class="box">
-    <p class="title has-text-centered">{{ post.title }}</p>
-
-    <div class="level is-mobile">
-        <!-- date and author -->
-        <p> {{ moment(post.timestamp).format('L') }} By
+<!-- Hero content: will be in the middle -->
+<div class="hero-body">
+  <div class="container">
+    <div class="columns is-multiline is-mobile is-centered">
+      <div class="column is-8 is-centered">
+        <!-- post title -->
+        <div class="header-content">
+          <div class="has-text-centered">
+            <h1 class="title">
+              {{ post.title }}
+            </h1>
+          </div>
+        </div>
+        <!-- time and author name -->
+        <div class="subheader-content has-text-centered">
+          <br>
+          <p>posted on
+            <a>{{ moment(post.timestamp).format('L') }}</a> by
             <a href="{{ url_for('main.author', username=post.author.username) }}">{{ post.author.screen_name }}</a>
-        </p>
+          </p>
+          <hr/>
+        </div>
+        <!-- post body -->
+        <div class="content">
+          <p>{{ post.body }}</p>
+          <div class="has-text-centered">
+            <p>
+              <a class="button" href="post.html">Continue Reading</a>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-    <p class="subtitle">{{ post.body }}
-    </p>
-    <div class="buttons has-addons">
-        <span class="button is-primary">Read More</span>
-    </div>
-</section>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<aside class="menu box">
+  <p class="menu-label">
+    Blog
+  </p>
+  <ul class="menu-list">
+    <li>
+      <a href="{{ url_for('dashboard.overview') }}" class="is-active">Overview</a>
+    </li>
+    <li>
+      <a href="{{ url_for('dashboard.new_post') }}">New Blog Post</a>
+    </li>
+  </ul>
+  <p class="menu-label">
+    Administration
+  </p>
+  <ul class="menu-list">
+    <li>
+      <a>Manage Users</a>
+    </li>
+    <li>
+      <a href="{{ url_for('dashboard.add_user') }}">Add User</a>
+    </li>
+  </ul>
+  <p class="menu-label">
+    General
+  </p>
+  <ul class="menu-list">
+    <li>
+      <a href="{{ url_for('dashboard.edit_profile') }}">Edit Profile </a>
+    </li>
+  </ul>
+</aside>

@@ -7,18 +7,20 @@ from app.models import User, Post
 @bp.route('/')
 @bp.route('/index')
 def index():
-    return render_template('index.html', title='Home')
+    return render_template('index.html', title='Home', home_active='is-active')
 
 
 @bp.route('/blog')
 def blog():
     all_posts = Post.query.order_by(Post.timestamp.desc()).all()
-    return render_template('blog.html', title='Blog', all_posts=all_posts)
+    return render_template('blog.html', title='Blog', all_posts=all_posts,
+                           blog_active='is-active')
 
 
 @bp.route('/about')
 def about():
-    return render_template('about.html', title='About')
+    return render_template('about.html', title='About',
+                           about_active='is-active')
 
 
 @bp.route('/author/<username>')
@@ -27,5 +29,5 @@ def author(username):
     author = 'About {}'.format(user.username)
     my_posts = Post.query.filter_by(
         user_id=user.id).order_by(Post.timestamp.desc())
-    return render_template(
-        'author.html', user=user, my_posts=my_posts, title=author)
+    return render_template('author.html', user=user, my_posts=my_posts,
+                           title=author, profile_active='is-active')

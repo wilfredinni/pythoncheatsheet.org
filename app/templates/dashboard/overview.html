@@ -1,76 +1,58 @@
 {% extends "base.html" %} {% block content %}
 
-<!-- submenu -->
-<section class="section">
-  <nav class="breadcrumb is-centered is-medium" aria-label="breadcrumbs">
-    <ul>
-      <li class="is-active">
-        <a href="{{ url_for('dashboard.overview') }}">Overview</a>
-      </li>
-      <li>
-        <a href="{{ url_for('dashboard.edit_profile') }}">Edit Profile</a>
-      </li>
-      <li>
-        <a href="{{ url_for('dashboard.new_post') }}">New Post</a>
-      </li>
-      <li>
-        <a href="{{ url_for('dashboard.add_user') }}" aria-current="page">Add User</a>
-      </li>
-    </ul>
-  </nav>
-</section>
+<section class="section container">
+  <div class="columns">
 
-<!-- welcome and last seen -->
-<section class="container hero has-text-centered">
-  {% if user.screen_name %}
-  <p class="title">Hi, {{ user.screen_name }}</p>
-  {% else %}
-  <h1 class="title">Hi, {{ user.username }}</h1>
-  {% endif %} {% if user.last_seen %}
-  <p class="subtitle">Last Login on {{ moment(user.last_seen).format('L') }}</p>
-  {% endif %}
-</section>
+    <!-- dashboard menu -->
+    <div class="column is-one-quarter">
+      {% include 'dashboard/_dash_menu.html' %}
+    </div>
 
-<!-- post list -->
-<section class="section">
-  <div class="columns is-centered">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>
-            <abbr title="Date">Date</abbr>
-          </th>
-          <th>
-            <abbr title="Author">Author</abbr>
-          </th>
-          <th>
-            <abbr title="Title">Title</abbr>
-          </th>
-          <th>
-            <abbr title="Edit"></abbr>
-          </th>
-          <th>
-            <abbr title="Delete"></abbr>
-          </th>
-      </thead>
-      <tbody>
-        {% for post in my_posts %}
-        <tr>
-          <td>{{ moment(post.timestamp).format('L') }}</p>
-          </td>
+    <!-- dashboard content -->
+    <div class="column">
 
-          <td>{{ post.author.screen_name }}</td>
-          <td>{{ post.title }}</td>
-          <td>
-            <a class="button is-link">Edit</a>
-          </td>
-          <td>
-            <a class="button is-danger">Delete</a>
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+      <!-- post list -->
+      <section class="box">
+        <div class="columns is-centered">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  <abbr title="Date">Date</abbr>
+                </th>
+                <th>
+                  <abbr title="Author">Author</abbr>
+                </th>
+                <th>
+                  <abbr title="Title">Title</abbr>
+                </th>
+                <th>
+                  <abbr title="Edit"></abbr>
+                </th>
+                <th>
+                  <abbr title="Delete"></abbr>
+                </th>
+            </thead>
+            <tbody>
+              {% for post in my_posts %}
+              <tr>
+                <td>{{ moment(post.timestamp).format('L') }}</p>
+                </td>
+                <td>{{ post.author.screen_name }}</td>
+                <td>{{ post.title }}</td>
+                <td>
+                  <a class="button is-link">Edit</a>
+                </td>
+                <td>
+                  <a class="button is-danger">Delete</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
   </div>
 </section>
 
