@@ -22,7 +22,7 @@
         </div>
         <!-- post body -->
         <div class="content">
-          <p>{{ post.body | safe }}</p>
+          <p>{{ post.body | truncate(350, False) | safe }}</p>
           <div class="has-text-centered">
             <p>
               <a class="button" href="{{ url_for('main.article', id=post.id) }}">

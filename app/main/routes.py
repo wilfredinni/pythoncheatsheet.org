@@ -20,7 +20,8 @@ def blog():
 @bp.route('/article/<id>')
 def article(id):
     post = Post.query.filter_by(id=id).first_or_404()
-    return render_template('article.html', post=post)
+    title = post.title
+    return render_template('article.html', post=post, title=title)
 
 
 @bp.route('/about')

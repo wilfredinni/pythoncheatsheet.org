@@ -286,3 +286,4 @@ Pipfile.lock
 Pipfile
 logs/microblog.log
 app.db
+logs/*
