@@ -1,3 +1,6 @@
+{% extends "base.html" %} {% block content %}
+
+<!--  -->
 <!-- Hero content: will be in the middle -->
 <div class="hero-body">
   <div class="container">
@@ -24,14 +27,12 @@
         <div class="content">
           <p>{{ post.body | safe }}</p>
           <div class="has-text-centered">
-            <p>
-              <a class="button" href="{{ url_for('main.article', id=post.id) }}">
-                Continue Reading
-              </a>
-            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+{% endblock %}

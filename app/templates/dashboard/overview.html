@@ -18,6 +18,9 @@
             <thead>
               <tr>
                 <th>
+                  <abbr title="Date">Id</abbr>
+                </th>
+                <th>
                   <abbr title="Date">Date</abbr>
                 </th>
                 <th>
@@ -36,15 +39,20 @@
             <tbody>
               {% for post in my_posts %}
               <tr>
+                <td>{{ post.id }}</td>
                 <td>{{ moment(post.timestamp).format('L') }}</p>
                 </td>
                 <td>{{ post.author.screen_name }}</td>
                 <td>{{ post.title }}</td>
                 <td>
-                  <a class="button is-link">Edit</a>
+                  <a href="{{ url_for('dashboard.edit_post', id=post.id) }}" class="button is-link">Edit</a>
                 </td>
                 <td>
-                  <a class="button is-danger">Delete</a>
+                  <form action="{{ url_for('dashboard.delete_post', id=post.id) }}" method=post>
+                    <input type="hidden" name="entry_id" value="{{ loop.revindex }}">
+                    <button class="button is-danger">Delete</button>
+                  </form>
+
                 </td>
               </tr>
               {% endfor %}

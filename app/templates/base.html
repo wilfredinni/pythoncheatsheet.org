@@ -51,8 +51,8 @@
   </ul>
 </div>
 
-<!-- flash msg -->
 {% block content %}
+<!-- flash msg -->
 <section class="container">
   {% with messages = get_flashed_messages() %} {% if messages %}
   <ul>
@@ -62,6 +62,8 @@
   </ul>
 </section>
 {% endif %} {% endwith %} {% endblock %}
+
+<!-- footer -->
 <footer class="footer hero is-warning">
   <div class="container">
     <div class="content has-text-centered is-primary">

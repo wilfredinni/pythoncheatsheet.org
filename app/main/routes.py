@@ -17,6 +17,12 @@ def blog():
                            blog_active='is-active')
 
 
+@bp.route('/article/<id>')
+def article(id):
+    post = Post.query.filter_by(id=id).first_or_404()
+    return render_template('article.html', post=post)
+
+
 @bp.route('/about')
 def about():
     return render_template('about.html', title='About',

@@ -2,55 +2,58 @@
 
 <!-- avatar -->
 <section class="section container column is-7 is-centered">
-  <nav class="level">
-    <p class="level-item has-text-centered">
-      <img style="border-radius:50%" src="{{ user.avatar(180) }}" alt="" style="height: 180px;">
-    </p>
-  </nav>
-
-  <!-- social media -->
-  <div class="container column is-3">
-    <nav class="level is-mobile">
-      <!-- website -->
-      {% if user.website %}
-      <a href="{{ user.website }}" class="level-item">
-        <span class="icon is-medium ">
-          <i class="fas fa-link fa-lg "></i>
-        </span>
-      </a>
-      <!-- github -->
-      {% endif %} {% if user.github %}
-      <a href="{{ user.github }}" class="level-item ">
-        <span class="icon is-medium ">
-          <i class="fab fa-github fa-lg"></i>
-        </span>
-      </a>
-      <!-- twitter -->
-      {% endif %} {% if user.twitter %}
-      <a href="{{ user.twitter }}" class="level-item">
-        <span class="icon is-medium ">
-          <i class="fab fa-twitter fa-lg"></i>
-        </span>
-      </a>
-      {% endif %}
+  <div class="box">
+    <nav class="level">
+      <p class="level-item has-text-centered">
+        <img style="border-radius:50%" src="{{ user.avatar(180) }}" alt="" style="height: 180px;">
+      </p>
     </nav>
-  </div>
 
-  <!-- username or screen name -->
-  {% if user.screen_name %}
-  <h1 class="subtitle is-3 level-item">About {{ user.screen_name }}</h1>
-  {% else %}
-  <h1 class="title level-item">About {{ user.username }}</h1>
-  {% endif %}
+    <!-- social media -->
+    <div class="container column is-3">
 
-  <!-- resumé -->
-  <section class="">
-    {% if user.about_me %}
-    <p>{{ user.about_me }}</p>
-    {% endif %} {% if user == current_user %}
-    <a href="{{ url_for('dashboard.edit_profile') }}" aria-current="page">Edit Profile</a>
+      <nav class="level is-mobile">
+        <!-- website -->
+        {% if user.website %}
+        <a href="{{ user.website }}" class="level-item">
+          <span class="icon is-medium ">
+            <i class="fas fa-link fa-lg "></i>
+          </span>
+        </a>
+        <!-- github -->
+        {% endif %} {% if user.github %}
+        <a href="{{ user.github }}" class="level-item ">
+          <span class="icon is-medium ">
+            <i class="fab fa-github fa-lg"></i>
+          </span>
+        </a>
+        <!-- twitter -->
+        {% endif %} {% if user.twitter %}
+        <a href="{{ user.twitter }}" class="level-item">
+          <span class="icon is-medium ">
+            <i class="fab fa-twitter fa-lg"></i>
+          </span>
+        </a>
+        {% endif %}
+      </nav>
+    </div>
+
+    <!-- username or screen name -->
+    {% if user.screen_name %}
+    <h1 class="subtitle is-3 level-item">About {{ user.screen_name }}</h1>
+    {% else %}
+    <h1 class="title level-item">About {{ user.username }}</h1>
     {% endif %}
-  </section>
+
+    <!-- resumé -->
+    <section class="">
+      {% if user.about_me %}
+      <p>{{ user.about_me }}</p>
+      {% endif %} {% if user == current_user %}
+      <a href="{{ url_for('dashboard.edit_profile') }}" aria-current="page">Edit Profile</a>
+      {% endif %}
+    </section>
+  </div>
   <br>
 
   <!-- blog posts -->

@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% block content %} {% from "auth/_formhelper.html" import render_field %}
+
+<section class="section container">
+  <div class="columns">
+
+    <!-- dashboard menu -->
+    <div class="column is-one-quarter">
+      {% include 'dashboard/_dash_menu.html' %}
+    </div>
+
+    <!-- dashboard content -->
+    <div class="column">
+
+      <form action="" method="post" class="box">
+        {{ form.hidden_tag() }}
+
+        <!-- title -->
+        <div class="field">
+          <label>{{ form.title.label }}</label>
+          <p class="control">
+            {{ render_field(form.title, class_="input", type="text") }}
+          </p>
+        </div>
+
+        <!-- post body -->
+        <div class="field">
+          <label>{{ form.post.label }}</label>
+
+          <div class="control">
+            {{ render_field(form.post, class_="textarea", id="editor") }}
+          </div>
+        </div>
+
+        <!-- submit button -->
+        <div class="field">
+          <p class="control">
+            <button class="button is-active">
+              Submit
+            </button>
+          </p>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

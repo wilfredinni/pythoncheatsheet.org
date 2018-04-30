@@ -70,6 +70,7 @@ def edit_profile():
 
 
 @bp.route('/new_post', methods=['GET', 'POST'])
+@login_required
 def new_post():
     form = PostForm()
     if form.validate_on_submit():
@@ -82,3 +83,33 @@ def new_post():
     return render_template('dashboard/new_post.html', title='New Post',
                            form=form, dashboard_active='is-active',
                            post_active='is-active')
+
+
+@bp.route('/edit_post/<id>', methods=['GET', 'POST'])
+@login_required
+def edit_post(id):
+    post = Post.query.filter_by(id=id).first_or_404()
+    form = PostForm()
+
+    if form.validate_on_submit():
+        post.title = form.title.data
+        post.body = form.post.data
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('dashboard.overview'))
+    elif request.method == 'GET':
+        form.title.data = post.title
+        form.post.data = post.body
+
+    return render_template('dashboard/edit_post.html', post=post, form=form,
+                           title='Edit Post', dashboard_active='is-active',
+                           overview_active='is-active')
+
+
+@bp.route('/delete_post/<id>', methods=['POST'])
+@login_required
+def delete_post(id):
+    post = Post.query.filter_by(id=id).first_or_404()
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(url_for('auth.login'))
