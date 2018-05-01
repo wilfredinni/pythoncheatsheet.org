@@ -90,7 +90,6 @@ def new_post():
 def edit_post(id):
     post = Post.query.filter_by(id=id).first_or_404()
     form = PostForm()
-
     if form.validate_on_submit():
         post.title = form.title.data
         post.body = form.post.data

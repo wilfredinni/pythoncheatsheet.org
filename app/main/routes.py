@@ -7,26 +7,26 @@ from app.models import User, Post
 @bp.route('/')
 @bp.route('/index')
 def index():
-    return render_template('index.html', title='Home', home_active='is-active')
+    return render_template('main/index.html', title='Home',
+                           home_active='is-active')
 
 
 @bp.route('/blog')
 def blog():
     all_posts = Post.query.order_by(Post.timestamp.desc()).all()
-    return render_template('blog.html', title='Blog', all_posts=all_posts,
+    return render_template('main/blog.html', title='Blog', all_posts=all_posts,
                            blog_active='is-active')
 
 
 @bp.route('/article/<id>')
 def article(id):
     post = Post.query.filter_by(id=id).first_or_404()
-    title = post.title
-    return render_template('article.html', post=post, title=title)
+    return render_template('main/article.html', post=post, title=post.title)
 
 
 @bp.route('/about')
 def about():
-    return render_template('about.html', title='About',
+    return render_template('main/about.html', title='About',
                            about_active='is-active')
 
 
@@ -36,5 +36,5 @@ def author(username):
     author = 'About {}'.format(user.username)
     my_posts = Post.query.filter_by(
         user_id=user.id).order_by(Post.timestamp.desc())
-    return render_template('author.html', user=user, my_posts=my_posts,
+    return render_template('main/author.html', user=user, my_posts=my_posts,
                            title=author, profile_active='is-active')
