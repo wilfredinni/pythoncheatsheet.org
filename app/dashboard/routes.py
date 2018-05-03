@@ -41,6 +41,15 @@ def add_user():
                            add_active='is-active')
 
 
+@bp.route('/manage_users')
+@login_required
+def manage_users():
+    all_users = User.query.all()
+    return render_template('dashboard/manage_users.html', title='Manage Users',
+                           all_users=all_users, dashboard_active='is-active',
+                           users_active='is-active')
+
+
 @bp.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
@@ -111,4 +120,25 @@ def delete_post(id):
     post = Post.query.filter_by(id=id).first_or_404()
     db.session.delete(post)
     db.session.commit()
-    return redirect(url_for('auth.login'))
+    flash('Your article has been Deleted')
+    return redirect(url_for('dashboard.overview'))
+
+
+@bp.route('/manage_articles')
+@login_required
+def manage_articles():
+    posts = Post.query.filter_by().order_by(Post.timestamp.desc())
+    return render_template('dashboard/overview.html',
+                           title='Dashboard', my_posts=posts,
+                           dashboard_active='is-active',
+                           articles_active='is-active')
+
+
+@bp.route('/delete_user/<id>', methods=['POST'])
+@login_required
+def delete_user(id):
+    user = User.query.filter_by(id=id).first_or_404()
+    db.session.delete(user)
+    db.session.commit()
+    flash('The user has been Deleted')
+    return redirect(url_for('dashboard.manage_users'))

@@ -9,24 +9,22 @@
     <li>
       <a href="{{ url_for('dashboard.new_post') }}" class="{{ post_active }}">New Article</a>
     </li>
+    <li>
+      <a href="{{ url_for( 'dashboard.edit_profile') }} " class="{{ edit_active }} ">Edit Profile </a>
+    </li>
   </ul>
   <p class="menu-label">
     Administration
   </p>
   <ul class="menu-list">
     <li>
-      <a>Manage Users</a>
+      <a href="{{ url_for('dashboard.manage_articles') }}" class="{{ articles_active }} ">Manage Articles</a>
     </li>
     <li>
-      <a href="{{ url_for('dashboard.add_user') }}" class="{{ add_active }}">Add User</a>
+      <a href="{{ url_for('dashboard.manage_users') }}" class="{{ users_active }}">Manage Users</a>
     </li>
-  </ul>
-  <p class="menu-label">
-    General
-  </p>
-  <ul class="menu-list">
     <li>
-      <a href="{{ url_for('dashboard.edit_profile') }}" class="{{ edit_active }}">Edit Profile </a>
+      <a href="{{ url_for( 'dashboard.add_user') }}" class="{{ add_active }} ">Add User</a>
     </li>
   </ul>
 </aside>

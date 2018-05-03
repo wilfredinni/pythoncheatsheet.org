@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} {% block content %} {% from "auth/_formhelper.html" import render_field %}
 
 <section class="section container">
   <div class="columns">
@@ -11,7 +11,6 @@
     <!-- dashboard content -->
     <div class="column">
 
-      <!-- post list -->
       <section class="box">
         <div class="columns is-centered">
           <table class="table">
@@ -21,13 +20,16 @@
                   <abbr title="Date">Id</abbr>
                 </th>
                 <th>
-                  <abbr title="Date">Date</abbr>
+                  <abbr title="Date">Last Seen</abbr>
                 </th>
                 <th>
-                  <abbr title="Author">Author</abbr>
+                  <abbr title="Author">Username</abbr>
                 </th>
                 <th>
-                  <abbr title="Title">Article</abbr>
+                  <abbr title="Author">Screen Name</abbr>
+                </th>
+                <th>
+                  <abbr title="Posts">Articles</abbr>
                 </th>
                 <th>
                   <abbr title="Edit"></abbr>
@@ -37,22 +39,20 @@
                 </th>
             </thead>
             <tbody>
-              {% for post in my_posts %}
+              {% for user in all_users %}
               <tr>
-                <td>{{ post.id }}</td>
-                <td>{{ moment(post.timestamp).format('L') }}
+                <td>{{ user.id }}</td>
+                <td>{{ moment(user.last_seen).format('L') }}</td>
+                <td>{{ user.username }}</td>
+                <td>
+                  <a href="{{ url_for('main.author', username=user.username) }}">{{ user.screen_name }}</a>
+                </td>
+                <td class="has-text-right">x</td>
+                <td>
+                  <a href="#" class="button is-link">Edit</a>
                 </td>
                 <td>
-                  <a href="{{ url_for('main.author', username=post.author.username) }}">{{ post.author.screen_name }}</a>
-                </td>
-                <td>
-                  <a href="{{ url_for('main.article', id=post.id) }}">{{ post.title }}</a>
-                </td>
-                <td>
-                  <a href="{{ url_for('dashboard.edit_post', id=post.id) }}" class="button is-link">Edit</a>
-                </td>
-                <td>
-                  <form action="{{ url_for('dashboard.delete_post', id=post.id) }}" method=post>
+                  <form action="{{ url_for('dashboard.delete_user', id=user.id) }}" method=post>
                     <input type="hidden" name="entry_id" value="{{ loop.revindex }}">
                     <button class="button is-danger">Delete</button>
                   </form>
@@ -64,6 +64,7 @@
           </table>
         </div>
       </section>
+
     </div>
   </div>
 </section>

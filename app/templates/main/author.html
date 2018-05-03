@@ -46,14 +46,13 @@
   {% endif %}
 
   <!-- resumé -->
-  <section class="">
+  <section class="content">
     {% if user.about_me %}
-    <p>{{ user.about_me }}</p>
+    <p>{{ user.about_me | safe }}</p>
     {% endif %} {% if user == current_user %}
     <a href="{{ url_for('dashboard.edit_profile') }}" aria-current="page">Edit Profile</a>
     {% endif %}
   </section>
-
   <br>
 
   <!-- blog posts -->

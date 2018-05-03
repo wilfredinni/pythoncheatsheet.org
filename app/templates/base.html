@@ -6,73 +6,92 @@
   <title>{{ title }} - Pysheet</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
   <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <!-- tinymce editor -->
+  <script type="text/javascript" src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+  <script type="text/javascript">
+    tinymce.init({
+      selector: 'textarea',
+      theme: 'modern',
+
+      plugins: [
+        'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+        'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+        'save table contextmenu directionality emoticons template paste textcolor'
+      ],
+      content_css: 'css/content.css',
+      toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | preview forecolor emoticons fullscreen'
+    });
+  </script>
   <!-- moment.js -->
   {{ moment.include_jquery() }} {{ moment.include_moment() }}
 </head>
 
 <!-- hero -->
-<section class="hero">
-  <div class="hero-body has-text-centered">
-    <div class="container">
-      <h1 class="subtitle is-1">
-        Python Cheat Sheet
-      </h1>
+
+<body>
+  <section class="hero">
+    <div class="hero-body has-text-centered">
+      <div class="container">
+        <h1 class="subtitle is-1">
+          Python Cheat Sheet
+        </h1>
+      </div>
     </div>
+  </section>
+
+  <!-- navbar -->
+  <div class="tabs is-centered container">
+    <ul>
+      <li class="{{ home_active }}">
+        <a href="{{ url_for('main.index') }}" class="navbar-ite">Home</a>
+      </li>
+      <li class="{{ blog_active }}">
+        <a href="{{ url_for('main.blog') }}" class="navbar-item">Blog</a>
+      </li>
+      <li class="{{ about_active }}">
+        <a href="{{ url_for('main.about') }}" class="navbar-item">About</a>
+      </li>
+      {% if current_user.is_anonymous %}
+      <li class="{{ login_active }}">
+        <a href="{{ url_for('auth.login') }}" class="navbar-item">Login</a>
+      </li>
+      {% else %}
+      <li class="{{ profile_active }}">
+        <a href="{{ url_for('main.author', username=current_user.username) }}" class="navbar-item">Profile</a>
+      </li>
+      <li class="{{ dashboard_active }}">
+        <a href="{{ url_for('dashboard.overview') }}" class="navbar-item">Dashboard</a>
+      </li>
+      <li>
+        <a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout ({{current_user.username}})</a>
+      </li>
+      {% endif %}
+    </ul>
   </div>
-</section>
 
-<!-- navbar -->
-<div class="tabs is-centered container">
-  <ul>
-    <li class="{{ home_active }}">
-      <a href="{{ url_for('main.index') }}" class="navbar-ite">Home</a>
-    </li>
-    <li class="{{ blog_active }}">
-      <a href="{{ url_for('main.blog') }}" class="navbar-item">Blog</a>
-    </li>
-    <li class="{{ about_active }}">
-      <a href="{{ url_for('main.about') }}" class="navbar-item">About</a>
-    </li>
-    {% if current_user.is_anonymous %}
-    <li class="{{ login_active }}">
-      <a href="{{ url_for('auth.login') }}" class="navbar-item">Login</a>
-    </li>
-    {% else %}
-    <li class="{{ profile_active }}">
-      <a href="{{ url_for('main.author', username=current_user.username) }}" class="navbar-item">Profile</a>
-    </li>
-    <li class="{{ dashboard_active }}">
-      <a href="{{ url_for('dashboard.overview') }}" class="navbar-item">Dashboard</a>
-    </li>
-    <li>
-      <a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout ({{current_user.username}})</a>
-    </li>
-    {% endif %}
-  </ul>
-</div>
-
-{% block content %}
-<!-- flash msg -->
-<section class="container">
+  <!-- flash msg -->
   {% with messages = get_flashed_messages() %} {% if messages %}
-  <ul>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-</section>
-{% endif %} {% endwith %} {% endblock %}
+  <section class="container has-text-centered">
+    <ul>
+      {% for message in messages %}
+      <li class="notification">{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+  </section>
+  {% block content %}{% endblock %}
 
-<!-- footer -->
-<footer class="footer hero is-warning">
-  <div class="container">
-    <div class="content has-text-centered is-primary">
-      <p>
-        <strong>Python CheatSheet</strong> by
-        <a href="https://jgthms.com">Carlos Montecinos</a>. The source code is licensed
-        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed
-        <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-      </p>
+  <!-- footer -->
+  <footer class="footer hero is-warning">
+    <div class="container">
+      <div class="content has-text-centered is-primary">
+        <p>
+          <strong>Python CheatSheet</strong> by
+          <a href="https://jgthms.com">Carlos Montecinos</a>. The source code is licensed
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed
+          <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
+</body>
