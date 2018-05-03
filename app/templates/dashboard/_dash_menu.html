@@ -10,7 +10,7 @@
       <a href="{{ url_for('dashboard.new_post') }}" class="{{ post_active }}">New Article</a>
     </li>
     <li>
-      <a href="{{ url_for( 'dashboard.edit_profile') }} " class="{{ edit_active }} ">Edit Profile </a>
+      <a href="{{ url_for( 'dashboard.edit_profile', username=current_user.username) }} " class="{{ edit_active }} ">Edit Profile </a>
     </li>
   </ul>
   <p class="menu-label">

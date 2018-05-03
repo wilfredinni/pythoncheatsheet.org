@@ -47,9 +47,9 @@
                 <td>
                   <a href="{{ url_for('main.author', username=user.username) }}">{{ user.screen_name }}</a>
                 </td>
-                <td class="has-text-right">x</td>
+                <td class="has-text-right">{{user.post.count()}}</td>
                 <td>
-                  <a href="#" class="button is-link">Edit</a>
+                  <a href="{{ url_for('dashboard.edit_profile', username=user.username) }}" class="button is-link">Edit</a>
                 </td>
                 <td>
                   <form action="{{ url_for('dashboard.delete_user', id=user.id) }}" method=post>

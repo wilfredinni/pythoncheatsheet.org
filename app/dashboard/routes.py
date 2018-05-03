@@ -17,12 +17,12 @@ def before_request():
 @bp.route('/overview')
 @login_required
 def overview():
-    user = User.query.filter_by(username=current_user.username).first()
+    # for avatar and user name in the dashboard
+    # user = User.query.filter_by(username=current_user.username).first()
     my_posts = Post.query.filter_by(
         user_id=current_user.id).order_by(Post.timestamp.desc())
-    return render_template('dashboard/overview.html', user=user,
-                           title='Dashboard', my_posts=my_posts,
-                           dashboard_active='is-active',
+    return render_template('dashboard/overview.html', title='Dashboard',
+                           my_posts=my_posts, dashboard_active='is-active',
                            overview_active='is-active')
 
 
@@ -45,36 +45,40 @@ def add_user():
 @login_required
 def manage_users():
     all_users = User.query.all()
+
     return render_template('dashboard/manage_users.html', title='Manage Users',
                            all_users=all_users, dashboard_active='is-active',
                            users_active='is-active')
 
 
-@bp.route('/edit_profile', methods=['GET', 'POST'])
+@bp.route('/edit_profile/<username>', methods=['GET', 'POST'])
 @login_required
-def edit_profile():
-    form = EditProfileForm(current_user.username)
+def edit_profile(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    form = EditProfileForm(user.username)
     if form.validate_on_submit():
-        current_user.username = form.username.data
-        current_user.about_me = form.about_me.data
-        current_user.email = form.email.data
-        current_user.screen_name = form.screen_name.data
-        current_user.website = form.website.data
-        current_user.github = form.github.data
-        current_user.twitter = form.twitter.data
+        user.username = form.username.data
+        user.about_me = form.about_me.data
+        user.email = form.email.data
+        user.screen_name = form.screen_name.data
+        user.website = form.website.data
+        user.github = form.github.data
+        user.twitter = form.twitter.data
         db.session.commit()
         flash('Your changes have been saved.')
-        return redirect(url_for('dashboard.edit_profile'))
+        return redirect(url_for('dashboard.overview'))
     elif request.method == 'GET':
-        form.username.data = current_user.username
-        form.about_me.data = current_user.about_me
-        form.email.data = current_user.email
-        form.screen_name.data = current_user.screen_name
-        form.website.data = current_user.website
-        form.github.data = current_user.github
-        form.twitter.data = current_user.twitter
-    return render_template('dashboard/edit_profile.html', title='Edit Profile',
-                           form=form, dashboard_active='is-active',
+        form.username.data = user.username
+        form.about_me.data = user.about_me
+        form.email.data = user.email
+        form.screen_name.data = user.screen_name
+        form.website.data = user.website
+        form.github.data = user.github
+        form.twitter.data = user.twitter
+
+    return render_template('dashboard/edit_profile.html', form=form,
+                           user=user, title='Edit Profile',
+                           dashboard_active='is-active',
                            edit_active='is-active')
 
 
@@ -114,16 +118,6 @@ def edit_post(id):
                            overview_active='is-active')
 
 
-@bp.route('/delete_post/<id>', methods=['POST'])
-@login_required
-def delete_post(id):
-    post = Post.query.filter_by(id=id).first_or_404()
-    db.session.delete(post)
-    db.session.commit()
-    flash('Your article has been Deleted')
-    return redirect(url_for('dashboard.overview'))
-
-
 @bp.route('/manage_articles')
 @login_required
 def manage_articles():
@@ -142,3 +136,13 @@ def delete_user(id):
     db.session.commit()
     flash('The user has been Deleted')
     return redirect(url_for('dashboard.manage_users'))
+
+
+@bp.route('/delete_post/<id>', methods=['POST'])
+@login_required
+def delete_post(id):
+    post = Post.query.filter_by(id=id).first_or_404()
+    db.session.delete(post)
+    db.session.commit()
+    flash('Your article has been Deleted')
+    return redirect(url_for('dashboard.overview'))

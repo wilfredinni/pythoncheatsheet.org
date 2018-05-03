@@ -50,7 +50,7 @@
     {% if user.about_me %}
     <p>{{ user.about_me | safe }}</p>
     {% endif %} {% if user == current_user %}
-    <a href="{{ url_for('dashboard.edit_profile') }}" aria-current="page">Edit Profile</a>
+    <a href="{{ url_for('dashboard.edit_profile', username=current_user.username) }}" aria-current="page">Edit Profile</a>
     {% endif %}
   </section>
   <br>
@@ -59,7 +59,9 @@
   <h1 class="subtitle is-3 level-item">Blog Posts by {{ user.username }}</h1>
   <ul style="list-style-type:disc">
     {% for post in my_posts %}
-    <li>{{ post.title }}</li>
+    <li>
+      <a href="{{ url_for('main.article', id=post.id) }}">{{ post.title }}</a>
+    </li>
     {% endfor %}
   </ul>
 
