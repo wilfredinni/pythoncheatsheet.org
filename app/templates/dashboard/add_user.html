@@ -1,5 +1,6 @@
-{% extends "base.html" %} {% block content %} {% from "auth/_formhelper.html" import render_field %}
-
+{% extends "base.html" %}
+<!--  -->
+{% block content %}
 <section class="section container">
   <div class="columns">
 
@@ -17,33 +18,65 @@
           <!-- username -->
           <div class="field">
             <label>{{ form.username.label }}</label>
-            <p class="control">
-              {{ render_field(form.username, class_="input") }}
-            </p>
+            {% if form.username.errors %}
+            <!--  -->
+            {{ form.username(class="input is-danger") }}
+            <div class="">
+              {% for error in form.username.errors %}
+              <p class="help is-danger">{{ error }}</p>
+              {% endfor %}
+            </div>
+            {% else %}
+            <p class="control">{{ form.username(class="input") }}</p>
+            {% endif %}
           </div>
 
           <!-- email -->
           <div class="field">
             <label>{{ form.email.label }}</label>
-            <p class="control">
-              {{ render_field(form.email, class_="input", type="email") }}
-            </p>
+            {% if form.email.errors %}
+            <!--  -->
+            {{ form.email(class="input is-danger", type="email") }}
+            <div class="">
+              {% for error in form.email.errors %}
+              <p class="help is-danger">{{ error }}</p>
+              {% endfor %}
+            </div>
+            {% else %}
+            <p class="control">{{ form.email(class="input", type="email") }}</p>
+            {% endif %}
           </div>
 
           <!-- password -->
           <div class="field">
             <label>{{ form.password.label }}</label>
-            <p class="control">
-              {{ render_field(form.password, class_="input") }}
-            </p>
+            {% if form.password.errors %}
+            <!--  -->
+            {{ form.password(class="input is-danger") }}
+            <div class="">
+              {% for error in form.password.errors %}
+              <p class="help is-danger">{{ error }}</p>
+              {% endfor %}
+            </div>
+            {% else %}
+            <p class="control">{{ form.password(class="input") }}</p>
+            {% endif %}
           </div>
 
           <!-- password 2 -->
           <div class="field">
             <label>{{ form.password2.label }}</label>
-            <p class="control">
-              {{ render_field(form.password2, class_="input") }}
-            </p>
+            {% if form.password2.errors %}
+            <!--  -->
+            {{ form.password2(class="input is-danger") }}
+            <div class="">
+              {% for error in form.password2.errors %}
+              <p class="help is-danger">{{ error }}</p>
+              {% endfor %}
+            </div>
+            {% else %}
+            <p class="control">{{ form.password2(class="input") }}</p>
+            {% endif %}
           </div>
 
           <!-- register button -->
@@ -59,5 +92,4 @@
     </div>
   </div>
 </section>
-
-{% endblock %}
+{% endblock content %}

@@ -1,4 +1,8 @@
-{% extends "base.html" %} {% block content %} {% from "auth/_formhelper.html" import render_field %}
+{% extends "base.html" %}
+<!--  -->
+{% from "auth/_formhelper.html" import render_field %}
+<!--  -->
+{% block content %}
 <div class="hero">
   <div class="container hero-body">
     <div class="column is-4 is-offset-4">
@@ -35,8 +39,7 @@
           </div>
         </form>
       </div>
-
     </div>
   </div>
 </div>
-{% endblock %}
+{% endblock content %}

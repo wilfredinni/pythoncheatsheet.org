@@ -1,5 +1,7 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
 
+<!--  -->
+{% block content %}
 <!-- avatar -->
 <section class="section container column is-7 is-centered">
 
@@ -20,15 +22,17 @@
           <i class="fas fa-link fa-lg "></i>
         </span>
       </a>
+      {% endif %}
       <!-- github -->
-      {% endif %} {% if user.github %}
+      {% if user.github %}
       <a href="{{ user.github }}" class="level-item ">
         <span class="icon is-medium ">
           <i class="fab fa-github fa-lg"></i>
         </span>
       </a>
+      {% endif %}
       <!-- twitter -->
-      {% endif %} {% if user.twitter %}
+      {% if user.twitter %}
       <a href="{{ user.twitter }}" class="level-item">
         <span class="icon is-medium ">
           <i class="fab fa-twitter fa-lg"></i>
@@ -39,32 +43,36 @@
   </div>
 
   <!-- username or screen name -->
-  {% if user.screen_name %}
-  <h1 class="subtitle is-3 level-item">About {{ user.screen_name }}</h1>
-  {% else %}
-  <h1 class="title level-item">About {{ user.username }}</h1>
-  {% endif %}
+  <div>
+    {% if user.screen_name %}
+    <h1 class="subtitle is-3 level-item">About {{ user.screen_name }}</h1>
+    {% else %}
+    <h1 class="title level-item">About {{ user.username }}</h1>
+    {% endif %}
+  </div>
 
   <!-- resumé -->
   <section class="content">
     {% if user.about_me %}
     <p>{{ user.about_me | safe }}</p>
-    {% endif %} {% if user == current_user %}
+    {% endif %}
+    <!--  -->
+    {% if user == current_user %}
     <a href="{{ url_for('dashboard.edit_profile', username=current_user.username) }}" aria-current="page">Edit Profile</a>
     {% endif %}
   </section>
   <br>
 
   <!-- blog posts -->
-  <h1 class="subtitle is-3 level-item">Blog Posts by {{ user.username }}</h1>
-  <ul style="list-style-type:disc">
-    {% for post in my_posts %}
-    <li>
-      <a href="{{ url_for('main.article', id=post.id) }}">{{ post.title }}</a>
-    </li>
-    {% endfor %}
-  </ul>
-
+  <div>
+    <h1 class="subtitle is-3 level-item">Blog Posts by {{ user.username }}</h1>
+    <ul style="list-style-type:disc">
+      {% for post in my_posts %}
+      <li>
+        <a href="{{ url_for('main.article', id=post.id) }}">{{ post.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
 </section>
-
-{% endblock %}
+{% endblock content %}

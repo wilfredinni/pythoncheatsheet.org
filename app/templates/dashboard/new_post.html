@@ -1,5 +1,8 @@
-{% extends "base.html" %} {% block content %} {% from "auth/_formhelper.html" import render_field %}
-
+{% extends "base.html" %}
+<!--  -->
+{% from "auth/_formhelper.html" import render_field %}
+<!--  -->
+{% block content %}
 <section class="section container">
   <div class="columns">
 
@@ -17,18 +20,18 @@
         <div class="field">
           <label>{{ form.title.label }}</label>
           <p class="control">
-            {{ render_field(form.title, class_="input", type="text") }}
+            {{ form.title(class="input", type="text") }}
           </p>
         </div>
 
         <!-- post body -->
         <div class="field">
           <label>{{ form.post.label }}</label>
-
           <div class="control">
-            {{ render_field(form.post, class_="textarea", rows="10") }}
+            {{ form.post(class="textarea", rows="10") }}
           </div>
         </div>
+
         <!-- submit button -->
         <div class="field">
           <p class="control">
@@ -41,5 +44,4 @@
     </div>
   </div>
 </section>
-
-{% endblock %}
+{% endblock content %}

@@ -70,15 +70,19 @@
   </div>
 
   <!-- flash msg -->
-  {% with messages = get_flashed_messages() %} {% if messages %}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  <!--  -->
+  {% if messages %}
   <section class="container has-text-centered">
     <ul>
-      {% for message in messages %}
-      <li class="notification">{{ message }}</li>
+      {% for category, message in messages %}
+      <li class="notification {{category}}">{{ message }}</li>
       {% endfor %}
     </ul>
     {% endif %} {% endwith %}
   </section>
+
+  <!-- other pages content -->
   {% block content %}{% endblock %}
 
   <!-- footer -->

@@ -1,14 +1,14 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
 
+<!-- -->
+{% block content %}
 <section class="">
   <div class="container">
     {% for post in all_posts %}
-
     <!-- post -->
     {% include 'main/_post.html' %}
     <!-- end post -->
-
     {% endfor %}
   </div>
 </section>
-{% endblock %}
+{% endblock content %}

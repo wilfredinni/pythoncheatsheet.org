@@ -1,5 +1,6 @@
-{% extends "base.html" %} {% block content %}
-
+{% extends "base.html" %}
+<!--  -->
+{% block content %}
 <section class="section container">
   <div class="columns">
 
@@ -10,7 +11,6 @@
 
     <!-- dashboard content -->
     <div class="column">
-
       <!-- post list -->
       <section class="box">
         <div class="columns is-centered">
@@ -56,7 +56,6 @@
                     <input type="hidden" name="entry_id" value="{{ loop.revindex }}">
                     <button class="button is-danger">Delete</button>
                   </form>
-
                 </td>
               </tr>
               {% endfor %}
@@ -67,5 +66,4 @@
     </div>
   </div>
 </section>
-
-{% endblock %}
+{% endblock content %}

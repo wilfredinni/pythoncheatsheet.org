@@ -35,7 +35,7 @@ def add_user():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash('User {} has been Added.'.format(form.username.data))
+        flash(f'Account created for {form.username.data}.', 'is-info')
     return render_template('dashboard/add_user.html', title='Add User',
                            form=form, dashboard_active='is-active',
                            add_active='is-active')
@@ -45,7 +45,6 @@ def add_user():
 @login_required
 def manage_users():
     all_users = User.query.all()
-
     return render_template('dashboard/manage_users.html', title='Manage Users',
                            all_users=all_users, dashboard_active='is-active',
                            users_active='is-active')
@@ -65,7 +64,7 @@ def edit_profile(username):
         user.github = form.github.data
         user.twitter = form.twitter.data
         db.session.commit()
-        flash('Your changes have been saved.')
+        flash('Your changes have been saved.', 'is-info')
         return redirect(url_for('dashboard.overview'))
     elif request.method == 'GET':
         form.username.data = user.username
@@ -91,7 +90,7 @@ def new_post():
                     title=form.title.data)
         db.session.add(post)
         db.session.commit()
-        flash('Your post is now live!')
+        flash('Your post is now live!', 'is-info')
         return redirect(url_for('dashboard.overview'))
     return render_template('dashboard/new_post.html', title='New Post',
                            form=form, dashboard_active='is-active',
@@ -107,7 +106,7 @@ def edit_post(id):
         post.title = form.title.data
         post.body = form.post.data
         db.session.commit()
-        flash('Your changes have been saved.')
+        flash('Your changes have been saved.', 'is-info')
         return redirect(url_for('dashboard.overview'))
     elif request.method == 'GET':
         form.title.data = post.title
@@ -134,7 +133,7 @@ def delete_user(id):
     user = User.query.filter_by(id=id).first_or_404()
     db.session.delete(user)
     db.session.commit()
-    flash('The user has been Deleted')
+    flash(f'User {user.username} has been Deleted', 'is-danger')
     return redirect(url_for('dashboard.manage_users'))
 
 
@@ -144,5 +143,5 @@ def delete_post(id):
     post = Post.query.filter_by(id=id).first_or_404()
     db.session.delete(post)
     db.session.commit()
-    flash('Your article has been Deleted')
+    flash('Your article has been Deleted', 'is-danger')
     return redirect(url_for('dashboard.overview'))

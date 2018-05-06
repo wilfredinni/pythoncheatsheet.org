@@ -6,7 +6,8 @@ from app.models import User
 
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
+    username = StringField('Username', validators=[
+                           DataRequired(), Length(min=2)])
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField(
@@ -24,7 +25,8 @@ class RegistrationForm(FlaskForm):
 
 
 class EditProfileForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
+    username = StringField('Username', validators=[
+                           DataRequired(), Length(min=2)])
     about_me = TextAreaField('About me', validators=[Length(min=0, max=500)])
     email = StringField('Email', validators=[DataRequired(), Email()])
     screen_name = StringField('Screen Name', validators=[DataRequired()])

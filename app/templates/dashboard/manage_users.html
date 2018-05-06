@@ -1,5 +1,8 @@
-{% extends "base.html" %} {% block content %} {% from "auth/_formhelper.html" import render_field %}
-
+{% extends "base.html" %}
+<!--  -->
+{% from "auth/_formhelper.html" import render_field %}
+<!--  -->
+{% block content %}
 <section class="section container">
   <div class="columns">
 
@@ -10,7 +13,6 @@
 
     <!-- dashboard content -->
     <div class="column">
-
       <section class="box">
         <div class="columns is-centered">
           <table class="table">
@@ -56,7 +58,6 @@
                     <input type="hidden" name="entry_id" value="{{ loop.revindex }}">
                     <button class="button is-danger">Delete</button>
                   </form>
-
                 </td>
               </tr>
               {% endfor %}
@@ -64,9 +65,8 @@
           </table>
         </div>
       </section>
-
     </div>
   </div>
 </section>
 
-{% endblock %}
+{% endblock content %}

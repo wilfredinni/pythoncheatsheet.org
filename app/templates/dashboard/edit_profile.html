@@ -1,8 +1,10 @@
-{% extends "base.html" %} {% block content %} {% from "auth/_formhelper.html" import render_field %}
-
+{% extends "base.html" %}
+<!--  -->
+{% from "auth/_formhelper.html" import render_field %}
+<!--  -->
+{% block content %}
 <section class="section container">
   <div class="columns">
-
     <!-- dashboard menu -->
     <div class="column is-one-quarter">
       {% include 'dashboard/_dash_menu.html' %}
@@ -10,14 +12,21 @@
 
     <!-- dashboard content -->
     <div class="column">
-
       <form action="" method="POST" class="box">
         {{ form.hidden_tag() }}
         <div class="field">
           <label>{{ form.username.label }}</label>
-          <p class="control">
-            {{ render_field(form.username, class_="input", type="text") }}
-          </p>
+          {% if form.username.errors %}
+          <!--  -->
+          {{ form.username(class="input is-danger", type="text") }}
+          <div class="">
+            {% for error in form.username.errors %}
+            <p class="help is-danger">{{ error }}</p>
+            {% endfor %}
+          </div>
+          {% else %}
+          <p class="control">{{ form.username(class="input", type="text") }}</p>
+          {% endif %}
         </div>
 
         <!-- screen name and email -->
@@ -25,15 +34,31 @@
           <div class="field-body">
             <div class="field">
               <label>{{ form.screen_name.label }}</label>
-              <p class="control">
-                {{ render_field(form.screen_name, class_="input", type="text") }}
-              </p>
+              {% if form.screen_name.errors %}
+              <!--  -->
+              {{ form.screen_name(class="input is-danger", type="text") }}
+              <div class="">
+                {% for error in form.screen_name.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+              </div>
+              {% else %}
+              <p class="control">{{ form.screen_name(class="input", type="text") }}</p>
+              {% endif %}
             </div>
             <div class="field">
               <label>{{ form.email.label }}</label>
-              <p class="control">
-                {{ render_field(form.email, class_="input", type="email") }}
-              </p>
+              {% if form.email.errors %}
+              <!--  -->
+              {{ form.email(class="input is-danger", type="email") }}
+              <div class="">
+                {% for error in form.email.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+              </div>
+              {% else %}
+              <p class="control">{{ form.email(class="input", type="email") }}</p>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -41,23 +66,50 @@
         <!-- social media -->
         <div class="field is-horizontal">
           <div class="field-body">
+            <!-- twitter -->
             <div class="field">
               <label>{{ form.twitter.label }}</label>
-              <p class="control">
-                {{ render_field(form.twitter, class_="input", type="url") }}
-              </p>
+              {% if form.twitter.errors %}
+              <!--  -->
+              {{ form.twitter(class="input is-danger", type="url") }}
+              <div class="">
+                {% for error in form.twitter.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+              </div>
+              {% else %}
+              <p class="control">{{ form.twitter(class="input", type="url") }}</p>
+              {% endif %}
             </div>
+            <!-- github -->
             <div class="field">
               <label>{{ form.github.label }}</label>
-              <p class="control">
-                {{ render_field(form.github, class_="input", type="url") }}
-              </p>
+              {% if form.github.errors %}
+              <!--  -->
+              {{ form.github(class="input is-danger", type="url") }}
+              <div class="">
+                {% for error in form.github.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+              </div>
+              {% else %}
+              <p class="control">{{ form.github(class="input", type="url") }}</p>
+              {% endif %}
             </div>
+            <!-- website -->
             <div class="field">
               <label>{{ form.website.label }}</label>
-              <p class="control">
-                {{ render_field(form.website, class_="input", type="url") }}
-              </p>
+              {% if form.website.errors %}
+              <!--  -->
+              {{ form.website(class="input is-danger", type="url") }}
+              <div class="">
+                {% for error in form.website.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+              </div>
+              {% else %}
+              <p class="control">{{ form.website(class="input", type="url") }}</p>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -66,7 +118,7 @@
         <div class="field">
           <label>{{ form.about_me.label }}</label>
           <div class="control">
-            {{ render_field(form.about_me, class_="textarea", id="editor", rows="10") }}
+            {{ form.about_me(class="textarea", rows="10") }}
           </div>
         </div>
 
@@ -82,5 +134,4 @@
     </div>
   </div>
 </section>
-
-{% endblock %}
+{% endblock content %}
