@@ -36,6 +36,7 @@ def add_user():
         db.session.add(user)
         db.session.commit()
         flash(f'Account created for {form.username.data}.', 'is-info')
+        return redirect(url_for('dashboard.manage_users'))
     return render_template('dashboard/add_user.html', title='Add User',
                            form=form, dashboard_active='is-active',
                            add_active='is-active')
