@@ -3,12 +3,54 @@
 <!-- -->
 {% block content %}
 <section class="">
-  <div class="container">
-    {% for post in all_posts %}
+  <div class="">
+    {% for post in all_posts.items %}
     <!-- post -->
     {% include 'main/_post.html' %}
     <!-- end post -->
     {% endfor %}
+  </div>
+
+  <!-- pagination -->
+  <div class="container section column is-7">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+
+      <!-- prev page -->
+      {% if prev_url %}
+      <a href="{{ prev_url }}" class="pagination-previous">Previous</a>
+      {% else %}
+      <a href="#" class="pagination-previous" disabled>Previous</a>
+      {% endif %}
+
+      <!-- next page -->
+      {% if next_url %}
+      <a href="{{ next_url }}" class="pagination-next">Next page</a>
+      {% else %}
+      <a href="#" class="pagination-next" disabled>Next page</a>
+      {% endif %}
+
+      <!-- numbers -->
+      <ul class="pagination-list">
+        {% for page_num in all_posts.iter_pages() %}
+        <!--  -->
+        {% if page_num %}
+        <!-- color num -->
+        <li>
+          {% if all_posts.page == page_num %}
+          <a <a href="{{ url_for('main.blog', page=page_num) }}" class="pagination-link is-current">{{ page_num }}</a>
+          {% else %}
+          <a <a href="{{ url_for('main.blog', page=page_num) }}" class="pagination-link">{{ page_num }}</a>
+          {% endif %}
+        </li>
+        {% else %}
+        <li>
+          <span class="pagination-ellipsis">&hellip;</span>
+        </li>
+        {% endif %}
+        <!--  -->
+        {% endfor %}
+      </ul>
+    </nav>
   </div>
 </section>
 {% endblock content %}
