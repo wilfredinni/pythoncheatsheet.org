@@ -16,17 +16,10 @@
         {{ form.hidden_tag() }}
         <div class="field">
           <label>{{ form.username.label }}</label>
-          {% if form.username.errors %}
-          <!--  -->
-          {{ form.username(class="input is-danger", type="text") }}
-          <div class="">
-            {% for error in form.username.errors %}
-            <p class="help is-danger">{{ error }}</p>
-            {% endfor %}
-          </div>
-          {% else %}
           <p class="control">{{ form.username(class="input", type="text") }}</p>
-          {% endif %}
+          {% for error in form.username.errors %}
+          <span class="help" style="color: red;">{{ error }}</span>
+          {% endfor %}
         </div>
 
         <!-- screen name and email -->
@@ -34,31 +27,17 @@
           <div class="field-body">
             <div class="field">
               <label>{{ form.screen_name.label }}</label>
-              {% if form.screen_name.errors %}
-              <!--  -->
-              {{ form.screen_name(class="input is-danger", type="text") }}
-              <div class="">
-                {% for error in form.screen_name.errors %}
-                <p class="help is-danger">{{ error }}</p>
-                {% endfor %}
-              </div>
-              {% else %}
               <p class="control">{{ form.screen_name(class="input", type="text") }}</p>
-              {% endif %}
+              {% for error in form.screen_name.errors %}
+              <span class="help" style="color: red;">{{ error }}</span>
+              {% endfor %}
             </div>
             <div class="field">
               <label>{{ form.email.label }}</label>
-              {% if form.email.errors %}
-              <!--  -->
-              {{ form.email(class="input is-danger", type="email") }}
-              <div class="">
-                {% for error in form.email.errors %}
-                <p class="help is-danger">{{ error }}</p>
-                {% endfor %}
-              </div>
-              {% else %}
               <p class="control">{{ form.email(class="input", type="email") }}</p>
-              {% endif %}
+              {% for error in form.email.errors %}
+              <span class="help" style="color: red;">{{ error }}</span>
+              {% endfor %}
             </div>
           </div>
         </div>
@@ -69,47 +48,26 @@
             <!-- twitter -->
             <div class="field">
               <label>{{ form.twitter.label }}</label>
-              {% if form.twitter.errors %}
-              <!--  -->
-              {{ form.twitter(class="input is-danger", type="url") }}
-              <div class="">
-                {% for error in form.twitter.errors %}
-                <p class="help is-danger">{{ error }}</p>
-                {% endfor %}
-              </div>
-              {% else %}
               <p class="control">{{ form.twitter(class="input", type="url") }}</p>
-              {% endif %}
+              {% for error in form.twitter.errors %}
+              <span class="help" style="color: red;">{{ error }}</span>
+              {% endfor %}
             </div>
             <!-- github -->
             <div class="field">
               <label>{{ form.github.label }}</label>
-              {% if form.github.errors %}
-              <!--  -->
-              {{ form.github(class="input is-danger", type="url") }}
-              <div class="">
-                {% for error in form.github.errors %}
-                <p class="help is-danger">{{ error }}</p>
-                {% endfor %}
-              </div>
-              {% else %}
               <p class="control">{{ form.github(class="input", type="url") }}</p>
-              {% endif %}
+              {% for error in form.github.errors %}
+              <span class="help" style="color: red;">{{ error }}</span>
+              {% endfor %}
             </div>
             <!-- website -->
             <div class="field">
               <label>{{ form.website.label }}</label>
-              {% if form.website.errors %}
-              <!--  -->
-              {{ form.website(class="input is-danger", type="url") }}
-              <div class="">
-                {% for error in form.website.errors %}
-                <p class="help is-danger">{{ error }}</p>
-                {% endfor %}
-              </div>
-              {% else %}
               <p class="control">{{ form.website(class="input", type="url") }}</p>
-              {% endif %}
+              {% for error in form.website.errors %}
+              <span class="help" style="color: red;">{{ error }}</span>
+              {% endfor %}
             </div>
           </div>
         </div>

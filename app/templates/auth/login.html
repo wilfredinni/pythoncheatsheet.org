@@ -14,37 +14,23 @@
           <!-- username -->
           <div class="field">
             <label>{{ form.username.label }}</label>
-            {% if form.username.errors %}
-            <!--  -->
-            {{ form.username(class="input is-danger") }}
-            <div class="">
-              {% for error in form.username.errors %}
-              <p class="help is-danger">{{ error }}</p>
-              {% endfor %}
-            </div>
-            {% else %}
             <p>{{ form.username(class="input") }}</p>
-            {% endif %}
+            {% for error in form.username.errors %}
+            <span class="help" style="color: red;">{{ error }}</span>
+            {% endfor %}
+
           </div>
 
           <!-- password -->
           <div class="field">
             <label>{{ form.password.label }}</label>
-            {% if form.password.errors %}
-            <!--  -->
-            {{ form.password(class="input is-danger") }}
-            <div class="">
-              {% for error in form.password.errors %}
-              <p class="help is-danger">{{ error }}</p>
-              {% endfor %}
-            </div>
-            {% else %}
             <p>{{ form.password(class="input") }}</p>
-            {% endif %}
+            {% for error in form.password.errors %}
+            <span class="help" style="color: red;">{{ error }}</span>
+            {% endfor %}
           </div>
           <p class="control">{{ form.remember_me() }} {{ form.remember_me.label }}</p>
       </div>
-
       <div class="field">
         <p class="control">
           <button class="button is-active is-fullwidth">Login</button>
