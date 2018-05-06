@@ -20,7 +20,7 @@
             {% endfor %}
           </div>
 
-          <!-- password -->
+          <!-- password and remember -->
           <div class="field">
             <label>{{ form.password.label }}</label>
             <p>{{ form.password(class="input") }}</p>
@@ -29,15 +29,16 @@
             {% endfor %}
           </div>
           <p class="control">{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+
+          <!-- submit -->
+          <div class="field">
+            <p class="control">
+              <button class="button is-active is-fullwidth">Login</button>
+            </p>
+          </div>
+        </form>
       </div>
-      <div class="field">
-        <p class="control">
-          <button class="button is-active is-fullwidth">Login</button>
-        </p>
-      </div>
-      </form>
     </div>
   </div>
-</div>
 </div>
 {% endblock content %}

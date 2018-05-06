@@ -5,6 +5,7 @@
 {% block content %}
 <section class="section container">
   <div class="columns">
+
     <!-- dashboard menu -->
     <div class="column is-one-quarter">
       {% include 'dashboard/_dash_menu.html' %}
@@ -14,6 +15,8 @@
     <div class="column">
       <form action="" method="POST" class="box">
         {{ form.hidden_tag() }}
+
+        <!-- username -->
         <div class="field">
           <label>{{ form.username.label }}</label>
           <p class="control">{{ form.username(class="input", type="text") }}</p>
@@ -25,6 +28,8 @@
         <!-- screen name and email -->
         <div class="field is-horizontal">
           <div class="field-body">
+
+            <!-- screen name -->
             <div class="field">
               <label>{{ form.screen_name.label }}</label>
               <p class="control">{{ form.screen_name(class="input", type="text") }}</p>
@@ -32,6 +37,8 @@
               <span class="help" style="color: red;">{{ error }}</span>
               {% endfor %}
             </div>
+
+            <!-- email -->
             <div class="field">
               <label>{{ form.email.label }}</label>
               <p class="control">{{ form.email(class="input", type="email") }}</p>
@@ -45,6 +52,7 @@
         <!-- social media -->
         <div class="field is-horizontal">
           <div class="field-body">
+
             <!-- twitter -->
             <div class="field">
               <label>{{ form.twitter.label }}</label>
@@ -53,6 +61,7 @@
               <span class="help" style="color: red;">{{ error }}</span>
               {% endfor %}
             </div>
+
             <!-- github -->
             <div class="field">
               <label>{{ form.github.label }}</label>
@@ -61,6 +70,7 @@
               <span class="help" style="color: red;">{{ error }}</span>
               {% endfor %}
             </div>
+
             <!-- website -->
             <div class="field">
               <label>{{ form.website.label }}</label>

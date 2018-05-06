@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-<!--  -->
+<!-- add user -->
 {% block content %}
 <section class="section container">
   <div class="columns">
@@ -12,6 +12,7 @@
     <!-- dashboard content -->
     <div class="column is-5 is-offset-1">
       <div class=" ">
+        <!-- form -->
         <form action="" method="POST">
           {{ form.hidden_tag() }}
 
@@ -62,6 +63,7 @@
         </form>
       </div>
     </div>
+
   </div>
 </section>
 {% endblock content %}

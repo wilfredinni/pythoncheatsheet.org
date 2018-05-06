@@ -5,6 +5,7 @@
 <!-- avatar -->
 <section class="section container column is-7 is-centered">
 
+  <!-- avatar -->
   <nav class="level">
     <p class="level-item has-text-centered">
       <img style="border-radius:50%" src="{{ user.avatar(180) }}" alt="" style="height: 180px;">
@@ -23,6 +24,7 @@
         </span>
       </a>
       {% endif %}
+
       <!-- github -->
       {% if user.github %}
       <a href="{{ user.github }}" class="level-item ">
@@ -31,6 +33,7 @@
         </span>
       </a>
       {% endif %}
+
       <!-- twitter -->
       {% if user.twitter %}
       <a href="{{ user.twitter }}" class="level-item">
@@ -74,5 +77,6 @@
       {% endfor %}
     </ul>
   </div>
+
 </section>
 {% endblock content %}

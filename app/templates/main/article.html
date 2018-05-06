@@ -6,6 +6,7 @@
   <div class="container">
     <div class="columns is-multiline is-mobile is-centered">
       <div class="column is-8 is-centered">
+
         <!-- post title -->
         <div class="header-content">
           <div class="has-text-centered">
@@ -14,15 +15,16 @@
             </h1>
           </div>
         </div>
+
         <!-- time and author name -->
         <div class="has-text-centered">
-
           <p>posted on
             <a>{{ moment(post.timestamp).format('L') }}</a> by
             <a href="{{ url_for('main.author', username=post.author.username) }}">{{ post.author.screen_name }}</a>
           </p>
           <hr/>
         </div>
+
         <!-- post body -->
         <div class="content">
           <p>{{ post.body | safe }}</p>

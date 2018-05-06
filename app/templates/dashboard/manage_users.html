@@ -14,8 +14,12 @@
     <!-- dashboard content -->
     <div class="column">
       <section class="box">
+
+        <!-- table of users -->
         <div class="columns is-centered">
           <table class="table">
+
+            <!-- titles -->
             <thead>
               <tr>
                 <th>
@@ -40,6 +44,8 @@
                   <abbr title="Delete"></abbr>
                 </th>
             </thead>
+
+            <!-- users -->
             <tbody>
               {% for user in all_users %}
               <tr>
@@ -62,6 +68,7 @@
               </tr>
               {% endfor %}
             </tbody>
+
           </table>
         </div>
       </section>
