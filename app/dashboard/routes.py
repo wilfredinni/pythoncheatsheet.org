@@ -18,12 +18,12 @@ def before_request():
 @login_required
 def overview():
     # for avatar and user name in the dashboard
-    # user = User.query.filter_by(username=current_user.username).first()
+    user = User.query.filter_by(username=current_user.username).first()
     my_posts = Post.query.filter_by(
         user_id=current_user.id).order_by(Post.timestamp.desc())
     return render_template('dashboard/overview.html', title='Dashboard',
                            my_posts=my_posts, dashboard_active='is-active',
-                           overview_active='is-active')
+                           overview_active='is-active', user=user)
 
 
 @bp.route('/add_user', methods=['GET', 'POST'])
@@ -138,7 +138,7 @@ def delete_user(id):
     return redirect(url_for('dashboard.manage_users'))
 
 
-@bp.route('/delete_post/<id>', methods=['POST'])
+@bp.route('/delete_post/<id>', methods=['GET', 'POST'])
 @login_required
 def delete_post(id):
     post = Post.query.filter_by(id=id).first_or_404()

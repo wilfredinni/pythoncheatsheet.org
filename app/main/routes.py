@@ -43,7 +43,7 @@ def about():
 @bp.route('/author/<username>')
 def author(username):
     user = User.query.filter_by(username=username).first_or_404()
-    author = 'About {}'.format(user.username)
+    author = f'About {user.username}'
     my_posts = Post.query.filter_by(
         user_id=user.id).order_by(Post.timestamp.desc())
     return render_template('main/author.html', user=user, my_posts=my_posts,

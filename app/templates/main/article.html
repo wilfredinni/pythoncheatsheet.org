@@ -4,10 +4,40 @@
 <!-- Hero content: will be in the middle -->
 <div class="hero-body">
   <div class="container">
-    <div class="columns is-multiline is-mobile is-centered">
-      <div class="column is-8 is-centered">
 
-        <!-- post title -->
+
+
+    <!-- article -->
+    <div class="columns is-multiline is-mobile is-centered">
+      <div class="column is-8">
+
+        <!-- delete, edit, new -->
+        {% if post.author.username == current_user.username %}
+        <div class="column is-4 is-offset-8">
+          <div class="level">
+
+            <!-- delete -->
+            <span class="icon level-item">
+              <a href="{{ url_for('dashboard.delete_post', id=post.id) }}">
+                <i class="far fa-trash-alt"></i> Delete</a>
+            </span>
+
+            <!-- edit -->
+            <span class="icon level-item">
+              <a href="{{ url_for('dashboard.edit_post', id=post.id) }}">
+                <i class="far fa-edit"></i> Edit</a>
+            </span>
+
+            <!-- new -->
+            <span class="icon level-item">
+              <a href="{{ url_for('dashboard.new_post') }}">
+                <i class="fas fa-plus"></i> New</a>
+            </span>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- article title -->
         <div class="header-content">
           <div class="has-text-centered">
             <h1 class="title">
