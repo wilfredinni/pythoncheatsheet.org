@@ -18,7 +18,7 @@
 
             <!-- delete -->
             <span class="icon level-item">
-              <a href="{{ url_for('dashboard.delete_post', id=post.id) }}">
+              <a class="deleteModalBtn" href="#">
                 <i class="far fa-trash-alt"></i> Delete</a>
             </span>
 
@@ -65,4 +65,26 @@
     </div>
   </div>
 </div>
+
+<!-- delete modal -->
+<div id="deleteModal" class="modal">
+  <div id="modalBackground" class="modal-background"></div>
+  <div class="modal-content box has-text-centered section">
+    <h1 class="subtitle">Do you want to Delete {{ post.title }}</h1>
+    <br>
+    <div class="columns is-centered">
+      <div class="column is-3">
+        <form action="{{ url_for('dashboard.delete_post', id=post.id) }}" method=post>
+          <input type="hidden" name="entry_id">
+          <button class="button is-danger is-outlined">Delete</button>
+        </form>
+      </div>
+      <div class="column is-3">
+        <button id="cancel" class="button is-outlined">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <button id="closeBtn" class="modal-close is-large" aria-label="close"></button>
+</div>
+
 {% endblock content %}
