@@ -3,13 +3,13 @@
 <!-- -->
 {% block content %}
 <section class="">
-  <div class="">
-    {% for post in all_posts.items %}
-    <!-- post -->
-    {% include 'main/_post.html' %}
-    <!-- end post -->
-    {% endfor %}
-  </div>
+
+  <!-- articles -->
+  {% for post in all_posts.items %}
+  <!-- post -->
+  {% include 'main/_post.html' %}
+  <!-- end post -->
+  {% endfor %}
 
 
   <!-- pagination -->

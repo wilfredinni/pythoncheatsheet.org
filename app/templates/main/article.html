@@ -58,13 +58,33 @@
         <!-- post body -->
         <div class="content">
           <p>{{ post.body | safe }}</p>
-          <div class="has-text-centered">
+
+          <hr>
+          <div class="has-text-centered level">
+
+
+            <!-- tags -->
+            <div class="level">
+              <p>
+                Tags:
+                <a href="#">
+                  <span class="tag is-warning"> python </span>
+                </a>
+                <a href="#">
+                  <span class="tag is-warning"> flask</span>
+                </a>
+              </p>
+            </div>
+            <a class="button" onclick="window.history.back()">Back</a>
           </div>
         </div>
+        <br>
+        <br>
       </div>
     </div>
   </div>
 </div>
+
 
 <!-- delete modal -->
 <div id="deleteModal" class="modal">
@@ -86,5 +106,6 @@
   </div>
   <button id="closeBtn" class="modal-close is-large" aria-label="close"></button>
 </div>
+
 
 {% endblock content %}

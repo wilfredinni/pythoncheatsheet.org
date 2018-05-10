@@ -35,14 +35,15 @@
             <p class="control">
               <button class="button is-active is-fullwidth">Login</button>
             </p>
-          </div>
-          <hr>
         </form>
+        <br>
+
+        <!-- forgot password? -->
         <p class="help">Forgot your password?
           <a href="{{ url_for('auth.reset_password_request') }}">Reset it.</a>
         </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
-{% endblock content %}
+  {% endblock content %}
