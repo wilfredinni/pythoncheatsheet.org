@@ -7,6 +7,12 @@ from time import time
 import jwt
 from flask import current_app
 
+# the post-tag association table (many-to-many)
+post_tag = db.Table('post_tag',
+                    db.Column('post_id', db.Integer, db.ForeignKey('post.id')),
+                    db.Column('tag_id', db.Integer, db.ForeignKey('tag.id'))
+                    )
+
 
 class User(UserMixin, db.Model):
     # register
@@ -62,9 +68,20 @@ class Post(db.Model):
     body = db.Column(db.String())
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    # many-to-many tags-posts
+    tags = db.relationship('Tag', secondary=post_tag,
+                           primaryjoin=(post_tag.c.post_id == id),
+                           secondaryjoin=(post_tag.c.tag_id == id),
+                           backref=db.backref('posts', lazy='dynamic'),
+                           lazy='dynamic')
 
     def __repr__(self):
         return 'Post({})'.format(self.title)
+
+
+class Tag(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    tags = db.Column(db.String(20), index=True, unique=True)
 
 
 @login.user_loader
