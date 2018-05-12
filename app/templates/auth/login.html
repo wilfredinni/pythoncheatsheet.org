@@ -12,9 +12,15 @@
           {{ form.hidden_tag() }}
 
           <!-- username -->
+
           <div class="field">
             <label>{{ form.username.label }}</label>
-            <p>{{ form.username(class="input") }}</p>
+            <p class="control has-icons-left">
+              {{ form.username(class="input", placeholder="username") }}
+              <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+              </span>
+            </p>
             {% for error in form.username.errors %}
             <span class="help" style="color: red;">{{ error }}</span>
             {% endfor %}
@@ -23,12 +29,16 @@
           <!-- password and remember -->
           <div class="field">
             <label>{{ form.password.label }}</label>
-            <p>{{ form.password(class="input") }}</p>
+            <p class="control has-icons-left">
+              {{ form.password(class="input", placeholder="password") }}
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </p>
             {% for error in form.password.errors %}
             <span class="help" style="color: red;">{{ error }}</span>
             {% endfor %}
           </div>
-          <p class="control">{{ form.remember_me() }} {{ form.remember_me.label }}</p>
 
           <!-- submit -->
           <div class="field">
