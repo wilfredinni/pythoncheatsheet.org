@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+<!-- -->
+{% block content %}
+
+<section>
+  <section class="column is-6 has-text-centered">
+    Tag:
+    <span class="tag is-warning">
+      {{tag.name}}
+    </span>
+  </section>
+
+  <div class="section">
+    <!-- articles -->
+    {% for post in posts %}
+    <!-- post -->
+    {% include 'main/_post.html' %}
+    <!-- end post -->
+    {% endfor %}
+  </div>
+</section>
+{% endblock content %}

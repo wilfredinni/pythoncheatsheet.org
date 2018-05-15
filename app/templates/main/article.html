@@ -56,23 +56,23 @@
         <!-- post body -->
         <div class="content">
           <p>{{ post.body | safe }}</p>
-
           <hr>
           <div class="has-text-centered level">
 
-
             <!-- tags -->
             <div class="level">
-              <p>
-                Tags:
-                <a href="#">
-                  <span class="tag is-warning"> python </span>
+              <p>Tags: {% for tag in post.tag %}
+                <!--  -->
+                <a href="{{ url_for('main.tag', tag=tag.name) }}">
+                  <span class="tag is-warning">
+                    {{tag.name}}
+                  </span>
                 </a>
-                <a href="#">
-                  <span class="tag is-warning"> flask</span>
-                </a>
+                <!--  -->
+                {% endfor %}
               </p>
             </div>
+
             <a class="button" onclick="window.history.back()">Back</a>
           </div>
         </div>
@@ -82,7 +82,6 @@
     </div>
   </div>
 </div>
-
 
 <!-- delete modal -->
 <div id="deleteModal" class="modal">

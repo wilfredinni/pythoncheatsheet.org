@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, url_for, request
 from flask_login import login_required, current_user
 from app.dashboard import bp
 from app.dashboard.forms import RegistrationForm, EditProfileForm, PostForm
-from app.models import User, Post
+from app.models import User, Post, Tag
 from app import db
 from datetime import datetime
 
@@ -89,7 +89,20 @@ def new_post():
     if form.validate_on_submit():
         post = Post(body=form.post.data, author=current_user,
                     title=form.title.data)
+        # split the tags by comas
+        post_tags = form.tags.data.replace(' ', '').split(',')
+        for tag in post_tags:
+            if Tag.check_new_tag(tag):
+                # check if the tag exists and append it to the new post
+                Tag.add_existing_tag(post=post, ex_tag=Tag.check_new_tag(tag))
+            else:
+                # else, create it
+                new_tag = Tag(name=tag)
+                db.session.add(new_tag)
+                post.tag.append(new_tag)
+        # add tag and post
         db.session.add(post)
+        # commit to the db
         db.session.commit()
         flash('Your post is now live!', 'is-info')
         return redirect(url_for('dashboard.overview'))
@@ -112,6 +125,7 @@ def edit_post(id):
     elif request.method == 'GET':
         form.title.data = post.title
         form.post.data = post.body
+        form.tags.data = post.tag.all()
 
     return render_template('dashboard/edit_post.html', post=post, form=form,
                            title='Edit Post', dashboard_active='is-active',

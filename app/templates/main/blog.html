@@ -2,14 +2,16 @@
 
 <!-- -->
 {% block content %}
-<section class="">
+<section class="section">
 
-  <!-- articles -->
-  {% for post in all_posts.items %}
-  <!-- post -->
-  {% include 'main/_post.html' %}
-  <!-- end post -->
-  {% endfor %}
+  <section class="">
+    <!-- articles -->
+    {% for post in all_posts.items %}
+    <!-- post -->
+    {% include 'main/_post.html' %}
+    <!-- end post -->
+    {% endfor %}
+  </section>
 
 
   <!-- pagination -->

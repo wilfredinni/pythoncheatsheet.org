@@ -1,8 +1,8 @@
-<div class="section">
+<section>
   <div class="container">
     <div class="columns is-multiline is-mobile is-centered">
       <div class="column is-8 is-centered">
-        <br>
+
         <!-- post title -->
         <div class="header-content">
           <div class="has-text-centered">
@@ -23,7 +23,7 @@
 
         <!-- post body -->
         <div class="content">
-          <p>{{ post.body | truncate(500, False) | safe }}</p>
+          <p>{{ post.body | truncate(400, False) | safe }}</p>
           <hr>
           <div class="has-text-centered level">
             <a class="button" href="{{ url_for('main.article', id=post.id) }}">
@@ -32,19 +32,22 @@
 
             <!-- tags -->
             <div class="level">
-              <p>
-                Tags:
-                <a href="#">
-                  <span class="tag is-warning"> python </span>
+              <p>Tags: {% for tag in post.tag %}
+                <!--  -->
+                <a href="{{ url_for('main.tag', tag=tag.name) }}">
+                  <span class="tag is-warning">
+                    {{tag.name}}
+                  </span>
                 </a>
-                <a href="#">
-                  <span class="tag is-warning"> flask</span>
-                </a>
+                <!--  -->
+                {% endfor %}
               </p>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <br>
   </div>
-</div>
+  <br>
+</section>

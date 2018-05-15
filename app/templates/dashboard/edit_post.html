@@ -31,6 +31,16 @@
           </div>
         </div>
 
+        <!-- tags -->
+        <div class="field">
+          <label>{{ form.tags.label }}</label>
+          <p class="control">{{ form.tags(class="input", type="text") }}</p>
+          <p class="help">Ex.: python, flask, django</p>
+          {% for error in form.tags.errors %}
+          <span class="help" style="color: red;">{{ error }}</span>
+          {% endfor %}
+        </div>
+
         <!-- submit button -->
         <div class="field">
           <p class="control">

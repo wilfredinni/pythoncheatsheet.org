@@ -50,3 +50,4 @@ class PostForm(FlaskForm):
         'Title', validators=[DataRequired(), Length(min=1, max=280)])
     post = TextAreaField(
         'Post Content', validators=[DataRequired(), Length(min=140)])
+    tags = StringField('Tags', validators=[DataRequired(), Length(min=2)])

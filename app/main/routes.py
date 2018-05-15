@@ -1,7 +1,7 @@
 from flask import render_template, url_for, request, current_app
 from flask_login import login_required, current_user
 from app.main import bp
-from app.models import User, Post
+from app.models import User, Post, Tag
 
 
 @bp.route('/')
@@ -26,6 +26,16 @@ def blog():
     return render_template('main/blog.html', title='Blog', all_posts=all_posts,
                            blog_active='is-active', next_url=next_url,
                            prev_url=prev_url)
+
+
+@bp.route('/blog/tag/<tag>')
+def tag(tag):
+
+    tag = Tag.query.filter_by(name=tag).first()
+    posts = tag.posts.order_by(Post.timestamp.desc())
+
+    return render_template('main/tag_articles.html', title='Tag', tag=tag,
+                           posts=posts)
 
 
 @bp.route('/article/<id>')
