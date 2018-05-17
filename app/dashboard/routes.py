@@ -4,6 +4,7 @@ from app.dashboard import bp
 from app.dashboard.forms import RegistrationForm, EditProfileForm, PostForm
 from app.models import User, Post, Tag
 from app import db
+import re
 from datetime import datetime
 
 
@@ -89,7 +90,7 @@ def new_post():
     if form.validate_on_submit():
         post = Post(body=form.post.data, author=current_user,
                     title=form.title.data)
-        # split the tags by comas
+        # split the tags by the comas
         post_tags = form.tags.data.replace(' ', '').split(',')
         for tag in post_tags:
             if Tag.check_new_tag(tag):
@@ -119,13 +120,36 @@ def edit_post(id):
     if form.validate_on_submit():
         post.title = form.title.data
         post.body = form.post.data
+
+        # split the tags by comas
+        post_tags = form.tags.data.replace(' ', '').split(',')
+
+        # check for deleted tags
+        for tag in post.tag.all():
+            if str(tag) not in post_tags:
+                t = Tag.query.filter_by(name=str(tag)).first()
+                post.tag.remove(t)
+
+        for tag in post_tags:
+            # check if the tag exists to append it to the new post
+            if Tag.check_new_tag(tag=tag):
+                Tag.add_existing_tag(post=post, ex_tag=Tag.check_new_tag(tag))
+            else:
+                # else, create it
+                new_tag = Tag(name=tag)
+                db.session.add(new_tag)
+                post.tag.append(new_tag)
+
         db.session.commit()
         flash('Your changes have been saved.', 'is-info')
         return redirect(url_for('dashboard.overview'))
     elif request.method == 'GET':
         form.title.data = post.title
         form.post.data = post.body
-        form.tags.data = post.tag.all()
+        # use regex to format the tags
+        tag_regex = re.compile(r'\[(.*)\]')
+        mo = tag_regex.search(str(post.tag.all()))
+        form.tags.data = mo.group(1)
 
     return render_template('dashboard/edit_post.html', post=post, form=form,
                            title='Edit Post', dashboard_active='is-active',

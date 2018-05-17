@@ -89,6 +89,10 @@ class Tag(db.Model):
     def add_existing_tag(post, ex_tag):
         post.tag.append(ex_tag)
 
+    @staticmethod
+    def remove_tag():
+        pass
+
     def __repr__(self):
         return '{}'.format(self.name)
 
