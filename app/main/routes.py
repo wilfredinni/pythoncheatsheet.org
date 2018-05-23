@@ -2,13 +2,23 @@ from flask import render_template, url_for, request, current_app
 from flask_login import login_required, current_user
 from app.main import bp
 from app.models import User, Post, Tag
+import requests
+import mistune
 
 
 @bp.route('/')
 @bp.route('/index')
 def index():
+    index_url = 'https://raw.githubusercontent.com/wilfredinni/python-cheatsheet/master/blog_files/index.md'
+    index_r = requests.get(index_url)
+    index = mistune.markdown(index_r.text)
+
+    pysheet_url = 'https://raw.githubusercontent.com/wilfredinni/python-cheatsheet/master/blog_files/pysheet.md'
+    pysheet_r = requests.get(pysheet_url)
+    pysheet = mistune.markdown(pysheet_r.text)
     return render_template('main/index.html', title='Home',
-                           home_active='is-active')
+                           home_active='is-active', index=index,
+                           pysheet=pysheet)
 
 
 @bp.route('/blog')

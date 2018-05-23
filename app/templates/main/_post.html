@@ -23,9 +23,9 @@
 
         <!-- post body -->
         <div class="content">
-          <p>{{ post.body | truncate(400, False) | safe }}</p>
+          <p>{{ post.body | truncate(300, False) | safe }}</p>
           <hr>
-          <div class="has-text-centered level">
+          <div class="level">
             <a class="button" href="{{ url_for('main.article', id=post.id) }}">
               Continue Reading
             </a>
@@ -49,5 +49,6 @@
     </div>
     <br>
   </div>
+  <br>
   <br>
 </section>

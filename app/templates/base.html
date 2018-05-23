@@ -24,15 +24,20 @@
   </script>
   <!-- moment.js -->
   {{ moment.include_jquery() }} {{ moment.include_moment() }}
-
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 
 <body>
+  <a href="https://github.com/wilfredinni/python-cheatsheet">
+    <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
+      alt="Fork me on GitHub">
+  </a>
   <!-- hero -->
   <section class="hero">
     <div class="hero-body has-text-centered">
       <div class="container">
-        <h1 class="subtitle is-1">
+        <h1 class="subtitle is-1 no-h1">
           Python Cheat Sheet
         </h1>
       </div>
@@ -40,30 +45,33 @@
   </section>
 
   <!-- navbar -->
-  <div class="tabs is-centered container">
-    <ul>
-      <li class="{{ home_active }}">
-        <a href="{{ url_for('main.index') }}" class="navbar-ite">Home</a>
+  <div class="tabs is-centered container no">
+    <ul class="no">
+      <li class="{{ home_active }} no">
+        <a href="{{ url_for('main.index') }}" class="navbar-item no-href">Home</a>
       </li>
-      <li class="{{ blog_active }}">
-        <a href="{{ url_for('main.blog') }}" class="navbar-item">Blog</a>
+      <li class="{{ blog_active }} no">
+        <a href="{{ url_for('main.blog') }}" class="navbar-item no-href">Blog</a>
       </li>
-      <li class="{{ about_active }}">
-        <a href="{{ url_for('main.about') }}" class="navbar-item">About</a>
+      <li class="{{ about_active }} no">
+        <a href="{{ url_for('main.about') }}" class="navbar-item no-href">About</a>
+      </li>
+      <li class="{{ profile_active }} no">
+        <a href="#" class="navbar-item no-href">Contact</a>
       </li>
       {% if current_user.is_anonymous %}
-      <li class="{{ login_active }}">
-        <a href="{{ url_for('auth.login') }}" class="navbar-item">Login</a>
+      <li class="{{ login_active }} no">
+        <a href="{{ url_for('auth.login') }}" class="navbar-item no-href">Login</a>
       </li>
       {% else %}
-      <li class="{{ profile_active }}">
-        <a href="{{ url_for('main.author', username=current_user.username) }}" class="navbar-item">Profile</a>
+      <li class="{{ profile_active }} no">
+        <a href="{{ url_for('main.author', username=current_user.username) }}" class="navbar-item no-href">Profile</a>
       </li>
-      <li class="{{ dashboard_active }}">
-        <a href="{{ url_for('dashboard.overview') }}" class="navbar-item">Dashboard</a>
+      <li class="{{ dashboard_active }} no">
+        <a href="{{ url_for('dashboard.overview') }}" class="navbar-item no-href">Dashboard</a>
       </li>
-      <li>
-        <a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout ({{current_user.username}})</a>
+      <li class="no">
+        <a href="{{ url_for('auth.logout') }}" class="navbar-item no-href">Logout ({{current_user.username}})</a>
       </li>
       {% endif %}
     </ul>
@@ -82,6 +90,7 @@
     {% endif %} {% endwith %}
   </section>
 
+
   <!-- other pages content -->
   {% block content %}{% endblock %}
 
@@ -98,5 +107,6 @@
       </div>
     </div>
   </footer>
+  <!-- markdown -->
   <script src={{ url_for( "static", filename="scripts/main.js" ) }} charset="utf-8 "></script>
 </body>
