@@ -1,0 +1,11 @@
+#forkme {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    border: 0;
+}
+
+.navbar-end {
+    padding-right: 135px;
+}

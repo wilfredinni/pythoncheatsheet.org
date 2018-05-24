@@ -5,8 +5,8 @@
 <link rel="stylesheet" href={{ url_for( "static", filename="css/cheatsheet.css" ) }}>
 
 <div class="section container">
-  <div class="columns is-mobile">
 
+  <div class="columns is-mobile">
     <!-- index -->
     <div class="column is-one-quarte">
       <h2 class="index">Index</h2>
@@ -14,18 +14,13 @@
     </div>
 
     <!-- pysheet -->
-    <div class="column is-9">
-
-
-
+    <div class="column is-9 cheat">
       <div>
         {{ pysheet|safe }}
       </div>
     </div>
-
-
-
   </div>
+
 </div>
 
 

@@ -26,56 +26,62 @@
   {{ moment.include_jquery() }} {{ moment.include_moment() }}
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Highlight -->
+  <link rel="stylesheet" href={{ url_for( "static", filename="css/atom-one-dark.css" ) }}>
+  <!-- main -->
+  <link rel="stylesheet" href={{ url_for( "static", filename="css/main.css" ) }}>
 </head>
 
-<body>
+<body class="has-navbar-fixed-top">
+  <!-- fork on github -->
   <a href="https://github.com/wilfredinni/python-cheatsheet">
-    <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
-      alt="Fork me on GitHub">
+    <img id="forkme" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
   </a>
-  <!-- hero -->
-  <section class="hero">
-    <div class="hero-body has-text-centered">
-      <div class="container">
-        <h1 class="subtitle is-1 no-h1">
-          Python Cheat Sheet
-        </h1>
-      </div>
-    </div>
-  </section>
 
   <!-- navbar -->
-  <div class="tabs is-centered container no">
-    <ul class="no">
-      <li class="{{ home_active }} no">
-        <a href="{{ url_for('main.index') }}" class="navbar-item no-href">Home</a>
-      </li>
-      <li class="{{ blog_active }} no">
-        <a href="{{ url_for('main.blog') }}" class="navbar-item no-href">Blog</a>
-      </li>
-      <li class="{{ about_active }} no">
-        <a href="{{ url_for('main.about') }}" class="navbar-item no-href">About</a>
-      </li>
-      <li class="{{ profile_active }} no">
-        <a href="#" class="navbar-item no-href">Contact</a>
-      </li>
-      {% if current_user.is_anonymous %}
-      <li class="{{ login_active }} no">
-        <a href="{{ url_for('auth.login') }}" class="navbar-item no-href">Login</a>
-      </li>
-      {% else %}
-      <li class="{{ profile_active }} no">
-        <a href="{{ url_for('main.author', username=current_user.username) }}" class="navbar-item no-href">Profile</a>
-      </li>
-      <li class="{{ dashboard_active }} no">
-        <a href="{{ url_for('dashboard.overview') }}" class="navbar-item no-href">Dashboard</a>
-      </li>
-      <li class="no">
-        <a href="{{ url_for('auth.logout') }}" class="navbar-item no-href">Logout ({{current_user.username}})</a>
-      </li>
-      {% endif %}
-    </ul>
-  </div>
+  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="navbar-start navbar-brand">
+      <a class="navbar-item" href="https://bulma.io">
+        <img src="https://image.flaticon.com/icons/svg/874/874275.svg" width="112" height="28">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <!-- navigation -->
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <a href="{{ url_for('main.index') }}" class="navbar-item">Home</a>
+        <a href="{{ url_for('main.blog') }}" class="navbar-item">Blog</a>
+        <a href="{{ url_for('main.about') }}" class="navbar-item">About</a>
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('main.author', username=current_user.username) }}" class="navbar-item">Profile</a>
+        <a href="{{ url_for('dashboard.overview') }}" class="navbar-item">Dashboard</a>
+        {% endif %}
+      </div>
+      <div class="navbar-end">
+
+        <!-- search -->
+        <a class="navbar-item" href="#">
+          <span class="icon is-small is-left">
+            <i class="fas fa-search"></i>
+          </span>
+        </a>
+
+
+
+        <!-- login and logout -->
+        {% if current_user.is_anonymous %}
+        <a href="{{ url_for('auth.login') }}" class="navbar-item">Login</a>
+        {% else %}
+        <a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout ({{current_user.username}})</a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
 
   <!-- flash msg -->
   {% with messages = get_flashed_messages(with_categories=true) %}
@@ -89,7 +95,6 @@
     </ul>
     {% endif %} {% endwith %}
   </section>
-
 
   <!-- other pages content -->
   {% block content %}{% endblock %}
@@ -107,6 +112,12 @@
       </div>
     </div>
   </footer>
+
   <!-- markdown -->
   <script src={{ url_for( "static", filename="scripts/main.js" ) }} charset="utf-8 "></script>
+  <!-- Highlight -->
+  <script src={{ url_for( "static", filename="scripts/highlight.pack.js" ) }}></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
 </body>
