@@ -23,8 +23,8 @@ def overview():
     my_posts = Post.query.filter_by(
         user_id=current_user.id).order_by(Post.timestamp.desc())
     return render_template('dashboard/overview.html', title='Dashboard',
-                           my_posts=my_posts, dashboard_active='is-active',
-                           overview_active='is-active', user=user)
+                           my_posts=my_posts, overview_active='is-active',
+                           user=user)
 
 
 @bp.route('/add_user', methods=['GET', 'POST'])
@@ -39,8 +39,7 @@ def add_user():
         flash(f'Account created for {form.username.data}.', 'is-info')
         return redirect(url_for('dashboard.manage_users'))
     return render_template('dashboard/add_user.html', title='Add User',
-                           form=form, dashboard_active='is-active',
-                           add_active='is-active')
+                           form=form, add_active='is-active')
 
 
 @bp.route('/manage_users')
@@ -48,8 +47,7 @@ def add_user():
 def manage_users():
     all_users = User.query.all()
     return render_template('dashboard/manage_users.html', title='Manage Users',
-                           all_users=all_users, dashboard_active='is-active',
-                           users_active='is-active')
+                           all_users=all_users, users_active='is-active')
 
 
 @bp.route('/edit_profile/<username>', methods=['GET', 'POST'])
@@ -79,7 +77,6 @@ def edit_profile(username):
 
     return render_template('dashboard/edit_profile.html', form=form,
                            user=user, title='Edit Profile',
-                           dashboard_active='is-active',
                            edit_active='is-active')
 
 
@@ -108,8 +105,7 @@ def new_post():
         flash('Your post is now live!', 'is-info')
         return redirect(url_for('dashboard.overview'))
     return render_template('dashboard/new_post.html', title='New Post',
-                           form=form, dashboard_active='is-active',
-                           post_active='is-active')
+                           form=form, post_active='is-active')
 
 
 @bp.route('/edit_post/<id>', methods=['GET', 'POST'])
@@ -139,7 +135,6 @@ def edit_post(id):
                 new_tag = Tag(name=tag)
                 db.session.add(new_tag)
                 post.tag.append(new_tag)
-
         db.session.commit()
         flash('Your changes have been saved.', 'is-info')
         return redirect(url_for('dashboard.overview'))
@@ -152,8 +147,7 @@ def edit_post(id):
         form.tags.data = mo.group(1)
 
     return render_template('dashboard/edit_post.html', post=post, form=form,
-                           title='Edit Post', dashboard_active='is-active',
-                           overview_active='is-active')
+                           title='Edit Post', overview_active='is-active')
 
 
 @bp.route('/manage_articles')
@@ -162,7 +156,6 @@ def manage_articles():
     posts = Post.query.filter_by().order_by(Post.timestamp.desc())
     return render_template('dashboard/overview.html',
                            title='Dashboard', my_posts=posts,
-                           dashboard_active='is-active',
                            articles_active='is-active')
 
 

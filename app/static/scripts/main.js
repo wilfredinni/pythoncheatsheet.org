@@ -1,6 +1,3 @@
-// ----------------------------------------------------------------------------
-//                                DELETE MODAL
-// ----------------------------------------------------------------------------
 // get deleteModal, deleteModalBtn and closeBrn by id
 let deleteModal = document.getElementById('deleteModal');
 let deleteModalBtns = document.getElementsByClassName('deleteModalBtn');

@@ -4,7 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ title }} - Pysheet</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
+  <!-- bulma -->
+  <link rel="stylesheet" href={{ url_for( "static", filename="css/bulma.min.css" ) }}>
+  <!-- font awesome -->
   <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
   <!-- tinymce editor -->
   <script type="text/javascript" src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
@@ -24,8 +26,6 @@
   </script>
   <!-- moment.js -->
   {{ moment.include_jquery() }} {{ moment.include_moment() }}
-  <!-- Place this tag in your head or just before your close body tag. -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Highlight -->
   <link rel="stylesheet" href={{ url_for( "static", filename="css/atom-one-dark.css" ) }}>
   <!-- main -->
@@ -39,8 +39,8 @@
   </a>
 
   <!-- navbar -->
-  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-    <div class="navbar-start navbar-brand">
+  <nav class="navbar is-fixed-top is-link" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
       <a class="navbar-item" href="https://bulma.io">
         <img src="https://image.flaticon.com/icons/svg/874/874275.svg" width="112" height="28">
       </a>
@@ -57,6 +57,7 @@
         <a href="{{ url_for('main.index') }}" class="navbar-item">Home</a>
         <a href="{{ url_for('main.blog') }}" class="navbar-item">Blog</a>
         <a href="{{ url_for('main.about') }}" class="navbar-item">About</a>
+        <a href="#" class="navbar-item">Contact</a>
         {% if current_user.is_authenticated %}
         <a href="{{ url_for('main.author', username=current_user.username) }}" class="navbar-item">Profile</a>
         <a href="{{ url_for('dashboard.overview') }}" class="navbar-item">Dashboard</a>
@@ -120,4 +121,5 @@
   <script>
     hljs.initHighlightingOnLoad();
   </script>
+
 </body>

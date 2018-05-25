@@ -17,8 +17,7 @@ def index():
     pysheet_r = requests.get(pysheet_url)
     pysheet = mistune.markdown(pysheet_r.text)
     return render_template('main/index.html', title='Home',
-                           home_active='is-active', index=index,
-                           pysheet=pysheet)
+                           index=index, pysheet=pysheet)
 
 
 @bp.route('/blog')
@@ -34,16 +33,13 @@ def blog():
     prev_url = url_for('main.blog', page=all_posts.prev_num) \
         if all_posts.has_prev else None
     return render_template('main/blog.html', title='Blog', all_posts=all_posts,
-                           blog_active='is-active', next_url=next_url,
-                           prev_url=prev_url)
+                           next_url=next_url, prev_url=prev_url)
 
 
 @bp.route('/blog/tag/<tag>')
 def tag(tag):
-
     tag = Tag.query.filter_by(name=tag).first()
     posts = tag.posts.order_by(Post.timestamp.desc())
-
     return render_template('main/tag_articles.html', title='Tag', tag=tag,
                            posts=posts)
 
@@ -56,8 +52,7 @@ def article(id):
 
 @bp.route('/about')
 def about():
-    return render_template('main/about.html', title='About',
-                           about_active='is-active')
+    return render_template('main/about.html', title='About')
 
 
 @bp.route('/author/<username>')
@@ -67,4 +62,4 @@ def author(username):
     my_posts = Post.query.filter_by(
         user_id=user.id).order_by(Post.timestamp.desc())
     return render_template('main/author.html', user=user, my_posts=my_posts,
-                           title=author, profile_active='is-active')
+                           title=author)
