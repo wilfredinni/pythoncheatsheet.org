@@ -70,8 +70,7 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     # many-to-many tags-posts
     tag = db.relationship('Tag', secondary=post_tag,
-                          backref=db.backref('posts', lazy='dynamic'),
-                          lazy='dynamic')
+                          backref=db.backref('posts', lazy='dynamic'))
 
     def __repr__(self):
         return 'Post ({})'.format(self.title)

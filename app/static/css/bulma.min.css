@@ -445,7 +445,7 @@ a:hover {
 code {
     background-color: #f5f5f5;
     color: #ff3860;
-    font-size: .875em;
+    /* font-size: .875em; */
     font-weight: 400;
     padding: .25em .5em .25em
 }
@@ -496,7 +496,7 @@ pre {
 pre code {
     background-color: transparent;
     color: currentColor;
-    font-size: 1em;
+    /* font-size: 1em; */
     padding: 0
 }
 
@@ -6281,7 +6281,7 @@ print {
 
 .navbar {
     background-color: #fff;
-    box-shadow: 0 2px 0 0 #f5f5f5;
+    /* box-shadow: 0 2px 0 0 #f5f5f5; */
     min-height: 3.25rem;
     position: relative;
     z-index: 30

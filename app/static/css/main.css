@@ -7,35 +7,24 @@
 }
 
 .navbar-end {
-    padding-right: 135px;
+    padding-right: 140px;
 }
 
 .navbar-brand {
-    padding-left: 60px;
+    padding-left: 70px;
 }
 
 .material-scrolltop {
     display: block;
     position: fixed;
-    width: 0;
-    height: 0;
     bottom: 23px;
     right: 23px;
     padding: 0;
     overflow: hidden;
     outline: none;
     border: none;
-    border-radius: 2px;
-    /* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5); */
-    cursor: hand;
     border-radius: 50%;
     background: #ffdd57;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.25, 0, 1);
-    -ms-transition: all 0.3s cubic-bezier(0.25, 0.25, 0, 1);
-    -moz-transition: all 0.3s cubic-bezier(0.25, 0.25, 0, 1);
-    -o-transition: all 0.3s cubic-bezier(0.25, 0.25, 0, 1);
-    transition: all 0.3s cubic-bezier(0.25, 0.25, 0, 1);
     width: 40px;
     height: 40px;
 }
@@ -43,12 +32,51 @@
 .material-scrolltop:hover {
     background-color: #fad028;
     text-decoration: none;
+    cursor: pointer;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
 }
 
-.material-scrolltop,
-.material-scrolltop::before {
-    background-image: url(icons/top-arrow.svg);
-    background-position: center 50%;
-    background-repeat: no-repeat;
+.search-form {
+    position: absolute;
+    right: 310px;
+}
+
+.search-field {
+    background-color: #164fac;
+    border: none;
+    height: 37px;
+    padding: 0 0 0 34px;
+    position: relative;
+    border-radius: 3px;
+    width: 200px;
+    font-size: 1rem;
+    color: rgb(219, 217, 217);
+    -webkit-transition: width 0.25s ease, background 0.25s ease;
+    transition: width 0.25s ease, background 0.25s ease;
+}
+
+.search-field:hover {
+    background-color: #96b8ee;
+    color: gray;
+}
+
+.search-field:focus {
+    background-color: white;
+    color: rgb(63, 63, 63);
+    cursor: text;
+    outline: 0;
+    width: 700px;
+}
+
+#search-modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
 }

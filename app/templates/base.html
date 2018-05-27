@@ -40,6 +40,8 @@
 
   <!-- navbar -->
   <nav class="navbar is-fixed-top is-link" role="navigation" aria-label="main navigation">
+
+    <!-- brand -->
     <div class="navbar-brand">
       <a class="navbar-item" href="https://bulma.io">
         <img src="https://image.flaticon.com/icons/svg/874/874275.svg" width="112" height="28">
@@ -51,8 +53,10 @@
       </a>
     </div>
 
-    <!-- navigation -->
+    <!-- menu -->
     <div class="navbar-menu">
+
+      <!-- left -->
       <div class="navbar-start">
         <a href="{{ url_for('main.index') }}" class="navbar-item">Home</a>
         <a href="{{ url_for('main.blog') }}" class="navbar-item">Blog</a>
@@ -63,26 +67,30 @@
         <a href="{{ url_for('dashboard.overview') }}" class="navbar-item">Dashboard</a>
         {% endif %}
       </div>
+
+      <!-- right -->
       <div class="navbar-end">
 
         <!-- search -->
-        <a class="navbar-item" href="#">
-          <span class="icon is-small is-left">
-            <i class="fas fa-search"></i>
-          </span>
-        </a>
-
-
+        <div class="navbar-item search-form">
+          <div id="search-bar" class="control has-icons-left">
+            <input class="search-field" type="search" placeholder="Search">
+            <span class="icon is-small is-left">
+              <i class="fas fa-search"></i>
+            </span>
+          </div>
+        </div>
 
         <!-- login and logout -->
         {% if current_user.is_anonymous %}
-        <a href="{{ url_for('auth.login') }}" class="navbar-item">Login</a>
+        <!-- <a href="{{ url_for('auth.login') }}" class="navbar-item">Login</a> -->
         {% else %}
         <a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout ({{current_user.username}})</a>
         {% endif %}
       </div>
     </div>
   </nav>
+
 
   <!-- flash msg -->
   {% with messages = get_flashed_messages(with_categories=true) %}
