@@ -159,7 +159,7 @@ h6 {
     font-size: 14px;
 }
 
-p,
+p:not(.results_p),
 blockquote,
 ol,
 dl,

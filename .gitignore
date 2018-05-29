@@ -288,3 +288,4 @@ logs/microblog.log
 app.db
 logs/*
 app/templates/main/backup.html
+app/static/css/backup.css

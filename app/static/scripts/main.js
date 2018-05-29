@@ -10,12 +10,11 @@ const closeModal = () => deleteModal.classList.remove('is-active');
 
 // listen every delete button from overview and manage articles
 for (let button of deleteModalBtns) {
-    button.addEventListener('click', openModal);
+  button.addEventListener('click', openModal);
 }
 
 // listen for clicks to close the modal
 closeBtn.addEventListener('click', closeModal);
-modalBackground.addEventListener('click', closeModal);
 cancel.addEventListener('click', closeModal);
 
 // ----------------------------------------------------------------------------

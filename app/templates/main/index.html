@@ -5,12 +5,27 @@
 <link rel="stylesheet" href={{ url_for( "static", filename="css/cheatsheet.css" ) }}>
 
 <!-- search modal -->
-<div id="search-modal"></div>
+<div id="search-modal">
+  <div class="search-content">
+
+    <!-- search bar -->
+    <input id="search-bar" class="search-bar" type="search" placeholder="Search">
+
+    <!-- search title -->
+    <div class="search-message">
+      Type to start searching
+    </div>
+
+    <!-- results -->
+    <div id="results"></div>
+
+  </div>
+</div>
 
 <div class="section container">
   <div class="columns is-mobile">
     <!-- index -->
-    <div class="column is-one-quarte">
+    <div id="index" class="column is-one-quarte">
       <h2 class="index">Index</h2>
       {{ index|safe }}
     </div>
@@ -27,8 +42,6 @@
 <button id="scroll" class="material-scrolltop" type="scroll" title="Back to top">
   <i class="fas fa-chevron-up"></i>
 </button>
-
-
 
 <script src={{ url_for( "static", filename="scripts/scroll.js" ) }} charset="utf-8 "></script>
 <script src={{ url_for( "static", filename="scripts/search.js" ) }} charset="utf-8 "></script>

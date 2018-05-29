@@ -43,7 +43,7 @@
 
     <!-- brand -->
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
+      <a class="navbar-item" href="">
         <img src="https://image.flaticon.com/icons/svg/874/874275.svg" width="112" height="28">
       </a>
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
@@ -72,14 +72,23 @@
       <div class="navbar-end">
 
         <!-- search -->
-        <div class="navbar-item search-form">
+
+        <!-- <div class="navbar-item search-form">
           <div id="search-bar" class="control has-icons-left">
             <input class="search-field" type="search" placeholder="Search">
             <span class="icon is-small is-left">
               <i class="fas fa-search"></i>
             </span>
           </div>
-        </div>
+        </div> -->
+
+        <!-- just the search icon to open the modal -->
+        <a id="search-icon" class="navbar-item" href="#" title="Search">
+          <span class="icon ">
+            <i class="fas fa-search"></i>
+          </span>
+        </a>
+
 
         <!-- login and logout -->
         {% if current_user.is_anonymous %}
