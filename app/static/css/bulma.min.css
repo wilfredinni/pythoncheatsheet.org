@@ -3058,10 +3058,10 @@ a.box:active {
     border-color: #b5b5b5
 }
 
-.input.is-active,
-.input.is-focused,
-.input:active,
-.input:focus,
+.input.is-active:not(.search-bar),
+.input.is-focused:not(.search-bar),
+.input:active:not(.search-bar),
+.input:focus:not(.search-bar),
 .textarea.is-active,
 .textarea.is-focused,
 .textarea:active,
@@ -4240,7 +4240,7 @@ a.box:active {
     color: #ff3860
 }
 
-.field:not(:last-child) {
+.field:not(:last-child):not(:no-mb) {
     margin-bottom: .75rem
 }
 

@@ -9,11 +9,26 @@
   <div class="search-content">
 
     <!-- search bar -->
-    <input id="search-bar" class="search-bar" type="search" placeholder="Search">
+    <div class="field no-mb">
+      <spam class="control has-icons-left">
+        <input id="search-bar" class="input search-bar" type="search" placeholder="Search">
+        <span class="icon is-small is-left">
+          <i class="fas fa-search"></i>
+        </span>
+      </spam>
+    </div>
 
     <!-- search title -->
-    <div class="search-message">
+    <div id="search-message" class="search-message">
       Type to start searching
+    </div>
+
+    <!-- search title (clear search bar) -->
+    <div style="display:none" id="clear-message" class="search-message">
+      <span class="icon is-small">
+        <i class="fas fa-times"></i>
+      </span>
+      Clear Searchg
     </div>
 
     <!-- results -->
@@ -45,7 +60,5 @@
 
 <script src={{ url_for( "static", filename="scripts/scroll.js" ) }} charset="utf-8 "></script>
 <script src={{ url_for( "static", filename="scripts/search.js" ) }} charset="utf-8 "></script>
-
-
 
 {% endblock content%}

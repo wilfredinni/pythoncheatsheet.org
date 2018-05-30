@@ -1,16 +1,9 @@
-#forkme {
+.forkme {
     z-index: 1000;
     position: fixed;
     top: 0;
     right: 0;
     border: 0;
-}
-
-#search-pysheet {
-    z-index: 1000;
-    position: fixed;
-    top: 8px;
-    right: 24%;
 }
 
 .navbar-end {
@@ -43,29 +36,6 @@
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
 }
 
-.search-form {
-    position: fixed;
-    right: 310px;
-}
-
-.search-bar {
-    border: none;
-    height: 40px;
-    padding: 0 0 0 34px;
-    position: relative;
-    width: 100%;
-    font-size: 1rem;
-    color: rgb(219, 217, 217);
-}
-
-.search-bar:hover {
-    color: rgb(63, 63, 63);
-}
-
-.search-bar:focus {
-    color: rgb(63, 63, 63);
-}
-
 #search-modal {
     display: none;
     position: fixed;
@@ -86,12 +56,23 @@
     border-width: 1px;
     border-color: #dcdcdc;
     border-radius: 5px;
-    /* border-bottom-left-radius: 5px; */
-    /* border-bottom-right-radius: 5px; */
     background: white;
     animation: openModal;
     animation-duration: 0.25s;
-    /* position: fixed; */
+}
+
+.search-bar {
+    border: none;
+    height: 40px;
+    padding: 0 0 0 34px;
+    position: relative;
+    width: 100%;
+    font-size: 1rem;
+    color: rgb(219, 217, 217);
+}
+
+.search-bar:focus {
+    color: rgb(63, 63, 63);
 }
 
 .search-message {

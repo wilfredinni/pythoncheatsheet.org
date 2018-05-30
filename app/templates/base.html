@@ -34,8 +34,8 @@
 
 <body class="has-navbar-fixed-top">
   <!-- fork on github -->
-  <a href="https://github.com/wilfredinni/python-cheatsheet">
-    <img id="forkme" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+  <a class="forkme" href="https://github.com/wilfredinni/python-cheatsheet">
+    <img src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
   </a>
 
   <!-- navbar -->
@@ -71,19 +71,8 @@
       <!-- right -->
       <div class="navbar-end">
 
-        <!-- search -->
-
-        <!-- <div class="navbar-item search-form">
-          <div id="search-bar" class="control has-icons-left">
-            <input class="search-field" type="search" placeholder="Search">
-            <span class="icon is-small is-left">
-              <i class="fas fa-search"></i>
-            </span>
-          </div>
-        </div> -->
-
         <!-- just the search icon to open the modal -->
-        <a id="search-icon" class="navbar-item" href="#" title="Search">
+        <a id="search-icon" class="navbar-item" href="javascript:void(0)" title="Search">
           <span class="icon ">
             <i class="fas fa-search"></i>
           </span>
@@ -99,7 +88,6 @@
       </div>
     </div>
   </nav>
-
 
   <!-- flash msg -->
   {% with messages = get_flashed_messages(with_categories=true) %}
