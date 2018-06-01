@@ -6,16 +6,20 @@ let clearMessage = document.getElementById("clear-message");
 let searchModal = document.getElementById("search-modal");
 let results = document.getElementById("results");
 
-// listen for clicks in the search bar, clear div and the gray background for the modal
+
+// listen for clicks in the search icon and the gray background for the modal
 searchIcon.addEventListener("click", showModal);
 searchModal.addEventListener("click", removeBackground);
+
+// listen for input in the searchBar
+searchBar.addEventListener("keyup", filterTopics);
 
 // local links for the index
 let index = document.getElementById("index");
 let a = index.querySelectorAll("a");
 replaceAddHref(a);
 
-// get h1, h2 and te results div (for the actual search)
+// get h1, h2 (for the actual search)
 let h2 = document.getElementsByTagName("h2");
 let h3 = document.getElementsByTagName("h3");
 
@@ -28,9 +32,6 @@ let topics = [];
 pushArray(h2, topics);
 pushArray(h3, topics);
 
-// listen for input in the searchBar
-searchBar.addEventListener("keyup", filterTopics);
-
 // display all h2 and h3 en the results div and hide them
 for (let item of topics) {
   let link = replace(item);
@@ -42,6 +43,9 @@ for (let item of topics) {
   );
 }
 
+// get the anchors in the results div
+let links = results.querySelectorAll("a");
+
 // function to show the modal
 function showModal() {
   searchModal.style.display = "block";
@@ -50,22 +54,26 @@ function showModal() {
 
 // the filter function
 function filterTopics() {
-  // get the value of an input
+  // get the values in the search bar
   let search = searchBar.value.toUpperCase();
-  // get the results div
-  let links = results.querySelectorAll("a");
 
+
+  /* if there is text in the search bar, hide the default
+  msg, show the clear link and the results div*/
   if (searchBar.value.length > 0) {
     searchMessage.style.display = "none";
     clearMessage.style.display = "block";
+    results.style.display = "block";
   } else {
-    // searchMessage.innerText = "Type to start searching";
-    searchMessage.style.display = "block";
+    // hide the clear msg and the results div, show the default msg
     clearMessage.style.display = "none";
+    searchMessage.style.display = "block";
+    results.style.display = "none";
   }
 
+  // filter the topics using the search bar inputs
   for (let item of links) {
-    if (item.innerText.toUpperCase().indexOf(search) > 1) {
+    if (item.innerText.toUpperCase().indexOf(search) > -1) {
       item.style.display = "block";
     } else {
       item.style.display = "none";
@@ -79,16 +87,26 @@ function removeBackground(e) {
   if (e.target == searchBar) {
     searchBar.focus();
   } else if (e.target == clearMessage) {
-    searchBar.value = "";
-    searchMessage.style.display = "block";
+    // hide the clear message
     clearMessage.style.display = "none";
+    // show the message
+    searchMessage.style.display = "block";
+    // delete the input in the search bar
+    searchBar.value = "";
+    // focus the page on the search bar
     searchBar.focus();
+
+    for (let result of links) {
+      result.style.display = "none";
+    }
+
   } else {
+    // hide the search modal
     searchModal.style.display = "none";
   }
 }
 
-// function to replace spaces for '-'
+// function to replace spaces (" ") for "-"
 function replace(item) {
   return item.innerText.replace(/\s/g, "-");
 }
@@ -114,9 +132,11 @@ function replaceAddHref(array) {
   }
 }
 
-// ctr+z to open the search modal
+// ctr+z to open the search modal and esc to close it
 document.onkeyup = function (e) {
   if (e.ctrlKey && e.which == 90) {
     showModal();
+  } else if (e.which == 27) {
+    searchModal.style.display = "none";
   }
 };
