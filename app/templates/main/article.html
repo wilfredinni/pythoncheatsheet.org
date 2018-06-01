@@ -45,12 +45,11 @@
         </div>
 
         <!-- time and author name -->
-        <div class="has-text-centered ">
+        <div class="has-text-centered article-botton-space">
           <p>posted on
             <a>{{ moment(post.timestamp).format('L') }}</a> by
             <a href="{{ url_for('main.author', username=post.author.username) }}">{{ post.author.screen_name }}</a>
           </p>
-          <br>
         </div>
 
         <!-- post body -->

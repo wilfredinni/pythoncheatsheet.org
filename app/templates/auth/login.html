@@ -5,54 +5,53 @@
   <div class="container hero-body">
     <div class="column is-4 is-offset-4">
       <h1 class="title has-text-centered">Sing In</h1>
-      <div class="">
 
-        <!-- form -->
-        <form action="" method="POST">
-          {{ form.hidden_tag() }}
+      <!-- form -->
+      <form action="" method="POST">
+        {{ form.hidden_tag() }}
 
-          <!-- username -->
+        <!-- username -->
 
-          <div class="field">
-            <label>{{ form.username.label }}</label>
-            <p class="control has-icons-left">
-              {{ form.username(class="input", placeholder="username") }}
-              <span class="icon is-small is-left">
-                <i class="fas fa-user"></i>
-              </span>
-            </p>
-            {% for error in form.username.errors %}
-            <span class="help" style="color: red;">{{ error }}</span>
-            {% endfor %}
-          </div>
-
-          <!-- password and remember -->
-          <div class="field">
-            <label>{{ form.password.label }}</label>
-            <p class="control has-icons-left">
-              {{ form.password(class="input", placeholder="password") }}
-              <span class="icon is-small is-left">
-                <i class="fas fa-lock"></i>
-              </span>
-            </p>
-            {% for error in form.password.errors %}
-            <span class="help" style="color: red;">{{ error }}</span>
-            {% endfor %}
-          </div>
-
-          <!-- submit -->
-          <div class="field">
-            <p class="control">
-              <button class="button is-active is-fullwidth">Login</button>
-            </p>
-        </form>
-        <br>
-
-        <!-- forgot password? -->
-        <p class="help">Forgot your password?
-          <a href="{{ url_for('auth.reset_password_request') }}">Reset it.</a>
-        </p>
+        <div class="field">
+          <label>{{ form.username.label }}</label>
+          <p class="control has-icons-left">
+            {{ form.username(class="input", placeholder="username") }}
+            <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+          </p>
+          {% for error in form.username.errors %}
+          <span class="help" style="color: red;">{{ error }}</span>
+          {% endfor %}
         </div>
+
+        <!-- password and remember -->
+        <div class="field">
+          <label>{{ form.password.label }}</label>
+          <p class="control has-icons-left">
+            {{ form.password(class="input", placeholder="password") }}
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </p>
+          {% for error in form.password.errors %}
+          <span class="help" style="color: red;">{{ error }}</span>
+          {% endfor %}
+        </div>
+        <p>{{ form.remember_me(class="checkbox check-space", type="checkbox") }} {{ form.remember_me.label }}</p>
+
+        <!-- submit -->
+        <div class="field">
+          <p class="control">
+            <button class="button is-active is-fullwidth">Login</button>
+          </p>
+      </form>
+      <hr>
+
+      <!-- forgot password? -->
+      <p class="help">Forgot your password?
+        <a href="{{ url_for('auth.reset_password_request') }}">Reset it.</a>
+      </p>
       </div>
     </div>
   </div>

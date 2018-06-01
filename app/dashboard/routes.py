@@ -36,7 +36,7 @@ def add_user():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash(f'Account created for {form.username.data}.', 'is-info')
+        flash(f'Account created for {form.username.data}.')
         return redirect(url_for('dashboard.manage_users'))
     return render_template('dashboard/add_user.html', title='Add User',
                            form=form, add_active='is-active')
@@ -64,7 +64,7 @@ def edit_profile(username):
         user.github = form.github.data
         user.twitter = form.twitter.data
         db.session.commit()
-        flash('Your changes have been saved.', 'is-info')
+        flash('Your changes have been saved.')
         return redirect(url_for('dashboard.overview'))
     elif request.method == 'GET':
         form.username.data = user.username
@@ -102,7 +102,7 @@ def new_post():
         db.session.add(post)
         # commit to the db
         db.session.commit()
-        flash('Your post is now live!', 'is-info')
+        flash('Your post is now live!')
         return redirect(url_for('dashboard.overview'))
     return render_template('dashboard/new_post.html', title='New Post',
                            form=form, post_active='is-active')
@@ -126,17 +126,23 @@ def edit_post(id):
                 t = Tag.query.filter_by(name=str(tag)).first()
                 post.tag.remove(t)
 
+        # check for existing tags
         for tag in post_tags:
-            # check if the tag exists to append it to the new post
-            if Tag.check_new_tag(tag=tag):
-                Tag.add_existing_tag(post=post, ex_tag=Tag.check_new_tag(tag))
+            # check in the tags table
+            t = Tag.check_new_tag(tag)
+            if t:  # if there is a coincidence check if is appended to the post
+                if t in post.tag.all():  # if is appended, pass
+                    pass
+                else:  # else, append it
+                    Tag.add_existing_tag(
+                        post=post, ex_tag=Tag.check_new_tag(tag))
             else:
                 # else, create it
                 new_tag = Tag(name=tag)
                 db.session.add(new_tag)
                 post.tag.append(new_tag)
         db.session.commit()
-        flash('Your changes have been saved.', 'is-info')
+        flash('Your changes have been saved.')
         return redirect(url_for('dashboard.overview'))
     elif request.method == 'GET':
         form.title.data = post.title
@@ -165,7 +171,7 @@ def delete_user(id):
     user = User.query.filter_by(id=id).first_or_404()
     db.session.delete(user)
     db.session.commit()
-    flash(f'User {user.username} has been Deleted', 'is-danger')
+    flash(f'User {user.username} has been Deleted')
     return redirect(url_for('dashboard.manage_users'))
 
 
@@ -175,5 +181,5 @@ def delete_post(id):
     post = Post.query.filter_by(id=id).first_or_404()
     db.session.delete(post)
     db.session.commit()
-    flash('Your article has been Deleted', 'is-danger')
+    flash('Your article has been Deleted')
     return redirect(url_for('dashboard.overview'))

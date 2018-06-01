@@ -71,17 +71,29 @@
       <!-- right -->
       <div class="navbar-end">
 
-        <!-- search icon to open the modal -->
+        {% if title == "Home" %}
+        <!-- search icon to open the modal only in home -->
         <a id="search-icon" class="navbar-item" href="javascript:void(0);" title="Search">
           <span class="icon ">
             <i class="fas fa-search"></i>
           </span>
         </a>
-
-        <!-- login and logout -->
-        {% if current_user.is_anonymous %}
-        <!-- <a href="{{ url_for('auth.login') }}" class="navbar-item">Login</a> -->
         {% else %}
+        <!-- search -->
+        <div class="navbar-item search-form">
+          <div id="search-bar" class="control has-icons-left">
+            <input class="search-field" type="search" placeholder="Search">
+            <span class="icon is-small is-left">
+              <i class="fas fa-search"></i>
+            </span>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- logout and the search notice only for home and anonymous -->
+        {% if current_user.is_anonymous %} {% if title == "Home" %}
+        <p class="navbar-item no-p">ctr+z</p>
+        {% endif %} {% else %}
         <a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout ({{current_user.username}})</a>
         {% endif %}
       </div>
@@ -92,14 +104,12 @@
   {% with messages = get_flashed_messages(with_categories=true) %}
   <!--  -->
   {% if messages %}
-  <section class="container has-text-centered">
-    <ul>
-      {% for category, message in messages %}
-      <li class="notification {{category}}">{{ message }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %} {% endwith %}
-  </section>
+  <div id="notification" class="notification is-primary has-text-centered notification-modal">
+    <button id="close-notification" class="delete"></button>
+    {% for category, message in messages %}{{ message }} {% endfor %}
+  </div>
+  {% endif %} {% endwith %}
+
 
   <!-- other pages content -->
   {% block content %}{% endblock %}
@@ -125,5 +135,6 @@
   <script>
     hljs.initHighlightingOnLoad();
   </script>
-
+  <!-- notification -->
+  <script src={{ url_for( "static", filename="scripts/notifications.js" ) }} charset="utf-8 "></script>
 </body>
