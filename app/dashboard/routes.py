@@ -10,6 +10,7 @@ from datetime import datetime
 
 @bp.before_request
 def before_request():
+    # save the las activity of the user
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
@@ -64,7 +65,7 @@ def edit_profile(username):
         user.github = form.github.data
         user.twitter = form.twitter.data
         db.session.commit()
-        flash('Your changes have been saved.')
+        flash(f'{form.username.data}, your changes have been saved.')
         return redirect(url_for('dashboard.overview'))
     elif request.method == 'GET':
         form.username.data = user.username
@@ -102,7 +103,7 @@ def new_post():
         db.session.add(post)
         # commit to the db
         db.session.commit()
-        flash('Your post is now live!')
+        flash(f'"{form.title.data}" is now live!')
         return redirect(url_for('dashboard.overview'))
     return render_template('dashboard/new_post.html', title='New Post',
                            form=form, post_active='is-active')
@@ -142,7 +143,7 @@ def edit_post(id):
                 db.session.add(new_tag)
                 post.tag.append(new_tag)
         db.session.commit()
-        flash('Your changes have been saved.')
+        flash(f'Changes on "{form.title.data}" have been saved.')
         return redirect(url_for('dashboard.overview'))
     elif request.method == 'GET':
         form.title.data = post.title
@@ -181,5 +182,5 @@ def delete_post(id):
     post = Post.query.filter_by(id=id).first_or_404()
     db.session.delete(post)
     db.session.commit()
-    flash('Your article has been Deleted')
+    flash(f'"{post.title}" has been Deleted')
     return redirect(url_for('dashboard.overview'))

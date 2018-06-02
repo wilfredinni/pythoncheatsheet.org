@@ -28,8 +28,7 @@ def login():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('dashboard.overview')
         return redirect(next_page)
-    return render_template('auth/login.html', title='Login', form=form,
-                           login_active='is-active')
+    return render_template('auth/login.html', title='Login', form=form)
 
 
 @bp.route('/register', methods=['GET', 'POST'])
@@ -43,7 +42,7 @@ def register():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash('User {} has been registered.'.format(form.username.data))
+        flash(f'User {form.username.data} has been registered.')
     return render_template('auth/register.html', title='Register', form=form)
 
 

@@ -6,22 +6,32 @@ import requests
 import mistune
 
 
+def markdown(text):
+    '''
+    parse markdown to html
+    '''
+    md = mistune.Markdown()
+    return md(text)
+
+
 @bp.route('/')
 @bp.route('/index')
 def index():
     index_url = 'https://raw.githubusercontent.com/wilfredinni/python-cheatsheet/master/blog_files/index.md'
     index_r = requests.get(index_url)
-    index = mistune.markdown(index_r.text)
+    index = markdown(index_r.text)
 
     pysheet_url = 'https://raw.githubusercontent.com/wilfredinni/python-cheatsheet/master/blog_files/pysheet.md'
     pysheet_r = requests.get(pysheet_url)
-    pysheet = mistune.markdown(pysheet_r.text)
+    pysheet = markdown(pysheet_r.text)
     return render_template('main/index.html', title='Home',
                            index=index, pysheet=pysheet)
 
 
 @bp.route('/blog')
 def blog():
+    # pass the markdown converter to the template (only here)
+    md = mistune.Markdown()
     # pagination
     page = request.args.get('page', 1, type=int)
     all_posts = Post.query.order_by(Post.timestamp.desc()).paginate(
@@ -33,7 +43,7 @@ def blog():
     prev_url = url_for('main.blog', page=all_posts.prev_num) \
         if all_posts.has_prev else None
     return render_template('main/blog.html', title='Blog', all_posts=all_posts,
-                           next_url=next_url, prev_url=prev_url)
+                           next_url=next_url, prev_url=prev_url, md=md)
 
 
 @bp.route('/blog/tag/<tag>')
@@ -47,7 +57,10 @@ def tag(tag):
 @bp.route('/article/<id>')
 def article(id):
     post = Post.query.filter_by(id=id).first_or_404()
-    return render_template('main/article.html', post=post, title=post.title)
+    # parse the markdown to html
+    body = markdown(post.body)
+    return render_template('main/article.html', post_body=body, post=post,
+                           title=post.title)
 
 
 @bp.route('/about')
@@ -58,8 +71,9 @@ def about():
 @bp.route('/author/<username>')
 def author(username):
     user = User.query.filter_by(username=username).first_or_404()
+    about_me = markdown(user.about_me)
     author = f'About {user.username}'
     my_posts = Post.query.filter_by(
         user_id=user.id).order_by(Post.timestamp.desc())
     return render_template('main/author.html', user=user, my_posts=my_posts,
-                           title=author)
+                           title=author, about_me=about_me)

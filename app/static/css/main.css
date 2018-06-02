@@ -162,10 +162,16 @@
   /* display: none; */
   position: fixed;
   right: 30%;
-  top: 9%; 
+  top: 9%;
   width: 40%;
   height: auto;
   z-index: 1001;
+}
+
+.img-cent img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @keyframes openModal {

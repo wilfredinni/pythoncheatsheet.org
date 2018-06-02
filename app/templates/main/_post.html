@@ -1,7 +1,7 @@
 <section>
   <div class="container">
     <div class="columns is-multiline is-mobile is-centered">
-      <div class="column is-8 is-centered">
+      <div class="column is-8 is-centered img-cent">
 
         <!-- post title -->
         <div class="header-content">
@@ -23,7 +23,7 @@
 
         <!-- post body -->
         <div class="content">
-          <p>{{ post.body | truncate(300, False) | safe }}</p>
+          <p>{{ md(post.body) | truncate(300, False) | safe }}</p>
           <hr>
           <div class="level">
             <a class="button" href="{{ url_for('main.article', id=post.id) }}">

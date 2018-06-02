@@ -9,7 +9,7 @@
   <!-- font awesome -->
   <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
   <!-- tinymce editor -->
-  <script type="text/javascript" src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+  <!-- <script type="text/javascript" src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
   <script type="text/javascript">
     tinymce.init({
       selector: 'textarea',
@@ -23,7 +23,7 @@
       content_css: 'css/content.css',
       toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | preview forecolor emoticons fullscreen'
     });
-  </script>
+  </script> -->
   <!-- moment.js -->
   {{ moment.include_jquery() }} {{ moment.include_moment() }}
   <!-- Highlight -->
@@ -128,7 +128,7 @@
     </div>
   </footer>
 
-  <!-- markdown -->
+  <!-- modal -->
   <script src={{ url_for( "static", filename="scripts/main.js" ) }} charset="utf-8 "></script>
   <!-- Highlight -->
   <script src={{ url_for( "static", filename="scripts/highlight.pack.js" ) }}></script>
