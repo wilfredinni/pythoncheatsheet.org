@@ -47,7 +47,7 @@
   <!-- username or screen name -->
   <div>
     {% if user.screen_name %}
-    <h1 class="subtitle is-3 level-item">About {{ user.screen_name }}</h1>
+    <h1 class="subtitle is-3 level-item is-size-4-mobile">About {{ user.screen_name }}</h1>
     {% else %}
     <h1 class="title level-item">About {{ user.username }}</h1>
     {% endif %}
@@ -69,7 +69,7 @@
 
   <!-- blog posts -->
   <div>
-    <h1 class="subtitle is-3 level-item ">Blog Posts by {{ user.username }}</h1>
+    <h1 class="subtitle is-3 level-item is-size-4-mobile">Blog Posts by {{ user.username }}</h1>
     <ul style="list-style-type:disc">
       {% for post in my_posts %}
       <li>

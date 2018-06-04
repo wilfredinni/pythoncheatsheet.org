@@ -11,40 +11,55 @@
 
     <!-- dashboard content -->
     <div class="column">
-      <form action="" method="post" class="box">
+
+      <form action="" method="post" class="">
         {{ form.hidden_tag() }}
 
         <!-- title -->
         <div class="field">
-          <label>{{ form.title.label }}</label>
-          <p class="control">{{ form.title(class="input", type="text") }}</p>
+          <!-- <label class="label">{{ form.title.label }}</label> -->
+          <p class="control">{{ form.title(class="text-field", type="text", placeholder="Title") }}</p>
           {% for error in form.title.errors %}
           <span class="help" style="color: red;">{{ error }}</span>
           {% endfor %}
         </div>
+        <hr>
 
         <!-- post body -->
         <div class="field">
-          <label>{{ form.post.label }}</label>
+          <!-- <label class="label">{{ form.post.label }}</label> -->
           <div class="control">
-            {{ form.post(class="textarea", rows="10") }}
+            {{ form.post(class="textarea-field", type="textarea", placeholder="Article Content", rows="10") }}
           </div>
+          {% for error in form.post.errors %}
+          <span class="help" style="color: red;">{{ error }}</span>
+          {% endfor %}
         </div>
+        <hr>
 
         <!-- tags -->
         <div class="field">
-          <label>{{ form.tags.label }}</label>
-          <p class="control">{{ form.tags(class="input", type="text") }}</p>
-          <p class="help">Ex.: python, flask, django</p>
+          <!-- <label class="label">{{ form.tags.label }}</label> -->
+          <p class="control">{{ form.tags(class="tags-field",placeholder="Tags: Ex.: python, flask, django", type="text") }}</p>
+          <!-- <p class="help">Ex.: python, flask, django</p> -->
           {% for error in form.tags.errors %}
           <span class="help" style="color: red;">{{ error }}</span>
           {% endfor %}
         </div>
 
-        <!-- submit button -->
-        <div class="field">
+        <!-- preview -->
+        <div class="field is-pulled-right">
           <p class="control">
-            <button class="button is-active">
+            <button class="submit-button">
+              preview
+            </button>
+          </p>
+        </div>
+
+        <!-- submit button -->
+        <div class="field is-pulled-right">
+          <p class="control">
+            <button class="submit-button">
               Submit
             </button>
           </p>
@@ -53,5 +68,4 @@
     </div>
   </div>
 </section>
-
 {% endblock content %}

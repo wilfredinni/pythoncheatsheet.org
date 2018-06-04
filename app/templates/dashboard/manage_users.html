@@ -11,65 +11,63 @@
 
     <!-- dashboard content -->
     <div class="column">
-      <section class="">
 
-        <!-- table of users -->
-        <div class="columns is-centered">
-          <table class="table">
+      <!-- table of users -->
+      <div class="columns is-centered">
+        <table class="table is-striped is-hoverable table is-fullwidth">
 
-            <!-- titles -->
-            <thead>
-              <tr>
-                <th>
-                  <abbr title="Date">Id</abbr>
-                </th>
-                <th>
-                  <abbr title="Date">Last Seen</abbr>
-                </th>
-                <th>
-                  <abbr title="Author">Username</abbr>
-                </th>
-                <th>
-                  <abbr title="Author">Screen Name</abbr>
-                </th>
-                <th>
-                  <abbr title="Posts">Articles</abbr>
-                </th>
-                <th>
-                  <abbr title="Edit"></abbr>
-                </th>
-                <th>
-                  <abbr title="Delete"></abbr>
-                </th>
-            </thead>
+          <!-- titles -->
+          <thead>
+            <tr>
+              <th>
+                <abbr title="Date">Id</abbr>
+              </th>
+              <th>
+                <abbr title="Date">Last Seen</abbr>
+              </th>
+              <th>
+                <abbr title="Author">Username</abbr>
+              </th>
+              <th>
+                <abbr title="Author">Screen Name</abbr>
+              </th>
+              <th>
+                <abbr title="Posts">Articles</abbr>
+              </th>
+              <th>
+                <abbr title="Edit"></abbr>
+              </th>
+              <th>
+                <abbr title="Delete"></abbr>
+              </th>
+          </thead>
 
-            <!-- users -->
-            <tbody>
-              {% for user in all_users %}
-              <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ moment(user.last_seen).format('L') }}</td>
-                <td>{{ user.username }}</td>
-                <td>
-                  <a href="{{ url_for('main.author', username=user.username) }}">{{ user.screen_name }}</a>
-                </td>
-                <td class="has-text-right">{{user.post.count()}}</td>
-                <td>
-                  <a href="{{ url_for('dashboard.edit_profile', username=user.username) }}" class="button is-link">Edit</a>
-                </td>
-                <td>
-                  <form action="{{ url_for('dashboard.delete_user', id=user.id) }}" method=post>
-                    <input type="hidden" name="entry_id" value="{{ loop.revindex }}">
-                    <button class="button is-danger">Delete</button>
-                  </form>
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
+          <!-- users -->
+          <tbody>
+            {% for user in all_users %}
+            <tr>
+              <td>{{ user.id }}</td>
+              <td>{{ moment(user.last_seen).format('L') }}</td>
+              <td>{{ user.username }}</td>
+              <td>
+                <a href="{{ url_for('main.author', username=user.username) }}">{{ user.screen_name }}</a>
+              </td>
+              <td class="has-text-right">{{user.post.count()}}</td>
+              <td>
+                <a href="{{ url_for('dashboard.edit_profile', username=user.username) }}" class="button is-link">Edit</a>
+              </td>
+              <td>
+                <form action="{{ url_for('dashboard.delete_user', id=user.id) }}" method=post>
+                  <input type="hidden" name="entry_id" value="{{ loop.revindex }}">
+                  <button class="button is-danger">Delete</button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
 
-          </table>
-        </div>
-      </section>
+        </table>
+      </div>
     </div>
   </div>
 </section>

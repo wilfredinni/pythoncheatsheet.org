@@ -1,17 +1,30 @@
+<link rel="stylesheet" href={{ url_for( "static", filename="css/forms.css" ) }}>
 <!-- menú -->
-<aside class="menu box">
+<aside class="menu hero">
   <p class="menu-label">
     Blog
   </p>
   <ul class="menu-list">
     <li>
-      <a href="{{ url_for('dashboard.overview') }}" class="{{ overview_active }}">Overview</a>
+      <a href="{{ url_for('dashboard.overview') }}" class="{{ overview_active }}">
+        <span class="icon">
+          <i class="fas fa-tachometer-alt"></i>
+        </span>
+        Overview</a>
     </li>
     <li>
-      <a href="{{ url_for('dashboard.new_post') }}" class="{{ post_active }}">New Article</a>
+      <a href="{{ url_for('dashboard.new_post') }}" class="{{ post_active }}">
+        <span class="icon">
+          <i class="fas fa-plus"></i>
+        </span>
+        New Article</a>
     </li>
     <li>
-      <a href="{{ url_for( 'dashboard.edit_profile', username=current_user.username) }} " class="{{ edit_active }} ">Edit Profile </a>
+      <a href="{{ url_for( 'dashboard.edit_profile', username=current_user.username) }} " class="{{ edit_active }} ">
+        <span class="icon">
+          <i class="fas fa-user"></i>
+        </span>
+        Edit Profile </a>
     </li>
   </ul>
   <p class="menu-label">
@@ -19,13 +32,41 @@
   </p>
   <ul class="menu-list">
     <li>
-      <a href="{{ url_for('dashboard.manage_articles') }}" class="{{ articles_active }} ">Manage Articles</a>
+      <a href="#" class="{{ config_active }} ">
+        <span class="icon">
+          <i class="fas fa-cogs"></i>
+        </span>
+        Site Configuration
+      </a>
     </li>
     <li>
-      <a href="{{ url_for('dashboard.manage_users') }}" class="{{ users_active }}">Manage Users</a>
+      <a href="{{ url_for('dashboard.manage_articles') }}" class="{{ articles_active }} ">
+        <span class="icon">
+          <i class="fas fa-file-alt"></i>
+        </span>
+        Manage Articles</a>
     </li>
     <li>
-      <a href="{{ url_for( 'dashboard.add_user') }}" class="{{ add_active }} ">Add User</a>
+      <a href="#" class="{{ tags_active }}">
+        <span class="icon">
+          <i class="fas fa-tags"></i>
+        </span>
+        Manage Tags</a>
     </li>
+    <li>
+      <a href="{{ url_for('dashboard.manage_users') }}" class="{{ users_active }}">
+        <span class="icon">
+          <i class="fas fa-users"></i>
+        </span>
+        Manage Users</a>
+    </li>
+    <li>
+      <a href="{{ url_for( 'dashboard.add_user') }}" class="{{ add_active }} ">
+        <span class="icon">
+          <i class="fas fa-user-plus"></i>
+        </span>
+        Add User</a>
+    </li>
+
   </ul>
 </aside>

@@ -291,3 +291,5 @@ app/templates/main/backup.html
 app/static/css/backup.css
 .eslintrc.json
 *.json
+app/templates/dashboard/backup.html
+app/templates/backup.html

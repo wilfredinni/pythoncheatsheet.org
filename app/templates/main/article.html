@@ -1,17 +1,18 @@
 {% extends "base.html" %}
 <!--  -->
 {% block content %}
+<link rel="stylesheet" href={{ url_for( "static", filename="css/articles.css" ) }}>
 <div class="hero-body">
   <div class="container">
 
 
     <!-- article -->
     <div class="columns is-multiline is-mobile is-centered">
-      <div class="column is-8">
+      <div class="column is-8 article max-mobile">
 
         <!-- delete, edit, new -->
         {% if post.author.username == current_user.username %}
-        <div class="column is-4 is-offset-8">
+        <div class="column is-4 is-offset-8 del-edit-new-hidden">
           <div class="level">
 
             <!-- delete -->
@@ -38,7 +39,7 @@
         <!-- article title -->
         <div class="header-content">
           <div class="has-text-centered">
-            <h1 class="subtitle is-3">
+            <h1 class="title no-h1 is-size-4-mobile">
               {{ title }}
             </h1>
           </div>
@@ -46,14 +47,14 @@
 
         <!-- time and author name -->
         <div class="has-text-centered article-botton-space">
-          <p>posted on
+          <p class="no-p">posted on
             <a>{{ moment(post.timestamp).format('L') }}</a> by
             <a href="{{ url_for('main.author', username=post.author.username) }}">{{ post.author.screen_name }}</a>
           </p>
         </div>
 
         <!-- post body -->
-        <div class="content">
+        <div class="content img-cent">
           <p>{{ post_body | safe }}</p>
           <hr>
           <div class="has-text-centered level">

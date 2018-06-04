@@ -48,10 +48,11 @@ def blog():
 
 @bp.route('/blog/tag/<tag>')
 def tag(tag):
+    md = mistune.Markdown()
     tag = Tag.query.filter_by(name=tag).first()
     posts = tag.posts.order_by(Post.timestamp.desc())
     return render_template('main/tag_articles.html', title='Tag', tag=tag,
-                           posts=posts)
+                           posts=posts, md=md)
 
 
 @bp.route('/article/<id>')

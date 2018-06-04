@@ -1,19 +1,19 @@
 <section>
   <div class="container">
     <div class="columns is-multiline is-mobile is-centered">
-      <div class="column is-8 is-centered img-cent">
+      <div class="column is-8 is-centered img-cent max-mobile">
 
         <!-- post title -->
         <div class="header-content">
           <div class="has-text-centered">
-            <h1 class="subtitle is-3">
+            <h1 class="subtitle is-3 is-size-5-mobile">
               {{ post.title }}
             </h1>
           </div>
         </div>
 
         <!-- time and author name -->
-        <div class="has-text-centered">
+        <div class="has-text-centered is-hidden-mobile">
           <p>By
             <a href="{{ url_for('main.author', username=post.author.username) }}">{{ post.author.screen_name }}</a>
             • {{ moment(post.timestamp).format('L') }} •
@@ -24,14 +24,14 @@
         <!-- post body -->
         <div class="content">
           <p>{{ md(post.body) | truncate(300, False) | safe }}</p>
-          <hr>
+          <hr class="is-hidden-mobile">
           <div class="level">
             <a class="button" href="{{ url_for('main.article', id=post.id) }}">
               Continue Reading
             </a>
 
             <!-- tags -->
-            <div class="level">
+            <div class="level is-hidden-mobile">
               <p>Tags: {% for tag in post.tag %}
                 <!--  -->
                 <a href="{{ url_for('main.tag', tag=tag.name) }}">

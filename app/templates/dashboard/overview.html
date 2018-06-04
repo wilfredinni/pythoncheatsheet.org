@@ -10,63 +10,61 @@
     </div>
 
     <!-- dashboard content -->
-    <div class="column">
+    <div class="column section">
       <!-- post list -->
-      <section class="">
-        <div class="columns is-centered">
-          <table class="table">
+      <div class="columns is-centered">
+        <table class="table is-striped is-hoverable table is-fullwidth">
 
-            <!-- titles -->
-            <thead>
-              <tr>
-                <th>
-                  <abbr title="Date">Id</abbr>
-                </th>
-                <th>
-                  <abbr title="Date">Date</abbr>
-                </th>
-                <th>
-                  <abbr title="Author">Author</abbr>
-                </th>
-                <th>
-                  <abbr title="Title">Article</abbr>
-                </th>
-                <th>
-                  <abbr title="Edit"></abbr>
-                </th>
-                <th>
-                  <abbr title="Delete"></abbr>
-                </th>
-            </thead>
+          <!-- titles -->
+          <thead>
+            <tr>
+              <th>
+                <abbr title="Date">Id</abbr>
+              </th>
+              <th>
+                <abbr title="Date">Date</abbr>
+              </th>
+              <th>
+                <abbr title="Author">Author</abbr>
+              </th>
+              <th>
+                <abbr title="Title">Article</abbr>
+              </th>
+              <th>
+                <abbr title="Edit"></abbr>
+              </th>
+              <th>
+                <abbr title="Delete"></abbr>
+              </th>
+          </thead>
 
-            <!-- posts -->
-            <tbody>
-              {% for post in my_posts %}
-              <tr>
-                <td>{{ post.id }}</td>
-                <td>{{ moment(post.timestamp).format('L') }}
-                </td>
-                <td>
-                  <a href="{{ url_for('main.author', username=post.author.username) }}">{{ post.author.screen_name }}</a>
-                </td>
-                <td>
-                  <a href="{{ url_for('main.article', id=post.id) }}">{{ post.title }}</a>
-                </td>
-                <td>
-                  <a href="{{ url_for('dashboard.edit_post', id=post.id) }}" class="button is-link">Edit</a>
-                </td>
-                <td>
-                  <form action="{{ url_for('dashboard.delete_post', id=post.id) }}" method=post>
-                    <input type="hidden" name="entry_id" value="{{ loop.revindex }}">
-                    <button class="button is-danger">Delete</button>
-                  </form>
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-      </section>
+          <!-- posts -->
+          <tbody>
+            {% for post in my_posts %}
+            <tr>
+              <td>{{ post.id }}</td>
+              <td>{{ moment(post.timestamp).format('L') }}
+              </td>
+              <td>
+                <a href="{{ url_for('main.author', username=post.author.username) }}">{{ post.author.screen_name }}</a>
+              </td>
+              <td>
+                <a href="{{ url_for('main.article', id=post.id) }}">{{ post.title }}</a>
+              </td>
+              <td>
+                <a href="{{ url_for('dashboard.edit_post', id=post.id) }}" class="button is-link">Edit</a>
+              </td>
+              <td>
+                <form action="{{ url_for('dashboard.delete_post', id=post.id) }}" method=post>
+                  <input type="hidden" name="entry_id" value="{{ loop.revindex }}">
+                  <button class="button is-danger">Delete</button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </section>
