@@ -12,11 +12,11 @@
 
         <!-- delete, edit, new -->
         {% if post.author.username == current_user.username %}
-        <div class="column is-4 is-offset-8 del-edit-new-hidden">
+        <div class="column is-4 is-offset-8 del-edit-new-hidden editor">
           <div class="level">
 
             <!-- delete -->
-            <span class="icon level-item ">
+            <span class="icon level-item">
               <a class="deleteModalBtn" href="#">
                 <i class="far fa-trash-alt"></i> Delete</a>
             </span>
@@ -57,10 +57,10 @@
         <div class="content img-cent">
           <p>{{ post_body | safe }}</p>
           <hr>
-          <div class="has-text-centered level">
+          <div class="level">
 
             <!-- tags -->
-            <div class="level">
+            <div class="level-item tags-div">
               <p>Tags: {% for tag in post.tag %}
                 <!--  -->
                 <a href="{{ url_for('main.tag', tag=tag.name) }}">
@@ -72,17 +72,45 @@
                 {% endfor %}
               </p>
             </div>
-            <a class="button" onclick="window.history.back()">Back</a>
+
+            <!-- share -->
+            <div class="level-item share-div">
+
+              <!-- twitter -->
+              <a target="blank" href="https://twitter.com/intent/tweet?status={{title}}+{{ url_for('main.article',id=post.id, _external=True) }}"
+                class="share twitter">
+                <span class="icon">
+                  <i class="fab fa-twitter"></i>
+                </span>
+              </a>
+
+              <!-- facebook -->
+              <a target="blank" href="https://www.facebook.com/share.php?u={{ url_for('main.article',id=post.id, _external=True) }}&title={{title}}"
+                class="share facebook">
+                <span class="icon">
+                  <i class="fab fa-facebook-f"></i>
+                </span>
+              </a>
+
+              <!-- google -->
+              <a target="blank" href="https://plus.google.com/share?url={{ url_for('main.article',id=post.id, _external=True) }}" class="share google">
+                <span class="icon">
+                  <i class="fab fa-google"></i>
+                </span>
+              </a>
+            </div>
           </div>
-          <!-- github issues as comments -->
-          <div>
-            <script src="https://utteranc.es/client.js" repo="wilfredinni/pysheetComments" issue-term="title" async>
-            </script>
-          </div>
+        </div>
+
+        <!-- github issues as comments -->
+        <div>
+          <script src="https://utteranc.es/client.js" repo="wilfredinni/pysheetComments" issue-term="title" async>
+          </script>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <!-- delete modal -->

@@ -11,13 +11,13 @@
 
     <!-- dashboard content -->
     <div class="column">
-      <form action="" method="POST" class="box">
+      <form action="" method="POST">
         {{ form.hidden_tag() }}
 
         <!-- username -->
         <div class="field">
           <label>{{ form.username.label }}</label>
-          <p class="control">{{ form.username(class="input", type="text") }}</p>
+          <p class="control">{{ form.username(class="text-field-profile", type="text") }}</p>
           {% for error in form.username.errors %}
           <span class="help" style="color: red;">{{ error }}</span>
           {% endfor %}
@@ -30,7 +30,7 @@
             <!-- screen name -->
             <div class="field">
               <label>{{ form.screen_name.label }}</label>
-              <p class="control">{{ form.screen_name(class="input", type="text") }}</p>
+              <p class="control">{{ form.screen_name(class="text-field-profile", type="text") }}</p>
               {% for error in form.screen_name.errors %}
               <span class="help" style="color: red;">{{ error }}</span>
               {% endfor %}
@@ -39,7 +39,7 @@
             <!-- email -->
             <div class="field">
               <label>{{ form.email.label }}</label>
-              <p class="control">{{ form.email(class="input", type="email") }}</p>
+              <p class="control">{{ form.email(class="text-field-profile", type="email") }}</p>
               {% for error in form.email.errors %}
               <span class="help" style="color: red;">{{ error }}</span>
               {% endfor %}
@@ -54,7 +54,7 @@
             <!-- twitter -->
             <div class="field">
               <label>{{ form.twitter.label }}</label>
-              <p class="control">{{ form.twitter(class="input", type="url") }}</p>
+              <p class="control">{{ form.twitter(class="text-field-web", type="url") }}</p>
               {% for error in form.twitter.errors %}
               <span class="help" style="color: red;">{{ error }}</span>
               {% endfor %}
@@ -63,7 +63,7 @@
             <!-- github -->
             <div class="field">
               <label>{{ form.github.label }}</label>
-              <p class="control">{{ form.github(class="input", type="url") }}</p>
+              <p class="control">{{ form.github(class="text-field-web", type="url") }}</p>
               {% for error in form.github.errors %}
               <span class="help" style="color: red;">{{ error }}</span>
               {% endfor %}
@@ -72,7 +72,7 @@
             <!-- website -->
             <div class="field">
               <label>{{ form.website.label }}</label>
-              <p class="control">{{ form.website(class="input", type="url") }}</p>
+              <p class="control">{{ form.website(class="text-field-web", type="url") }}</p>
               {% for error in form.website.errors %}
               <span class="help" style="color: red;">{{ error }}</span>
               {% endfor %}
@@ -84,7 +84,7 @@
         <div class="field">
           <label>{{ form.about_me.label }}</label>
           <div class="control">
-            {{ form.about_me(class="textarea", rows="10") }}
+            {{ form.about_me(class="", rows="10") }}
           </div>
         </div>
 

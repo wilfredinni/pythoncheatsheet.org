@@ -182,6 +182,56 @@
   color: #ffffff;
 }
 
+.share {
+  border: solid;
+  border-width: 1px;
+  border-radius: 3px;
+  margin-right: 0.75rem;
+}
+
+.icon {
+  padding: 0.90rem;
+}
+
+.facebook {
+  color: #3c5a9a;
+}
+
+.facebook:hover {
+  color: white;
+  background: #3c5a9a;
+}
+
+.twitter {
+  color: #03acef;
+}
+
+.twitter:hover {
+  color: white;
+  background: #03acef;
+}
+
+.google {
+  color: #dc4b3a;
+}
+
+.google:hover {
+  color: white;
+  background: #dc4b3a
+}
+
+.tags-div {
+  margin-right: 25%;
+}
+
+.share-div {
+  padding-left: 25%;
+}
+
+.editor {
+  width: 40% !important;
+}
+
 @keyframes openModal {
   from {
     opacity: 0;

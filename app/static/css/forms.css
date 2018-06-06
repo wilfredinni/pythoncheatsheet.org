@@ -1,9 +1,9 @@
 .text-field {
     width: 100%;
-    height: 3rem;
+    height: 3.1rem;
     border: none;
     font-size: 2.5rem;
-    /* margin-top: 1.5rem; */
+    margin-bottom: 1.5rem;
     color: #2e4453;
 }
 
@@ -38,15 +38,30 @@
     cursor: pointer;
 }
 
-.preview {
-    color: #3d596d;
-    margin-right: 30px;
-}
-
-.right {
-    margin-left: 80%;
-}
-
 ::placeholder {
     color: #879dad;
+}
+
+.text-field-profile {
+    border: none;
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: #dde0e2;
+    width: 100%;
+    height: 2.25rem;
+    color: #3d596d;
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+}
+
+.text-field-web {
+    border: none;
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: #dde0e2;
+    width: 100%;
+    height: 2.25rem;
+    color: #3d596d;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
 }
