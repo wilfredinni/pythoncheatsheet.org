@@ -2849,7 +2849,7 @@ a.box:active {
 .content blockquote:not(:last-child),
 .content dl:not(:last-child),
 .content ol:not(:last-child),
-.content p:not(:last-child),
+.content p:not(:last-child):not(.footer-bar),
 .content pre:not(:last-child),
 .content table:not(:last-child),
 .content ul:not(:last-child) {
