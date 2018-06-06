@@ -45,8 +45,8 @@
       <div class="navbar-start">
         <a href="{{ url_for('main.index') }}" class="navbar-item">Home</a>
         <a href="{{ url_for('main.blog') }}" class="navbar-item">Blog</a>
+        <a href="#" class="navbar-item">Contribute</a>
         <a href="{{ url_for('main.about') }}" class="navbar-item">About</a>
-        <a href="#" class="navbar-item">Contact</a>
         {% if current_user.is_authenticated %}
         <a href="{{ url_for('main.author', username=current_user.username) }}" class="navbar-item">Profile</a>
         <a href="{{ url_for('dashboard.overview') }}" class="navbar-item">Dashboard</a>
@@ -102,13 +102,53 @@
   <!-- footer -->
   <footer class="footer hero is-warning">
     <div class="container">
-      <div class="content has-text-centered is-primary">
-        <p>
-          <strong>Python CheatSheet</strong> by
-          <a href="https://jgthms.com">Carlos Montecinos</a>. The source code is licensed
-          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed
-          <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      <div class="content has-text-centered">
+
+        <!-- footer nav -->
+        <div>
+          <p class="footer-bar">
+            <a class="footer-nav" href="{{ url_for('main.index') }}">HOME</a>
+            |
+            <a class="footer-nav" href="{{ url_for('main.blog') }}">BLOG</a>
+            |
+            <a class="footer-nav" href="#">CONTRIBUTE</a>
+            |
+            <a class="footer-nav" href="{{ url_for('main.about') }}">ABOUT</a>
+          </p>
+        </div>
+
+        <!-- footer social -->
+        <div class="footer-social">
+          <!-- github -->
+          <a href="https://github.com/wilfredinni/python-cheatsheet">
+            <span class="icon footer-icon">
+              <i class="fab fa-github fa-2x"></i>
+            </span>
+          </a>
+          <!-- twitter -->
+          <a href="https://twitter.com/wilfrido0">
+            <span class="icon footer-icon">
+              <i class="fab fa-twitter fa-2x"></i>
+            </span>
+          </a>
+          <!-- mail -->
+          <a href="">
+            <span class="icon footer-icon">
+              <i class="fas fa-home fa-2x"></i>
+            </span>
+          </a>
+        </div>
+
+        <!-- footer copiright -->
+        <p class="footer-copyright">2018
+          <a href="#">Carlos Montecinos Geisse</a>
         </p>
+        <P class="footer-copyright">The
+          <a href="https://github.com/wilfredinni/python-cheatsheet">Python Cheat Sheet</a> and the
+          <a href="https://github.com/wilfredinni/pysheetBlog">Website</a> are licensed
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.</P>
+
+
       </div>
     </div>
   </footer>

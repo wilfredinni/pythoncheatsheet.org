@@ -147,7 +147,7 @@ h6 {
     font-size: 14px;
 }
 
-p:not(.results_p):not(.no-p):not(.p-sheet-nav),
+p:not(.results_p):not(.no-p):not(.p-sheet-nav):not(.footer-copyright),
 blockquote,
 ol,
 dl,

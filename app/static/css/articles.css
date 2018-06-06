@@ -152,7 +152,7 @@ blockquote {
 }
 
 blockquote,
-p:not(.results_p):not(.no-p):not(.p-sheet-nav),
+p:not(.results_p):not(.no-p):not(.p-sheet-nav):not(.footer-bar):not(.footer-copyright),
 ol,
 dl,
 table,

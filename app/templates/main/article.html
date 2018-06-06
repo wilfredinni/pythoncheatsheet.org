@@ -37,7 +37,7 @@
         {% endif %}
 
         <!-- article title -->
-        <div class="header-content">
+        <div class="header-content art-title">
           <div class="has-text-centered">
             <h1 class="title no-h1 is-size-4-mobile">
               {{ title }}
@@ -79,7 +79,7 @@
               <!-- twitter -->
               <a target="blank" href="https://twitter.com/intent/tweet?status={{title}}+{{ url_for('main.article',id=post.id, _external=True) }}"
                 class="share twitter">
-                <span class="icon">
+                <span class="icon share-icon">
                   <i class="fab fa-twitter"></i>
                 </span>
               </a>
@@ -87,14 +87,14 @@
               <!-- facebook -->
               <a target="blank" href="https://www.facebook.com/share.php?u={{ url_for('main.article',id=post.id, _external=True) }}&title={{title}}"
                 class="share facebook">
-                <span class="icon">
+                <span class="icon share-icon">
                   <i class="fab fa-facebook-f"></i>
                 </span>
               </a>
 
               <!-- google -->
               <a target="blank" href="https://plus.google.com/share?url={{ url_for('main.article',id=post.id, _external=True) }}" class="share google">
-                <span class="icon">
+                <span class="icon share-icon">
                   <i class="fab fa-google"></i>
                 </span>
               </a>
