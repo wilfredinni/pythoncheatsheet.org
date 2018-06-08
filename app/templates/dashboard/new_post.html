@@ -17,7 +17,6 @@
 
         <!-- title -->
         <div class="field">
-          <!-- <label class="label">{{ form.title.label }}</label> -->
           <p class="control">{{ form.title(class="text-field", type="text", placeholder="Title") }}</p>
           {% for error in form.title.errors %}
           <span class="help" style="color: red;">{{ error }}</span>
@@ -26,9 +25,8 @@
 
         <!-- post body -->
         <div class="field">
-          <!-- <label class="label">{{ form.post.label }}</label> -->
           <div class="control">
-            {{ form.post(id="textarea", class="textarea-field", type="textarea", placeholder="Article Content") }}
+            {{ form.post(id="textarea", class="textarea-field", type="textarea", placeholder="Markdown Enabled") }}
           </div>
           {% for error in form.post.errors %}
           <span class="help" style="color: red;">{{ error }}</span>
@@ -37,9 +35,7 @@
 
         <!-- tags -->
         <div class="field">
-          <!-- <label class="label">{{ form.tags.label }}</label> -->
           <p class="control">{{ form.tags(class="tags-field",placeholder="Tags: Ex.: python, flask, django", type="text") }}</p>
-          <!-- <p class="help">Ex.: python, flask, django</p> -->
           {% for error in form.tags.errors %}
           <span class="help" style="color: red;">{{ error }}</span>
           {% endfor %}

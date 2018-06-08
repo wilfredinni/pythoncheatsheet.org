@@ -33,7 +33,11 @@ def overview():
 def add_user():
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
+        if form.administrator.data:
+            user = User(username=form.username.data, email=form.email.data,
+                        is_administrator=True)
+        else:
+            user = User(username=form.username.data, email=form.email.data)
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()

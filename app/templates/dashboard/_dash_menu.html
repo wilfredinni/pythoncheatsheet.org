@@ -27,6 +27,7 @@
         Edit Profile </a>
     </li>
   </ul>
+  {% if current_user.is_administrator %}
   <p class="menu-label">
     Administration
   </p>
@@ -67,6 +68,6 @@
         </span>
         Add User</a>
     </li>
-
   </ul>
+  {% endif %}
 </aside>

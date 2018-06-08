@@ -22,6 +22,7 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     post = db.relationship('Post', backref='author', lazy='dynamic')
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
+    is_administrator = db.Column(db.Boolean(), index=True, default=False)
 
     # profile edit & register
     about_me = db.Column(db.String(280))
@@ -95,6 +96,19 @@ class Tag(db.Model):
 
     def __repr__(self):
         return '{}'.format(self.name)
+
+
+class Settings(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    site_name = db.Column(db.String(64), index=True)
+    post_per_page = db.Column(db.Integer, index=True, default=5)
+
+    mail_server = db.Column(db.String, index=True)
+    mail_port = db.Column(db.Integer, index=True, default=25)
+    mail_use_tls = db.Column(db.Integer, index=True)
+    mail_username = db.Column(db.Integer, index=True)
+    mail_password = db.Column(db.Integer, index=True)
+    admins = db.Column(db.Integer, index=True)
 
 
 @login.user_loader
