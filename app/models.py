@@ -98,19 +98,6 @@ class Tag(db.Model):
         return '{}'.format(self.name)
 
 
-class Settings(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    site_name = db.Column(db.String(64), index=True)
-    post_per_page = db.Column(db.Integer, index=True, default=5)
-
-    mail_server = db.Column(db.String, index=True)
-    mail_port = db.Column(db.Integer, index=True, default=25)
-    mail_use_tls = db.Column(db.Integer, index=True)
-    mail_username = db.Column(db.Integer, index=True)
-    mail_password = db.Column(db.Integer, index=True)
-    admins = db.Column(db.Integer, index=True)
-
-
 @login.user_loader
 def load_user(id):
     """
