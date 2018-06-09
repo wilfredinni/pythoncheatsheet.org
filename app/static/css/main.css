@@ -159,13 +159,9 @@
 }
 
 .notification-modal {
-  /* display: none; */
-  position: fixed;
-  right: 30%;
-  top: 9%;
-  width: 40%;
+  width: 60%;
+  margin: 1% 20% 0% 20%;
   height: auto;
-  z-index: 1001;
 }
 
 .img-cent img {

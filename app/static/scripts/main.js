@@ -14,7 +14,9 @@ for (let button of deleteModalBtns) {
 }
 
 // listen for clicks to close the modal
-closeBtn.addEventListener("click", closeModal);
-cancel.addEventListener("click", closeModal);
+if (closeBtn) {
+  closeBtn.addEventListener("click", closeModal);
+  cancel.addEventListener("click", closeModal);
+}
 
 // ----------------------------------------------------------------------------
