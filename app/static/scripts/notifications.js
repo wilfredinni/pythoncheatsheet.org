@@ -2,7 +2,9 @@ let notificacionModal = document.getElementById("notification");
 let closeNotification = document.getElementById("close-notification");
 
 function hideNotification() {
-    notificacionModal.style.display = "none";
+  notificacionModal.style.display = "none";
 }
 
-closeNotification.addEventListener("click", hideNotification);
+if (closeNotification) {
+  closeNotification.addEventListener("click", hideNotification);
+}
