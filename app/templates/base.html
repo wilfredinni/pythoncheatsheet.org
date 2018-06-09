@@ -76,7 +76,7 @@
 
         <!-- logout and the search notice only for home and anonymous -->
         {% if current_user.is_anonymous %} {% if title == "Home" %}
-        <p class="navbar-item no-p">ctr+z</p>
+        <!-- <p class="navbar-item no-p">ctr+z</p> -->
         {% endif %} {% else %}
         <a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout ({{current_user.username}})</a>
         {% endif %}

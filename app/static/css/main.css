@@ -1,5 +1,5 @@
 .forkme {
-  z-index: 1000;
+  z-index: 999;
   position: fixed;
   top: 0;
   right: 0;
@@ -250,6 +250,17 @@
 
 .footer-copyright {
   margin-bottom: 0.5rem !important;
+}
+
+.pin-notify {
+  width: 96%;
+  margin-left: 2%;
+}
+
+.pin {
+  padding-top: 40%;
+  /* margin-top: 70%; */
+  margin-left: 40%;
 }
 
 @keyframes openModal {

@@ -46,7 +46,29 @@
     </div>
 
     <!-- pysheet -->
+
     <div class="column is-9 cheat">
+
+      <!-- pinned notification -->
+      <div id="notification" class="notification pin-notify is-warning is-hidden-mobile">
+        <button id="close-notification" class="delete"></button>
+        <div>
+          Any one can forget how to make
+          <a href="#Making-Your-Own-Character-Classes">character classes for a regex</a>. Some times i even forget how to
+          <a href="#Getting-Sublists-with-Slices">slice a list</a> or do a
+          <a href="#Using-for-Loops-with-Lists">for loop</a> 🙄. This cheatsheet tries to provide basic reference for beginner and advanced 🐍 developers. We want
+          to lower the entry barrier for newcomers and help seasoned veterans pick up new tricks and remember old ones.
+          <br>
+          <br>
+
+          <div>
+            Use
+            <strong>ctr/cmd+z</strong> to open the quick search. All
+            <a href="{{ url_for('main.contribute') }}">contributions</a> are welcome! ❤
+          </div>
+        </div>
+      </div>
+
       <div>
         {{ pysheet|safe }}
       </div>
