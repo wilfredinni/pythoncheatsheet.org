@@ -21,3 +21,7 @@ class Config(object):
     MAIL_PASSWORD = settings.get('MAIL_PASSWORD')
     ADMINS = [settings.get('ADMINS')]
     POSTS_PER_PAGE = settings.get('POSTS_PER_PAGE')
+    # pages
+    INDEX_URL = settings.get('INDEX_PYSHEET')
+    PYSHEET_URL = settings.get('PYSHEET')
+    CONTRIBUTING = settings.get('CONTRIBUTING')

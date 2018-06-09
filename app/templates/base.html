@@ -45,7 +45,7 @@
       <div class="navbar-start">
         <a href="{{ url_for('main.index') }}" class="navbar-item">Home</a>
         <a href="{{ url_for('main.blog') }}" class="navbar-item">Blog</a>
-        <a href="#" class="navbar-item">Contribute</a>
+        <a href="{{ url_for('main.contribute') }}" class="navbar-item">Contribute</a>
         <a href="{{ url_for('main.about') }}" class="navbar-item">About</a>
         {% if current_user.is_authenticated %}
         <a href="{{ url_for('main.author', username=current_user.username) }}" class="navbar-item">Profile</a>

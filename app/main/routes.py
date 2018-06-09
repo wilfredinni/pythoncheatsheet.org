@@ -18,15 +18,10 @@ def markdown(text):
 @bp.route('/')
 @bp.route('/index')
 def index():
-    with open('settings.json', 'r') as s:
-        settings = json.loads(s.read())
-
-    index_url = settings.get('INDEX_PYSHEET')
-    index_r = requests.get(index_url)
+    index_r = requests.get(current_app.config['INDEX_URL'])
     index = markdown(index_r.text)
 
-    pysheet_url = settings.get('PYSHEET')
-    pysheet_r = requests.get(pysheet_url)
+    pysheet_r = requests.get(current_app.config['PYSHEET_URL'])
     pysheet = markdown(pysheet_r.text)
     return render_template('main/index.html', title='Home',
                            index=index, pysheet=pysheet)
@@ -66,6 +61,14 @@ def article(id):
     body = markdown(post.body)
     return render_template('main/article.html', post_body=body, post=post,
                            title=post.title)
+
+
+@bp.route('/contribute')
+def contribute():
+    contribute_r = requests.get(current_app.config['CONTRIBUTING'])
+    contribute = markdown(contribute_r.text)
+    return render_template('main/contribute.html', title="Contribute",
+                           contribute_md=contribute)
 
 
 @bp.route('/about')
