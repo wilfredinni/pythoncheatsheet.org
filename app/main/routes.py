@@ -4,6 +4,7 @@ from app.main import bp
 from app.models import User, Post, Tag
 import requests
 import mistune
+import json
 
 
 def markdown(text):
@@ -17,11 +18,14 @@ def markdown(text):
 @bp.route('/')
 @bp.route('/index')
 def index():
-    index_url = 'https://raw.githubusercontent.com/wilfredinni/python-cheatsheet/master/blog_files/index.md'
+    with open('settings.json', 'r') as s:
+        settings = json.loads(s.read())
+
+    index_url = settings.get('INDEX_PYSHEET')
     index_r = requests.get(index_url)
     index = markdown(index_r.text)
 
-    pysheet_url = 'https://raw.githubusercontent.com/wilfredinni/python-cheatsheet/master/blog_files/pysheet.md'
+    pysheet_url = settings.get('PYSHEET')
     pysheet_r = requests.get(pysheet_url)
     pysheet = markdown(pysheet_r.text)
     return render_template('main/index.html', title='Home',
