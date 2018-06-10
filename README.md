@@ -23,20 +23,20 @@ In the frontend is [Bulma](https://github.com/jgthms/bulma), a great and easy to
 
 ### New Article
 
-![new_article](img\new_post.jpg)
+![new_article](https://github.com/wilfredinni/pysheetBlog/blob/master/img/new_post.png)
 
 ### Utterances Comments
 
-![comments](img\comments.png)
+![comments](https://github.com/wilfredinni/pysheetBlog/blob/master/img/comments.png)
 
 ### Blog
 
-![blog](img\blog.png)
+![blog](https://github.com/wilfredinni/pysheetBlog/blob/master/img/blog.png)
 
 ### User Profile
 
-![user_profile](img\profile.png)
+![user_profile](https://github.com/wilfredinni/pysheetBlog/blob/master/img/profile.png)
 
 ### Cheatsheet Quick Search
 
-![quick_search](img\quick_search.png)
+![quick_search](https://github.com/wilfredinni/pysheetBlog/blob/master/img/quick_search.png)
