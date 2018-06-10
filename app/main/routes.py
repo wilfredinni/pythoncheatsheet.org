@@ -73,7 +73,9 @@ def contribute():
 
 @bp.route('/about')
 def about():
-    return render_template('main/about.html', title='About')
+    about_r = requests.get(current_app.config['ABOUT'])
+    about = markdown(about_r.text)
+    return render_template('main/about.html', title='About', about_md=about)
 
 
 @bp.route('/author/<username>')

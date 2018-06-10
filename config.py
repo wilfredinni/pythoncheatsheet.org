@@ -25,3 +25,4 @@ class Config(object):
     INDEX_URL = settings.get('INDEX_PYSHEET')
     PYSHEET_URL = settings.get('PYSHEET')
     CONTRIBUTING = settings.get('CONTRIBUTING')
+    ABOUT = settings.get('ABOUT')
