@@ -46,12 +46,11 @@
     </div>
 
     <!-- pysheet -->
-
     <div class="column is-9 cheat">
 
       <!-- pinned notification -->
-      <div id="notification" class="notification pin-notify is-hidden-mobile">
-        <button id="close-notification" class="delete"></button>
+      <div id="pysheetNotification" class="notification pin-notify is-hidden-mobile">
+        <button id="pysheetCloseNotification" class="delete"></button>
         <div>
           Anyone can forget how to make
           <a href="#Making-Your-Own-Character-Classes">character classes for a regex</a>. Sometimes I even forget how to
@@ -68,6 +67,7 @@
         </div>
       </div>
 
+      <!-- pysheet content -->
       <div>
         {{ pysheet|safe }}
       </div>

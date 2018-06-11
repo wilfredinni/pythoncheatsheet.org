@@ -88,8 +88,8 @@
   {% with messages = get_flashed_messages(with_categories=true) %}
   <!--  -->
   {% if messages %}
-  <div id="notification" class="notification is-primary has-text-centered notification-modal">
-    <button id="close-notification" class="delete"></button>
+  <div id="mainNotification" class="notification is-primary has-text-centered notification-modal">
+    <button id="closeMainNotification" class="delete"></button>
     {% for category, message in messages %}{{ message }} {% endfor %}
   </div>
   {% endif %} {% endwith %}
@@ -136,13 +136,22 @@
         </div>
 
         <!-- footer copiright -->
-        <p class="footer-copyright">2018
-          <a href="#">Carlos Montecinos Geisse</a>
-        </p>
-        <P class="footer-copyright">The
-          <a href="https://github.com/wilfredinni/python-cheatsheet">Python Cheat Sheet</a> and the
-          <a href="https://github.com/wilfredinni/pysheetBlog">Website</a> are licensed
-          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.</P>
+        <div>
+          <p class="footer-copyright">2018
+            <a href="#">Carlos Montecinos Geisse</a>.
+          </p>
+          <p class="footer-copyright">
+            Logo made by
+            <a href="https://www.flaticon.com/authors/freepik">Freepik</a> from
+            <a href="www.flaticon.com">Flaticon</a>.
+          </p>
+          <p class="footer-copyright">The
+            <a href="https://github.com/wilfredinni/python-cheatsheet">Python Cheat Sheet</a> and the
+            <a href="https://github.com/wilfredinni/pysheetBlog">Website</a> are licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+          </p>
+        </div>
+
       </div>
     </div>
   </footer>
@@ -154,8 +163,4 @@
   <script>
     hljs.initHighlightingOnLoad();
   </script>
-  <!-- notification -->
-  <script src={{ url_for( "static", filename="scripts/notifications.js" ) }} charset="utf-8 "></script>
-  <!-- navbar burger -->
-  <script src={{ url_for( "static", filename="scripts/navbarburger.js" ) }} charset="utf-8 "></script>
 </body>

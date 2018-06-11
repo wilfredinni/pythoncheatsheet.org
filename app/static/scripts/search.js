@@ -1,4 +1,4 @@
-// get the elements of the modal
+// get the elements of the search modal
 let searchBar = document.getElementById("search-bar");
 let searchIcon = document.getElementById("search-icon");
 let searchMessage = document.getElementById("search-message");

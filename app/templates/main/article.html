@@ -11,12 +11,12 @@
 
         <!-- delete, edit, new -->
         {% if post.author.username == current_user.username %}
-        <div class="column is-4 is-offset-8 del-edit-new-hidden editor">
+        <div id="articleEdits" class="column is-4 is-offset-8 del-edit-new-hidden editor">
           <div class="level">
 
             <!-- delete -->
             <span class="icon level-item">
-              <a class="deleteModalBtn" href="#">
+              <a id="deleteArticleBtn" class="articleDeleteModalBtn" href="javascript:void(0);">
                 <i class="far fa-trash-alt"></i> Delete</a>
             </span>
 
@@ -114,9 +114,9 @@
 
 <!-- delete modal -->
 <div id="deleteModal" class="modal">
-  <div id="modalBackground" class="modal-background"></div>
+  <div id="articleModalBackground" class="modal-background"></div>
   <div class="modal-content box has-text-centered section">
-    <h1 class="subtitle">Do you want to Delete {{ post.title }}</h1>
+    <h1 class="subtitle">Do you want to Delete {{ post.title }}?</h1>
     <br>
     <div class="columns is-centered">
       <div class="column is-3">
