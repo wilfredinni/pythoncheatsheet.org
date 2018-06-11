@@ -1,5 +1,5 @@
 // get the scroll btn
-let scrollButton = document.getElementById("scroll"); // Reference to our scroll button
+let scrollButton = document.getElementById("scroll");
 
 // hide scroll button
 scrollButton.style.display = "none";
@@ -33,5 +33,5 @@ function scrollToTop() {
   intervalId = setInterval(scrollStep, 16.66);
 }
 
-// When the DOM is loaded, this click handler is added to our scroll button
+// listen for clicks in the scroll button
 scrollButton.addEventListener("click", scrollToTop);

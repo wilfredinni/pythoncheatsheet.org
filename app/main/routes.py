@@ -81,7 +81,10 @@ def about():
 @bp.route('/author/<username>')
 def author(username):
     user = User.query.filter_by(username=username).first_or_404()
-    about_me = markdown(user.about_me)
+    if user.about_me:
+        about_me = markdown(user.about_me)
+    else:
+        about_me = ""
     author = f'About {user.username}'
     my_posts = Post.query.filter_by(
         user_id=user.id).order_by(Post.timestamp.desc())

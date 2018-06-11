@@ -7,14 +7,14 @@
       <h1 class="title has-text-centered">Sign In</h1>
 
       <!-- form -->
-      <form action="" method="POST">
+      <form action="" method="POST" autocomplete="off">
         {{ form.hidden_tag() }}
 
         <!-- username -->
         <div class="field">
           <label>{{ form.username.label }}</label>
           <p class="control has-icons-left">
-            {{ form.username(class="input", placeholder="username") }}
+            {{ form.username(class="input", placeholder="username", autocomplete="off") }}
             <span class="icon is-small is-left">
               <i class="fas fa-user"></i>
             </span>
@@ -28,7 +28,7 @@
         <div class="field">
           <label>{{ form.password.label }}</label>
           <p class="control has-icons-left">
-            {{ form.password(class="input", placeholder="password") }}
+            {{ form.password(class="input", placeholder="password", autocomplete="off") }}
             <span class="icon is-small is-left">
               <i class="fas fa-lock"></i>
             </span>
