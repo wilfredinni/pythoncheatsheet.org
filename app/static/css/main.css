@@ -253,14 +253,7 @@
 }
 
 .pin-notify {
-  width: 96%;
-  margin-left: 2%;
-}
-
-.pin {
-  padding-top: 40%;
-  /* margin-top: 70%; */
-  margin-left: 40%;
+  width: 98%;
 }
 
 @keyframes openModal {
