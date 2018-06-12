@@ -256,6 +256,27 @@
   width: 98%;
 }
 
+.search-body img {
+  display: none;
+}
+
+.underline-results {
+  /* border-bottom: solid;
+  border-width: 1px;
+  border-color: #cccccc; */
+  /* margin-top: 1rem; */
+  margin-bottom: 3rem !important;
+}
+
+.search-link {
+  color: #3273dc;
+}
+
+.search-no-results {
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+}
+
 @keyframes openModal {
   from {
     opacity: 0;

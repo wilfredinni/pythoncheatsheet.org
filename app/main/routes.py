@@ -1,10 +1,17 @@
-from flask import render_template, url_for, request, current_app
+from flask import render_template, url_for, request, current_app, redirect
 from flask_login import login_required, current_user
 from app.main import bp
 from app.models import User, Post, Tag
 import requests
 import mistune
 import json
+from flask import g
+from app.main.froms import SearchForm
+
+
+@bp.before_app_request
+def before_request():
+    g.search_form = SearchForm()
 
 
 def markdown(text):
@@ -35,6 +42,8 @@ def blog():
     page = request.args.get('page', 1, type=int)
     all_posts = Post.query.order_by(Post.timestamp.desc()).paginate(
         page, current_app.config['POSTS_PER_PAGE'])
+    # all posts
+    posts = Post.query.all()
     # get the next page url
     next_url = url_for('main.blog', page=all_posts.next_num) \
         if all_posts.has_next else None
@@ -42,7 +51,8 @@ def blog():
     prev_url = url_for('main.blog', page=all_posts.prev_num) \
         if all_posts.has_prev else None
     return render_template('main/blog.html', title='Blog', all_posts=all_posts,
-                           next_url=next_url, prev_url=prev_url, md=md)
+                           next_url=next_url, prev_url=prev_url, md=md,
+                           blog_posts=posts)
 
 
 @bp.route('/blog/tag/<tag>')
@@ -90,3 +100,16 @@ def author(username):
         user_id=user.id).order_by(Post.timestamp.desc())
     return render_template('main/author.html', user=user, my_posts=my_posts,
                            title=author, about_me=about_me)
+
+
+@bp.route('/search')
+def search():
+    if not g.search_form.validate():
+        return redirect(url_for('main.blog'))
+    md = mistune.Markdown()
+    page = request.args.get('page', 1, type=int)
+    posts, total = Post.search(g.search_form.q.data, page,
+                               current_app.config['POSTS_PER_PAGE'])
+
+    return render_template('main/search.html', title='Search', posts=posts,
+                           total=total, md=md)

@@ -1,0 +1,27 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+python-dotenv = "*"
+flask-wtf = "*"
+flask-sqlalchemy = "*"
+flask-migrate = "*"
+flask-login = "*"
+flask-moment = "*"
+requests = "*"
+flask-mail = "*"
+pyjwt = "*"
+mistune = "*"
+flask-markdown = "*"
+pytest = "*"
+elasticsearch = "*"
+
+[dev-packages]
+"flake8" = "*"
+"autopep8" = "*"
+
+[requires]
+python_version = "3.6"

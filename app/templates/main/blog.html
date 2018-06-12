@@ -15,6 +15,7 @@
 
 
   <!-- pagination -->
+  {% if blog_posts|length >= 6%}
   <div class="container column is-7">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
 
@@ -55,5 +56,6 @@
       </ul>
     </nav>
   </div>
+  {% endif %}
 </section>
 {% endblock content %}

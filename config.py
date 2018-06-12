@@ -10,10 +10,11 @@ with open("settings.json", 'r') as s:
 
 
 class Config(object):
-    SECRET_KEY = settings.get('SECRET_KEY')
+    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = settings.get('SECRET_KEY')
     MAIL_SERVER = settings.get('MAIL_SERVER')
     MAIL_PORT = settings.get('MAIL_PORT') or 25
     MAIL_USE_TLS = settings.get('MAIL_USE_TLS') is not None

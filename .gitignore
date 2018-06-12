@@ -282,8 +282,6 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/osx,macos,linux,python,windows,pycharm,sublimetext,visualstudiocode
 
-Pipfile.lock
-Pipfile
 logs/microblog.log
 app.db
 logs/*

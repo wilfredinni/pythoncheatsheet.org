@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+<!--  -->
+{% block content %}
+<!--  -->
+
+<section class="container column is-8 section">
+    <!-- title -->
+    <h1 class="subtitle is-2 underline-results">Search results for
+        <i>"{{ g.search_form.q.data }}"</i>
+    </h1>
+
+    <!-- display if no results -->
+    {% if total == 0 %}
+    <div class="search-no-results">
+        <hr>
+        <p class="subtitle is-5 is-pulled-right">
+            <i>{{ total }} results.</i>
+            <a onclick="goBack()" href="javascript:void(0);">Go Back</a>.
+        </p>
+    </div>
+    {% endif %}
+
+    <!-- the results -->
+    <ul>
+        {% for post in posts %}
+        <li class="search-body ">
+
+            <!-- post title -->
+            <a class="subtitle is-4 search-link " href="{{ url_for( 'main.article', id=post.id) }} ">{{ post.title }}</a>
+
+            <!-- body -->
+            <p>{{ md(post.body) | truncate(300, False) | safe }}</p>
+        </li>
+        <hr>{% endfor %}
+    </ul>
+    {% if total > 0 %}
+    <p class="is-pulled-right subtitle is-5 goBack-search">
+        <i>{{ total }} results.</i>
+        <a onclick="goBack()" href="javascript:void(0);">Go Back</a>.
+    </p>
+    <br>
+
+    <br> {% endif %}
+
+</section>
+
+<script>
+    function goBack() {
+        window.history.go(-2);
+    }
+</script>
+{% endblock content %}

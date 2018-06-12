@@ -26,7 +26,7 @@
         <!-- post body -->
         <div class="field">
           <div class="control">
-            {{ form.post(id="textarea", class="textarea-field", type="textarea", placeholder="Markdown Enabled") }}
+            {{ form.post(id="textarea", class="textarea-field", type="textarea", rows=10, placeholder="Markdown Enabled") }}
           </div>
           {% for error in form.post.errors %}
           <span class="help" style="color: red;">{{ error }}</span>
@@ -54,7 +54,7 @@
   </div>
 </section>
 <!-- markdown editor -->
-<link rel="stylesheet" href="http://lab.lepture.com/editor/editor.css" />
+<!-- <link rel="stylesheet" href="http://lab.lepture.com/editor/editor.css" />
 <script type="text/javascript" src="http://lab.lepture.com/editor/editor.js"></script>
 <script type="text/javascript" src="http://lab.lepture.com/editor/marked.js"></script>
 <script>
@@ -62,5 +62,5 @@
     element: document.getElementById("textarea")
   });
   editor.render();
-</script>
+</script> -->
 {% endblock content %}
