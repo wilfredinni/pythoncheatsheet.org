@@ -277,6 +277,16 @@
   margin-bottom: 6rem;
 }
 
+.no-articles-dash {
+  margin-top: 23%;
+  margin-bottom: 23%;
+}
+
+.blog-no-posts {
+  margin-top: 12%;
+  margin-bottom: 12%;
+}
+
 @keyframes openModal {
   from {
     opacity: 0;

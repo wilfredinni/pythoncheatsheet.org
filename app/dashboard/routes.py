@@ -23,9 +23,10 @@ def overview():
     user = User.query.filter_by(username=current_user.username).first()
     my_posts = Post.query.filter_by(
         user_id=current_user.id).order_by(Post.timestamp.desc())
+    posts = Post.query.filter_by(user_id=current_user.id).first()
     return render_template('dashboard/overview.html', title='Dashboard',
                            my_posts=my_posts, overview_active='is-active',
-                           user=user)
+                           user=user, post_list=posts)
 
 
 @bp.route('/add_user', methods=['GET', 'POST'])
