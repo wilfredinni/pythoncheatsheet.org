@@ -13,9 +13,16 @@
     {% endfor %}
   </section>
 
+  {% if blog_posts|length == 0 %}
+  <section class="section">
+    <h1 class="title is-1 has-text-centered">Nothing Yet 🙄</h1>
+    <p class="subtitle is-4 has-text-centered">Soon... =)</p>
+  </section>
+  {% endif %}
+
 
   <!-- pagination -->
-  {% if blog_posts|length >= 6%}
+  {% if blog_posts|length >= 6 %}
   <div class="container column is-7">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
 
