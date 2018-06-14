@@ -96,7 +96,10 @@ def author(username):
         about_me = markdown(user.about_me)
     else:
         about_me = ""
-    author = 'About {}'.format(user.username)
+    if user.screen_name:
+        author = 'About {}'.format(user.screen_name)
+    else:
+        author = 'About {}'.format(user.username)
     my_posts = Post.query.filter_by(
         user_id=user.id).order_by(Post.timestamp.desc())
     return render_template('main/author.html', user=user, my_posts=my_posts,
