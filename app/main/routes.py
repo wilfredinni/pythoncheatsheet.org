@@ -12,6 +12,7 @@ from app.main.froms import SearchForm
 @bp.before_app_request
 def before_request():
     g.search_form = SearchForm()
+    g.search_switch = current_app.config["SEARCH_SWITCH"]
 
 
 def markdown(text):

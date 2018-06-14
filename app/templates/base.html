@@ -59,11 +59,13 @@
         <!-- search icon to open the modal only in home -->
         <a id="search-icon" class="navbar-item" href="javascript:void(0);" title="Search">
           <span class="icon ">
-            <i class="fas fa-paper-plane"></i>
+            <i class="fas fa-search"></i>
           </span>
         </a>
         {% endif %}
-
+        <!-- depending on SEARCH_SWITCH variable in settings.json (ON or OFF), the search 
+        bar will show or not -->
+        {% if g.search_switch == "ON" %}
         <!-- search bar -->
         <form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">
           <div class="navbar-item search-form">
@@ -76,6 +78,7 @@
             </div>
           </div>
         </form>
+        {% endif %}
 
         <!-- logout and the search notice only for home and anonymous -->
         {% if current_user.is_anonymous %} {% if title == "Home" %}

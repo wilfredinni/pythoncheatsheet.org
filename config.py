@@ -10,11 +10,19 @@ with open("settings.json", 'r') as s:
 
 
 class Config(object):
-    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
+    # database
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    # elasticsearch
+    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
+    SEARCH_SWITCH = settings.get('SEARCH_SWITCH')  # ON or OFF
+
+    # wtforms key
     SECRET_KEY = settings.get('SECRET_KEY')
+
+    # mail settings
     MAIL_SERVER = settings.get('MAIL_SERVER')
     MAIL_PORT = settings.get('MAIL_PORT') or 25
     MAIL_USE_TLS = settings.get('MAIL_USE_TLS') is not None
@@ -22,7 +30,8 @@ class Config(object):
     MAIL_PASSWORD = settings.get('MAIL_PASSWORD')
     ADMINS = [settings.get('ADMINS')]
     POSTS_PER_PAGE = settings.get('POSTS_PER_PAGE')
-    # pages
+
+    # markdown pages
     INDEX_URL = settings.get('INDEX_PYSHEET')
     PYSHEET_URL = settings.get('PYSHEET')
     CONTRIBUTING = settings.get('CONTRIBUTING')
