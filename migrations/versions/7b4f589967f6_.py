@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: fcee3d97d7ed
+Revision ID: 7b4f589967f6
 Revises: 
-Create Date: 2018-05-16 21:57:00.534192
+Create Date: 2018-06-13 19:52:39.284238
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'fcee3d97d7ed'
+revision = '7b4f589967f6'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -30,6 +30,7 @@ def upgrade():
     sa.Column('email', sa.String(length=120), nullable=True),
     sa.Column('password_hash', sa.String(length=128), nullable=True),
     sa.Column('last_seen', sa.DateTime(), nullable=True),
+    sa.Column('is_administrator', sa.Boolean(), nullable=True),
     sa.Column('about_me', sa.String(length=280), nullable=True),
     sa.Column('screen_name', sa.String(length=64), nullable=True),
     sa.Column('website', sa.String(length=280), nullable=True),
@@ -39,6 +40,7 @@ def upgrade():
     )
     op.create_index(op.f('ix_user_email'), 'user', ['email'], unique=True)
     op.create_index(op.f('ix_user_github'), 'user', ['github'], unique=False)
+    op.create_index(op.f('ix_user_is_administrator'), 'user', ['is_administrator'], unique=False)
     op.create_index(op.f('ix_user_screen_name'), 'user', ['screen_name'], unique=False)
     op.create_index(op.f('ix_user_twitter'), 'user', ['twitter'], unique=False)
     op.create_index(op.f('ix_user_username'), 'user', ['username'], unique=True)
@@ -46,7 +48,7 @@ def upgrade():
     op.create_table('post',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=280), nullable=True),
-    sa.Column('body', sa.String(), nullable=True),
+    sa.Column('body', sa.String(length=8000), nullable=True),
     sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
@@ -73,6 +75,7 @@ def downgrade():
     op.drop_index(op.f('ix_user_username'), table_name='user')
     op.drop_index(op.f('ix_user_twitter'), table_name='user')
     op.drop_index(op.f('ix_user_screen_name'), table_name='user')
+    op.drop_index(op.f('ix_user_is_administrator'), table_name='user')
     op.drop_index(op.f('ix_user_github'), table_name='user')
     op.drop_index(op.f('ix_user_email'), table_name='user')
     op.drop_table('user')
