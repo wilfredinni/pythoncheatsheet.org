@@ -84,7 +84,7 @@
         <div class="field">
           <label>{{ form.about_me.label }}</label>
           <div class="control">
-            {{ form.about_me(class="", rows="10") }}
+            {{ form.about_me(id="textarea", class="textarea-field", type="textarea", rows=5, placeholder="Markdown Enabled") }}
           </div>
         </div>
 
@@ -100,14 +100,4 @@
     </div>
   </div>
 </section>
-<!-- markdown editor -->
-<link rel="stylesheet" href="http://lab.lepture.com/editor/editor.css" />
-<script type="text/javascript" src="http://lab.lepture.com/editor/editor.js"></script>
-<script type="text/javascript" src="http://lab.lepture.com/editor/marked.js"></script>
-<script>
-  var editor = new Editor({
-    element: document.getElementById("textarea")
-  });
-  editor.render();
-</script>
 {% endblock content %}
