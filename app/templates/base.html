@@ -27,10 +27,18 @@
 
     <!-- brand -->
     <div class="navbar-brand">
-      <a class="navbar-item hidden-logo" href="{{ url_for('main.index') }}">
+
+      <!-- this brand shows in mobil -->
+      <a class="navbar-item mobil-logo" href="{{ url_for('main.index') }}">
+        <img src="https://image.flaticon.com/icons/svg/874/874275.svg" width="112" height="28">
+        <spam class="logo-text">Python Cheat Sheet</spam>
+      </a>
+      <!-- this brand shows on desktop -->
+      <a class="navbar-item desktop-logo" href="{{ url_for('main.index') }}">
         <img src="https://image.flaticon.com/icons/svg/874/874275.svg" width="112" height="28">
       </a>
-      <p class="p-sheet-nav navbar-item">Python Cheat Sheet</p>
+
+      <!-- <a class="navbar-item">Python Cheat Sheet</a> -->
       <a role="button" class="navbar-burger burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>

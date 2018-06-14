@@ -170,10 +170,6 @@
   margin-right: auto;
 }
 
-.p-sheet-nav {
-  display: none !important;
-}
-
 .navbar-burger {
   color: #ffffff;
 }
@@ -261,10 +257,6 @@
 }
 
 .underline-results {
-  /* border-bottom: solid;
-  border-width: 1px;
-  border-color: #cccccc; */
-  /* margin-top: 1rem; */
   margin-bottom: 3rem !important;
 }
 
@@ -287,6 +279,14 @@
   margin-bottom: 12%;
 }
 
+.mobil-logo {
+  display: none;
+}
+
+.logo-text {
+  font-weight: 600;
+}
+
 @keyframes openModal {
   from {
     opacity: 0;
@@ -306,7 +306,10 @@
   .hide-ribbon {
     display: none;
   }
-  .hidden-logo {
+  .mobil-logo {
+    display: flex !important;
+  }
+  .desktop-logo {
     display: none !important;
   }
   .navbar-brand {
