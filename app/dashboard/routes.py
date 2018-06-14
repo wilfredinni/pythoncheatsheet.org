@@ -165,10 +165,11 @@ def edit_post(id):
 @bp.route('/manage_articles')
 @login_required
 def manage_articles():
+    # all posts ordered by date
     posts = Post.query.filter_by().order_by(Post.timestamp.desc())
     return render_template('dashboard/overview.html',
                            title='Dashboard', my_posts=posts,
-                           articles_active='is-active')
+                           articles_active='is-active', post_list=posts)
 
 
 @bp.route('/delete_user/<id>', methods=['POST'])
