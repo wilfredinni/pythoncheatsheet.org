@@ -78,15 +78,16 @@ def article(id):
 def contribute():
     contribute_r = requests.get(current_app.config['CONTRIBUTING'])
     contribute = markdown(contribute_r.text)
-    return render_template('main/contribute.html', title="Contribute",
-                           contribute_md=contribute)
+    return render_template('main/md_pages.html', title="Contribute",
+                           md_render=contribute)
 
 
 @bp.route('/about')
 def about():
     about_r = requests.get(current_app.config['ABOUT'])
     about = markdown(about_r.text)
-    return render_template('main/about.html', title='About', about_md=about)
+    return render_template('main/md_pages.html', title='About',
+                           md_render=about)
 
 
 @bp.route('/author/<username>')
