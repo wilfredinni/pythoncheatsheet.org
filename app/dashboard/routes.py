@@ -158,7 +158,7 @@ def edit_post(id):
         mo = tag_regex.search(str(post.tag.all()))
         form.tags.data = mo.group(1)
 
-    return render_template('dashboard/edit_post.html', post=post, form=form,
+    return render_template('dashboard/new_post.html', post=post, form=form,
                            title='Edit Post', overview_active='is-active')
 
 
