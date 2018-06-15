@@ -143,6 +143,11 @@ class Tag(db.Model):
         return '{}'.format(self.name)
 
 
+class PinedMsg(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    home_msg = db.Column(db.String(4000))
+
+
 @login.user_loader
 def load_user(id):
     """

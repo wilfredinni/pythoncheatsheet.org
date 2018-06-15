@@ -11,8 +11,8 @@ class RegistrationForm(FlaskForm):
                            DataRequired(), Length(min=2)])
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
-    password2 = PasswordField(
-        'Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    password2 = PasswordField('Repeat Password', validators=[
+                              DataRequired(), EqualTo('password')])
     administrator = BooleanField('Administrator')
 
     def validate_username(self, username):
@@ -48,8 +48,13 @@ class EditProfileForm(FlaskForm):
 
 
 class PostForm(FlaskForm):
-    title = StringField(
-        'Title', validators=[DataRequired(), Length(min=1, max=280)])
-    post = TextAreaField(
-        'Post Content', validators=[DataRequired(), Length(min=140)])
+    title = StringField('Title', validators=[
+                        DataRequired(), Length(min=1, max=280)])
+    post = TextAreaField('Post Content', validators=[
+                         DataRequired(), Length(min=140)])
     tags = StringField('Tags', validators=[DataRequired(), Length(min=2)])
+
+
+class PinMsgForm(FlaskForm):
+    home_msg = TextAreaField('Home Message', validators=[
+        DataRequired(), Length(min=1, max=4000)])

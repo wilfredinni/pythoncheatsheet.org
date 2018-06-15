@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+<!--  -->
+{% block content %}
+<link rel="stylesheet" href={{ url_for( "static", filename="css/edit-pinned-msg.css" ) }}>
+<section class="section container">
+  <div class="columns">
+
+    <!-- dashboard menu -->
+    <div class="column is-one-quarter">
+      {% include 'dashboard/_dash_menu.html' %}
+    </div>
+
+    <!-- site configuration content -->
+    <div class="column">
+
+      <!-- home pinned post -->
+      <section>
+        <h1 class="subtitle is-4 config-title">Pinned Messages</h1>
+
+        <!-- pinned home msg -->
+        <form method="post">
+          {{ form.hidden_tag() }}
+          <div>
+            {{ form.home_msg(class="pinned-msg", type="textarea", rows=9, placeholder="Markdown Enabled") }}
+          </div>
+
+          <!-- update button -->
+          <div class="field">
+            <p class="control">
+              <button class="submit-button">
+                Update
+              </button>
+            </p>
+          </div>
+        </form>
+
+    </div>
+    </section>
+
+  </div>
+  </div>
+</section>
+{% endblock content %}

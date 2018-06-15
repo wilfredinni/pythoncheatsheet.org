@@ -52,18 +52,7 @@
       <div id="pysheetNotification" class="notification pin-notify is-hidden-mobile">
         <button id="pysheetCloseNotification" class="delete"></button>
         <div>
-          Anyone can forget how to make
-          <a href="#Making-Your-Own-Character-Classes">character classes for a regex</a>. Sometimes I even forget how to
-          <a href="#Getting-Sublists-with-Slices">slice a list</a> or do a
-          <a href="#Using-for-Loops-with-Lists">for loop</a> 🙄. This cheatsheet tries to provide a basic reference for beginner and advanced 🐍 developers. We
-          want to lower the entry barrier for newcomers and help veterans remember old tricks.
-          <br>
-          <br>
-          <div>
-            Use
-            <strong>ctr/cmd+z</strong> to open the quick search. And don't forget, all
-            <a href="{{ url_for('main.contribute') }}">contributions</a> are welcome! ❤
-          </div>
+          {{ pinned_msg|safe }}
         </div>
       </div>
 

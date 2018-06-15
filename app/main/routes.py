@@ -1,7 +1,7 @@
 from flask import render_template, url_for, request, current_app, redirect
 from flask_login import login_required, current_user
 from app.main import bp
-from app.models import User, Post, Tag
+from app.models import User, Post, Tag, PinedMsg
 import requests
 import mistune
 import json
@@ -13,6 +13,7 @@ from app.main.froms import SearchForm
 def before_request():
     g.search_form = SearchForm()
     g.search_switch = current_app.config["SEARCH_SWITCH"]
+    g.site_name = current_app.config["SITE_NAME"]
 
 
 def markdown(text):
@@ -31,8 +32,13 @@ def index():
 
     pysheet_r = requests.get(current_app.config['PYSHEET_URL'])
     pysheet = markdown(pysheet_r.text)
+
+    pinned_msg = PinedMsg.query.filter_by(id=1).first()
+    if pinned_msg:
+        pinned_msg = markdown(pinned_msg.home_msg)
+
     return render_template('main/index.html', title='Home',
-                           index=index, pysheet=pysheet)
+                           index=index, pysheet=pysheet, pinned_msg=pinned_msg)
 
 
 @bp.route('/blog')

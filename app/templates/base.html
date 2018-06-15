@@ -3,20 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120820376-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-120820376-1');
-  </script>
-
-  <title>{{ title }} - Python Cheatsheet</title>
+  <title>{{ title }} - {{ g.site_name }}</title>
   <!-- bulma -->
   <link rel="stylesheet" href={{ url_for( "static", filename="css/bulma.min.css" ) }}>
   <!-- font awesome -->

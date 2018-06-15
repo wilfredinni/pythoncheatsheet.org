@@ -15,6 +15,9 @@ class Config(object):
         'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+    # site name
+    SITE_NAME = settings.get('SITE_NAME')
+
     # elasticsearch
     ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
     SEARCH_SWITCH = settings.get('SEARCH_SWITCH')  # ON or OFF

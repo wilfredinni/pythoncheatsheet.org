@@ -1,8 +1,9 @@
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import login_required, current_user
 from app.dashboard import bp
-from app.dashboard.forms import RegistrationForm, EditProfileForm, PostForm
-from app.models import User, Post, Tag
+from app.dashboard.forms import RegistrationForm, EditProfileForm, PostForm, \
+    PinMsgForm
+from app.models import User, Post, Tag, PinedMsg
 from app import db
 import re
 from datetime import datetime
@@ -160,6 +161,28 @@ def edit_post(id):
 
     return render_template('dashboard/new_post.html', post=post, form=form,
                            title='Edit Post', overview_active='is-active')
+
+
+@bp.route('/site_configuration', methods=['GET', 'POST'])
+@login_required
+def site_configuration():
+    form = PinMsgForm()
+    msg = PinedMsg.query.filter_by(id=1).first()
+    if form.validate_on_submit():
+        if msg:
+            msg.home_msg = form.home_msg.data
+        else:
+            msg = PinedMsg(home_msg=form.home_msg.data)
+            db.session.add(msg)
+        db.session.commit()
+        return redirect(url_for('dashboard.site_configuration'))
+    elif request.method == 'GET':
+        if msg:
+            form.home_msg.data = msg.home_msg
+
+    return render_template('dashboard/site_configuration.html',
+                           title='Site Configuration', form=form,
+                           config_active='is-active')
 
 
 @bp.route('/manage_articles')
