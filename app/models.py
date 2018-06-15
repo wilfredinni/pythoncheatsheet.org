@@ -145,7 +145,7 @@ class Tag(db.Model):
 
 class PinedMsg(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    home_msg = db.Column(db.String(4000), index=True, unique=True)
+    home_msg = db.Column(db.String(3000), index=True, unique=True)
 
 
 @login.user_loader
