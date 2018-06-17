@@ -1,5 +1,6 @@
 .config-title {
     border-bottom: solid 1px #cccccc;
+    cursor: pointer;
 }
 
 .pinned-msg {
@@ -17,4 +18,11 @@
     text-decoration: none;
     background: #fff;
     border-radius: 4px;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.pin-msg-home {
+    display: none;
+    cursor: pointer;
 }

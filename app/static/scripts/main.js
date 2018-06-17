@@ -26,11 +26,13 @@ let closeNotificationButton = document.getElementById("pysheetCloseNotification"
 let mainNotification = document.getElementById("mainNotification");
 let closeMainNotification = document.getElementById("closeMainNotification");
 
-// arrows functions to open and close the modals
+// functions to open and close the modals
 const openModal = () => deleteModal.classList.add("is-active");
 const closeModal = () => deleteModal.classList.remove("is-active");
 const closePysheetNoti = () => notification.style.display = "none";
 const closeMainNoti = () => mainNotification.style.display = "none";
+
+// const showHidePinMsg = () => pinMsgContent.style.display = "block";
 
 // listen for close button in the pysheet
 if (closeNotificationButton) {

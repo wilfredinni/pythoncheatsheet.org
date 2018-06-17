@@ -2,6 +2,7 @@
 <!--  -->
 {% block content %}
 <link rel="stylesheet" href={{ url_for( "static", filename="css/edit-pinned-msg.css" ) }}>
+<link rel="stylesheet" href={{ url_for( "static", filename="css/switch.css" ) }}>
 <section class="section container">
   <div class="columns">
 
@@ -15,29 +16,40 @@
 
       <!-- home pinned post -->
       <section>
-        <h1 class="subtitle is-4 config-title">Pinned Messages</h1>
+        <h1 id="pinMsgTitle" class="subtitle is-3 config-title">Pinned Messages</h1>
 
         <!-- pinned home msg -->
-        <form method="post">
-          {{ form.hidden_tag() }}
-          <div>
-            {{ form.home_msg(class="pinned-msg", type="textarea", rows=9, placeholder="Markdown Enabled") }}
+        <div id="pinMsgContent" class="pin-msg-home">
+          <div class="level">
+            <h1 class="level-left">Home Message</h1>
+            <!-- Rounded switch -->
+            <label class="switch level-right">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
           </div>
 
-          <!-- update button -->
-          <div class="field">
-            <p class="control">
-              <button class="submit-button">
-                Update
-              </button>
-            </p>
-          </div>
-        </form>
+          <!-- form pinned post -->
+          <form method="post">
+            {{ form.hidden_tag() }}
+            <div>
+              {{ form.home_msg(class="textarea", type="textarea", rows=9, placeholder="Markdown Enabled") }}
+            </div>
+
+            <!-- update button -->
+            <div class="field level-left">
+              <p class="control">
+                <button class="submit-button">
+                  Update
+                </button>
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
 
     </div>
-    </section>
-
-  </div>
   </div>
 </section>
+<script src={{ url_for( "static", filename="scripts/dashboard.js" ) }} charset="utf-8 "></script>
 {% endblock content %}

@@ -59,7 +59,7 @@
           <div class="level">
 
             <!-- tags -->
-            <div class="level-item tags-div">
+            <div class="level-left">
               <p>Tags: {% for tag in post.tag %}
                 <!--  -->
                 <a href="{{ url_for('main.tag', tag=tag.name) }}">
@@ -73,7 +73,7 @@
             </div>
 
             <!-- share -->
-            <div class="level-item share-div">
+            <div class="level-right">
 
               <!-- twitter -->
               <a target="blank" href="https://twitter.com/intent/tweet?status={{title}}+{{ url_for('main.article',id=post.id, _external=True) }}"

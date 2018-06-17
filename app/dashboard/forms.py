@@ -58,3 +58,4 @@ class PostForm(FlaskForm):
 class PinMsgForm(FlaskForm):
     home_msg = TextAreaField('Home Message', validators=[
         DataRequired(), Length(min=1, max=4000)])
+    home_enable = BooleanField('Enable')
