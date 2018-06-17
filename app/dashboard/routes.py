@@ -177,6 +177,7 @@ def site_configuration():
                            home_enable=form.home_enable.data)
             db.session.add(msg)
         db.session.commit()
+        flash('The Pinned message has ben Updated.')
         return redirect(url_for('dashboard.site_configuration'))
     # check if there is a msg created and get it
     elif request.method == 'GET':

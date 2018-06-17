@@ -11,7 +11,7 @@ from app.auth.forms import LoginForm, RegistrationForm,\
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
-    # prevent the logged user to navigates to the /login URL
+    # prevent the logged user to navigate to "/login"
     if current_user.is_authenticated:
         return redirect(url_for('dashboard.overview'))
     form = LoginForm()
@@ -38,11 +38,14 @@ def register():
         return redirect(url_for('main.index'))
 
     users = User.query.all()
+    # if thera are useres, redirect to the index
+    # (only the first user can use this form)
     if users:
         flash('To register, send an email to carlos.w.montecinos@gmail.com')
         return redirect(url_for('main.index'))
     form = RegistrationForm()
     if form.validate_on_submit():
+        # register as adminsitrator
         user = User(username=form.username.data, email=form.email.data,
                     is_administrator=True)
         user.set_password(form.password.data)
@@ -55,6 +58,7 @@ def register():
 
 @bp.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
+    # prevent the logged user to see this page
     if current_user.is_authenticated:
         return redirect(url_for('dashboard.overview'))
     form = ResetPasswordRequestForm()
