@@ -20,17 +20,27 @@
 
         <!-- pinned home msg -->
         <div id="pinMsgContent" class="pin-msg-home">
-          <div class="level">
-            <h1 class="level-left">Home Message</h1>
-            <!-- Rounded switch -->
-            <label class="switch level-right">
-              <input type="checkbox">
-              <span class="slider round"></span>
-            </label>
-          </div>
+
 
           <!-- form pinned post -->
           <form method="post">
+            <div class="level">
+              <h1 class="level-left">Home Message</h1>
+              <!-- enable switch -->
+              <label class="switch level-right">
+                {% if enabled %}
+                <!--  -->
+                {{ form.home_enable(class="checkbox", checked=True) }}
+                <!--  -->
+                {% else %}
+                <!--  -->
+                {{ form.home_enable(class="checkbox") }}
+                <!--  -->
+                {% endif %}
+                <span class="slider round"></span>
+              </label>
+            </div>
+
             {{ form.hidden_tag() }}
             <div>
               {{ form.home_msg(class="textarea", type="textarea", rows=9, placeholder="Markdown Enabled") }}

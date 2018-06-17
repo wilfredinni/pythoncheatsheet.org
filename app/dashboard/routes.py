@@ -171,18 +171,25 @@ def site_configuration():
     if form.validate_on_submit():
         if msg:
             msg.home_msg = form.home_msg.data
+            msg.home_enable = form.home_enable.data
         else:
-            msg = PinedMsg(home_msg=form.home_msg.data)
+            msg = PinedMsg(home_msg=form.home_msg.data,
+                           home_enable=form.home_enable.data)
             db.session.add(msg)
         db.session.commit()
         return redirect(url_for('dashboard.site_configuration'))
+    # check if there is a msg created and get it
     elif request.method == 'GET':
         if msg:
             form.home_msg.data = msg.home_msg
+        if msg.home_enable:
+            enabled = True
+        else:
+            enabled = False
 
     return render_template('dashboard/site_configuration.html',
                            title='Site Configuration', form=form,
-                           config_active='is-active')
+                           config_active='is-active', enabled=enabled)
 
 
 @bp.route('/manage_articles')

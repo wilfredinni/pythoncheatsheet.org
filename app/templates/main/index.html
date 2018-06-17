@@ -49,12 +49,18 @@
     <div class="column is-9 cheat">
 
       <!-- pinned notification -->
+      {% if pinned_msg.home_msg %}
+      <!--  -->
+      {% if pinned_msg.home_enable %}
       <div id="pysheetNotification" class="notification pin-notify is-hidden-mobile">
         <button id="pysheetCloseNotification" class="delete"></button>
         <div>
-          {{ pinned_msg|safe }}
+          {{ g.md(pinned_msg.home_msg)|safe }}
         </div>
       </div>
+      {% endif %}
+      <!--  -->
+      {% endif %}
 
       <!-- pysheet content -->
       <div>

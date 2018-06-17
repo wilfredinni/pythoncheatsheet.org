@@ -14,6 +14,7 @@ def before_request():
     g.search_form = SearchForm()
     g.search_switch = current_app.config["SEARCH_SWITCH"]
     g.site_name = current_app.config["SITE_NAME"]
+    g.md = mistune.Markdown()
 
 
 def markdown(text):
@@ -33,18 +34,16 @@ def index():
     pysheet_r = requests.get(current_app.config['PYSHEET_URL'])
     pysheet = markdown(pysheet_r.text)
 
+    # get the pinned msg and check if its enabled
     pinned_msg = PinedMsg.query.filter_by(id=1).first()
-    if pinned_msg:
-        pinned_msg = markdown(pinned_msg.home_msg)
 
     return render_template('main/index.html', title='Home',
-                           index=index, pysheet=pysheet, pinned_msg=pinned_msg)
+                           index=index, pysheet=pysheet,
+                           pinned_msg=pinned_msg)
 
 
 @bp.route('/blog')
 def blog():
-    # pass the markdown converter to the template (only here)
-    md = mistune.Markdown()
     # pagination
     page = request.args.get('page', 1, type=int)
     all_posts = Post.query.order_by(Post.timestamp.desc()).paginate(
@@ -58,17 +57,16 @@ def blog():
     prev_url = url_for('main.blog', page=all_posts.prev_num) \
         if all_posts.has_prev else None
     return render_template('main/blog.html', title='Blog', all_posts=all_posts,
-                           next_url=next_url, prev_url=prev_url, md=md,
+                           next_url=next_url, prev_url=prev_url,
                            blog_posts=posts)
 
 
 @bp.route('/blog/tag/<tag>')
 def tag(tag):
-    md = mistune.Markdown()
     tag = Tag.query.filter_by(name=tag).first()
     posts = tag.posts.order_by(Post.timestamp.desc())
     return render_template('main/tag_articles.html', title='Tag', tag=tag,
-                           posts=posts, md=md)
+                           posts=posts)
 
 
 @bp.route('/article/<id>')
