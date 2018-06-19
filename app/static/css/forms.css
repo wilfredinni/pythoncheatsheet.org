@@ -1,40 +1,39 @@
 .text-field {
-    width: 100%;
-    height: 3.1rem;
     border: none;
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
     color: #2e4453;
+    font-size: 2.5rem;
+    height: 3.1rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
 }
 
 .textarea-field {
-    width: 100%;
     border: none;
-    margin-bottom: 1.5rem;
     color: #3d596d;
+    margin-bottom: 1.5rem;
+    width: 100%;
 }
 
 .tags-field {
+    border: none;
+    color: #3d596d;
     height: 2.25rem;
     width: 100%;
-    color: #3d596d;
-    /* margin-bottom: 1.5rem; */
-    border: none;
 }
 
 .submit-button {
+    background: #fff;
+    border: solid #3d596d 1px;
+    border-radius: 4px;
     color: #3d596d;
     padding: 10px 20px 10px 20px;
-    border: solid #3d596d 1px;
     text-decoration: none;
-    background: #fff;
-    border-radius: 4px;
 }
 
 .submit-button:hover {
     background: #f5f5f5;
-    text-decoration: none;
     cursor: pointer;
+    text-decoration: none;
 }
 
 ::placeholder {
@@ -43,42 +42,38 @@
 
 .text-field-profile {
     border: none;
-    border-bottom: solid;
-    border-width: 1px;
-    border-color: #dde0e2;
-    width: 100%;
-    height: 2.25rem;
+    border-bottom: solid 1px #dde0e2;
     color: #3d596d;
     font-size: 1.7rem;
+    height: 2.25rem;
     margin-bottom: 1.5rem;
+    width: 100%;
 }
 
 .text-field-web {
     border: none;
-    border-bottom: solid;
-    border-width: 1px;
-    border-color: #dde0e2;
-    width: 100%;
-    height: 2.25rem;
+    border-bottom: solid 1px #dde0e2;
     color: #3d596d;
     font-size: 1.25rem;
+    height: 2.25rem;
     margin-bottom: 1.5rem;
+    width: 100%;
 }
 
 .text-field-addUser {
-    width: 100%;
-    height: 2.5rem;
     border: none;
+    border-bottom: solid 1px;
+    color: #2e4453;
     font-size: 1.2rem;
+    height: 2.5rem;
     margin-bottom: 1.5rem;
     margin-left: 2rem;
-    color: #2e4453;
-    border-bottom: solid 1px;
+    width: 100%;
 }
 
 .form-checkbox {
-    margin-left: 2rem;
     margin-bottom: 1.5rem;
+    margin-left: 2rem;
 }
 
 .addUser-form {

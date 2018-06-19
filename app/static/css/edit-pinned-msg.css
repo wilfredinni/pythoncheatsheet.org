@@ -6,23 +6,18 @@
 .pinned-msg {
     background: transparent;
     border: none;
-    width: 100%;
-    height: auto;
     color: #4a4a4a;
+    height: auto;
+    width: 100%;
 }
 
 .submit-button {
-    color: #3d596d;
-    padding: 10px 20px 10px 20px;
-    border: solid #3d596d 1px;
-    text-decoration: none;
     background: #fff;
+    border: solid #3d596d 1px;
     border-radius: 4px;
-    margin-top: 1rem;
+    color: #3d596d;
     margin-bottom: 1.5rem;
-}
-
-.pin-msg-home {
-    display: none;
-    cursor: pointer;
+    margin-top: 1rem;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
 }

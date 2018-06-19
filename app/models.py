@@ -136,8 +136,18 @@ class Tag(db.Model):
         post.tag.append(ex_tag)
 
     @staticmethod
-    def remove_tag():
-        pass
+    def add_or_create_tags(post_tags, post):
+        for tag in post_tags:
+            # check if the tag exists and append it to the new post
+            if Tag.query.filter_by(name=tag).first():
+                Tag.add_existing_tag(post=post,
+                                     ex_tag=Tag.query.filter_by
+                                     (name=tag).first())
+            else:
+                # else, create it
+                new_tag = Tag(name=tag)
+                db.session.add(new_tag)
+                post.tag.append(new_tag)
 
     def __repr__(self):
         return '{}'.format(self.name)

@@ -24,6 +24,8 @@ def overview():
     user = User.query.filter_by(username=current_user.username).first()
     my_posts = Post.query.filter_by(
         user_id=current_user.id).order_by(Post.timestamp.desc())
+    # cant use my post to check if there are articles or not,
+    # have to use this query:
     posts = Post.query.filter_by(user_id=current_user.id).first()
     return render_template('dashboard/overview.html', title='Dashboard',
                            my_posts=my_posts, overview_active='is-active',
@@ -35,6 +37,7 @@ def overview():
 def add_user():
     form = RegistrationForm()
     if form.validate_on_submit():
+        # if administrator check box is selected, create an administrator
         if form.administrator.data:
             user = User(username=form.username.data, email=form.email.data,
                         is_administrator=True)
@@ -96,15 +99,9 @@ def new_post():
                     title=form.title.data)
         # split the tags by the comas
         post_tags = form.tags.data.replace(' ', '').split(',')
-        for tag in post_tags:
-            if Tag.check_new_tag(tag):
-                # check if the tag exists and append it to the new post
-                Tag.add_existing_tag(post=post, ex_tag=Tag.check_new_tag(tag))
-            else:
-                # else, create it
-                new_tag = Tag(name=tag)
-                db.session.add(new_tag)
-                post.tag.append(new_tag)
+
+        # check if the tag exists to append it to the post. Else, create it
+        Tag.add_or_create_tags(post_tags, post)
         # add tag and post
         db.session.add(post)
         # commit to the db
