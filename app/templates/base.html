@@ -18,15 +18,15 @@
 
   <title>{{ title }} - {{ g.site_name }}</title>
   <!-- bulma -->
-  <link rel="stylesheet" href={{ url_for( "static", filename="css/bulma.min.css" ) }}>
+  <link rel="stylesheet" href={{ url_for( "static", filename="css/bulma.min.min.css" ) }}>
   <!-- font awesome -->
   <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
   <!-- moment.js -->
   {{ moment.include_jquery() }} {{ moment.include_moment() }}
   <!-- Highlight -->
-  <link rel="stylesheet" href={{ url_for( "static", filename="css/atom-one-dark.css" ) }}>
+  <link rel="stylesheet" href={{ url_for( "static", filename="css/atom-one-dark.min.css" ) }}>
   <!-- main -->
-  <link rel="stylesheet" href={{ url_for( "static", filename="css/main.css" ) }}>
+  <link rel="stylesheet" href={{ url_for( "static", filename="css/main.min.css" ) }}>
 </head>
 
 <body id="body" class="has-navbar-fixed-top">
@@ -186,7 +186,7 @@
   <!-- modal -->
   <script src={{ url_for( "static", filename="scripts/main.js" ) }} charset="utf-8 "></script>
   <!-- Highlight -->
-  <script src={{ url_for( "static", filename="scripts/highlight.pack.js" ) }}></script>
+  <script src={{ url_for( "static", filename="scripts/highlight.pack.min.js" ) }}></script>
   <script>
     hljs.initHighlightingOnLoad();
   </script>
