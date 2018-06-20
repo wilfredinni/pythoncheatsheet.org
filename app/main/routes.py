@@ -126,3 +126,8 @@ def search():
 @bp.route('/sitemap.xml')
 def sitemap():
     return send_from_directory('static', filename='sitemap.xml')
+
+
+@bp.route('/robot.txt')
+def robot():
+    return send_from_directory('static', filename='robot.txt')
