@@ -1,0 +1,10 @@
+User-Agent: *
+Disallow: 
+Disallow: /dashboard
+Allow: /blog
+Allow: /index
+Allow: /about
+Allow: /contribute
+Disallow: /auth
+
+Sitemap: https://www.pythoncheatsheet.org/sitemap.xml

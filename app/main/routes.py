@@ -1,10 +1,9 @@
-from flask import render_template, url_for, request, current_app, redirect
-from flask_login import login_required, current_user
+from flask import render_template, url_for, request, current_app, redirect, \
+    send_from_directory
 from app.main import bp
 from app.models import User, Post, Tag, PinedMsg
 import requests
 import mistune
-import json
 from flask import g
 from app.main.froms import SearchForm
 
@@ -122,3 +121,8 @@ def search():
 
     return render_template('main/search.html', title='Search', posts=posts,
                            total=total, md=md)
+
+
+@bp.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('static', filename='sitemap.xml')
