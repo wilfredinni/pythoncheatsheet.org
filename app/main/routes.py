@@ -128,6 +128,6 @@ def sitemap():
     return send_from_directory('static', filename='sitemap.xml')
 
 
-@bp.route('/robot.txt')
+@bp.route('/robots.txt')
 def robot():
-    return send_from_directory('static', filename='robot.txt')
+    return send_from_directory('static', filename='robots.txt')
