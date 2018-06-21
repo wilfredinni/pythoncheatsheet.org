@@ -16,7 +16,6 @@
  /* The slider */
 
  .slider {
-     -webkit-transition: .4s;
      background-color: #ccc;
      bottom: 0;
      cursor: pointer;
@@ -24,19 +23,20 @@
      position: absolute;
      right: 0;
      top: 0;
+     -webkit-transition: .4s;
      transition: .4s;
  }
 
  .slider:before {
-     -webkit-transition: .4s;
      background-color: white;
      bottom: 4px;
      content: "";
      height: 1rem;
      left: 4px;
-     position: absolute;
-     transition: .4s;
      width: 1rem;
+     position: absolute;
+     -webkit-transition: .4s;
+     transition: .4s;
  }
 
  input:checked+.slider {

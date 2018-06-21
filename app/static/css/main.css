@@ -15,8 +15,6 @@
 }
 
 .material-scrolltop {
-  animation-duration: 1s;
-  animation: openModal;
   background: #ffdd57;
   border-radius: 50%;
   border: none;
@@ -29,6 +27,8 @@
   position: fixed;
   right: 23px;
   width: 40px;
+  animation: openModal;
+  animation-duration: 1s;
 }
 
 .material-scrolltop:hover {
@@ -51,13 +51,13 @@
 }
 
 .search-content {
-  animation-duration: 0.3s;
-  animation: openModal;
   background: white;
   border-radius: 5px;
   border: solid 1px #dcdcdc;
   margin: 60px auto;
   width: 50%;
+  animation: openModal;
+  animation-duration: 0.3s;
 }
 
 .search-bar {
@@ -109,7 +109,6 @@
 }
 
 .search-field {
-  -webkit-transition: width 0.25s ease, background 0.25s ease;
   background-color: #164fac;
   border-radius: 3px;
   border: none;
@@ -118,8 +117,9 @@
   height: 37px;
   padding: 0 0 0 34px;
   position: relative;
-  transition: width 0.25s ease, background 0.25s ease;
   width: 200px;
+  -webkit-transition: width 0.25s ease, background 0.25s ease;
+  transition: width 0.25s ease, background 0.25s ease;
 }
 
 .search-field:hover {
