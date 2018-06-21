@@ -4,7 +4,7 @@
 <link rel="stylesheet" href={{ url_for( "static", filename="css/cheatsheet.min.css" ) }}>
 <section class="section container column is-8">
     <div>
-        {{ md_render|safe }}
+        {{ g.md(md_render)|safe }}
     </div>
 </section>
 {% endblock content %}

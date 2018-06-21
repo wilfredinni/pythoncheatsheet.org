@@ -56,7 +56,7 @@
   <!-- resumé -->
   <section class="content">
     {% if user.about_me %}
-    <p>{{ about_me | safe }}</p>
+    <p>{{ g.md(about_me)|safe }}</p>
     {% endif %}
     <!--  -->
     {% if user == current_user %}

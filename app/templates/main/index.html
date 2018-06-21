@@ -42,7 +42,8 @@
     <!-- index -->
     <div id="index" class="column is-one-quarte ">
       <h2 class="index">Index</h2>
-      {{ index|safe }}
+      <!-- g.md from before_request -->
+      {{ g.md(index)|safe }}
     </div>
 
     <!-- pysheet -->
@@ -64,7 +65,8 @@
 
       <!-- pysheet content -->
       <div>
-        {{ pysheet|safe }}
+        <!-- g.md from before_request -->
+        {{ g.md(pysheet)|safe }}
       </div>
     </div>
   </div>

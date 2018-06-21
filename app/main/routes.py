@@ -16,22 +16,12 @@ def before_request():
     g.md = mistune.Markdown()
 
 
-def markdown(text):
-    '''
-    parse markdown to html
-    '''
-    md = mistune.Markdown()
-    return md(text)
-
-
 @bp.route('/')
 @bp.route('/index')
 def index():
-    index_r = requests.get(current_app.config['INDEX_URL'])
-    index = markdown(index_r.text)
-
-    pysheet_r = requests.get(current_app.config['PYSHEET_URL'])
-    pysheet = markdown(pysheet_r.text)
+    # get the index and the cheatsheet form the repository
+    index = requests.get(current_app.config['INDEX_URL']).text
+    pysheet = requests.get(current_app.config['PYSHEET_URL']).text
 
     # get the pinned msg and check if its enabled
     pinned_msg = PinedMsg.query.filter_by(id=1).first()
@@ -72,7 +62,7 @@ def tag(tag):
 def article(id):
     post = Post.query.filter_by(id=id).first_or_404()
     # parse the markdown to html
-    body = markdown(post.body)
+    body = post.body
     return render_template('main/article.html', post_body=body, post=post,
                            title=post.title)
 
@@ -80,7 +70,7 @@ def article(id):
 @bp.route('/contribute')
 def contribute():
     contribute_r = requests.get(current_app.config['CONTRIBUTING'])
-    contribute = markdown(contribute_r.text)
+    contribute = contribute_r.text
     return render_template('main/md_pages.html', title="Contribute",
                            md_render=contribute)
 
@@ -88,7 +78,7 @@ def contribute():
 @bp.route('/about')
 def about():
     about_r = requests.get(current_app.config['ABOUT'])
-    about = markdown(about_r.text)
+    about = about_r.text
     return render_template('main/md_pages.html', title='About',
                            md_render=about)
 
@@ -97,7 +87,7 @@ def about():
 def author(username):
     user = User.query.filter_by(username=username).first_or_404()
     if user.about_me:
-        about_me = markdown(user.about_me)
+        about_me = user.about_me
     else:
         about_me = ""
     if user.screen_name:
@@ -114,13 +104,12 @@ def author(username):
 def search():
     if not g.search_form.validate():
         return redirect(url_for('main.blog'))
-    md = mistune.Markdown()
     page = request.args.get('page', 1, type=int)
     posts, total = Post.search(g.search_form.q.data, page,
                                current_app.config['POSTS_PER_PAGE'])
 
     return render_template('main/search.html', title='Search', posts=posts,
-                           total=total, md=md)
+                           total=total)
 
 
 @bp.route('/sitemap.xml')

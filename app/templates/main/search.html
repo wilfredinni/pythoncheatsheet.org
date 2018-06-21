@@ -29,7 +29,7 @@
             <a class="subtitle is-4 search-link " href="{{ url_for( 'main.article', id=post.id) }} ">{{ post.title }}</a>
 
             <!-- body -->
-            <p>{{ md(post.body) | truncate(300, False) | safe }}</p>
+            <p>{{ g.md(post.body) | truncate(300, False) | safe }}</p>
         </li>
         <hr>{% endfor %}
     </ul>
