@@ -18,7 +18,7 @@
   background: #ffdd57;
   border-radius: 50%;
   border: none;
-  bottom: 23px;
+  bottom: 80px;
   display: block;
   height: 40px;
   outline: none;
@@ -32,6 +32,30 @@
 }
 
 .material-scrolltop:hover {
+  background-color: #fad028;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.material-search {
+  background: #ffdd57;
+  border-radius: 50%;
+  border: none;
+  bottom: 23px;
+  display: block;
+  height: 40px;
+  outline: none;
+  overflow: hidden;
+  padding: 0;
+  position: fixed;
+  right: 23px;
+  width: 40px;
+  animation: openModal;
+  animation-duration: 1s;
+}
+
+.material-search:hover {
   background-color: #fad028;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
   cursor: pointer;
