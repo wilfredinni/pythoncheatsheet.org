@@ -146,19 +146,21 @@ class Tag(db.Model):
         for tag in post_tags:
             # check if the tag exists and append it to the new post
             if Tag.query.filter_by(name=tag).first():
-                Tag.add_existing_tag(post=post,
-                                     ex_tag=Tag.query.filter_by
-                                     (name=tag).first())
+                ex_tag = Tag.query.filter_by(name=tag).first()
+                Tag.add_existing_tag(post=post, ex_tag=ex_tag)
             else:
                 # else, create it
                 Tag.create_new_tag(tag, post)
 
     @staticmethod
     def check_deleted_tags(post, post_tags):
-        for tag in post.tag.all():
-            if str(tag) not in post_tags:
-                t = Tag.query.filter_by(name=str(tag)).first()
-                post.tag.remove(t)
+        # convert both list to sets and get the difference
+        post_tags = set(post_tags)
+        post_db_tags = set(post.tag.all())
+        deleted_tags = list(post_db_tags.difference(post_tags))
+        # remove the deleted tags from the post
+        for tag in deleted_tags:
+            post.tag.remove(tag)
 
     @staticmethod
     def update_tags(post_tags, post):
