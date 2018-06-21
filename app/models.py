@@ -136,6 +136,12 @@ class Tag(db.Model):
         post.tag.append(ex_tag)
 
     @staticmethod
+    def create_new_tag(tag, post):
+        new_tag = Tag(name=tag)
+        db.session.add(new_tag)
+        post.tag.append(new_tag)
+
+    @staticmethod
     def add_or_create_tags(post_tags, post):
         for tag in post_tags:
             # check if the tag exists and append it to the new post
@@ -145,9 +151,29 @@ class Tag(db.Model):
                                      (name=tag).first())
             else:
                 # else, create it
-                new_tag = Tag(name=tag)
-                db.session.add(new_tag)
-                post.tag.append(new_tag)
+                Tag.create_new_tag(tag, post)
+
+    @staticmethod
+    def check_deleted_tags(post, post_tags):
+        for tag in post.tag.all():
+            if str(tag) not in post_tags:
+                t = Tag.query.filter_by(name=str(tag)).first()
+                post.tag.remove(t)
+
+    @staticmethod
+    def update_tags(post_tags, post):
+        for tag in post_tags:
+            # check in the tags table
+            t = Tag.check_new_tag(tag)
+            if t:  # if there is a coincidence check if is appended to the post
+                if t in post.tag.all():  # if is appended, pass
+                    pass
+                else:  # else, append it
+                    Tag.add_existing_tag(
+                        post=post, ex_tag=Tag.check_new_tag(tag))
+            else:
+                # else, create it
+                Tag.create_new_tag(tag, post)
 
     def __repr__(self):
         return '{}'.format(self.name)

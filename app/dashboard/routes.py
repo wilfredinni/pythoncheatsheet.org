@@ -125,26 +125,11 @@ def edit_post(id):
         post_tags = form.tags.data.replace(' ', '').split(',')
 
         # check for deleted tags
-        for tag in post.tag.all():
-            if str(tag) not in post_tags:
-                t = Tag.query.filter_by(name=str(tag)).first()
-                post.tag.remove(t)
+        Tag.check_deleted_tags(post, post_tags)
 
         # check for existing tags
-        for tag in post_tags:
-            # check in the tags table
-            t = Tag.check_new_tag(tag)
-            if t:  # if there is a coincidence check if is appended to the post
-                if t in post.tag.all():  # if is appended, pass
-                    pass
-                else:  # else, append it
-                    Tag.add_existing_tag(
-                        post=post, ex_tag=Tag.check_new_tag(tag))
-            else:
-                # else, create it
-                new_tag = Tag(name=tag)
-                db.session.add(new_tag)
-                post.tag.append(new_tag)
+        Tag.update_tags(post_tags, post)
+
         db.session.commit()
         flash('Changes on "{}" have been saved.'.format(form.title.data))
         return redirect(url_for('dashboard.overview'))
