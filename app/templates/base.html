@@ -26,7 +26,7 @@
   <!-- font awesome -->
   <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
   <!-- moment.js -->
-  {{ moment.include_jquery() }} {{ moment.include_moment() }}
+  <!-- {{ moment.include_jquery() }} {{ moment.include_moment() }} -->
   <!-- Highlight -->
   <link rel="stylesheet" href={{ url_for( "static", filename="css/atom-one-dark.min.css" ) }}>
   <!-- main -->
@@ -96,7 +96,8 @@
         </form>
         {% endif %}
 
-        <a id="tag-icon" class="navbar-item" href="javascript:void(0);" title="Search">
+        <!-- tags -->
+        <a class="navbar-item" href="{{ url_for('main.tags') }}" title="tags">
           <span class="icon ">
             <i class="fas fa-tags"></i>
           </span>
@@ -107,9 +108,7 @@
         </a>
 
         <!-- logout and the search notice only for home and anonymous -->
-        {% if current_user.is_anonymous %} {% if title == "Home" %}
-        <!-- <p class="navbar-item no-p">ctr+z</p> -->
-        {% endif %} {% else %}
+        {% if current_user.is_authenticated %}
         <a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout ({{current_user.username}})</a>
         {% endif %}
       </div>
@@ -195,6 +194,7 @@
   <script>
     hljs.initHighlightingOnLoad();
   </script>
+
 </body>
 
 </html>

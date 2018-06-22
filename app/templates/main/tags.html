@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+<!--  -->
+{% block content %}
+<!--  -->
+<div class="section column container is-4">
+
+  {% if all_tags %}
+
+  <h1 class="subtitle is-3">
+    <span class="icon">
+      <i class="fas fa-tags"></i>
+    </span>
+    <span aria-hidden="true"></span>
+    _Tags:</h1>
+  <br> {% for tag in all_tags%}
+  <a href="{{ url_for('main.tag', tag=tag.name) }}">
+    <span class="tag is-warning is-large tag-page">{{ tag.name }}</span>
+  </a>
+  {% endfor %}
+  <br>
+  <br>
+  <!--  -->
+  {% else %}
+  <section class="section">
+    <h1 class="title is-1 has-text-centered blog-no-posts">Nothing Yet 🙄</h1>
+  </section>
+  {% endif %}
+</div>
+{% endblock content %}

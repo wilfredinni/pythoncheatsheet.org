@@ -51,8 +51,6 @@
   position: fixed;
   right: 23px;
   width: 40px;
-  animation: openModal;
-  animation-duration: 1s;
 }
 
 .material-search:hover {
@@ -294,6 +292,11 @@
 
 .logo-text {
   font-weight: 600;
+}
+
+.tag-page {
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 @keyframes openModal {

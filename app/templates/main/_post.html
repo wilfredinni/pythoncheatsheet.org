@@ -33,7 +33,6 @@
             <!-- tags -->
             <div class="level is-hidden-mobile">
               <p>Tags: {% for tag in post.tag %}
-                <!--  -->
                 <a href="{{ url_for('main.tag', tag=tag.name) }}">
                   <span class="tag is-warning">
                     {{tag.name}}

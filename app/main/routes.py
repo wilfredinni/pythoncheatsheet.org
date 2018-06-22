@@ -112,6 +112,12 @@ def search():
                            total=total)
 
 
+@bp.route('/tags')
+def tags():
+    all_tags = Tag.query.all()
+    return render_template('main/tags.html', title="Tags", all_tags=all_tags)
+
+
 @bp.route('/sitemap.xml')
 def sitemap():
     return send_from_directory('static', filename='sitemap.xml')
