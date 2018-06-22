@@ -4,14 +4,14 @@ Build with the [Flask](http://flask.pocoo.org/) microframework, this website pro
 
 ## Features
 
-- Blog system powered by SqlAlchemy
-- Articles and Static pages can render Markdown, HTML or both.
+- Blog system powered by [SqlAlchemy](http://www.sqlalchemy.org/).
+- Articles and Static pages can render [Markdown](https://github.com/lepture/mistune), HTML or both.
 - Uses a lightweight comments widget built on GitHub issues: [Utterances](https://github.com/utterance/utterances).
 - Tags.
 - Users roles.
 - Custom Profiles for users.
 - Quick search for static pages.
-- Elasticsearch integration.
+- [Elasticsearch](https://github.com/elastic/elasticsearch) integration.
 - Users Managment (create, edit, delete).
 - Articles Managment (create, edit, delete).
 - Licensed [MIT](https://github.com/wilfredinni/pysheetBlog/blob/master/LICENSE).
