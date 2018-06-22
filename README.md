@@ -1,20 +1,19 @@
 # Python Cheatsheet Website
 
-Build with the [Flask](http://flask.pocoo.org/) microframework, this... website provides a simple managment system with the following features:
+Build with the [Flask](http://flask.pocoo.org/) microframework, this website provides a simple managment system with the following features:
 
 ## Features
 
-- Blog system stored in SQL db.
-- Articles can render Markdown and HTML.
-- A lightweight comments widget built on GitHub issues: [Utterances](https://github.com/utterance/utterances).
+- Blog system powered by SqlAlchemy
+- Articles and Static pages can render Markdown, HTML or both.
+- Uses a lightweight comments widget built on GitHub issues: [Utterances](https://github.com/utterance/utterances).
 - Tags.
-- Users can have diferent roles.
+- Users roles.
 - Custom Profiles for users.
-- Render pages directly from Markdown files, templates or DB.
 - Quick search for static pages.
-- Uses Elasticsearch for database searchs.
-- Manage Users.
-- Manage Articles.
+- Elasticsearch integration.
+- Users Managment (create, edit, delete).
+- Articles Managment (create, edit, delete).
 - Licensed [MIT](https://github.com/wilfredinni/pysheetBlog/blob/master/LICENSE).
 
 In the frontend is [Bulma](https://github.com/jgthms/bulma), a great and easy to use CSS framework along with some vanilla Javascript.
