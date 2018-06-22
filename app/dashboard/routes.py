@@ -32,6 +32,18 @@ def overview():
                            user=user, post_list=posts)
 
 
+@bp.route('/manage_articles')
+@login_required
+def manage_articles():
+    # all posts ordered by date
+    posts_list = Post.query.first()
+
+    posts = Post.query.filter_by().order_by(Post.timestamp.desc())
+    return render_template('dashboard/overview.html',
+                           title='Dashboard', my_posts=posts,
+                           articles_active='is-active', post_list=posts_list)
+
+
 @bp.route('/add_user', methods=['GET', 'POST'])
 @login_required
 def add_user():
@@ -63,6 +75,9 @@ def manage_users():
 @bp.route('/edit_profile/<username>', methods=['GET', 'POST'])
 @login_required
 def edit_profile(username):
+    if current_user.username != username:
+        flash("You can't edit other users profiles.")
+        return redirect(url_for('dashboard.overview'))
     user = User.query.filter_by(username=username).first_or_404()
     form = EditProfileForm(user.username)
     if form.validate_on_submit():
@@ -173,16 +188,6 @@ def site_configuration():
     return render_template('dashboard/site_configuration.html',
                            title='Site Configuration', form=form,
                            config_active='is-active', enabled=enabled)
-
-
-@bp.route('/manage_articles')
-@login_required
-def manage_articles():
-    # all posts ordered by date
-    posts = Post.query.filter_by().order_by(Post.timestamp.desc())
-    return render_template('dashboard/overview.html',
-                           title='Dashboard', my_posts=posts,
-                           articles_active='is-active', post_list=posts)
 
 
 @bp.route('/delete_user/<id>', methods=['POST'])
