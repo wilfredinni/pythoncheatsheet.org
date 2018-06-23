@@ -22,7 +22,7 @@
 
             <!-- edit -->
             <span class="icon level-item">
-              <a href="{{ url_for('dashboard.edit_post', id=post.id) }}">
+              <a href="{{ url_for('dashboard.edit_post', url=post.url) }}">
                 <i class="far fa-edit"></i> Edit</a>
             </span>
 
@@ -76,7 +76,7 @@
             <div class="level-right">
 
               <!-- twitter -->
-              <a target="blank" href="https://twitter.com/intent/tweet?status={{title}}+{{ url_for('main.article',id=post.id, _external=True) }}"
+              <a target="blank" href="https://twitter.com/intent/tweet?status={{title}}+{{ url_for('main.article', url=post.url, _external=True) }}"
                 class="share twitter">
                 <span class="icon share-icon">
                   <i class="fab fa-twitter"></i>
@@ -84,7 +84,7 @@
               </a>
 
               <!-- facebook -->
-              <a target="blank" href="https://www.facebook.com/share.php?u={{ url_for('main.article',id=post.id, _external=True) }}&title={{title}}"
+              <a target="blank" href="https://www.facebook.com/share.php?u={{ url_for('main.article', url=post.url, _external=True) }}&title={{title}}"
                 class="share facebook">
                 <span class="icon share-icon">
                   <i class="fab fa-facebook-f"></i>
@@ -92,7 +92,7 @@
               </a>
 
               <!-- google -->
-              <a target="blank" href="https://plus.google.com/share?url={{ url_for('main.article',id=post.id, _external=True) }}" class="share google">
+              <a target="blank" href="https://plus.google.com/share?url={{ url_for('main.article', url=post.url, _external=True) }}" class="share google">
                 <span class="icon share-icon">
                   <i class="fab fa-google"></i>
                 </span>
@@ -120,7 +120,7 @@
     <br>
     <div class="columns is-centered">
       <div class="column is-3">
-        <form action="{{ url_for('dashboard.delete_post', id=post.id) }}" method=post>
+        <form action="{{ url_for('dashboard.delete_post', url=post.url) }}" method=post>
           <input type="hidden" name="entry_id">
           <button class="button is-danger is-outlined">Delete</button>
         </form>

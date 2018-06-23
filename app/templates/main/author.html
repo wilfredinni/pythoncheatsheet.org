@@ -73,7 +73,7 @@
     <ul style="list-style-type:disc">
       {% for post in my_posts %}
       <li>
-        <a href="{{ url_for('main.article', id=post.id) }}">{{ post.title }}</a>
+        <a href="{{ url_for('main.article', url=post.url) }}">{{ post.title }}</a>
       </li>
       {% endfor %}
     </ul>

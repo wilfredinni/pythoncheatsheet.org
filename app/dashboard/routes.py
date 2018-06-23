@@ -111,7 +111,7 @@ def new_post():
     form = PostForm()
     if form.validate_on_submit():
         post = Post(body=form.post.data, author=current_user,
-                    title=form.title.data)
+                    title=form.title.data, url=form.url.data)
         # split the tags by the comas
         post_tags = form.tags.data.replace(' ', '').split(',')
 
@@ -127,13 +127,14 @@ def new_post():
                            form=form, post_active='is-active')
 
 
-@bp.route('/edit_post/<id>', methods=['GET', 'POST'])
+@bp.route('/edit_post/<url>', methods=['GET', 'POST'])
 @login_required
-def edit_post(id):
-    post = Post.query.filter_by(id=id).first_or_404()
+def edit_post(url):
+    post = Post.query.filter_by(url=url).first_or_404()
     form = PostForm()
     if form.validate_on_submit():
         post.title = form.title.data
+        post.url = form.url.data
         post.body = form.post.data
 
         # split the tags by comas
@@ -150,6 +151,7 @@ def edit_post(id):
         return redirect(url_for('dashboard.overview'))
     elif request.method == 'GET':
         form.title.data = post.title
+        form.url.data = post.url
         form.post.data = post.body
         # use regex to format the tags
         tag_regex = re.compile(r'\[(.*)\]')
@@ -200,10 +202,10 @@ def delete_user(id):
     return redirect(url_for('dashboard.manage_users'))
 
 
-@bp.route('/delete_post/<id>', methods=['GET', 'POST'])
+@bp.route('/delete_post/<url>', methods=['GET', 'POST'])
 @login_required
-def delete_post(id):
-    post = Post.query.filter_by(id=id).first_or_404()
+def delete_post(url):
+    post = Post.query.filter_by(url=url).first_or_404()
     db.session.delete(post)
     db.session.commit()
     flash('"{}" has been Deleted'.format(post.title))

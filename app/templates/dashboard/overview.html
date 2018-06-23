@@ -51,13 +51,13 @@
                 <a href="{{ url_for('main.author', username=post.author.username) }}">{{ post.author.screen_name }}</a>
               </td>
               <td>
-                <a href="{{ url_for('main.article', id=post.id) }}">{{ post.title }}</a>
+                <a href="{{ url_for('main.article', url=post.url) }}">{{ post.title }}</a>
               </td>
               <td>
-                <a href="{{ url_for('dashboard.edit_post', id=post.id) }}" class="button is-link">Edit</a>
+                <a href="{{ url_for('dashboard.edit_post', url=post.url) }}" class="button is-link">Edit</a>
               </td>
               <td>
-                <form action="{{ url_for('dashboard.delete_post', id=post.id) }}" method=post>
+                <form action="{{ url_for('dashboard.delete_post', url=post.url) }}" method=post>
                   <input type="hidden" name="entry_id" value="{{ loop.revindex }}">
                   <button class="button is-danger">Delete</button>
                 </form>

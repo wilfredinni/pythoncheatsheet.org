@@ -17,7 +17,7 @@
           <p>By
             <a href="{{ url_for('main.author', username=post.author.username) }}">{{ post.author.screen_name }}</a>
             • {{ moment(post.timestamp).format('L') }} •
-            <a href="{{ url_for('main.article', id=post.id) }}#comments">Comments</a>
+            <a href="{{ url_for('main.article', url=post.url) }}#comments">Comments</a>
           </p>
         </div>
 
@@ -26,7 +26,7 @@
           <p>{{ g.md(post.body) | truncate(450) | safe }}</p>
           <hr class="is-hidden-mobile">
           <div class="level">
-            <a class="button" href="{{ url_for('main.article', id=post.id) }}">
+            <a class="button" href="{{ url_for('main.article', url=post.url) }}">
               Continue Reading
             </a>
 

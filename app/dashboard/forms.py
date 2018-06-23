@@ -49,7 +49,9 @@ class EditProfileForm(FlaskForm):
 
 class PostForm(FlaskForm):
     title = StringField('Title', validators=[
-                        DataRequired(), Length(min=1, max=280)])
+                        DataRequired(), Length(min=2, max=280)])
+    url = StringField('Title', validators=[
+                      DataRequired(), Length(min=5, max=280)])
     post = TextAreaField('Post Content', validators=[
                          DataRequired(), Length(min=140)])
     tags = StringField('Tags', validators=[DataRequired(), Length(min=2)])

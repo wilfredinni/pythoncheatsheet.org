@@ -405,6 +405,6 @@ pre {
 }
 
 hr {
-    margin-bottom: 1px !important;
-    margin-top: 4rem !important;
+    margin-bottom: 1px;
+    margin-top: 4rem;
 }
