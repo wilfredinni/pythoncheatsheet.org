@@ -107,10 +107,43 @@
           Tags
         </a>
 
-        <!-- logout and the search notice only for home and anonymous -->
+        <!-- dropdown user menu -->
         {% if current_user.is_authenticated %}
-        <a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout ({{current_user.username}})</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <!-- avatar -->
+          <a class="navbar-link" href="javascript:void(0);">
+            {{ current_user.username }}</a>
+          <div class="navbar-dropdown">
+            <a href="{{ url_for('dashboard.new_post') }}" class="navbar-item">
+              <span class="icon">
+                <i class="fas fa-plus"></i>
+              </span>
+              <span aria-hidden="true"></span>
+              New Article</a>
+            <a href="{{ url_for('dashboard.overview') }}" class="navbar-item">
+              <span class="icon">
+                <i class="fas fa-file-alt"></i>
+              </span>
+              <span aria-hidden="true"></span>
+              Manage Articles</a>
+            <a href="{{ url_for( 'dashboard.edit_profile', username=current_user.username) }}" class="navbar-item">
+              <span class="icon">
+                <i class="fas fa-user"></i>
+              </span>
+              <span aria-hidden="true"></span>
+              Edit Profile </a>
+            <hr class="navbar-divider">
+
+            <a href="{{ url_for('auth.logout') }}" class="navbar-item">
+              <span class="icon">
+                <i class="fas fa-power-off"></i>
+              </span>
+              <span aria-hidden="true"></span>
+              Logout</a>
+          </div>
+        </div>
         {% endif %}
+
       </div>
     </div>
   </nav>
