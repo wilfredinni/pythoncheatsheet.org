@@ -23,7 +23,7 @@
 
         <!-- post body -->
         <div class="content">
-          <p>{{ g.md(post.body) | truncate(300, False) | safe }}</p>
+          <p>{{ g.md(post.body) | truncate(450) | safe }}</p>
           <hr class="is-hidden-mobile">
           <div class="level">
             <a class="button" href="{{ url_for('main.article', id=post.id) }}">

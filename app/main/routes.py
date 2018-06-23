@@ -25,7 +25,6 @@ def index():
 
     # get the pinned msg and check if its enabled
     pinned_msg = PinedMsg.query.filter_by(id=1).first()
-
     return render_template('main/index.html', title='Home',
                            index=index, pysheet=pysheet,
                            pinned_msg=pinned_msg)
