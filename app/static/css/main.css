@@ -312,6 +312,9 @@
   .max-mobile {
     width: 95% !important;
   }
+  .search-content {
+    width: 90% !important;
+  }
 }
 
 @media (max-width: 1088px) {
@@ -333,6 +336,9 @@
   }
   .sing-in-resp {
     margin: 0 !important;
+  }
+  .search-content {
+    width: 70%;
   }
 }
 
