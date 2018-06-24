@@ -17,7 +17,7 @@
           <p>By
             <a href="{{ url_for('main.author', username=post.author.username) }}">{{ post.author.screen_name }}</a>
             • {{ moment(post.timestamp).format('L') }} •
-            <a href="{{ url_for('main.article', url=post.url) }}#comments">Comments</a>
+            <a href="{{ url_for('main.article', url=post.url) }}#disqus_thread"></a>
           </p>
         </div>
 
