@@ -125,3 +125,7 @@ def sitemap():
 @bp.route('/robots.txt')
 def robot():
     return send_from_directory('static', filename='robots.txt')
+
+@bp.route('/BingSiteAuth.xml')
+def bing():
+    return send_from_directory('static', filename='BingSiteAuth.xml')
