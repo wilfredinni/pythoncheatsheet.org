@@ -57,7 +57,7 @@ def tag(tag):
                            posts=posts)
 
 
-@bp.route('/article/<url>')
+@bp.route('/blog/<url>')
 def article(url):
     post = Post.query.filter_by(url=url).first_or_404()
     # parse the markdown to html
