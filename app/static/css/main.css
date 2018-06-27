@@ -299,6 +299,14 @@
   margin-bottom: 2%;
 }
 
+.md-ad {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}
+
 @keyframes openModal {
   from {
     opacity: 0;
