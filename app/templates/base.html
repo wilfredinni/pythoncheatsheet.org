@@ -4,8 +4,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="This cheatsheet tries to provide a basic reference for beginner and advanced developers. We want to lower the entry barrier for newcomers and help veterans refresh the old tricks">
+  <meta name="description" content="Python Cheatsheet and Articles for beginner and advanced developers.">
   <link rel="canonical" href="https://www.pythoncheatsheet.org">
+  <meta name="referrer" content="origin-when-cross-origin" />
+  <meta property="og:site_name" content="Python Cheatsheet" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Python Cheatsheet" />
+  <meta property="og:description" content="Python Cheatsheet and Articles." />
+  <meta property="og:url" content="https://www.pythoncheatsheet.org" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Stack Abuse" />
+  <meta name="twitter:description" content="Python Cheatsheet and Articles for beginner and advanced developers." />
+  <meta name="twitter:url" content="https://www.pythoncheatsheet.org" />
+  <meta name="twitter:site" content="@wilfrido0" />
+  <!-- schema.org -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Website",
+      "publisher": "Python Cheatsheet",
+      "url": "https://www.pythoncheatsheet.org",
+      "description": "Python Cheatsheet and Articles for beginner and advanced developers."
+    }
+  </script>
+  <!-- favicon -->
   <link rel="icon" type="image/svg" href={{ url_for( "static", filename="img/snake.png" ) }}>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121059935-1"></script>
@@ -19,7 +41,6 @@
 
     gtag('config', 'UA-121059935-1');
   </script>
-
   <title>{{ title }} - {{ g.site_name }}</title>
   <!-- bulma -->
   <link rel="stylesheet" href={{ url_for( "static", filename="css/bulma.min.min.css" ) }}>
