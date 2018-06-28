@@ -16,8 +16,8 @@ def before_request():
     g.md = mistune.Markdown()
 
 
-@bp.route('/')
 @bp.route('/index')
+@bp.route('/')
 def index():
     # get the index and the cheatsheet form the repository
     index = requests.get(current_app.config['INDEX_URL']).text
@@ -125,6 +125,7 @@ def sitemap():
 @bp.route('/robots.txt')
 def robot():
     return send_from_directory('static', filename='robots.txt')
+
 
 @bp.route('/BingSiteAuth.xml')
 def bing():
