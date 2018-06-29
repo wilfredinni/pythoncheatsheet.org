@@ -25,7 +25,7 @@ def index():
 
     # get the pinned msg and check if its enabled
     pinned_msg = PinedMsg.query.filter_by(id=1).first()
-    return render_template('main/index.html', title='Home',
+    return render_template('main/index.html', title='Welcome to Python Cheatsheet',
                            index=index, pysheet=pysheet,
                            pinned_msg=pinned_msg)
 
@@ -53,7 +53,8 @@ def blog():
 def tag(tag):
     tag = Tag.query.filter_by(name=tag).first()
     posts = tag.posts.order_by(Post.timestamp.desc())
-    return render_template('main/tag_articles.html', title='Tag', tag=tag,
+    title = 'Tag: {}'.format(tag.name)
+    return render_template('main/tag_articles.html', title=title, tag=tag,
                            posts=posts)
 
 

@@ -40,7 +40,7 @@ def manage_articles():
 
     posts = Post.query.filter_by().order_by(Post.timestamp.desc())
     return render_template('dashboard/overview.html',
-                           title='Dashboard', my_posts=posts,
+                           title='Manage Articles', my_posts=posts,
                            articles_active='is-active', post_list=posts_list)
 
 
