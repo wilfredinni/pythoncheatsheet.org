@@ -61,10 +61,7 @@ def tag(tag):
 @bp.route('/blog/<url>')
 def article(url):
     post = Post.query.filter_by(url=url).first_or_404()
-    # parse the markdown to html
-    body = post.body
-    return render_template('main/article.html', post_body=body, post=post,
-                           title=post.title)
+    return render_template('main/article.html', post=post, title=post.title)
 
 
 @bp.route('/contribute')
