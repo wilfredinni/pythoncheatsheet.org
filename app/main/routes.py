@@ -13,7 +13,7 @@ def before_request():
     g.search_form = SearchForm()
     g.search_switch = current_app.config["SEARCH_SWITCH"]
     g.site_name = current_app.config["SITE_NAME"]
-    g.md = mistune.Markdown()
+    g.md = mistune.Markdown()  # parse md to html
 
 
 @bp.route('/index')
@@ -25,8 +25,8 @@ def index():
 
     # get the pinned msg and check if its enabled
     pinned_msg = PinedMsg.query.filter_by(id=1).first()
-    return render_template('main/index.html', title='Welcome to Python Cheatsheet',
-                           index=index, pysheet=pysheet,
+    return render_template('main/index.html',  index=index, pysheet=pysheet,
+                           title='Welcome to Python Cheatsheet',
                            pinned_msg=pinned_msg)
 
 
@@ -104,7 +104,6 @@ def search():
     page = request.args.get('page', 1, type=int)
     posts, total = Post.search(g.search_form.q.data, page,
                                current_app.config['POSTS_PER_PAGE'])
-
     return render_template('main/search.html', title='Search', posts=posts,
                            total=total)
 
