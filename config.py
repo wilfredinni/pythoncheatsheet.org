@@ -19,7 +19,7 @@ class Config(object):
     SITE_NAME = settings.get('SITE_NAME')
 
     # elasticsearch
-    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
+    ELASTICSEARCH_URL = None
     SEARCH_SWITCH = settings.get('SEARCH_SWITCH')  # ON or OFF
 
     # wtforms key
