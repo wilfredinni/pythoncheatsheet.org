@@ -323,6 +323,13 @@
   .search-content {
     width: 90% !important;
   }
+  .material-scrolltop {
+    left: 2%;
+    /* bottom: 23px; */
+  }
+  .material-search {
+    left: 2%;
+  }
 }
 
 @media (max-width: 1088px) {
