@@ -1,3 +1,10 @@
+.h1-titles {
+    border-bottom: solid 1px #cccccc;
+    cursor: pointer;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
 .text-field {
     border: none;
     color: #2e4453;
@@ -5,9 +12,11 @@
     height: 3.1rem;
     margin-bottom: 1.5rem;
     width: 100%;
+    font-weight: 600;
 }
 
 .textarea-field {
+    /* border: solid 0.5px #2e4453; */
     border: none;
     color: #3d596d;
     margin-bottom: 1.5rem;
@@ -17,7 +26,7 @@
 .tags-field {
     border: none;
     color: #3d596d;
-    height: 2.25rem;
+    height: 2.5rem;
     width: 100%;
 }
 
@@ -38,6 +47,18 @@
 
 ::placeholder {
     color: #879dad;
+}
+
+.title-sum-img {
+    display: none;
+}
+
+.article-body {
+    display: none;
+}
+
+.tag-url {
+    display: none;
 }
 
 .text-field-profile {
