@@ -54,6 +54,12 @@
 
         <!-- post body -->
         <div class="content img-cent">
+
+          <!-- article img -->
+          <div>
+            <img src="{{ post.img_url }}" alt="">
+          </div>
+
           <p>{{ g.md(post.body)|safe }}</p>
           <hr>
           <div class="level">
@@ -158,9 +164,9 @@
 
 <!-- addthis customize -->
 <script type="text/javascript">
-var addthis_share = {
-   url: "www.pythoncheatsheet.org/blog/{{ post.url }}",
-   title: "{{ title }} - {{ g.site_name }}",
-};
+  var addthis_share = {
+    url: "www.pythoncheatsheet.org/blog/{{ post.url }}",
+    title: "{{ title }} - {{ g.site_name }}",
+  };
 </script>
 {% endblock content %}

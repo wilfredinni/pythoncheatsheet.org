@@ -119,6 +119,8 @@ class Post(SearchableMixin, db.Model):
     tag = db.relationship('Tag', secondary=post_tag,
                           backref=db.backref('posts', lazy='dynamic'),
                           lazy='dynamic')
+    img_url = db.Column(db.String(280))
+    summary = db.Column(db.String(400))
 
     def __repr__(self):
         return 'Post ({})'.format(self.title)

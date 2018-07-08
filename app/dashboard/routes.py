@@ -111,7 +111,8 @@ def new_post():
     form = PostForm()
     if form.validate_on_submit():
         post = Post(body=form.post.data, author=current_user,
-                    title=form.title.data, url=form.url.data)
+                    title=form.title.data, url=form.url.data,
+                    img_url=form.img_url.data, summary=form.summary.data)
         # split the tags by the comas
         post_tags = form.tags.data.replace(' ', '').split(',')
 
@@ -136,6 +137,8 @@ def edit_post(url):
         post.title = form.title.data
         post.url = form.url.data
         post.body = form.post.data
+        post.summary = form.summary.data
+        post.img_url = form.img_url.data
 
         # split the tags by comas
         post_tags = form.tags.data.replace(' ', '').split(',')
@@ -153,6 +156,8 @@ def edit_post(url):
         form.title.data = post.title
         form.url.data = post.url
         form.post.data = post.body
+        form.summary.data = post.summary
+        form.img_url.data = post.img_url
         # use regex to format the tags
         tag_regex = re.compile(r'\[(.*)\]')
         mo = tag_regex.search(str(post.tag.all()))

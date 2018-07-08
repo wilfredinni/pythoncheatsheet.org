@@ -55,10 +55,9 @@ class PostForm(FlaskForm):
     post = TextAreaField('Post Content', validators=[
                          DataRequired(), Length(min=140)])
     tags = StringField('Tags', validators=[DataRequired(), Length(min=2)])
-    img_url = StringField('Image URL', validators=[
-                          DataRequired(), Length(min=2)])
+    img_url = StringField('Image URL')
     summary = TextAreaField('Summary', validators=[
-        DataRequired(), Length(min=100)])
+        DataRequired(), Length(min=50)])
 
 
 class PinMsgForm(FlaskForm):
