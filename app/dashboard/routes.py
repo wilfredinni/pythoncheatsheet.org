@@ -171,8 +171,8 @@ def edit_post(url):
 @login_required
 def site_configuration():
     form = PinMsgForm()
-    try:
-        msg = PinedMsg.query.filter_by(id=1).first()
+    msg = PinedMsg.query.filter_by(id=1).first()
+
     if form.validate_on_submit():
         if msg:
             msg.home_msg = form.home_msg.data
@@ -188,10 +188,13 @@ def site_configuration():
     elif request.method == 'GET':
         if msg:
             form.home_msg.data = msg.home_msg
-        if msg.home_enable:
-            enabled = True
+
+            if msg.home_enable:
+                enabled = True
+            else:
+                enabled = False
         else:
-            enabled = False
+            enabled = "None"
 
     return render_template('dashboard/site_configuration.html',
                            title='Site Configuration', form=form,
