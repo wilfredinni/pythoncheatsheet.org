@@ -110,7 +110,7 @@ def edit_profile(username):
 def new_post():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(body=form.post.data, author=current_user,
+        post = Post(markdown_url=form.markdown_url.data, author=current_user,
                     title=form.title.data, url=form.url.data,
                     img_url=form.img_url.data, summary=form.summary.data)
         # split the tags by the comas
@@ -136,7 +136,7 @@ def edit_post(url):
     if form.validate_on_submit():
         post.title = form.title.data
         post.url = form.url.data
-        post.body = form.post.data
+        post.markdown_url = form.post.markdown_url
         post.summary = form.summary.data
         post.img_url = form.img_url.data
 
@@ -155,7 +155,7 @@ def edit_post(url):
     elif request.method == 'GET':
         form.title.data = post.title
         form.url.data = post.url
-        form.post.data = post.body
+        form.markdown_url.data = post.markdown_url
         form.summary.data = post.summary
         form.img_url.data = post.img_url
         # use regex to format the tags
@@ -171,7 +171,8 @@ def edit_post(url):
 @login_required
 def site_configuration():
     form = PinMsgForm()
-    msg = PinedMsg.query.filter_by(id=1).first()
+    try:
+        msg = PinedMsg.query.filter_by(id=1).first()
     if form.validate_on_submit():
         if msg:
             msg.home_msg = form.home_msg.data

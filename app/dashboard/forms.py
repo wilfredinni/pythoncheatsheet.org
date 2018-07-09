@@ -51,8 +51,8 @@ class PostForm(FlaskForm):
                         DataRequired(), Length(min=2, max=280)])
     url = StringField('Title', validators=[
                       DataRequired(), Length(min=5, max=280)])
-    post = TextAreaField('Post Content', validators=[
-                         DataRequired(), Length(min=140)])
+    markdown_url = StringField('Markdown URL', validators=[
+                               DataRequired(), Length(min=10)])
     tags = StringField('Tags', validators=[DataRequired(), Length(min=2)])
     img_url = StringField('Image URL')
     summary = TextAreaField('Summary', validators=[

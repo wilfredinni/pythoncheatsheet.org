@@ -43,12 +43,12 @@
 
         <h1 id="h1Body" class="h1-titles">Article Body</h1>
         <div id="articleBody" class="article-body">
-          <!-- post body -->
+          <!-- body markdown url -->
           <div class="field">
             <div class="control">
-              {{ form.post(id="textarea", class="textarea-field", type="textarea", rows=13, placeholder="Markdown Enabled") }}
+              {{ form.markdown_url(id="textarea", class="tags-field", type="text", placeholder="Markdown URL Article") }}
             </div>
-            {% for error in form.post.errors %}
+            {% for error in form.markdown_url.errors %}
             <span class="help" style="color: red;">{{ error }}</span>
             {% endfor %}
           </div>

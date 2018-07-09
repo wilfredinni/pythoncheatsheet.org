@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: f81ad6e03a9d
+Revision ID: d9f5dba6aa3d
 Revises: 
-Create Date: 2018-07-09 18:01:27.935179
+Create Date: 2018-07-09 19:20:37.650649
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'f81ad6e03a9d'
+revision = 'd9f5dba6aa3d'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -56,7 +56,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=280), nullable=True),
     sa.Column('url', sa.String(length=280), nullable=True),
-    sa.Column('body', sa.Text(length=20000), nullable=True),
+    sa.Column('markdown_url', sa.String(length=280), nullable=True),
     sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('img_url', sa.String(length=280), nullable=True),
@@ -64,6 +64,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_index(op.f('ix_post_markdown_url'), 'post', ['markdown_url'], unique=True)
     op.create_index(op.f('ix_post_timestamp'), 'post', ['timestamp'], unique=False)
     op.create_index(op.f('ix_post_title'), 'post', ['title'], unique=True)
     op.create_index(op.f('ix_post_url'), 'post', ['url'], unique=True)
@@ -82,6 +83,7 @@ def downgrade():
     op.drop_index(op.f('ix_post_url'), table_name='post')
     op.drop_index(op.f('ix_post_title'), table_name='post')
     op.drop_index(op.f('ix_post_timestamp'), table_name='post')
+    op.drop_index(op.f('ix_post_markdown_url'), table_name='post')
     op.drop_table('post')
     op.drop_index(op.f('ix_user_website'), table_name='user')
     op.drop_index(op.f('ix_user_username'), table_name='user')
