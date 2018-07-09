@@ -29,6 +29,10 @@ body>*:last-child {
     margin-bottom: 0 !important;
 }
 
+.article-body p {
+    font-size: 17px;
+}
+
 a {
     color: #4183C4;
     text-decoration: none;
@@ -119,16 +123,17 @@ h1:not(.no-h1) {
 
 h2 {
     font-size: 32px !important;
-    font-weight: 400 !important;
     margin: 30px 0 !important;
     font-weight: 600 !important;
+    /* border-bottom: solid 1px #cccccc; */
+    color: #4a4a4a !important;
 }
 
 h3 {
     font-size: 24px !important;
-    font-weight: 400 !important;
     margin: 30px 0 !important;
     font-weight: 600 !important;
+    color: #4a4a4a !important;
 }
 
 h4 {
