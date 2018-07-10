@@ -136,7 +136,7 @@ def edit_post(url):
     if form.validate_on_submit():
         post.title = form.title.data
         post.url = form.url.data
-        post.markdown_url = form.post.markdown_url
+        post.markdown_url = form.markdown_url.data
         post.summary = form.summary.data
         post.img_url = form.img_url.data
 
@@ -188,14 +188,12 @@ def site_configuration():
     elif request.method == 'GET':
         if msg:
             form.home_msg.data = msg.home_msg
-
             if msg.home_enable:
                 enabled = True
             else:
                 enabled = False
         else:
             enabled = "None"
-
     return render_template('dashboard/site_configuration.html',
                            title='Site Configuration', form=form,
                            config_active='is-active', enabled=enabled)
