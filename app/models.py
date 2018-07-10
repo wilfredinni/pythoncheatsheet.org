@@ -120,7 +120,7 @@ class Post(SearchableMixin, db.Model):
                           backref=db.backref('posts', lazy='dynamic'),
                           lazy='dynamic')
     img_url = db.Column(db.String(280))
-    summary = db.Column(db.String(400))
+    summary = db.Column(db.String(1000))
 
     def __repr__(self):
         return 'Post ({})'.format(self.title)
