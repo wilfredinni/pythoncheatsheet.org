@@ -4,6 +4,7 @@ Disallow: /dashboard
 Allow: /blog
 Allow: /index
 Allow: /about
+Allow: /author
 Allow: /contribute
 Disallow: /auth
 
