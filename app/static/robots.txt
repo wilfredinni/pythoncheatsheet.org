@@ -1,5 +1,4 @@
 User-Agent: *
-Disallow: 
 Disallow: /dashboard
 Allow: /blog
 Allow: /index
