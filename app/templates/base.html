@@ -1,23 +1,57 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Anyone can forget how to make character classes for a regex, slice a list or do a for loop. This cheat sheet tries to provide a basic reference for beginner and advanced developers, lower the entry barrier for newcomers and help veterans refresh the old tricks.">
-  <link rel="canonical" href="https://www.pythoncheatsheet.org">
-  <meta name="referrer" content="origin-when-cross-origin" />
-  <meta property="og:site_name" content="Python Cheatsheet" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Python Cheatsheet" />
-  <meta property="og:description" content="Python Cheatsheet and Articles." />
-  <meta property="og:url" content="https://www.pythoncheatsheet.org" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Python Cheatsheet" />
-  <meta name="twitter:description" content="Cheatsheet and Articles for beginner and advanced Python developers." />
-  <meta name="twitter:url" content="https://www.pythoncheatsheet.org" />
-  <meta name="twitter:site" content="@wilfrido0" />
+  <title>{{ title }} - {{ g.site_name }}</title>
+  <link rel="icon" type="image/svg" href={{ url_for( "static", filename="img/snake.png" ) }}>
+  <meta name="author" content="Python Cheatsheet">
+  <meta charset="utf-8">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@pyCheatsheet">
+  <meta name="twitter:site" content="@pyCheatsheet">
+  <meta property="og:title" content="{{ title }} - {{ g.site_name }}">
+  <meta property="og:type" content="article">
+  {% if title == "Welcome to Python Cheatsheet" %}
+    <link rel="canonical" href="https://www.pythoncheatsheet.org">
+    <meta property="og:url" content="https://www.pythoncheatsheet.org">
+    <meta name="description" content="Welcome to Python Cheatsheet. Anyone can forget how to make character classes for a regex, slice a list or do a for loop. This cheat sheet tries to provide a basic reference for beginner and advanced developers, lower the entry barrier for newcomers and help veterans refresh the old tricks.">
+    <meta property="og:description" content="Welcome to Python Cheatsheet. Anyone can forget how to make character classes for a regex, slice a list or do a for loop. This cheat sheet tries to provide a basic reference for beginner and advanced developers, lower the entry barrier for newcomers and help veterans refresh the old tricks.">
+    <meta name="twitter:description" content="Python cheat sheet and Articles for Beginner and Advanced Developers." />
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
+    <meta property="og:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
+  {% elif title == "Blog" %}
+    <link rel="canonical" href="https://www.pythoncheatsheet.org/blog">
+    <meta property="og:url" content="https://www.pythoncheatsheet.org/blog">
+    <meta name="description" content="Python Articles for Beginner and Advanced Developers.">
+    <meta property="og:description" content="Python Articles for Beginner and Advanced Developers.">
+    <meta name="twitter:description" content="Python Articles for Beginner and Advanced Developers." />
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
+    <meta property="og:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
+  {% elif title == "Contribute" %}
+    <link rel="canonical" href="https://www.pythoncheatsheet.org/contribute">
+    <meta property="og:url" content="https://www.pythoncheatsheet.org/contribute">
+    <meta name="description" content="First off, thank you for taking the time to contribute! The following is a set of guidelines for contributing to the cheatsheet. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.">
+    <meta property="og:description" content="First off, thank you for taking the time to contribute! The following is a set of guidelines for contributing to the cheatsheet. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.">
+    <meta name="twitter:description" content="First off, thank you for taking the time to contribute! The following is a set of guidelines for contributing to the cheatsheet. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request." />
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
+    <meta property="og:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
+  {% elif title == "About" %}
+    <link rel="canonical" href="https://www.pythoncheatsheet.org/about">
+    <meta property="og:url" content="https://www.pythoncheatsheet.org/about">
+    <meta name="description" content="This is a basic cheatsheet for Python mostly based on the book written by Al Sweigart, Automate the Boring Stuff with Python under the Creative Commons license and many other sources.">
+    <meta property="og:description" content="This is a basic cheatsheet for Python mostly based on the book written by Al Sweigart, Automate the Boring Stuff with Python under the Creative Commons license and many other sources.">
+    <meta name="twitter:description" content="This is a basic cheatsheet for Python mostly based on the book written by Al Sweigart, Automate the Boring Stuff with Python under the Creative Commons license and many other sources." />
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
+    <meta property="og:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
+  {% elif is_article %}
+    <link rel="canonical" href="https://www.pythoncheatsheet.org/blog/{{ post.url }}">
+    <meta property="og:url" content="https://www.pythoncheatsheet.org/blog/{{ post.url }}">
+    <meta name="description" content="{{ g.md(post.summary) }}">
+    <meta property="og:description" content="{{ g.md(post.summary) }}">
+    <meta name="twitter:description" content="{{ g.md(post.summary) }}" />
+    <meta property="twitter:image" content="{{ post.img_url }}">
+    <meta property="og:image" content="{{ post.img_url }}">
+  {% endif %}
   <!-- schema.org -->
   <script type="application/ld+json">
     {
@@ -28,27 +62,22 @@
       "description": "Cheatsheet and Articles for beginner and advanced Python developers."
     }
   </script>
-  <!-- favicon -->
-  <link rel="icon" type="image/svg" href={{ url_for( "static", filename="img/snake.png" ) }}>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121059935-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-
     function gtag() {
       dataLayer.push(arguments);
     }
     gtag('js', new Date());
-
     gtag('config', 'UA-121059935-1');
   </script>
-  <title>{{ title }} - {{ g.site_name }}</title>
   <!-- bulma -->
   <link rel="stylesheet" href={{ url_for( "static", filename="css/bulma.min.min.css" ) }}>
   <!-- font awesome -->
   <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
   <!-- moment.js -->
-  {{ moment.include_jquery() }} {{ moment.include_moment() }}
+  <!-- {{ moment.include_jquery() }} {{ moment.include_moment() }} -->
   <!-- Highlight -->
   <link rel="stylesheet" href={{ url_for( "static", filename="css/atom-one-dark.min.css" ) }}>
   <!-- main -->
@@ -60,13 +89,10 @@
   <a class="forkme hide-ribbon" href="https://github.com/wilfredinni/python-cheatsheet">
     <img src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
   </a>
-
   <!-- navbar -->
   <nav class="navbar is-fixed-top is-link" aria-label="main navigation">
-
     <!-- brand -->
     <div class="navbar-brand">
-
       <!-- this brand shows in mobil -->
       <a class="navbar-item mobil-logo" href="{{ url_for('main.index') }}">
         <img src="https://image.flaticon.com/icons/svg/874/874275.svg" width="112" height="28" alt="python cheatsheet logo">
@@ -76,7 +102,6 @@
       <a class="navbar-item desktop-logo" href="{{ url_for('main.index') }}">
         <img src="https://image.flaticon.com/icons/svg/874/874275.svg" width="112" height="28" alt="python cheatsheet logo">
       </a>
-
       <!-- <a class="navbar-item">Python Cheat Sheet</a> -->
       <a role="button" class="navbar-burger burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
         <span aria-hidden="true"></span>
@@ -84,10 +109,8 @@
         <span aria-hidden="true"></span>
       </a>
     </div>
-
     <!-- menu -->
     <div id="navMenu" class="navbar-menu">
-
       <!-- left -->
       <div class="navbar-start">
         <a href="{{ url_for('main.index') }}" class="navbar-item">Home</a>
@@ -99,7 +122,6 @@
         <a href="{{ url_for('dashboard.overview') }}" class="navbar-item">Dashboard</a>
         {% endif %}
       </div>
-
       <!-- right -->
       <div class="navbar-end">
         <!-- depending on SEARCH_SWITCH variable in settings.json (ON or OFF), the search
@@ -117,7 +139,6 @@
           </div>
         </form>
         {% endif %}
-
         <!-- tags -->
         <a class="navbar-item" href="{{ url_for('main.tags') }}" title="tags">
           <span class="icon ">
@@ -128,7 +149,6 @@
           <span aria-hidden="true"></span>
           Tags
         </a>
-
         <!-- dropdown user menu -->
         {% if current_user.is_authenticated %}
         <div class="navbar-item has-dropdown is-hoverable">
@@ -155,7 +175,6 @@
               <span aria-hidden="true"></span>
               Edit Profile </a>
             <hr class="navbar-divider">
-
             <a href="{{ url_for('auth.logout') }}" class="navbar-item">
               <span class="icon">
                 <i class="fas fa-power-off"></i>
@@ -165,7 +184,6 @@
           </div>
         </div>
         {% endif %}
-
       </div>
     </div>
   </nav>
@@ -187,7 +205,6 @@
   <footer class="footer hero is-warning">
     <div class="container">
       <div class="content has-text-centered">
-
         <!-- footer nav -->
         <p class="footer-bar">
           <a class="footer-nav" href="{{ url_for('main.index') }}">HOME</a>
@@ -198,7 +215,6 @@
           |
           <a class="footer-nav" href="{{ url_for('main.about') }}">ABOUT</a>
         </p>
-
         <!-- footer social -->
         <div class="footer-social">
           <!-- github -->
@@ -208,7 +224,7 @@
             </span>
           </a>
           <!-- twitter -->
-          <a href="https://twitter.com/wilfrido0">
+          <a href="https://twitter.com/pyCheatsheet">
             <span class="icon footer-icon">
               <i class="fab fa-twitter fa-2x"></i>
             </span>
@@ -220,7 +236,6 @@
             </span>
           </a>
         </div>
-
         <!-- footer copiright -->
         <div>
           <p class="footer-copyright">2018
@@ -237,11 +252,9 @@
             <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
           </p>
         </div>
-
       </div>
     </div>
   </footer>
-
   <!-- modal -->
   <script src={{ url_for( "static", filename="scripts/main.min.js" ) }} charset="utf-8 "></script>
   <!-- Highlight -->
@@ -249,7 +262,5 @@
   <script>
     hljs.initHighlightingOnLoad();
   </script>
-
 </body>
-
 </html>

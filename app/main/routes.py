@@ -62,8 +62,9 @@ def tag(tag):
 def article(url):
     post = Post.query.filter_by(url=url).first_or_404()
     body = requests.get(post.markdown_url).text
+    is_article = True
     return render_template('main/article.html', post=post, title=post.title,
-                           md_body=body)
+                           md_body=body, is_article=is_article)
 
 
 @bp.route('/contribute')
