@@ -11,21 +11,24 @@
   <meta name="twitter:creator" content="@pyCheatsheet">
   <meta name="twitter:site" content="@pyCheatsheet">
   <meta property="og:title" content="{{ title }} - {{ g.site_name }}">
-  <meta property="og:type" content="article"> {% if title == "Welcome to Python Cheatsheet" %}
+  <meta property="og:type" content="article">
+  {% if title == "Welcome to Python Cheatsheet" %}
   <link rel="canonical" href="https://www.pythoncheatsheet.org">
   <meta property="og:url" content="https://www.pythoncheatsheet.org">
   <meta name="description" content="Welcome to Python Cheatsheet. Anyone can forget how to make character classes for a regex, slice a list or do a for loop. This cheat sheet tries to provide a basic reference for beginner and advanced developers, lower the entry barrier for newcomers and help veterans refresh the old tricks.">
   <meta property="og:description" content="Welcome to Python Cheatsheet. Anyone can forget how to make character classes for a regex, slice a list or do a for loop. This cheat sheet tries to provide a basic reference for beginner and advanced developers, lower the entry barrier for newcomers and help veterans refresh the old tricks.">
   <meta name="twitter:description" content="Python cheat sheet and Articles for Beginner and Advanced Developers." />
   <meta property="twitter:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
-  <meta property="og:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png"> {% elif title == "Blog" %}
+  <meta property="og:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
+  {% elif title == "Blog" %}
   <link rel="canonical" href="https://www.pythoncheatsheet.org/blog">
   <meta property="og:url" content="https://www.pythoncheatsheet.org/blog">
   <meta name="description" content="Python Articles for Beginner and Advanced Developers.">
   <meta property="og:description" content="Python Articles for Beginner and Advanced Developers.">
   <meta name="twitter:description" content="Python Articles for Beginner and Advanced Developers." />
   <meta property="twitter:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
-  <meta property="og:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png"> {% elif title == "Contribute" %}
+  <meta property="og:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
+  {% elif title == "Contribute" %}
   <link rel="canonical" href="https://www.pythoncheatsheet.org/contribute">
   <meta property="og:url" content="https://www.pythoncheatsheet.org/contribute">
   <meta name="description" content="First off, thank you for taking the time to contribute! The following is a set of guidelines for contributing to the cheatsheet. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.">
@@ -33,7 +36,8 @@
   <meta name="twitter:description" content="First off, thank you for taking the time to contribute! The following is a set of guidelines for contributing to the cheatsheet. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request."
   />
   <meta property="twitter:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
-  <meta property="og:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png"> {% elif title == "About" %}
+  <meta property="og:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
+  {% elif title == "About" %}
   <link rel="canonical" href="https://www.pythoncheatsheet.org/about">
   <meta property="og:url" content="https://www.pythoncheatsheet.org/about">
   <meta name="description" content="This is a basic cheatsheet for Python mostly based on the book written by Al Sweigart, Automate the Boring Stuff with Python under the Creative Commons license and many other sources.">
@@ -41,14 +45,16 @@
   <meta name="twitter:description" content="This is a basic cheatsheet for Python mostly based on the book written by Al Sweigart, Automate the Boring Stuff with Python under the Creative Commons license and many other sources."
   />
   <meta property="twitter:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
-  <meta property="og:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png"> {% elif is_article %}
+  <meta property="og:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
+  {% elif is_article %}
   <link rel="canonical" href="https://www.pythoncheatsheet.org/blog/{{ post.url }}">
   <meta property="og:url" content="https://www.pythoncheatsheet.org/blog/{{ post.url }}">
-  <meta name="description" content="{{ g.md(post.summary) }}">
+  <meta name="description" content="{{ post.title }}. {{ g.md(post.summary)|truncate(250) }}">
   <meta property="og:description" content="{{ g.md(post.summary) }}">
   <meta name="twitter:description" content="{{ g.md(post.summary) }}" />
   <meta property="twitter:image" content="{{ post.img_url }}">
-  <meta property="og:image" content="{{ post.img_url }}"> {% endif %}
+  <meta property="og:image" content="{{ post.img_url }}">
+  {% endif %}
   <!-- schema.org -->
   <script type="application/ld+json">
     {
