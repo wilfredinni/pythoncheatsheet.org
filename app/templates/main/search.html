@@ -44,9 +44,12 @@
 
 </section>
 
-<script>
-    function goBack() {
-        window.history.go(-2);
-    }
-</script>
+{% block js %}
+    <script>s
+        function goBack() {
+            window.history.go(-2);
+        }
+    </script>
+{% endblock js %}
+
 {% endblock content %}

@@ -17,29 +17,29 @@
     <nav class="level is-mobile">
       <!-- website -->
       {% if user.website %}
-      <a href="{{ user.website }}" class="level-item">
-        <span class="icon is-medium ">
-          <i class="fas fa-link fa-lg "></i>
-        </span>
-      </a>
+        <a href="{{ user.website }}" class="level-item">
+          <span class="icon is-medium ">
+            <i class="fas fa-link fa-lg "></i>
+          </span>
+        </a>
       {% endif %}
 
       <!-- github -->
       {% if user.github %}
-      <a href="{{ user.github }}" class="level-item ">
-        <span class="icon is-medium ">
-          <i class="fab fa-github fa-lg"></i>
-        </span>
-      </a>
+        <a href="{{ user.github }}" class="level-item ">
+          <span class="icon is-medium ">
+            <i class="fab fa-github fa-lg"></i>
+          </span>
+        </a>
       {% endif %}
 
       <!-- twitter -->
       {% if user.twitter %}
-      <a href="{{ user.twitter }}" class="level-item">
-        <span class="icon is-medium ">
-          <i class="fab fa-twitter fa-lg"></i>
-        </span>
-      </a>
+        <a href="{{ user.twitter }}" class="level-item">
+          <span class="icon is-medium ">
+            <i class="fab fa-twitter fa-lg"></i>
+          </span>
+        </a>
       {% endif %}
     </nav>
   </div>
@@ -47,23 +47,23 @@
   <!-- username or screen name -->
   <div>
     {% if user.screen_name %}
-    <h1 class="subtitle is-3 level-item is-size-4-mobile">About {{ user.screen_name }}</h1>
+      <h1 class="subtitle is-3 level-item is-size-4-mobile">About {{ user.screen_name }}</h1>
     {% else %}
-    <h1 class="title level-item">About {{ user.username }}</h1>
+      <h1 class="title level-item">About {{ user.username }}</h1>
     {% endif %}
   </div>
 
   <!-- resumé -->
   <section class="content">
     {% if user.about_me %}
-    <p>{{ g.md(about_me)|safe }}</p>
+      <p>{{ g.md(about_me)|safe }}</p>
     {% endif %}
     <!--  -->
     {% if user == current_user %}
-    <div class="has-text-right">
-      <a class="tag is-warning" href="{{ url_for('dashboard.edit_profile', username=current_user.username) }}" aria-current="page">Edit Profile</a>
-      {% endif %}
-    </div>
+      <div class="has-text-right">
+        <a class="tag is-warning" href="{{ url_for('dashboard.edit_profile', username=current_user.username) }}" aria-current="page">Edit Profile</a>
+      </div>
+    {% endif %}
   </section>
   <br>
 
@@ -72,9 +72,9 @@
     <h1 class="subtitle is-3 level-item is-size-4-mobile">Blog Posts by {{ user.username }}</h1>
     <ul style="list-style-type:disc">
       {% for post in my_posts %}
-      <li>
-        <a href="{{ url_for('main.article', url=post.url) }}">{{ post.title }}</a>
-      </li>
+        <li>
+          <a href="{{ url_for('main.article', url=post.url) }}">{{ post.title }}</a>
+        </li>
       {% endfor %}
     </ul>
   </div>

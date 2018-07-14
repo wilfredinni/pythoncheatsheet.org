@@ -20,7 +20,7 @@
           <div class="field">
             <p class="control">{{ form.title(class="text-field", type="text", placeholder="Title") }}</p>
             {% for error in form.title.errors %}
-            <span class="help" style="color: red;">{{ error }}</span>
+              <span class="help" style="color: red;">{{ error }}</span>
             {% endfor %}
           </div>
 
@@ -28,7 +28,7 @@
           <div class="field">
             <p class="control">{{ form.summary(class="textarea-field", rows=3, type="textarea", placeholder="Article Summary") }}</p>
             {% for error in form.summary.errors %}
-            <span class="help" style="color: red;">{{ error }}</span>
+              <span class="help" style="color: red;">{{ error }}</span>
             {% endfor %}
           </div>
 
@@ -36,7 +36,7 @@
           <div class="field">
             <p class="control">{{ form.img_url(class="tags-field", type="text", placeholder="Image URL") }}</p>
             {% for error in form.img_url.errors %}
-            <span class="help" style="color: red;">{{ error }}</span>
+              <span class="help" style="color: red;">{{ error }}</span>
             {% endfor %}
           </div>
         </div>
@@ -49,7 +49,7 @@
               {{ form.markdown_url(id="textarea", class="tags-field", type="text", placeholder="Markdown URL Article") }}
             </div>
             {% for error in form.markdown_url.errors %}
-            <span class="help" style="color: red;">{{ error }}</span>
+              <span class="help" style="color: red;">{{ error }}</span>
             {% endfor %}
           </div>
         </div>
@@ -60,7 +60,7 @@
           <div class="field">
             <p class="control">{{ form.tags(class="tags-field",placeholder="Tags: Ex.: python, flask, django", type="text") }}</p>
             {% for error in form.tags.errors %}
-            <span class="help" style="color: red;">{{ error }}</span>
+              <span class="help" style="color: red;">{{ error }}</span>
             {% endfor %}
           </div>
 
@@ -68,7 +68,7 @@
           <div class="field">
             <p class="control">{{ form.url(class="tags-field", type="text", placeholder="Article URL") }}</p>
             {% for error in form.url.errors %}
-            <span class="help" style="color: red;">{{ error }}</span>
+              <span class="help" style="color: red;">{{ error }}</span>
             {% endfor %}
             <br>
           </div>
@@ -86,5 +86,7 @@
     </div>
   </div>
 </section>
+
 <script src={{ url_for( "static", filename="scripts/dashboard.min.js" ) }} charset="utf-8 "></script>
+
 {% endblock content %}

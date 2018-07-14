@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 
-<!-- -->
 {% block content %}
 <section>
   <!-- tags -->
@@ -14,9 +13,7 @@
   <!-- articles -->
   <div class="section">
     {% for post in posts %}
-    <!-- post -->
-    {% include 'main/_post.html' %}
-    <!-- end post -->
+      {% include 'main/_post.html' %}
     {% endfor %}
   </div>
 </section>

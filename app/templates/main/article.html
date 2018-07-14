@@ -1,7 +1,21 @@
 {% extends "base.html" %}
-<!--  -->
+
+{% block seo %}
+  <link rel="canonical" href="https://www.pythoncheatsheet.org/blog/{{ post.url }}">
+  <meta property="og:url" content="https://www.pythoncheatsheet.org/blog/{{ post.url }}">
+  <meta name="description" content="{{ post.title }}. {{ g.md(post.summary)|truncate(250) }}">
+  <meta property="og:description" content="{{ post.title }}.. {{ g.md(post.summary) }}">
+  <meta name="twitter:description" content="{{ g.md(post.summary) }}" />
+  <meta property="twitter:image" content="{{ post.img_url }}">
+  <meta property="og:image" content="{{ post.img_url }}">
+{% endblock seo %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href={{ url_for( "static", filename="css/articles.min.css" ) }}>
+{% endblock stylesheet %}
+
+
 {% block content %}
-<link rel="stylesheet" href={{ url_for( "static", filename="css/articles.min.css" ) }}>
 <div class="hero-body">
   <div class="container">
 
@@ -69,13 +83,11 @@
             <!-- tags -->
             <div class="level-left">
               <p>Tags: {% for tag in post.tag %}
-                <!--  -->
                 <a href="{{ url_for('main.tag', tag=tag.name) }}">
                   <span class="tag is-warning">
                     {{tag.name}}
                   </span>
                 </a>
-                <!--  -->
                 {% endfor %}
               </p>
             </div>
@@ -152,6 +164,8 @@
   <button id="closeBtn" class="modal-close is-large" aria-label="close"></button>
 </div>
 
+<script src="https://codefund.io/scripts/832a4559-4eb7-459d-a17e-0d530dfa3ddd/embed.js?template=centered&theme=light"></script>
+
 <!-- addthis javascript -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b05cb2ae9e75f31"></script>
 
@@ -163,6 +177,5 @@
   };
 </script>
 
-<script src="https://codefund.io/scripts/832a4559-4eb7-459d-a17e-0d530dfa3ddd/embed.js?template=centered&theme=light"></script>
 
 {% endblock content %}

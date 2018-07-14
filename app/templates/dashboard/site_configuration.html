@@ -1,8 +1,11 @@
 {% extends "base.html" %}
-<!--  -->
+
+{% block stylesheet %}
+  <link rel="stylesheet" href={{ url_for( "static", filename="css/edit-pinned-msg.min.css" ) }}>
+  <link rel="stylesheet" href={{ url_for( "static", filename="css/switch.min.css" ) }}>
+{% endblock stylesheet %}
+
 {% block content %}
-<link rel="stylesheet" href={{ url_for( "static", filename="css/edit-pinned-msg.min.css" ) }}>
-<link rel="stylesheet" href={{ url_for( "static", filename="css/switch.min.css" ) }}>
 <section class="section container">
   <div class="columns">
 
@@ -21,7 +24,6 @@
         <!-- pinned home msg -->
         <div id="pinMsgContent" class="pin-msg-home">
 
-
           <!-- form pinned post -->
           <form method="post">
             <div class="level">
@@ -29,13 +31,9 @@
               <!-- enable switch -->
               <label class="switch level-right">
                 {% if enabled %}
-                <!--  -->
-                {{ form.home_enable(class="checkbox", checked=True) }}
-                <!--  -->
+                  {{ form.home_enable(class="checkbox", checked=True) }}
                 {% else %}
-                <!--  -->
-                {{ form.home_enable(class="checkbox") }}
-                <!--  -->
+                  {{ form.home_enable(class="checkbox") }}
                 {% endif %}
                 <span class="slider round"></span>
               </label>
@@ -61,5 +59,7 @@
     </div>
   </div>
 </section>
-<script src={{ url_for( "static", filename="scripts/dashboard.js" ) }} charset="utf-8 "></script>
+
+<script src={{ url_for( "static", filename="scripts/dashboard.min.js" ) }} charset="utf-8 "></script>
+
 {% endblock content %}

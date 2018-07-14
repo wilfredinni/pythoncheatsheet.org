@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-<!--  -->
+
 {% block content %}
 <section class="section container">
   <div class="columns">
@@ -15,59 +15,59 @@
       <div class="columns is-centered">
 
         {% if post_list %}
-        <table class="table is-striped is-hoverable table is-fullwidth">
+          <table class="table is-striped is-hoverable table is-fullwidth">
 
-          <!-- titles -->
-          <thead>
-            <tr>
-              <th>
-                <abbr title="Date">Id</abbr>
-              </th>
-              <th>
-                <abbr title="Date">Date</abbr>
-              </th>
-              <th>
-                <abbr title="Author">Author</abbr>
-              </th>
-              <th>
-                <abbr title="Title">Article</abbr>
-              </th>
-              <th>
-                <abbr title="Edit"></abbr>
-              </th>
-              <th>
-                <abbr title="Delete"></abbr>
-              </th>
-          </thead>
+            <!-- titles -->
+            <thead>
+              <tr>
+                <th>
+                  <abbr title="Date">Id</abbr>
+                </th>
+                <th>
+                  <abbr title="Date">Date</abbr>
+                </th>
+                <th>
+                  <abbr title="Author">Author</abbr>
+                </th>
+                <th>
+                  <abbr title="Title">Article</abbr>
+                </th>
+                <th>
+                  <abbr title="Edit"></abbr>
+                </th>
+                <th>
+                  <abbr title="Delete"></abbr>
+                </th>
+            </thead>
 
-          <!-- posts -->
-          <tbody>
-            {% for post in my_posts %}
-            <tr>
-              <td>{{ post.id }}</td>
-              <td>{{ moment(post.timestamp).format('L') }}
-              </td>
-              <td>
-                <a href="{{ url_for('main.author', username=post.author.username) }}">{{ post.author.screen_name }}</a>
-              </td>
-              <td>
-                <a href="{{ url_for('main.article', url=post.url) }}">{{ post.title }}</a>
-              </td>
-              <td>
-                <a href="{{ url_for('dashboard.edit_post', url=post.url) }}" class="button is-link">Edit</a>
-              </td>
-              <td>
-                <form action="{{ url_for('dashboard.delete_post', url=post.url) }}" method=post>
-                  <input type="hidden" name="entry_id" value="{{ loop.revindex }}">
-                  <button class="button is-danger">Delete</button>
-                </form>
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+            <!-- posts -->
+            <tbody>
+              {% for post in my_posts %}
+                <tr>
+                  <td>{{ post.id }}</td>
+                  <td>{{ moment(post.timestamp).format('L') }}
+                  </td>
+                  <td>
+                    <a href="{{ url_for('main.author', username=post.author.username) }}">{{ post.author.screen_name }}</a>
+                  </td>
+                  <td>
+                    <a href="{{ url_for('main.article', url=post.url) }}">{{ post.title }}</a>
+                  </td>
+                  <td>
+                    <a href="{{ url_for('dashboard.edit_post', url=post.url) }}" class="button is-link">Edit</a>
+                  </td>
+                  <td>
+                    <form action="{{ url_for('dashboard.delete_post', url=post.url) }}" method=post>
+                      <input type="hidden" name="entry_id" value="{{ loop.revindex }}">
+                      <button class="button is-danger">Delete</button>
+                    </form>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         {% else %}
-        <h1 class="title is-1 has-text-centered no-articles-dash">Nothing Yet 🙄</h1>
+          <h1 class="title is-1 has-text-centered no-articles-dash">Nothing Yet 🙄</h1>
         {% endif %}
       </div>
     </div>
