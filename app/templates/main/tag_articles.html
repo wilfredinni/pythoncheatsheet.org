@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 
+{% block seo %}
+  <link rel="canonical" href="https://www.pythoncheatsheet.org/blog/tag/{{tag.name}}">
+  <meta property="og:url" content="https://www.pythoncheatsheet.org/blog">
+  <meta name="description" content="Python cheatsheet - Tag: {{tag.name}}. Articles for Beginner and Advanced Developers. This blog tries to provide a basic reference for beginner and advanced developers, lower the entry barrier for newcomers and help veterans refresh the old tricks.">
+  <meta property="og:description" content="Python cheatsheet - Tag: {{tag.name}}. Articles for Beginner and Advanced Developers. This blog tries to provide a basic reference for beginner and advanced developers, lower the entry barrier for newcomers and help veterans refresh the old tricks.">
+  <meta name="twitter:description" content="Python cheat sheet and Articles for Beginner and Advanced Developers." />
+  <meta property="twitter:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
+  <meta property="og:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
+{% endblock seo %}
+
 {% block content %}
 <section>
   <!-- tags -->

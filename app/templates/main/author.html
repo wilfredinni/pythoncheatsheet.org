@@ -1,6 +1,17 @@
 {% extends "base.html" %}
 
-<!--  -->
+
+{% block seo %}
+  <link rel="canonical" href="https://www.pythoncheatsheet.org/author/{{ user.username }}">
+  <meta property="og:url" content="https://www.pythoncheatsheet.org/author/{{ user.username }}">
+  <meta name="description" content="{{ user.username }} - {{ g.md(about_me) }}">
+  <meta property="og:description" content="{{ user.username }} - {{ g.md(about_me) }}">
+  <meta name="twitter:description" content="{{ user.username }} - {{ g.md(about_me) }}" />
+  <meta property="twitter:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
+  <meta property="og:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
+{% endblock seo %}
+
+
 {% block content %}
 <!-- avatar -->
 <section class="section container column is-7 is-centered">
@@ -69,7 +80,7 @@
 
   <!-- blog posts -->
   <div>
-    <h1 class="subtitle is-3 level-item is-size-4-mobile">Blog Posts by {{ user.username }}</h1>
+    <h2 class="subtitle is-3 level-item is-size-4-mobile">Blog Posts by {{ user.username }}</h2>
     <ul style="list-style-type:disc">
       {% for post in my_posts %}
         <li>

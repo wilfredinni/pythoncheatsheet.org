@@ -1,7 +1,16 @@
 {% extends "base.html" %}
-<!--  -->
+
+{% block seo %}
+  <link rel="canonical" href="https://www.pythoncheatsheet.org/tags">
+  <meta property="og:url" content="https://www.pythoncheatsheet.org/tags">
+  <meta name="description" content="Blog Tags. Python cheat sheet and Articles for Beginner and Advanced Developers. This blog tries to provide a basic reference for beginner and advanced developers, lower the entry barrier for newcomers and help veterans refresh the old tricks.">
+  <meta property="og:description" content="Blog Tags. Python cheat sheet and Articles for Beginner and Advanced Developers. This blog tries to provide a basic reference for beginner and advanced developers, lower the entry barrier for newcomers and help veterans refresh the old tricks.">
+  <meta name="twitter:description" content="Blog Tags. Python cheat sheet and Articles for Beginner and Advanced Developers. This blog tries to provide a basic reference for beginner and advanced developers, lower the entry barrier for newcomers and help veterans refresh the old tricks." />
+  <meta property="twitter:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
+  <meta property="og:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
+{% endblock seo %}
+
 {% block content %}
-<!--  -->
 <div class="section column container is-4">
 
   {% if all_tags %}
@@ -18,7 +27,6 @@
     {% endfor %}
     <br>
     <br>
-    <!--  -->
   {% else %}
     <section class="section">
       <h1 class="title is-1 has-text-centered blog-no-posts">Nothing Yet 🙄</h1>
