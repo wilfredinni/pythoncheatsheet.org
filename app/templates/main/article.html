@@ -164,18 +164,19 @@
   <button id="closeBtn" class="modal-close is-large" aria-label="close"></button>
 </div>
 
-<script src="https://codefund.io/scripts/832a4559-4eb7-459d-a17e-0d530dfa3ddd/embed.js?template=centered&theme=light"></script>
-
-<!-- addthis javascript -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b05cb2ae9e75f31"></script>
-
-<!-- addthis customize -->
-<script type="text/javascript">
-  var addthis_share = {
-    url: "www.pythoncheatsheet.org/blog/{{ post.url }}",
-    title: "{{ title }} - {{ g.site_name }}",
-  };
-</script>
-
-
 {% endblock content %}
+
+{% block js %}
+  <script src="https://codefund.io/scripts/832a4559-4eb7-459d-a17e-0d530dfa3ddd/embed.js?template=centered&theme=light"></script>
+
+  <!-- addthis javascript -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b05cb2ae9e75f31"></script>
+
+  <!-- addthis customize -->
+  <script type="text/javascript">
+    var addthis_share = {
+      url: "www.pythoncheatsheet.org/blog/{{ post.url }}",
+      title: "{{ title }} - {{ g.site_name }}",
+    };
+  </script>
+{% endblock js %}

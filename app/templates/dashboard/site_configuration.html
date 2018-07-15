@@ -59,7 +59,8 @@
     </div>
   </div>
 </section>
-
-<script src={{ url_for( "static", filename="scripts/dashboard.min.js" ) }} charset="utf-8 "></script>
-
 {% endblock content %}
+
+{% block js %}
+  <script src={{ url_for( "static", filename="scripts/dashboard.min.js" ) }} charset="utf-8 "></script>
+{% endblock js %}

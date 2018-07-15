@@ -10,12 +10,11 @@
   <meta property="og:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetComments/master/2018-june/welcome_to_python_cheatsheet/welcome.png">
 {% endblock seo %}
 
-{% block content %}
-
 {% block stylesheet %}
   <link rel="stylesheet" href={{ url_for( "static", filename="css/cheatsheet.min.css" ) }}>
 {% endblock stylesheet %}
 
+{% block content %}
 <!-- search modal -->
 <div id="search-modal">
   <div class="search-content">
@@ -111,22 +110,23 @@
 <button id="scroll" class="material-scrolltop" type="scroll" title="Back to top">
   <i class="fas fa-chevron-up"></i>
 </button>
-
-<!-- advertising -->
-<script src="https://codefund.io/scripts/832a4559-4eb7-459d-a17e-0d530dfa3ddd/embed.js?template=centered&theme=light"></script>
-
-<script src={{ url_for( "static", filename="scripts/scroll.min.js" ) }} charset="utf-8 "></script>
-<script src={{ url_for( "static", filename="scripts/search.min.js" ) }} charset="utf-8 "></script>
-
-<!-- addthis javascript -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b05cb2ae9e75f31"></script>
-
-<!-- addthis customize -->
-<script type="text/javascript">
-  var addthis_share = {
-    url: "www.pythoncheatsheet.org",
-    title: "{{ title }} - {{ g.site_name }}",
-  };
-</script>
-
 {% endblock content%}
+
+{% block js %}
+  <!-- advertising -->
+  <script src="https://codefund.io/scripts/832a4559-4eb7-459d-a17e-0d530dfa3ddd/embed.js?template=centered&theme=light"></script>
+
+  <script src={{ url_for( "static", filename="scripts/scroll.min.js" ) }} charset="utf-8 "></script>
+  <script src={{ url_for( "static", filename="scripts/search.min.js" ) }} charset="utf-8 "></script>
+
+  <!-- addthis javascript -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b05cb2ae9e75f31"></script>
+
+  <!-- addthis customize -->
+  <script type="text/javascript">
+    var addthis_share = {
+      url: "www.pythoncheatsheet.org",
+      title: "{{ title }} - {{ g.site_name }}",
+    };
+  </script>
+{% endblock js %}

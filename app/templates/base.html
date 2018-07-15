@@ -14,7 +14,6 @@
   <meta property="og:type" content="article">
 
   {% block seo %}{% endblock seo %}
-  {% block stylesheet %}{% endblock stylesheet %}
 
   <!-- schema.org -->
   <script type="application/ld+json">
@@ -47,6 +46,7 @@
   <link rel="stylesheet" href={{ url_for( "static", filename="css/atom-one-dark.min.css" ) }}>
   <!-- main -->
   <link rel="stylesheet" href={{ url_for( "static", filename="css/main.min.css" ) }}>
+  {% block stylesheet %}{% endblock stylesheet %}
 
 </head>
 
@@ -227,6 +227,9 @@
   <script>
     hljs.initHighlightingOnLoad();
   </script>
+
+  {% block js %}{% endblock js %}
+
 </body>
 
 </html>
