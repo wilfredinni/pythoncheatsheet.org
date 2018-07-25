@@ -1,3 +1,40 @@
+.close {
+  margin-right: 5%;
+  margin-top: 1%;
+}
+
+.index-container{
+  width: 93%;
+  margin: 0 auto;
+}
+
+.fixed-index {
+  position: fixed;
+  overflow: auto;
+  height: 80%;
+  width: 20%;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #cdcdcd;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #3273dc;
+}
+
 .forkme {
   border: 0;
   position: fixed;
@@ -322,6 +359,13 @@
   }
   .search-content {
     width: 90% !important;
+  }
+
+  .fixed-index {
+    position: relative;
+    /* overflow: auto; */
+    height: 100%;
+    width: 100%;
   }
 }
 

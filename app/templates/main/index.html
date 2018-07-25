@@ -46,29 +46,16 @@
   </div>
 </div>
 
-<div class="section container">
+<div class="section index-container">
   <div class="columns is-tablet">
+
     <!-- index -->
     <div id="index" class="column">
-      <h2 class="index">Index</h2>
-      <!-- g.md from before_request -->
-      {{ g.md(index)|safe }}
-
-      <!-- versions -->
-      <div>
-        <br>
-        <h3>Other Versions</h3>
-        <ul>
-          <li>
-            <a href="https://mybinder.org/v2/gh/wilfredinni/python-cheatsheet/master?filepath=python_cheat_sheet.ipynb">Jupyter Notebook</a>
-          </li>
-          <li>
-            <a href="https://github.com/wilfredinni/Python-cheatsheet/raw/master/python_cheat_sheet.pdf">PDF</a>
-          </li>
-          <li>
-            <a href="https://github.com/wilfredinni/python-cheatsheet">GitHub</a>
-          </li>
-        </ul>
+      <div class="fixed-index" id="style-1">
+        <div>
+          <!-- <h2 class="index">Index</h2> -->
+          {{ g.md(index)|safe }}
+        </div>
       </div>
     </div>
 
@@ -79,7 +66,7 @@
       {% if pinned_msg.home_msg %}
         {% if pinned_msg.home_enable %}
         <div id="pysheetNotification" class="notification pin-notify is-hidden-mobile">
-          <button id="pysheetCloseNotification" class="delete"></button>
+          <button id="pysheetCloseNotification" class="delete close"></button>
           <div>
             {{ g.md(pinned_msg.home_msg)|safe }}
           </div>
@@ -114,6 +101,7 @@
   <!-- advertising -->
   <script src="https://codefund.io/scripts/832a4559-4eb7-459d-a17e-0d530dfa3ddd/embed.js?template=centered&theme=light"></script>
 
+  <!-- scroll up and search -->
   <script src={{ url_for( "static", filename="scripts/scroll.min.js" ) }} charset="utf-8 "></script>
   <script src={{ url_for( "static", filename="scripts/search.min.js" ) }} charset="utf-8 "></script>
 
