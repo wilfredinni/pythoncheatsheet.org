@@ -61,6 +61,7 @@
   <a class="forkme hide-ribbon" href="https://github.com/wilfredinni/python-cheatsheet">
     <img src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
   </a>
+
   <!-- navbar -->
   <nav class="navbar is-fixed-top is-link" aria-label="main navigation">
     <!-- brand -->
@@ -93,6 +94,22 @@
         <a href="{{ url_for('main.author', username=current_user.username) }}" class="navbar-item">Profile</a>
         <a href="{{ url_for('dashboard.overview') }}" class="navbar-item">Dashboard</a>
         {% endif %}
+        <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="javascript:void(0);">
+              Versions
+            </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="https://github.com/wilfredinni/Python-cheatsheet/raw/master/python_cheat_sheet.pdf">
+                PDF
+              </a>
+              <a class="navbar-item" href="https://mybinder.org/v2/gh/wilfredinni/python-cheatsheet/master?filepath=python_cheat_sheet.ipynb">
+                Jupyter Notebook
+              </a>
+              <a class="navbar-item" href="https://github.com/wilfredinni/python-cheatsheet/blob/master/README.md">
+                Markdown
+              </a>
+            </div>
+        </div>
       </div>
       <!-- right -->
       <div class="navbar-end">
@@ -115,8 +132,6 @@
           <span class="icon ">
             <i class="fas fa-tags"></i>
           </span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           Tags
         </a>
@@ -174,59 +189,59 @@
 
   <!-- footer -->
   {% if title != "Python Cheatsheet" %}
-  <footer class="footer hero is-warning">
-    <div class="container">
-      <div class="content has-text-centered">
-        <!-- footer nav -->
-        <p class="footer-bar">
-          <a class="footer-nav" href="{{ url_for('main.index') }}">HOME</a>
-          |
-          <a class="footer-nav" href="{{ url_for('main.blog') }}">BLOG</a>
-          |
-          <a class="footer-nav" href="#">CONTRIBUTE</a>
-          |
-          <a class="footer-nav" href="{{ url_for('main.about') }}">ABOUT</a>
-        </p>
-        <!-- footer social -->
-        <div class="footer-social">
-          <!-- github -->
-          <a href="https://github.com/wilfredinni/python-cheatsheet">
-            <span class="icon footer-icon">
-              <i class="fab fa-github fa-2x"></i>
-            </span>
-          </a>
-          <!-- twitter -->
-          <a href="https://twitter.com/pyCheatsheet">
-            <span class="icon footer-icon">
-              <i class="fab fa-twitter fa-2x"></i>
-            </span>
-          </a>
-          <!-- mail -->
-          <a href="">
-            <span class="icon footer-icon">
-              <i class="fas fa-home fa-2x"></i>
-            </span>
-          </a>
-        </div>
-        <!-- footer copiright -->
-        <div>
-          <p class="footer-copyright">2018
-            <a href="#">Python Cheatsheet</a>.
+    <footer class="footer hero is-warning">
+      <div class="container">
+        <div class="content has-text-centered">
+          <!-- footer nav -->
+          <p class="footer-bar">
+            <a class="footer-nav" href="{{ url_for('main.index') }}">HOME</a>
+            |
+            <a class="footer-nav" href="{{ url_for('main.blog') }}">BLOG</a>
+            |
+            <a class="footer-nav" href="#">CONTRIBUTE</a>
+            |
+            <a class="footer-nav" href="{{ url_for('main.about') }}">ABOUT</a>
           </p>
-          <p class="footer-copyright">
-            Logo made by
-            <a href="https://www.flaticon.com/authors/freepik">Freepik</a> from
-            <a href="https://www.flaticon.com">Flaticon</a>.
-          </p>
-          <p class="footer-copyright">The
-            <a href="https://github.com/wilfredinni/python-cheatsheet">Python Cheat Sheet</a> and the
-            <a href="https://github.com/wilfredinni/pysheetBlog">Website</a> are licensed
-            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
-          </p>
+          <!-- footer social -->
+          <div class="footer-social">
+            <!-- github -->
+            <a href="https://github.com/wilfredinni/python-cheatsheet">
+              <span class="icon footer-icon">
+                <i class="fab fa-github fa-2x"></i>
+              </span>
+            </a>
+            <!-- twitter -->
+            <a href="https://twitter.com/pyCheatsheet">
+              <span class="icon footer-icon">
+                <i class="fab fa-twitter fa-2x"></i>
+              </span>
+            </a>
+            <!-- mail -->
+            <a href="">
+              <span class="icon footer-icon">
+                <i class="fas fa-home fa-2x"></i>
+              </span>
+            </a>
+          </div>
+          <!-- footer copiright -->
+          <div>
+            <p class="footer-copyright">2018
+              <a href="#">Python Cheatsheet</a>.
+            </p>
+            <p class="footer-copyright">
+              Logo made by
+              <a href="https://www.flaticon.com/authors/freepik">Freepik</a> from
+              <a href="https://www.flaticon.com">Flaticon</a>.
+            </p>
+            <p class="footer-copyright">The
+              <a href="https://github.com/wilfredinni/python-cheatsheet">Python Cheat Sheet</a> and the
+              <a href="https://github.com/wilfredinni/pysheetBlog">Website</a> are licensed
+              <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
   {% endif %}
 
   <!-- modal -->
@@ -236,9 +251,7 @@
   <script>
     hljs.initHighlightingOnLoad();
   </script>
-
   {% block js %}{% endblock js %}
-
 </body>
 
 </html>
