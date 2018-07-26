@@ -173,6 +173,7 @@
   {% block content %}{% endblock content%}
 
   <!-- footer -->
+  {% if title != "Python Cheatsheet" %}
   <footer class="footer hero is-warning">
     <div class="container">
       <div class="content has-text-centered">
@@ -226,6 +227,7 @@
       </div>
     </div>
   </footer>
+  {% endif %}
 
   <!-- modal -->
   <script src={{ url_for( "static", filename="scripts/main.min.js" ) }} charset="utf-8 "></script>
