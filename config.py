@@ -35,7 +35,6 @@ class Config(object):
     POSTS_PER_PAGE = settings.get('POSTS_PER_PAGE')
 
     # markdown pages
-    INDEX_URL = settings.get('INDEX_PYSHEET')
     PYSHEET_URL = settings.get('PYSHEET')
     CONTRIBUTING = settings.get('CONTRIBUTING')
     ABOUT = settings.get('ABOUT')

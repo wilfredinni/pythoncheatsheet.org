@@ -19,13 +19,12 @@ def before_request():
 @bp.route('/index')
 @bp.route('/')
 def index():
-    # get the index and the cheatsheet form the repository
-    index = requests.get(current_app.config['INDEX_URL']).text
+    # get the cheatsheet form the repository
     pysheet = requests.get(current_app.config['PYSHEET_URL']).text
 
     # get the pinned msg and check if its enabled
     pinned_msg = PinedMsg.query.filter_by(id=1).first()
-    return render_template('main/index.html',  index=index, pysheet=pysheet,
+    return render_template('main/index.html', pysheet=pysheet,
                            title='Python Cheatsheet',
                            pinned_msg=pinned_msg)
 
