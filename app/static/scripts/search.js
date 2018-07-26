@@ -14,14 +14,18 @@ searchModal.addEventListener("click", removeBackground);
 // listen for input in the searchBar
 searchBar.addEventListener("keyup", filterTopics);
 
-// local links for the index
-let index = document.getElementById("index");
-let a = index.querySelectorAll("a");
-replaceAddHref(a);
-
 // get h1, h2 (for the actual search)
 let h2 = document.getElementsByTagName("h2");
 let h3 = document.getElementsByTagName("h3");
+
+// local links for the index
+let indexList = document.getElementById("indexList");
+let h2Array = [];
+pushArray(h2, h2Array);
+createIndex(indexList, h2Array);
+let index = document.getElementById("index");
+let a = index.querySelectorAll("a");
+replaceAddHref(a);
 
 // add the ids to h2s and h3s for the links jumps
 replaceAddId(h2);
@@ -57,7 +61,6 @@ function filterTopics() {
   // get the values in the search bar
   let search = searchBar.value.toUpperCase();
 
-
   /* if there is text in the search bar, hide the default
   msg, show the clear link and the results div*/
   if (searchBar.value.length > 0) {
@@ -81,7 +84,7 @@ function filterTopics() {
   }
 }
 
-/* remove the gray background, except for the serachBar 
+/* remove the gray background, except for the serachBar
 and the message area (clear the search bar) */
 function removeBackground(e) {
   if (e.target == searchBar) {
@@ -124,6 +127,15 @@ function replaceAddId(array) {
     item.id = replace(item);
   }
 }
+
+// insert the index
+function createIndex(div, title){
+  for(let item in title) {
+    let index = `<li><a href="">${title[item].innerText}</a></li>`;
+    div.insertAdjacentHTML("beforeend", index);
+  }
+}
+
 
 // add the hrefs for the index
 function replaceAddHref(array) {
