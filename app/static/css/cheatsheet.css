@@ -54,7 +54,7 @@ a.anchor {
 }
 
 h1:not(.no-h1),
-h2,
+h2:not(.no-newsletter),
 h3,
 h4,
 h5,
@@ -121,7 +121,7 @@ h1 {
     color: black;
 }
 
-h2:not(.index) {
+h2:not(.index):not(.no-newsletter) {
     font-size: 36px;
     border-bottom: 1px solid #cccccc;
 }
@@ -147,7 +147,7 @@ h6 {
     font-size: 14px;
 }
 
-p:not(.results_p):not(.no-p):not(.p-sheet-nav):not(.footer-copyright):not(.footer-bar),
+p:not(.results_p):not(.no-p):not(.p-sheet-nav):not(.footer-copyright):not(.footer-bar):not(.no-unsubscribe),
 blockquote,
 ol,
 dl,

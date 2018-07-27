@@ -7,11 +7,6 @@
   margin-top: 1%;
 }
 
-.index-container{
-  width: 93%;
-  margin: 0 auto;
-}
-
 .fixed-index {
   position: fixed;
   overflow: auto;

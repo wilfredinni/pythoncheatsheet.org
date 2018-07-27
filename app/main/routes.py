@@ -14,6 +14,7 @@ def before_request():
     g.search_switch = current_app.config["SEARCH_SWITCH"]
     g.site_name = current_app.config["SITE_NAME"]
     g.md = mistune.Markdown()  # parse md to html
+    g.all_tags = Tag.query.all()
 
 
 @bp.route('/index')
@@ -43,11 +44,9 @@ def blog():
     # get the previous page url
     prev_url = url_for('main.blog', page=all_posts.prev_num) \
         if all_posts.has_prev else None
-    # tags
-    all_tags = Tag.query.all()
     return render_template('main/blog.html', title='Blog', all_posts=all_posts,
                            next_url=next_url, prev_url=prev_url,
-                           blog_posts=posts, all_tags=all_tags)
+                           blog_posts=posts)
 
 
 @bp.route('/blog/tag/<tag>')

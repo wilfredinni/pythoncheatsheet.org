@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_sidebar.html" %}
 
 {% block seo %}
   <link rel="canonical" href="https://www.pythoncheatsheet.org/blog/{{ post.url }}">
@@ -9,141 +9,119 @@
 {% endblock seo %}
 
 {% block stylesheet %}
-  <link rel="stylesheet" href={{ url_for( "static", filename="css/articles.min.css" ) }}>
-  <link rel="stylesheet" href={{ url_for( "static", filename="css/carbon-article.min.css" ) }}>
+  <link rel="stylesheet" href={{ url_for( "static", filename="css/articles.css" ) }}>
+  <link rel="stylesheet" href={{ url_for( "static", filename="css/carbon-blog.min.css" ) }}>
 {% endblock stylesheet %}
 
 
-{% block content %}
-<div class="hero-body">
-  <div class="container">
+{% block main_column %}
+  <!-- delete, edit, new -->
+  {% if post.author.username == current_user.username %}
+  <div id="articleEdits" class="column is-4 is-offset-8 del-edit-new-hidden editor">
+    <div class="level">
 
-    <!-- article -->
-    <div class="columns is-multiline is-mobile is-centered">
-      <div class="column is-8 article max-mobile">
+      <!-- delete -->
+      <span class="icon level-item">
+        <a id="deleteArticleBtn" class="articleDeleteModalBtn" href="javascript:void(0);">
+          <i class="far fa-trash-alt"></i> Delete</a>
+      </span>
 
-        <!-- delete, edit, new -->
-        {% if post.author.username == current_user.username %}
-        <div id="articleEdits" class="column is-4 is-offset-8 del-edit-new-hidden editor">
-          <div class="level">
+      <!-- edit -->
+      <span class="icon level-item">
+        <a href="{{ url_for('dashboard.edit_post', url=post.url) }}">
+          <i class="far fa-edit"></i> Edit</a>
+      </span>
 
-            <!-- delete -->
-            <span class="icon level-item">
-              <a id="deleteArticleBtn" class="articleDeleteModalBtn" href="javascript:void(0);">
-                <i class="far fa-trash-alt"></i> Delete</a>
-            </span>
+      <!-- new -->
+      <span class="icon level-item">
+        <a href="{{ url_for('dashboard.new_post') }}">
+          <i class="fas fa-plus"></i> New</a>
+      </span>
+       </div>
+    </div>
+  {% endif %}
 
-            <!-- edit -->
-            <span class="icon level-item">
-              <a href="{{ url_for('dashboard.edit_post', url=post.url) }}">
-                <i class="far fa-edit"></i> Edit</a>
-            </span>
-
-            <!-- new -->
-            <span class="icon level-item">
-              <a href="{{ url_for('dashboard.new_post') }}">
-                <i class="fas fa-plus"></i> New</a>
-            </span>
-          </div>
-        </div>
-        {% endif %}
-
-        <!-- article title -->
-        <div class="header-content art-title">
-          <div class="has-text-centered">
-            <h1 class="title is-2 no-h1 is-size-4-mobile">
-              {{ title }}
-            </h1>
-          </div>
-        </div>
-
-        <!-- time and author name -->
-        <div class="has-text-centered article-botton-space">
-          <p class="no-p">posted on
-            <a>{{ moment(post.timestamp).format('L') }}</a> by
-            <a href="{{ url_for('main.author', username=post.author.username) }}">{{ post.author.screen_name }}</a>
-          </p>
-        </div>
-
-        <!-- post body -->
-        <div class="content img-cent article-body">
-
-          <!-- article img -->
-          <div>
-            <img src="{{ post.img_url }}" alt="{{ post.title }}">
-          </div>
-          <br>
-
-          <div class="">
-            <!-- ads -->
-            <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CK7D62JL&placement=wwwpythoncheatsheetorg" id="_carbonads_js"></script>
-          </div>
-
-          <p>{{ g.md(md_body)|safe }}</p>
-          <hr>
-          <div class="level">
-
-            <!-- tags -->
-            <div class="level-left">
-              <p>Tags: {% for tag in post.tag %}
-                <a href="{{ url_for('main.tag', tag=tag.name) }}">
-                  <span class="tag is-warning">
-                    {{tag.name}}
-                  </span>
-                </a>
-                {% endfor %}
-              </p>
-            </div>
-
-            <!-- share -->
-            <div class="level-right">
-
-              <!-- twitter -->
-              <a target="blank" href="https://twitter.com/intent/tweet?status={{title}}+{{ url_for('main.article', url=post.url, _external=True) }}"
-                class="share twitter">
-                <span class="icon share-icon">
-                  <i class="fab fa-twitter"></i>
-                </span>
-              </a>
-
-              <!-- facebook -->
-              <a target="blank" href="https://www.facebook.com/share.php?u={{ url_for('main.article', url=post.url, _external=True) }}&title={{title}}"
-                class="share facebook">
-                <span class="icon share-icon">
-                  <i class="fab fa-facebook-f"></i>
-                </span>
-              </a>
-
-              <!-- google -->
-              <a target="blank" href="https://plus.google.com/share?url={{ url_for('main.article', url=post.url, _external=True) }}" class="share google">
-                <span class="icon share-icon">
-                  <i class="fab fa-google"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <br>
-        <br>
-
-        <div id="disqus_thread">
-          <div id="comments"></div>
-          <script>
-            (function () { // DON'T EDIT BELOW THIS LINE
-              var d = document,
-                s = d.createElement('script');
-              s.src = 'https://python-cheatsheet.disqus.com/embed.js';
-              s.setAttribute('data-timestamp', +new Date());
-              (d.head || d.body).appendChild(s);
-            })();
-          </script>
-          <noscript>Please enable JavaScript to view the
-            <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-          </noscript>
-        </div>
-      </div>
+  <!-- article title -->
+  <div class="header-content art-title">
+    <div class="has-text-centered">
+      <h1 class="title is-2 no-h1 is-size-4-mobile">
+        {{ title }}
+      </h1>
     </div>
   </div>
+
+  <!-- time and author name -->
+  <div class="has-text-centered article-botton-space">
+    <p class="no-p">posted on
+      <a>{{ moment(post.timestamp).format('L') }}</a> by
+      <a href="{{ url_for('main.author', username=post.author.username) }}">{{ post.author.screen_name }}</a>
+    </p>
+  </div>
+
+  <!-- post body -->
+  <div class="content img-cent article-body">
+    <!-- article img -->
+    <div>
+      <img src="{{ post.img_url }}" alt="{{ post.title }}">
+    </div>
+    <br>
+    <p>{{ g.md(md_body)|safe }}</p>
+    <hr>
+    <div class="level"><!-- tags -->
+    <div class="level-left">
+      <p>Tags: {% for tag in post.tag %}
+        <a href="{{ url_for('main.tag', tag=tag.name) }}">
+          <span class="tag is-warning">
+            {{tag.name}}
+          </span>
+        </a>
+        {% endfor %}
+      </p>
+    </div>
+
+    <!-- share -->
+    <div class="level-right">
+
+      <!-- twitter -->
+      <a target="blank" href="https://twitter.com/intent/tweet?status={{title}}+{{ url_for('main.article', url=post.url, _external=True) }}"
+        class="share twitter">
+        <span class="icon share-icon">
+          <i class="fab fa-twitter"></i>
+        </span>
+      </a>
+
+      <!-- facebook -->
+      <a target="blank" href="https://www.facebook.com/share.php?u={{ url_for('main.article', url=post.url, _external=True) }}&title={{title}}"
+        class="share facebook">
+        <span class="icon share-icon">
+          <i class="fab fa-facebook-f"></i>
+        </span>
+      </a>
+
+      <!-- google -->
+      <a target="blank" href="https://plus.google.com/share?url={{ url_for('main.article', url=post.url, _external=True) }}" class="share google">
+        <span class="icon share-icon">
+          <i class="fab fa-google"></i>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+<br><br>
+
+<div id="disqus_thread">
+  <div id="comments"></div>
+  <script>
+    (function () { // DON'T EDIT BELOW THIS LINE
+      var d = document,
+        s = d.createElement('script');
+      s.src = 'https://python-cheatsheet.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
 </div>
 
 <!-- delete modal -->
@@ -166,8 +144,13 @@
   </div>
   <button id="closeBtn" class="modal-close is-large" aria-label="close"></button>
 </div>
+{% endblock main_column %}
 
-{% endblock content %}
+<!-- sidebar -->
+{% block side_column %}
+  {% include 'main/_default_sidebar.html' %}
+{% endblock side_column %}
+
 
 {% block js %}
   <!-- addthis javascript -->

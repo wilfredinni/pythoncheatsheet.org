@@ -117,7 +117,7 @@ h1:not(.no-h1) {
     margin: 40px 0 !important;
 }
 
-h2 {
+h2:not(.no-newsletter) {
     font-size: 24px !important;
     margin: 30px 0 !important;
     font-weight: 600 !important;
@@ -157,7 +157,7 @@ blockquote {
 }
 
 blockquote,
-p:not(.results_p):not(.no-p):not(.p-sheet-nav):not(.footer-bar):not(.footer-copyright),
+p:not(.results_p):not(.no-p):not(.p-sheet-nav):not(.footer-bar):not(.footer-copyright):not(.no-unsubscribe),
 ol,
 dl,
 table,

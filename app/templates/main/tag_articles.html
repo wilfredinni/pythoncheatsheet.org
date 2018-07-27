@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_sidebar.html" %}
 
 {% block seo %}
   <link rel="canonical" href="https://www.pythoncheatsheet.org/blog/tag/{{tag.name}}">
@@ -8,21 +8,23 @@
   <meta name="twitter:description" content="Python cheat sheet and Articles for Beginner and Advanced Developers." />
 {% endblock seo %}
 
-{% block content %}
-<section class="container">
+{% block main_column %}
   <!-- tags -->
-  <section class="column is-6 has-text-centered">
+  <section class=""><br>
     Tag:
     <span class="tag is-warning">
       {{tag.name}}
-    </span>
+    </span><br><br><br>
   </section>
 
   <!-- articles -->
-  <div class="section column is-8 is-offset-2">
+  <div class="">
     {% for post in posts %}
       {% include 'main/_post.html' %}
     {% endfor %}
   </div>
-</section>
-{% endblock content %}
+{% endblock main_column %}
+
+{% block side_column %}
+  {% include 'main/_default_sidebar.html' %}
+{% endblock side_column %}
