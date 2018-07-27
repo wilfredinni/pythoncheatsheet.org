@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="container">
+
+  <div class="columns">
+
+    <!-- main column -->
+    <div class="column is-8 section">
+        {% block main_column %}{% endblock main_column %}
+    </div>
+
+    <!-- side column -->
+    <div class="column section">
+      {% block side_column %}{% endblock side_column %}
+    </div>
+  </div>
+
+  <!-- empty msg -->
+  {% block empty_blog %} {% endblock empty_blog %}
+
+  <!-- pagination -->
+  {% block pagination %} {% endblock pagination%}
+
+</section>
+{% endblock content %}

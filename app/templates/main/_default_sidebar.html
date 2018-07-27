@@ -1,0 +1,35 @@
+<div>
+  <br>
+  <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CK7D62JL&placement=wwwpythoncheatsheetorg" id="_carbonads_js"></script>
+</div><br>
+
+<!-- subscribe -->
+<div class="box has-text-centered subs">
+  <h2 class="has-text-weight-bold">Newsletters</h2><br>
+  <p class="control has-icons-left has-icons-right">
+  <input class="input" type="email" placeholder="Email" disabled>
+  <span class="icon is-small is-left">
+    <i class="fas fa-envelope"></i>
+  </span>
+  </p><br>
+  <a class="button is-fullwidth" disabled>Subscribe</a>
+  <p class="help has-text-left">Unsuscribe any time.</p>
+</div><br>
+
+<!-- tags -->
+<div>
+  {% if all_tags %}
+    <p>
+    <span class="icon">
+      <i class="fas fa-tags"></i>
+    </span>
+    <span aria-hidden="true"></span>
+      _Tags:
+    </p>
+    {% for tag in all_tags%}
+      <a href="{{ url_for('main.tag', tag=tag.name) }}">
+        <span class="tag is-warning tag-page">{{ tag.name }}</span>
+      </a>
+    {% endfor %}
+  {% endif %}
+</div>

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_sidebar.html" %}
 
 {% block seo %}
   <link rel="canonical" href="https://www.pythoncheatsheet.org/blog">
@@ -16,105 +16,34 @@
 <section class="container">
 
   <div class="columns">
-
     <div class="column is-8 section">
-      <section>
+      {% block main_column %}
         <br>
         <!-- articles -->
         {% for post in all_posts.items %}
           {% include 'main/_post.html' %}
         {% endfor %}
-      </section>
+      {% endblock main_column %}
     </div>
-
 
     <div class="column section">
-      <!-- Ads -->
-      <div>
-        <br>
-        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CK7D62JL&placement=wwwpythoncheatsheetorg" id="_carbonads_js"></script>
-      </div><br>
-
-      <!-- subscribe -->
-      <div class="box has-text-centered subs">
-        <h2 class="has-text-weight-bold">Newsletters</h2><br>
-        <p class="control has-icons-left has-icons-right">
-          <input class="input" type="email" placeholder="Email" disabled>
-          <span class="icon is-small is-left">
-            <i class="fas fa-envelope"></i>
-          </span>
-        </p><br>
-        <a class="button is-fullwidth" disabled>Subscribe</a>
-        <p class="help has-text-left">Unsuscribe any time.</p>
-      </div><br>
-
-      <!-- tags -->
-      <div>
-        {% if all_tags %}
-          <p>
-            <span class="icon">
-              <i class="fas fa-tags"></i>
-            </span>
-            <span aria-hidden="true"></span>
-            _Tags:
-          </p>
-            {% for tag in all_tags%}
-              <a href="{{ url_for('main.tag', tag=tag.name) }}">
-                <span class="tag is-warning tag-page">{{ tag.name }}</span>
-              </a>
-            {% endfor %}
-        {% endif %}
-      </div>
-
+      {% block side_column %}
+        {% include 'main/_default_sidebar.html' %}
+      {% endblock side_column %}
     </div>
   </div>
 
-  {% if blog_posts|length == 0 %}
-  <section class="section">
-    <h1 class="title is-1 has-text-centered blog-no-posts">Nothing Yet 🙄</h1>
-  </section>
-  {% endif %}
+  {% block empty_blog %}
+    {% if blog_posts|length == 0 %}
+    <section class="section">
+      <h1 class="title is-1 has-text-centered blog-no-posts">Nothing Yet 🙄</h1>
+    </section>
+    {% endif %}
+  {% endblock empty_blog %}
 
-  <!-- pagination -->
-  {% if blog_posts|length >= 6 %}
-  <div class="container column is-7">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+  {% block pagination %}
+    {% include 'main/_pagination.html' %}
+  {% endblock pagination%}
 
-      <!-- prev page -->
-      {% if prev_url %}
-        <a href="{{ prev_url }}" class="pagination-previous">Previous</a>
-      {% else %}
-        <a href="#" class="pagination-previous" disabled>Previous</a>
-      {% endif %}
-
-      <!-- next page -->
-      {% if next_url %}
-        <a href="{{ next_url }}" class="pagination-next">Next page</a>
-      {% else %}
-        <a href="#" class="pagination-next" disabled>Next page</a>
-      {% endif %}
-
-      <!-- numbers -->
-      <ul class="pagination-list">
-        {% for page_num in all_posts.iter_pages() %}
-          {% if page_num %}
-            <!-- color num -->
-            <li>
-              {% if all_posts.page == page_num %}
-                <a <a href="{{ url_for('main.blog', page=page_num) }}" class="pagination-link is-current">{{ page_num }}</a>
-              {% else %}
-                <a <a href="{{ url_for('main.blog', page=page_num) }}" class="pagination-link">{{ page_num }}</a>
-              {% endif %}
-            </li>
-          {% else %}
-            <li>
-              <span class="pagination-ellipsis">&hellip;</span>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </nav>
-  </div>
-  {% endif %}
 </section>
 {% endblock content %}
