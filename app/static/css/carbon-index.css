@@ -11,8 +11,8 @@
   max-width: var(--width);
   border-radius: 4px;
   text-align: center;
-  /*box-shadow: 0 0 0 1px hsla(0, 0%, 0%, .1);*/
-  /*background-color: hsl(0, 0%, 98%);*/
+  box-shadow: 0 0 0 1px hsla(0, 0%, 0%, .1);
+  background-color: hsl(0, 0%, 98%);
   font-size: var(--font-size);
   line-height: 1.5;
   margin-left: auto;
