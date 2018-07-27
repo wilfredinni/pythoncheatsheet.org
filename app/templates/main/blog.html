@@ -8,16 +8,66 @@
   <meta name="twitter:description" content="Python cheat sheet and Articles for Beginner and Advanced Developers." />
 {% endblock seo %}
 
-<!-- -->
-{% block content %}
-<section class="section">
+{% block stylesheet %}
+  <link rel="stylesheet" href="{{ url_for( "static", filename="css/carbon-blog.min.css" ) }}">
+{% endblock stylesheet %}
 
-  <section>
-    <!-- articles -->
-    {% for post in all_posts.items %}
-      {% include 'main/_post.html' %}
-    {% endfor %}
-  </section>
+{% block content %}
+<section class="container">
+
+  <div class="columns">
+
+    <div class="column is-8 section">
+      <section>
+        <br>
+        <!-- articles -->
+        {% for post in all_posts.items %}
+          {% include 'main/_post.html' %}
+        {% endfor %}
+      </section>
+    </div>
+
+
+    <div class="column section">
+      <!-- Ads -->
+      <div>
+        <br>
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CK7D62JL&placement=wwwpythoncheatsheetorg" id="_carbonads_js"></script>
+      </div><br>
+
+      <!-- subscribe -->
+      <div class="box has-text-centered subs">
+        <h2 class="has-text-weight-bold">Newsletters</h2><br>
+        <p class="control has-icons-left has-icons-right">
+          <input class="input" type="email" placeholder="Email" disabled>
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+        </p><br>
+        <a class="button is-fullwidth" disabled>Subscribe</a>
+        <p class="help has-text-left">Unsuscribe any time.</p>
+      </div><br>
+
+      <!-- tags -->
+      <div>
+        {% if all_tags %}
+          <p>
+            <span class="icon">
+              <i class="fas fa-tags"></i>
+            </span>
+            <span aria-hidden="true"></span>
+            _Tags:
+          </p>
+            {% for tag in all_tags%}
+              <a href="{{ url_for('main.tag', tag=tag.name) }}">
+                <span class="tag is-warning tag-page">{{ tag.name }}</span>
+              </a>
+            {% endfor %}
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
 
   {% if blog_posts|length == 0 %}
   <section class="section">
@@ -67,5 +117,4 @@
   </div>
   {% endif %}
 </section>
-
 {% endblock content %}

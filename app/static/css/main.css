@@ -1,3 +1,7 @@
+.subs {
+  background: #eeeeee;
+}
+
 .close {
   margin-right: 5%;
   margin-top: 1%;
@@ -321,6 +325,10 @@
 .blog-no-posts {
   margin-bottom: 12%;
   margin-top: 12%;
+}
+
+.blog-colaborate {
+  font-size: 120px;
 }
 
 .mobil-logo {

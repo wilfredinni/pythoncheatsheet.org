@@ -10,6 +10,7 @@
 
 {% block stylesheet %}
   <link rel="stylesheet" href={{ url_for( "static", filename="css/cheatsheet.min.css" ) }}>
+  <link rel="stylesheet" href="{{ url_for( "static", filename="css/carbon-index.css" ) }}">
 {% endblock stylesheet %}
 
 {% block content %}
@@ -52,6 +53,7 @@
     <!-- index -->
     <div id="index" class="column">
       <div class="fixed-index" id="style-1">
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CK7D62JL&placement=wwwpythoncheatsheetorg" id="_carbonads_js"></script>
         <!-- <h4 class="title is-5 index">Table of Content</h4> -->
         <ul id="indexList"></ul>
       </div>
@@ -72,12 +74,8 @@
         {% endif %}
       {% endif %}
 
-      <!-- advertising -->
-      <div id="codefund_ad"></div>
-
       <!-- pysheet content -->
       <div>
-        <!-- g.md from before_request -->
         {{ g.md(pysheet)|safe }}
       </div>
     </div>
@@ -96,9 +94,6 @@
 {% endblock content%}
 
 {% block js %}
-  <!-- advertising -->
-  <script src="https://codefund.io/scripts/832a4559-4eb7-459d-a17e-0d530dfa3ddd/embed.js?template=centered&theme=light"></script>
-
   <!-- scroll up and search -->
   <script src={{ url_for( "static", filename="scripts/scroll.min.js" ) }} charset="utf-8 "></script>
   <script src={{ url_for( "static", filename="scripts/search.min.js" ) }} charset="utf-8 "></script>

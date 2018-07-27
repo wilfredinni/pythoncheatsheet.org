@@ -10,6 +10,7 @@
 
 {% block stylesheet %}
   <link rel="stylesheet" href={{ url_for( "static", filename="css/articles.min.css" ) }}>
+  <link rel="stylesheet" href={{ url_for( "static", filename="css/carbon-article.min.css" ) }}>
 {% endblock stylesheet %}
 
 
@@ -72,7 +73,11 @@
             <img src="{{ post.img_url }}" alt="{{ post.title }}">
           </div>
           <br>
-          <div class="" id="codefund_ad"></div>
+
+          <div class="">
+            <!-- ads -->
+            <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CK7D62JL&placement=wwwpythoncheatsheetorg" id="_carbonads_js"></script>
+          </div>
 
           <p>{{ g.md(md_body)|safe }}</p>
           <hr>
@@ -165,8 +170,6 @@
 {% endblock content %}
 
 {% block js %}
-  <script src="https://codefund.io/scripts/832a4559-4eb7-459d-a17e-0d530dfa3ddd/embed.js?template=centered&theme=light"></script>
-
   <!-- addthis javascript -->
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b05cb2ae9e75f31"></script>
 

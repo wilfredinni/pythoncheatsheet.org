@@ -9,7 +9,7 @@
 {% endblock seo %}
 
 {% block content %}
-<section>
+<section class="container">
   <!-- tags -->
   <section class="column is-6 has-text-centered">
     Tag:
@@ -19,7 +19,7 @@
   </section>
 
   <!-- articles -->
-  <div class="section">
+  <div class="section column is-8 is-offset-2">
     {% for post in posts %}
       {% include 'main/_post.html' %}
     {% endfor %}
