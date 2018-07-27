@@ -54,8 +54,8 @@ a.anchor {
 }
 
 h1:not(.no-h1),
-h2:not(.no-newsletter),
-h3,
+h2,
+h3:not(.no-newsletter),
 h4,
 h5,
 h6 {

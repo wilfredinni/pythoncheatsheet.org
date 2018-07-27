@@ -5,7 +5,7 @@
 
 <!-- subscribe -->
 <div class="box has-text-centered subs">
-  <h2 class="has-text-weight-bold no-newsletter">Newsletters</h2><br>
+  <h3 class="has-text-weight-bold no-newsletter">Newsletters</h3><br>
   <p class="control has-icons-left has-icons-right no-unsubscribe">
   <input class="input" type="email" placeholder="Email" disabled>
   <span class="icon is-small is-left">
@@ -16,20 +16,53 @@
   <p class="help has-text-left no-unsubscribe">Unsubscribe any time.</p>
 </div><br>
 
-<!-- tags -->
-<div>
-  {% if g.all_tags %}
-    <p class="no-unsubscribe">
-    <span class="icon">
-      <i class="fas fa-tags"></i>
-    </span>
-    <span aria-hidden="true"></span>
-      _Tags:
-    </p>
-    {% for tag in g.all_tags%}
-      <a href="{{ url_for('main.tag', tag=tag.name) }}">
-        <span class="tag is-warning tag-page">{{ tag.name }}</span>
-      </a>
-    {% endfor %}
-  {% endif %}
-</div>
+<!-- index -->
+{% if md_body %}
+  <div class="sticky-index">
+    <div id="index" class="box">
+      <h3 class="no-newsletter">Table of Content</h3>
+      <ul id="indexList" class="article-ul"></ul>
+    </div><br>
+
+    <div>
+      {% if g.all_tags %}
+        <p class="no-unsubscribe">
+        <span class="icon">
+          <i class="fas fa-tags"></i>
+        </span>
+        <span aria-hidden="true"></span>
+          _Tags:
+        </p>
+        {% for tag in g.all_tags%}
+          <a href="{{ url_for('main.tag', tag=tag.name) }}">
+            <span class="tag is-warning tag-page">{{ tag.name }}</span>
+          </a>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+{% else %}
+  <!-- tags -->
+  <div>
+    {% if g.all_tags %}
+      <p class="no-unsubscribe">
+      <span class="icon">
+        <i class="fas fa-tags"></i>
+      </span>
+      <span aria-hidden="true"></span>
+        _Tags:
+      </p>
+      {% for tag in g.all_tags%}
+        <a href="{{ url_for('main.tag', tag=tag.name) }}">
+          <span class="tag is-warning tag-page">{{ tag.name }}</span>
+        </a>
+      {% endfor %}
+    {% endif %}
+  </div>
+{% endif %}
+
+{% if md_body %}
+  {% block js %}
+    <script src={{ url_for( "static", filename="scripts/article-index.js" ) }} charset="utf-8 "></script>
+  {% endblock js %}
+{% endif %}

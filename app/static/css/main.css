@@ -1,10 +1,19 @@
-.subs {
-  background: #eeeeee;
+.sticky-index {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 80px;
 }
 
-.close {
-  margin-right: 5%;
-  margin-top: 1%;
+.no-newsletter {
+  font-size: 24px;
+}
+
+.article-ul {
+  list-style-type: disc;
+}
+
+.subs {
+  background: #eeeeee;
 }
 
 .fixed-index {
@@ -363,10 +372,8 @@
   .search-content {
     width: 90% !important;
   }
-
   .fixed-index {
     position: relative;
-    /* overflow: auto; */
     height: 100%;
     width: 100%;
   }

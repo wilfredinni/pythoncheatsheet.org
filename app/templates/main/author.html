@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_sidebar.html" %}
 
 
 {% block seo %}
@@ -9,10 +9,14 @@
   <meta name="twitter:description" content="{{ user.username }} - {{ g.md(about_me) }}" />
 {% endblock seo %}
 
+{% block stylesheet %}
+  <link rel="stylesheet" href="{{ url_for( "static", filename="css/carbon-blog.min.css" ) }}">
+{% endblock stylesheet %}
 
-{% block content %}
+
+{% block main_column %}
 <!-- avatar -->
-<section class="section container column is-7 is-centered">
+<section class="is-centered">
 
   <!-- avatar -->
   <nav class="level">
@@ -89,4 +93,8 @@
   </div>
 
 </section>
-{% endblock content %}
+{% endblock main_column %}
+
+{% block side_column %}
+  {% include 'main/_default_sidebar.html' %}
+{% endblock side_column %}

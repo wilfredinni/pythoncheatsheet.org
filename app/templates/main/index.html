@@ -66,7 +66,7 @@
       {% if pinned_msg.home_msg %}
         {% if pinned_msg.home_enable %}
         <div id="pysheetNotification" class="notification pin-notify is-hidden-mobile">
-          <button id="pysheetCloseNotification" class="delete close"></button>
+          <button id="pysheetCloseNotification" class="delete"></button>
           <div>
             {{ g.md(pinned_msg.home_msg)|safe }}
           </div>

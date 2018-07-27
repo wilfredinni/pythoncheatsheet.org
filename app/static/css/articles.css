@@ -117,7 +117,7 @@ h1:not(.no-h1) {
     margin: 40px 0 !important;
 }
 
-h2:not(.no-newsletter) {
+h2 {
     font-size: 24px !important;
     margin: 30px 0 !important;
     font-weight: 600 !important;
@@ -126,7 +126,7 @@ h2:not(.no-newsletter) {
     color: #24292e !important;
 }
 
-h3 {
+h3:not(.no-newsletter) {
     font-size: 20px !important;
     margin: 30px 0 !important;
     font-weight: 600 !important;

@@ -8,6 +8,10 @@
   <meta name="twitter:description" content="Python cheat sheet and Articles for Beginner and Advanced Developers." />
 {% endblock seo %}
 
+{% block stylesheet %}
+  <link rel="stylesheet" href="{{ url_for( "static", filename="css/carbon-blog.min.css" ) }}">
+{% endblock stylesheet %}
+
 {% block main_column %}
   <!-- tags -->
   <section class=""><br>

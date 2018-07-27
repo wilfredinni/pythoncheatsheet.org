@@ -12,38 +12,28 @@
   <link rel="stylesheet" href="{{ url_for( "static", filename="css/carbon-blog.min.css" ) }}">
 {% endblock stylesheet %}
 
-{% block content %}
-<section class="container">
 
-  <div class="columns">
-    <div class="column is-8 section">
-      {% block main_column %}
-        <br>
-        <!-- articles -->
-        {% for post in all_posts.items %}
-          {% include 'main/_post.html' %}
-        {% endfor %}
-      {% endblock main_column %}
-    </div>
+{% block main_column %}
+  <br>
+  {% for post in all_posts.items %}
+    {% include 'main/_post.html' %}
+  {% endfor %}
+{% endblock main_column %}
 
-    <div class="column section">
-      {% block side_column %}
-        {% include 'main/_default_sidebar.html' %}
-      {% endblock side_column %}
-    </div>
-  </div>
+{% block side_column %}
+  {% include 'main/_default_sidebar.html' %}
+{% endblock side_column %}
 
-  {% block empty_blog %}
-    {% if blog_posts|length == 0 %}
-    <section class="section">
-      <h1 class="title is-1 has-text-centered blog-no-posts">Nothing Yet 🙄</h1>
-    </section>
-    {% endif %}
-  {% endblock empty_blog %}
+{% block empty_blog %}
+  {% if blog_posts|length == 0 %}
+  <section class="section">
+    <h1 class="title is-1 has-text-centered blog-no-posts">Nothing Yet 🙄</h1>
+  </section>
+  {% endif %}
+{% endblock empty_blog %}
 
-  {% block pagination %}
-    {% include 'main/_pagination.html' %}
-  {% endblock pagination%}
+{% block pagination %}
+  {% include 'main/_pagination.html' %}
+{% endblock pagination%}
 
-</section>
-{% endblock content %}
+
