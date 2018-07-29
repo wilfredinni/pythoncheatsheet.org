@@ -13,6 +13,7 @@
 {% endblock stylesheet %}
 
 {% block main_column %}
+  <h1 class="is-hidden-tablet is-hidden-mobile">Post per Tags - Python Cheat sheet</h1>
   <!-- tags -->
   <section class=""><br>
     Tag:
@@ -31,4 +32,21 @@
 
 {% block side_column %}
   {% include 'main/_default_sidebar.html' %}
+
+  <div class="is-hidden-tablet">
+    <!-- tags -->
+    <section class=""><br>
+      Tag:
+      <span class="tag is-warning">
+        {{tag.name}}
+      </span><br><br><br>
+    </section>
+
+    <!-- articles -->
+    <div class="">
+      {% for post in posts %}
+        {% include 'main/_post.html' %}
+      {% endfor %}
+    </div>
+  </div>
 {% endblock side_column %}

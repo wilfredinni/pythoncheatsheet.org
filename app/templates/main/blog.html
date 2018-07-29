@@ -17,11 +17,9 @@
   {% block main_column %}
     <h1 class="is-hidden-tablet is-hidden-mobile">Blog Python Cheat sheet</h1>
     <br>
-    <div class="is-hidden-mobile">
-      {% for post in all_posts.items %}
-        {% include 'main/_post.html' %}
-      {% endfor %}
-    </div>
+    {% for post in all_posts.items %}
+      {% include 'main/_post.html' %}
+    {% endfor %}
   {% endblock main_column %}
 
 

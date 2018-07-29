@@ -13,29 +13,51 @@
 {% endblock stylesheet %}
 
 {% block main_column %}
-<div class="">
-  {% if all_tags %}<br>
-    <h1 class="subtitle is-3">
-      <span class="icon">
-        <i class="fas fa-tags"></i>
-      </span>
-      <span aria-hidden="true"></span>
-      _Tags:</h1>
-    <br> {% for tag in all_tags%}
-    <a href="{{ url_for('main.tag', tag=tag.name) }}">
-      <span class="tag is-warning is-large tag-page">{{ tag.name }}</span>
-    </a>
-    {% endfor %}
-    <br>
-    <br>
-  {% else %}
-    <section class="section">
-      <h1 class="title is-1 has-text-centered blog-no-posts">Nothing Yet 🙄</h1>
-    </section>
-  {% endif %}
-</div>
+  <div class="">
+    {% if all_tags %}<br>
+      <h1 class="subtitle is-3">
+        <span class="icon">
+          <i class="fas fa-tags"></i>
+        </span>
+        <span aria-hidden="true"></span>
+        _Tags:</h1>
+      <br> {% for tag in all_tags%}
+      <a href="{{ url_for('main.tag', tag=tag.name) }}">
+        <span class="tag is-warning is-large tag-page">{{ tag.name }}</span>
+      </a>
+      {% endfor %}
+      <br>
+      <br>
+    {% else %}
+      <section class="section">
+        <h1 class="title is-1 has-text-centered blog-no-posts">Nothing Yet 🙄</h1>
+      </section>
+    {% endif %}
+  </div>
 {% endblock main_column %}
 
 {% block side_column %}
   {% include 'main/_default_sidebar.html' %}
+
+  <div class="is-hidden-tablet">
+    {% if all_tags %}<br>
+      <h1 class="subtitle is-3">
+        <span class="icon">
+          <i class="fas fa-tags"></i>
+        </span>
+        <span aria-hidden="true"></span>
+        _Tags:</h1><br>
+      {% for tag in all_tags%}
+      <a href="{{ url_for('main.tag', tag=tag.name) }}">
+        <span class="tag is-warning is-large tag-page">{{ tag.name }}</span>
+      </a>
+      {% endfor %}
+      <br>
+      <br>
+    {% else %}
+      <section class="section">
+        <h1 class="title is-1 has-text-centered blog-no-posts">Nothing Yet 🙄</h1>
+      </section>
+    {% endif %}
+  </div>
 {% endblock side_column %}
