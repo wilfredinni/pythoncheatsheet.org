@@ -5,9 +5,9 @@
         <!-- post title -->
         <div class="header-content">
           <div class="has-text-centered">
-            <h1 class="title is-2 no-h1 is-size-4-mobile">
+            <h2 class="title is-2 no-h1 is-size-4-mobile">
               {{ post.title }}
-            </h1>
+            </h2>
           </div>
         </div>
 
@@ -22,20 +22,24 @@
 
         <!-- article img -->
         <div>
-          <img src="{{ post.img_url }}" alt="">
+          <img src="{{ post.img_url }}" alt="{{ post.title }}">
         </div>
 
         <!-- article summary -->
         <div class="content">
           <p>{{ g.md(post.summary)|safe }}</p>
+
+          <!-- continue reading link for mobile -->
+          <a class="is-pulled-right is-hidden-tablet" href="{{ url_for('main.article', url=post.url) }}"> Continue Reading...</a>
+
           <hr class="is-hidden-mobile">
-          <div class="level">
+          <div class="level is-hidden-mobile">
             <a class="button" href="{{ url_for('main.article', url=post.url) }}">
               Continue Reading
             </a>
 
             <!-- tags -->
-            <div class="level is-hidden-mobile">
+            <div class="level">
               <p>Tags: {% for tag in post.tag %}
                 <a href="{{ url_for('main.tag', tag=tag.name) }}">
                   <span class="tag is-warning">

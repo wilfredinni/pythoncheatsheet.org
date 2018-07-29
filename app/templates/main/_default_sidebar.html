@@ -1,10 +1,11 @@
+<!-- ads -->
 <div>
   <br>
   <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CK7D62JL&placement=wwwpythoncheatsheetorg" id="_carbonads_js"></script>
 </div><br>
 
 <!-- subscribe -->
-<div class="box has-text-centered subs">
+<div class="box has-text-centered subs is-hidden-mobile">
   <h3 class="has-text-weight-bold no-newsletter">Newsletters</h3><br>
   <p class="control has-icons-left has-icons-right no-unsubscribe">
   <input class="input" type="email" placeholder="Email" disabled>
@@ -18,7 +19,7 @@
 
 <!-- index -->
 {% if md_body %}
-  <div class="sticky-index">
+  <div class="sticky-index is-hidden-mobile">
     <div id="index" class="box">
       <h3 class="no-newsletter">Table of Content</h3>
       <ul id="indexList" class="article-ul"></ul>
@@ -43,7 +44,7 @@
   </div>
 {% else %}
   <!-- tags -->
-  <div>
+  <div class="is-hidden-mobile">
     {% if g.all_tags %}
       <p class="no-unsubscribe">
       <span class="icon">

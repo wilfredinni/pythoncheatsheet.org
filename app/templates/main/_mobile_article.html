@@ -1,0 +1,47 @@
+  <!-- post on mobile -->
+  <div class="is-hidden-tablet">
+
+    <!-- article title -->
+    <div class="header-content art-title">
+      <div class="has-text-centered">
+        <h2 class="title is-2 no-h1 is-size-4-mobile">
+          {{ title }}
+        </h2>
+      </div>
+    </div>
+
+    <!-- post body -->
+    <div class="content img-cent article-body">
+      <br class="is-hidden-mobile">
+      <p>{{ g.md(md_body)|safe }}</p>
+      <hr>
+      <div class="level">
+
+      <!-- share -->
+      <div class="level-right">
+
+        <!-- twitter -->
+        <a target="blank" href="https://twitter.com/intent/tweet?status={{title}}+{{ url_for('main.article', url=post.url, _external=True) }}"
+          class="share twitter">
+          <span class="icon share-icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+        </a>
+
+        <!-- facebook -->
+        <a target="blank" href="https://www.facebook.com/share.php?u={{ url_for('main.article', url=post.url, _external=True) }}&title={{title}}"
+          class="share facebook">
+          <span class="icon share-icon">
+            <i class="fab fa-facebook-f"></i>
+          </span>
+        </a>
+
+        <!-- google -->
+        <a target="blank" href="https://plus.google.com/share?url={{ url_for('main.article', url=post.url, _external=True) }}" class="share google">
+          <span class="icon share-icon">
+            <i class="fab fa-google"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>

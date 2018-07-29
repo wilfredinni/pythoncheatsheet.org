@@ -13,15 +13,27 @@
 {% endblock stylesheet %}
 
 
-{% block main_column %}
-  <br>
-  {% for post in all_posts.items %}
-    {% include 'main/_post.html' %}
-  {% endfor %}
-{% endblock main_column %}
+
+  {% block main_column %}
+    <h1 class="is-hidden-tablet is-hidden-mobile">Blog Python Cheat sheet</h1>
+    <br>
+    <div class="is-hidden-mobile">
+      {% for post in all_posts.items %}
+        {% include 'main/_post.html' %}
+      {% endfor %}
+    </div>
+  {% endblock main_column %}
+
 
 {% block side_column %}
   {% include 'main/_default_sidebar.html' %}
+
+  <!-- load the posts in the sidebar only in mobil view -->
+  <div class="is-hidden-tablet">
+    {% for post in all_posts.items %}
+      {% include 'main/_post.html' %}
+    {% endfor %}
+  </div>
 {% endblock side_column %}
 
 {% block empty_blog %}

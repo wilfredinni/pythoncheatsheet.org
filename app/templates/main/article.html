@@ -3,8 +3,8 @@
 {% block seo %}
   <link rel="canonical" href="https://www.pythoncheatsheet.org/blog/{{ post.url }}">
   <meta property="og:url" content="https://www.pythoncheatsheet.org/blog/{{ post.url }}">
-  <meta name="description" content="{{ post.title }}. {{ g.md(post.summary)|striptags|truncate(250) }}">
-  <meta property="og:description" content="{{ post.title }}. {{ g.md(post.summary)|striptags }}">
+  <meta name="description" content="{{ g.md(post.summary)|striptags|truncate(250) }}">
+  <meta property="og:description" content="{{ g.md(post.summary)|striptags }}">
   <meta name="twitter:description" content="{{ g.md(post.summary)|striptags }}" />
 {% endblock seo %}
 
@@ -17,7 +17,7 @@
 {% block main_column %}
   <!-- delete, edit, new -->
   {% if post.author.username == current_user.username %}
-  <div id="articleEdits" class="column is-4 is-offset-8 del-edit-new-hidden editor">
+  <div id="articleEdits" class="column is-4 is-offset-8 del-edit-new-hidden editor ">
     <div class="level">
 
       <!-- delete -->
@@ -149,6 +149,8 @@
 <!-- sidebar -->
 {% block side_column %}
   {% include 'main/_default_sidebar.html' %}
+  <!-- load the article in the sidebar only in mobil view -->
+  {% include 'main/_mobile_article.html' %}
 {% endblock side_column %}
 
 
