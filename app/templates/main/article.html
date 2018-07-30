@@ -8,6 +8,45 @@
   <meta name="twitter:description" content="{{ g.md(post.summary)|striptags }}" />
 {% endblock seo %}
 
+{% block schema %}
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "{{ post.title }}",
+
+    "image": {
+      "@type": "ImageObject",
+      "url": "{{ post.img_url }}",
+    },
+
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.pythoncheatsheet.org/blog/{{ post.url }}"
+    },
+    "datePublished": "{{ post.timestamp }}",
+    "dateModified": "{{ post.timestamp }}",
+     "publisher": {
+      "@type": "Organization",
+      "name": "Python Cheatsheet",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.pythoncheatsheet.org{{ url_for( "static", filename="img/snake.png" ) }}",
+        "width": 60,
+        "height": 60
+      }
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Python Cheatsheet",
+      "url": "https://www.pythoncheatsheet.org",
+      "logo": "https://www.pythoncheatsheet.org{{ url_for( "static", filename="img/snake.png" ) }}"
+    },
+    "description": "{{ g.md(post.summary)|striptags|truncate(250) }}"
+  }
+  </script>
+{% endblock schema %}
+
 {% block stylesheet %}
   <link rel="stylesheet" href={{ url_for( "static", filename="css/articles.min.css" ) }}>
   <link rel="stylesheet" href={{ url_for( "static", filename="css/carbon-blog.min.css" ) }}>

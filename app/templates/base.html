@@ -21,6 +21,7 @@
 
   {% block seo %}{% endblock seo %}
 
+  {% block schema %}
   <!-- schema.org -->
   <script type="application/ld+json">
     {
@@ -31,6 +32,8 @@
       "description": "Cheatsheet and Articles for beginner and advanced Python developers."
     }
   </script>
+  {% endblock schema %}
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121059935-1"></script>
   <script>
