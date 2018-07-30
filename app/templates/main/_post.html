@@ -5,8 +5,8 @@
         <!-- post title -->
         <div class="header-content">
           <div class="has-text-centered">
-            <h2 class="title is-2 no-h1 is-size-4-mobile">
-              {{ post.title }}
+            <h2 class="title is-2 no-h1 is-size-4-mobile blog-title">
+              <a href="{{ url_for('main.article', url=post.url) }}">{{ post.title }}</a>
             </h2>
           </div>
         </div>

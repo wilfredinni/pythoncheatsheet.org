@@ -1,3 +1,7 @@
+.blog-title a {
+  color: #363636;
+}
+
 .sticky-index {
     position: -webkit-sticky; /* Safari */
     position: sticky;
