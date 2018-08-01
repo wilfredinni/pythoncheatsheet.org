@@ -17,35 +17,37 @@
   <p class="help has-text-left no-unsubscribe">Unsubscribe any time.</p>
 </div><br>
 
-<!-- index -->
+
 {% if md_body %}
+  <!-- table of content -->
   <div class="sticky-index is-hidden-mobile">
     <div id="index" class="box">
       <h3 class="no-newsletter">Table of Content</h3>
       <ul id="indexList"></ul>
     </div><br>
 
-    <div>
-      {% if g.all_tags %}
+    <!-- tags in articles -->
+    {% if g.all_tags %}
+      <div>
         <p class="no-unsubscribe">
-        <span class="icon">
-          <i class="fas fa-tags"></i>
-        </span>
-        <span aria-hidden="true"></span>
-          _Tags:
+          <span class="icon">
+            <i class="fas fa-tags"></i>
+          </span>
+          <span aria-hidden="true"></span>
+            _Tags:
         </p>
         {% for tag in g.all_tags%}
           <a href="{{ url_for('main.tag', tag=tag.name) }}">
             <span class="tag is-warning tag-page">{{ tag.name }}</span>
           </a>
         {% endfor %}
-      {% endif %}
-    </div>
+      </div>
+    {% endif %}
   </div>
 {% else %}
   <!-- tags -->
-  <div class="is-hidden-mobile">
-    {% if g.all_tags %}
+  {% if g.all_tags %}
+    <div class="is-hidden-mobile">
       <p class="no-unsubscribe">
       <span class="icon">
         <i class="fas fa-tags"></i>
@@ -58,8 +60,8 @@
           <span class="tag is-warning tag-page">{{ tag.name }}</span>
         </a>
       {% endfor %}
-    {% endif %}
-  </div>
+    </div>
+  {% endif %}
 {% endif %}
 
 {% if md_body %}
