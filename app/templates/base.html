@@ -181,10 +181,10 @@
   <!-- flash msg -->
   {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
-  <div id="mainNotification" class="notification is-primary has-text-centered notification-modal">
-    <button id="closeMainNotification" class="delete"></button>
-    {% for category, message in messages %}{{ message }} {% endfor %}
-  </div>
+    <div id="mainNotification" class="notification is-primary has-text-centered notification-modal">
+      <button id="closeMainNotification" class="delete"></button>
+      {% for category, message in messages %}{{ message }} {% endfor %}
+    </div>
   {% endif %}
   {% endwith %}
 
