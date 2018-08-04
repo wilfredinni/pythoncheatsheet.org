@@ -1,3 +1,11 @@
+.footer-background {
+  background: #f7f4f4;
+}
+
+.sponsor {
+  width: 10%;
+}
+
 .blog-title a {
   color: #363636;
 }

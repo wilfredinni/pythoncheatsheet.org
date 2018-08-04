@@ -192,57 +192,15 @@
 
   <!-- footer -->
   {% if title != "Python Cheatsheet" %}
-    <footer class="footer hero is-warning">
-      <div class="container">
-        <div class="content has-text-centered">
-          <!-- footer nav -->
-          <p class="footer-bar">
-            <a class="footer-nav" href="{{ url_for('main.index') }}">HOME</a>
-            |
-            <a class="footer-nav" href="{{ url_for('main.blog') }}">BLOG</a>
-            |
-            <a class="footer-nav" href="#">CONTRIBUTE</a>
-            |
-            <a class="footer-nav" href="{{ url_for('main.about') }}">ABOUT</a>
-          </p>
-          <!-- footer social -->
-          <div class="footer-social">
-            <!-- github -->
-            <a href="https://github.com/wilfredinni/python-cheatsheet">
-              <span class="icon footer-icon">
-                <i class="fab fa-github fa-2x"></i>
-              </span>
-            </a>
-            <!-- twitter -->
-            <a href="https://twitter.com/pyCheatsheet">
-              <span class="icon footer-icon">
-                <i class="fab fa-twitter fa-2x"></i>
-              </span>
-            </a>
-            <!-- mail -->
-            <a href="">
-              <span class="icon footer-icon">
-                <i class="fas fa-home fa-2x"></i>
-              </span>
-            </a>
-          </div>
-          <!-- footer copiright -->
-          <div>
-            <p class="footer-copyright">2018
-              <a href="#">Python Cheatsheet</a>.
-            </p>
-            <p class="footer-copyright">
-              Logo made by
-              <a href="https://www.flaticon.com/authors/freepik">Freepik</a> from
-              <a href="https://www.flaticon.com">Flaticon</a>.
-            </p>
-            <p class="footer-copyright">The
-              <a href="https://github.com/wilfredinni/python-cheatsheet">Python Cheat Sheet</a> and the
-              <a href="https://github.com/wilfredinni/pysheetBlog">Website</a> are licensed
-              <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
-            </p>
-          </div>
-        </div>
+    <footer class="footer footer-background">
+      <div class="content has-text-centered">
+        <p>
+          2018 <strong>Python Cheatsheet</strong> by <a href="https://twitter.com/pyCheatsheet">@pyCheatsheet</a>.
+          Fork this <a href="https://github.com/wilfredinni/pysheetBlog">website</a>. Fork the <a href="https://github.com/wilfredinni/python-cheatsheet">Python Cheatsheet</a>
+          <br>
+          Sponsored by
+          <a href="https://www.digitalocean.com/"><img class="sponsor" src="{{ url_for( "static", filename="img/DO_Logo_Horizontal_Black.png" ) }}" alt=""></a>.
+        </p>
       </div>
     </footer>
   {% endif %}
