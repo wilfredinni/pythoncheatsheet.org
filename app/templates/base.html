@@ -3,14 +3,8 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% if title == "Python Cheatsheet" %}
-    <title>{{ title }}</title>
-  {% else %}
-    <title>{{ title }} - {{ g.site_name }}</title>
-  {% endif %}
-  <link rel="icon" type="image/svg" href={{ url_for( "static", filename="img/snake.png" ) }}>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="author" content="Python Cheatsheet">
-  <meta charset="utf-8">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:creator" content="@pyCheatsheet">
   <meta name="twitter:site" content="@pyCheatsheet">
@@ -18,6 +12,13 @@
   <meta property="og:image" content="https://raw.githubusercontent.com/wilfredinni/pysheetBlog/master/img/logo.png">
   <meta property="og:title" content="{{ title }} - {{ g.site_name }}">
   <meta property="og:type" content="article">
+  <link rel="icon" type="image/svg" href={{ url_for( "static", filename="img/snake.png" ) }}>
+
+  {% if title == "Python Cheatsheet" %}
+    <title>{{ title }}</title>
+  {% else %}
+    <title>{{ title }} - {{ g.site_name }}</title>
+  {% endif %}
 
   {% block seo %}{% endblock seo %}
 
@@ -200,7 +201,7 @@
           Fork this <a href="https://github.com/wilfredinni/pysheetBlog">website</a>. Fork the <a href="https://github.com/wilfredinni/python-cheatsheet">Python Cheatsheet</a>.
           <br>
           Sponsored by
-          <a href="https://www.digitalocean.com/"><img class="sponsor" src="{{ url_for( "static", filename="img/DO_Logo_Horizontal_Black.png" ) }}" alt=""></a>
+          <a href="https://www.digitalocean.com/"><img class="sponsor" src="{{ url_for( "static", filename="img/DO_Logo_Horizontal_Black.png" ) }}" alt="Sponsored by DigialOcean"></a>
         </p>
       </div>
     </footer>
