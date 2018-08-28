@@ -18,13 +18,15 @@
 {% endblock seo %}
 
 {% block stylesheet %}
-  <link rel="stylesheet" href={{ url_for( "static", filename="css/articles.min.css" ) }}>
+  {#<link rel="stylesheet" href={{ url_for( "static", filename="css/articles.min.css" ) }}>#}
   <link rel="stylesheet" href={{ url_for( "static", filename="css/carbon-blog.min.css" ) }}>
 {% endblock %}
 
 {% block main_column %}
     <h1 class="is-hidden-mobile is-hidden-tablet">{{ title }} - Python Cheatsheet</h1>
-    {{ g.md(md_render)|safe }}
+    <div class="content">
+      {{ g.md(md_render)|safe }}
+  </div>
 {% endblock main_column %}
 
 {% block side_column %}
