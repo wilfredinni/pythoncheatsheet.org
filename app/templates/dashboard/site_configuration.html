@@ -1,10 +1,5 @@
 {% extends "base.html" %}
 
-{% block stylesheet %}
-  <link rel="stylesheet" href={{ url_for( "static", filename="css/edit-pinned-msg.min.css" ) }}>
-  <link rel="stylesheet" href={{ url_for( "static", filename="css/switch.min.css" ) }}>
-{% endblock stylesheet %}
-
 {% block content %}
 <section class="section container">
   <div class="columns">
@@ -19,48 +14,40 @@
 
       <!-- home pinned post -->
       <section>
-        <h1 id="pinMsgTitle" class="subtitle is-3 config-title">Pinned Messages</h1>
+        <h1 class="subtitle is-3 config-title">Pinned Messages</h1>
 
-        <!-- pinned home msg -->
-        <div id="pinMsgContent" class="pin-msg-home">
+        <!-- form pinned post -->
+        <form method="post">
+          <div class="level">
+            <label class="label">Python Cheatsheet Message</label>
+            <!-- enable switch -->
+            <label class="switch level-right">
+              {% if enabled %}
+                {{ form.home_enable(class="checkbox", checked=True) }}
+              {% else %}
+                {{ form.home_enable(class="checkbox") }}
+              {% endif %}
+              <span class="slider round"></span>
+            </label>
+          </div>
 
-          <!-- form pinned post -->
-          <form method="post">
-            <div class="level">
-              <h1 class="level-left">Home Message</h1>
-              <!-- enable switch -->
-              <label class="switch level-right">
-                {% if enabled %}
-                  {{ form.home_enable(class="checkbox", checked=True) }}
-                {% else %}
-                  {{ form.home_enable(class="checkbox") }}
-                {% endif %}
-                <span class="slider round"></span>
-              </label>
-            </div>
+          {{ form.hidden_tag() }}
+          <div>
+            {{ form.home_msg(class="textarea", type="textarea", rows=9, placeholder="Markdown Enabled") }}
+          </div> <br>
 
-            {{ form.hidden_tag() }}
-            <div>
-              {{ form.home_msg(class="textarea", type="textarea", rows=9, placeholder="Markdown Enabled") }}
-            </div>
-
-            <!-- update button -->
-            <div class="field level-left">
-              <p class="control">
-                <button class="submit-button">
-                  Update
-                </button>
-              </p>
-            </div>
-          </form>
-        </div>
+          <!-- update button -->
+          <div class="field level-left">
+            <p class="control">
+              <button class="button">
+                Update
+              </button>
+            </p>
+          </div>
+        </form>
       </section>
 
     </div>
   </div>
 </section>
 {% endblock content %}
-
-{% block js %}
-  <script src={{ url_for( "static", filename="scripts/dashboard.min.js" ) }} charset="utf-8 "></script>
-{% endblock js %}
