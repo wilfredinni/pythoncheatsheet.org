@@ -9,8 +9,8 @@
 {% endblock seo %}
 
 {% block stylesheet %}
-  <link rel="stylesheet" href={{ url_for( "static", filename="css/cheatsheet.min.css" ) }}>
-  <link rel="stylesheet" href="{{ url_for( "static", filename="css/carbon-index.min.css" ) }}">
+  {#<link rel="stylesheet" href={{ url_for( "static", filename="css/cheatsheet.min.css" ) }}>#}
+  <link rel="stylesheet" href={{ url_for( "static", filename="css/carbon-index.min.css" ) }}>
 {% endblock stylesheet %}
 
 {% block content %}
@@ -61,21 +61,20 @@
 
     <!-- pysheet -->
     <div class="column is-8 cheat">
-
       <!-- pinned notification -->
       {% if pinned_msg.home_msg %}
         {% if pinned_msg.home_enable %}
-        <div id="pysheetNotification" class="notification pin-notify is-hidden-mobile">
+        <div id="pysheetNotification" class="content notification pin-notify is-hidden-mobile">
           <button id="pysheetCloseNotification" class="delete"></button>
           <div>
             {{ g.md(pinned_msg.home_msg)|safe }}
           </div>
         </div>
-        {% endif %}
+        {% endif %} <br>
       {% endif %}
 
       <!-- pysheet content -->
-      <div>
+      <div class="content">
         {{ g.md(pysheet)|safe }}
       </div>
     </div>

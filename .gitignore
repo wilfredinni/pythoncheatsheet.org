@@ -291,3 +291,10 @@ app/static/css/backup.css
 *.json
 app/templates/dashboard/backup.html
 app/templates/backup.html
+
+# Non minified .css and .js files
+app/static/css/atom-one-dark.css
+app/static/css/main.css
+app/static/css/bulma.min.css
+app/static/css/carbon-blog.css
+app/static/css/carbon-index.css
