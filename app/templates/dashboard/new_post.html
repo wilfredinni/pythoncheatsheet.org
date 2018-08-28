@@ -14,70 +14,66 @@
       <form method="post">
         {{ form.hidden_tag() }}
 
-        <h1 id="h1Title" class="h1-titles">Title, Summary and Image URL</h1>
-        <div id="titleSumImg" class="title-sum-img">
-          <!-- title -->
-          <div class="field">
-            <p class="control">{{ form.title(class="text-field", type="text", placeholder="Title") }}</p>
-            {% for error in form.title.errors %}
-              <span class="help" style="color: red;">{{ error }}</span>
-            {% endfor %}
-          </div>
+        <!-- title -->
+        <div class="field">
+            <label class="label">Title</label>
+          <p class="control">{{ form.title(class="input", type="text", placeholder="Title") }}</p>
+          {% for error in form.title.errors %}
+            <span class="help" style="color: red;">{{ error }}</span>
+          {% endfor %} <br>
 
           <!-- Summary -->
           <div class="field">
-            <p class="control">{{ form.summary(class="textarea-field", rows=3, type="textarea", placeholder="Article Summary") }}</p>
+              <label class="label">Summary</label>
+            <p class="control">{{ form.summary(class="textarea", rows=3, type="textarea", placeholder="Article Summary") }}</p>
             {% for error in form.summary.errors %}
               <span class="help" style="color: red;">{{ error }}</span>
-            {% endfor %}
+            {% endfor %} <br>
           </div>
 
           <!-- image url -->
           <div class="field">
-            <p class="control">{{ form.img_url(class="tags-field", type="text", placeholder="Image URL") }}</p>
+            <label class="label">Image URL</label>
+            <p class="control">{{ form.img_url(class="input", type="url", placeholder="Image URL") }}</p>
             {% for error in form.img_url.errors %}
               <span class="help" style="color: red;">{{ error }}</span>
-            {% endfor %}
+            {% endfor %} <br>
           </div>
         </div>
 
-        <h1 id="h1Body" class="h1-titles">Article Body</h1>
-        <div id="articleBody" class="article-body">
-          <!-- body markdown url -->
-          <div class="field">
-            <div class="control">
-              {{ form.markdown_url(id="textarea", class="tags-field", type="text", placeholder="Markdown URL Article") }}
-            </div>
-            {% for error in form.markdown_url.errors %}
-              <span class="help" style="color: red;">{{ error }}</span>
-            {% endfor %}
+        <!-- body markdown url -->
+        <div class="field">
+          <label class="label">Body Markdown URL</label>
+          <div class="control">
+            {{ form.markdown_url(class="input", type="url", placeholder="Markdown URL Article") }}
           </div>
+          {% for error in form.markdown_url.errors %}
+            <span class="help" style="color: red;">{{ error }}</span>
+          {% endfor %} <br>
         </div>
 
-        <h1 id="h1Tags" class="h1-titles">Tags And Article URL</h1>
-        <div id="tagArtUrl" class="tag-url">
-          <!-- tags -->
-          <div class="field">
-            <p class="control">{{ form.tags(class="tags-field",placeholder="Tags: Ex.: python, flask, django", type="text") }}</p>
-            {% for error in form.tags.errors %}
-              <span class="help" style="color: red;">{{ error }}</span>
-            {% endfor %}
-          </div>
+        <!-- tags -->
+        <div class="field">
+          <label class="label">Tags</label>
+          <p class="control">{{ form.tags(class="input",placeholder="Tags: Ex.: python, flask, django", type="text") }}</p>
+          {% for error in form.tags.errors %}
+            <span class="help" style="color: red;">{{ error }}</span>
+          {% endfor %} <br>
+        </div>
 
-          <!-- url -->
-          <div class="field">
-            <p class="control">{{ form.url(class="tags-field", type="text", placeholder="Article URL") }}</p>
-            {% for error in form.url.errors %}
-              <span class="help" style="color: red;">{{ error }}</span>
-            {% endfor %}
-            <br>
-          </div>
+        <!-- url -->
+        <div class="field">
+          <label class="label">Article URL</label>
+          <p class="control">{{ form.url(class="input", type="text", placeholder="Article URL") }}</p>
+          {% for error in form.url.errors %}
+            <span class="help" style="color: red;">{{ error }}</span>
+          {% endfor %} <br>
         </div>
 
         <!-- submit button -->
-        <div class="field is-pulled-right">
+        <div class="field">
           <p class="control">
-            <button class="submit-button">
+            <button class="button">
               Submit
             </button>
           </p>
