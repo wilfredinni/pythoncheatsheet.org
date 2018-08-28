@@ -16,29 +16,29 @@
 
         <!-- title -->
         <div class="field">
-            <label class="label">Title</label>
+          <label class="label">Title</label>
           <p class="control">{{ form.title(class="input", type="text", placeholder="Title") }}</p>
           {% for error in form.title.errors %}
             <span class="help" style="color: red;">{{ error }}</span>
           {% endfor %} <br>
+        </div>
 
-          <!-- Summary -->
-          <div class="field">
-              <label class="label">Summary</label>
-            <p class="control">{{ form.summary(class="textarea", rows=3, type="textarea", placeholder="Article Summary") }}</p>
-            {% for error in form.summary.errors %}
-              <span class="help" style="color: red;">{{ error }}</span>
-            {% endfor %} <br>
-          </div>
+        <!-- Summary -->
+        <div class="field">
+            <label class="label">Summary</label>
+          <p class="control">{{ form.summary(class="textarea", rows=3, type="textarea", placeholder="Article Summary") }}</p>
+          {% for error in form.summary.errors %}
+            <span class="help" style="color: red;">{{ error }}</span>
+          {% endfor %} <br>
+        </div>
 
-          <!-- image url -->
-          <div class="field">
-            <label class="label">Image URL</label>
-            <p class="control">{{ form.img_url(class="input", type="url", placeholder="Image URL") }}</p>
-            {% for error in form.img_url.errors %}
-              <span class="help" style="color: red;">{{ error }}</span>
-            {% endfor %} <br>
-          </div>
+        <!-- image url -->
+        <div class="field">
+          <label class="label">Image URL</label>
+          <p class="control">{{ form.img_url(class="input", type="url", placeholder="Image URL") }}</p>
+          {% for error in form.img_url.errors %}
+            <span class="help" style="color: red;">{{ error }}</span>
+          {% endfor %} <br>
         </div>
 
         <!-- body markdown url -->

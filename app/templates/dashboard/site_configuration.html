@@ -13,39 +13,36 @@
     <div class="column">
 
       <!-- home pinned post -->
-      <section>
-        <h1 class="subtitle is-3 config-title">Pinned Messages</h1>
+      <h1 class="subtitle is-3 config-title">Pinned Messages</h1>
 
-        <!-- form pinned post -->
-        <form method="post">
-          <div class="level">
-            <label class="label">Python Cheatsheet Message</label>
-            <!-- enable switch -->
-            <label class="switch level-right">
-              {% if enabled %}
-                {{ form.home_enable(class="checkbox", checked=True) }}
-              {% else %}
-                {{ form.home_enable(class="checkbox") }}
-              {% endif %}
-              <span class="slider round"></span>
-            </label>
-          </div>
+      <!-- form pinned post -->
+      <form method="post">
+        <div class="level">
+          <label class="label">Python Cheatsheet Message</label>
+          <!-- enable switch -->
+          <label class="switch level-right">
+            {% if enabled %}
+              {{ form.home_enable(class="checkbox", checked=True) }}
+            {% else %}
+              {{ form.home_enable(class="checkbox") }}
+            {% endif %}
+            <span class="slider round"></span>
+          </label>
+        </div>
 
-          {{ form.hidden_tag() }}
-          <div>
-            {{ form.home_msg(class="textarea", type="textarea", rows=9, placeholder="Markdown Enabled") }}
-          </div> <br>
+        {{ form.hidden_tag() }}
+        {{ form.home_msg(class="textarea", type="textarea", rows=9, placeholder="Markdown Enabled") }}
+        <br>
 
-          <!-- update button -->
-          <div class="field level-left">
-            <p class="control">
-              <button class="button">
-                Update
-              </button>
-            </p>
-          </div>
-        </form>
-      </section>
+        <!-- update button -->
+        <div class="field level-left">
+          <p class="control">
+            <button class="button">
+              Update
+            </button>
+          </p>
+        </div>
+      </form>
 
     </div>
   </div>
