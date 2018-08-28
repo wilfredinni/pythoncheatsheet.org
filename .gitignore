@@ -302,6 +302,7 @@ app/static/css/carbon-index.css
 # js
 app/static/scripts/highlight.pack.js
 app/static/scripts/main.js
+app/static/scripts/scroll.js
 app/static/scripts/search.js
 cert/certificate.crt
 cert/private.key
