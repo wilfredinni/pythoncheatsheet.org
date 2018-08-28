@@ -4,6 +4,7 @@
 
 #indexList li {
   list-style: disc;
+  margin: .1em 0;
 }
 
 .content pre {
