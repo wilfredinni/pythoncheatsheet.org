@@ -25,12 +25,12 @@
     <h1 class="is-hidden-mobile is-hidden-tablet">{{ title }} - Python Cheatsheet</h1>
     <div class="content">
       {{ g.md(md_render)|safe }}
-  </div>
+    </div>
 {% endblock main_column %}
 
 {% block side_column %}
   {% include 'main/_default_sidebar.html' %}
-  <div class="is-hidden-tablet">
+  <div class="is-hidden-tablet content">
     {{ g.md(md_render)|safe }}
   </div>
 {% endblock side_column %}
