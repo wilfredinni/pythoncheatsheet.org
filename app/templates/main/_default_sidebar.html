@@ -1,7 +1,7 @@
 <!-- ads -->
 <div>
   <br>
-  <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CK7D62JL&placement=wwwpythoncheatsheetorg" id="_carbonads_js"></script>
+  <div id="codefund_ad"></div>
 </div><br>
 
 <!-- subscribe -->
@@ -16,7 +16,6 @@
   <a class="button is-fullwidth" disabled>Subscribe</a>
   <p class="help has-text-left no-unsubscribe">Unsubscribe any time.</p>
 </div><br>
-
 
 {% if md_body %}
   <!-- table of content -->
@@ -64,8 +63,10 @@
   {% endif %}
 {% endif %}
 
-{% if md_body %}
-  {% block js %}
+{% block js %}
+  {% if md_body %}
     <script src={{ url_for( "static", filename="scripts/article-index.js" ) }} charset="utf-8 "></script>
-  {% endblock js %}
-{% endif %}
+  {% endif %}
+  <!-- codefund -->
+  <script src="https://codefund.io/scripts/832a4559-4eb7-459d-a17e-0d530dfa3ddd/embed.js?template=centered"></script>
+{% endblock js %}

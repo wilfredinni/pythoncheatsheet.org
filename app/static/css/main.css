@@ -1,3 +1,7 @@
+.md-top {
+  margin-top: 1rem;
+}
+
 .material-scrolltop:hover,
 .material-search:hover {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
