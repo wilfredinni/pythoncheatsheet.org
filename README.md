@@ -1,5 +1,7 @@
 # Python Cheatsheet Website
 
+[![BCH compliance](https://bettercodehub.com/edge/badge/wilfredinni/pysheetBlog?branch=master)](https://bettercodehub.com/)
+
 Build with the [Flask](http://flask.pocoo.org/) microframework, this website provides a simple managment system with the following features:
 
 ## Features
