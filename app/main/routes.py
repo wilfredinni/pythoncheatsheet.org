@@ -131,10 +131,10 @@ def robot():
 def bing():
     return send_from_directory('static', filename='BingSiteAuth.xml')
 
-@bp.route('/a0BJF3iQ6xqoDqmDh0BzVv3LKjFsGSLGKVOyVHBKheE')
+@bp.route('/.well-known/acme-challenge/a0BJF3iQ6xqoDqmDh0BzVv3LKjFsGSLGKVOyVHBKheE')
 def acme1():
     return send_from_directory('static/.well-known/acme-challenge', filename='a0BJF3iQ6xqoDqmDh0BzVv3LKjFsGSLGKVOyVHBKheE')
 
-@bp.route('/YGdnJ05dNgYYVYkWfDNHFTBJ9jVeMm4WDl36FxCi2gk')
+@bp.route('/.well-known/acme-challenge/YGdnJ05dNgYYVYkWfDNHFTBJ9jVeMm4WDl36FxCi2gk')
 def acme2():
     return send_from_directory('static/.well-known/acme-challenge', filename='YGdnJ05dNgYYVYkWfDNHFTBJ9jVeMm4WDl36FxCi2gk')
