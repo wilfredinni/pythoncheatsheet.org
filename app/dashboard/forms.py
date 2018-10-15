@@ -15,12 +15,22 @@ class RegistrationForm(FlaskForm):
     administrator = BooleanField('Administrator')
 
     def validate_username(self, username):
+        """
+        Check if a user exists or not. If Exists, Raise ValidationError.
+        """
+
         user = User.query.filter_by(username=username.data).first()
+
         if user is not None:
             raise ValidationError('Please use a different username.')
 
     def validate_email(self, email):
+        """
+        Check if an Email exists or not. If Exists, Raise ValidationError.
+        """
+
         user = User.query.filter_by(email=email.data).first()
+
         if user is not None:
             raise ValidationError('Please use a different email address.')
 
@@ -40,8 +50,13 @@ class EditProfileForm(FlaskForm):
         self.original_username = original_username
 
     def validate_username(self, username):
+        """
+        Check if a user exists or not. If Exists, Raise ValidationError.
+        """
+
         if username.data != self.original_username:
             user = User.query.filter_by(username=self.username.data).first()
+
             if user is not None:
                 raise ValidationError('Please use a different username.')
 
