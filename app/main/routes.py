@@ -162,13 +162,13 @@ def bing():
     return send_from_directory('static', filename='BingSiteAuth.xml')
 
 
-@bp.route('/.well-known/acme-challenge/a0BJF3iQ6xqoDqmDh0BzVv3LKjFsGSLGKVOyVHBKheE')
+@bp.route('/.well-known/acme-challenge/TRcOHURRJJEDaaas6wgHsP232DQaqY0HnHvadMU-SMY')
 def acme1():
 
-    return send_from_directory('static/.well-known/acme-challenge', filename='a0BJF3iQ6xqoDqmDh0BzVv3LKjFsGSLGKVOyVHBKheE')
+    return send_from_directory('static/.well-known/acme-challenge', filename='TRcOHURRJJEDaaas6wgHsP232DQaqY0HnHvadMU-SMY')
 
 
-@bp.route('/.well-known/acme-challenge/YGdnJ05dNgYYVYkWfDNHFTBJ9jVeMm4WDl36FxCi2gk')
+@bp.route('/.well-known/acme-challenge/zO6V6tGs5eWBqa77cRt_oaS9osezokFNHd_YNThG5sU')
 def acme2():
 
-    return send_from_directory('static/.well-known/acme-challenge', filename='YGdnJ05dNgYYVYkWfDNHFTBJ9jVeMm4WDl36FxCi2gk')
+    return send_from_directory('static/.well-known/acme-challenge', filename='zO6V6tGs5eWBqa77cRt_oaS9osezokFNHd_YNThG5sU')
