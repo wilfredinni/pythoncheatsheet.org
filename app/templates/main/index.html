@@ -71,7 +71,8 @@
         {% endif %}
       {% endif %}
 
-      <div id="codefund_ad" class="index-ad"></div>
+      <div id="codefund"><!-- fallback content --></div>
+
 
       <!-- pysheet content -->
       <div class="content">
@@ -97,6 +98,8 @@
 {% endblock content%}
 
 {% block js %}
+  <!-- codefund -->
+  <script src="https://codefund.app/properties/92/funder.js?template=centered" async="async"></script>
   <!-- scroll up and search -->
   <script src={{ url_for( "static", filename="scripts/scroll.min.js" ) }} charset="utf-8 "></script>
   <script src={{ url_for( "static", filename="scripts/search.min.js" ) }} charset="utf-8 "></script>

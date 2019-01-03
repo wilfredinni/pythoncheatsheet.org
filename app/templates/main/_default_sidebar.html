@@ -1,7 +1,7 @@
 <!-- ads -->
 <div>
   <br>
-  <div id="codefund_ad"></div>
+  <div id="codefund"><!-- fallback content --></div>
 </div><br>
 
 <!-- subscribe -->
@@ -67,4 +67,6 @@
   {% if md_body %}
     <script src={{ url_for( "static", filename="scripts/article-index.js" ) }} charset="utf-8 "></script>
   {% endif %}
+  <!-- codefund -->
+  <script src="https://codefund.app/properties/92/funder.js" async="async"></script>
 {% endblock js %}
