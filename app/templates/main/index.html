@@ -5,7 +5,7 @@
   <meta property="og:url" content="https://www.pythoncheatsheet.org">
   <meta name="description" content="Welcome to Python Cheatsheet. Any Python developer can forget how to do a for loop. This Python cheat sheet tries to provide a basic reference for beginner and advanced Python developers, lower the entry barrier for newcomers and help veterans refresh the old Python tricks.">
   <meta property="og:description" content="Welcome to Python Cheatsheet. Any Python developer can forget how to do a for loop. This Python cheat sheet tries to provide a basic reference for beginner and advanced Python developers, lower the entry barrier for newcomers and help veterans refresh the old Python tricks.">
-  <meta name="twitter:description" content="Python cheat sheet and Articles for Beginner and Advanced Developers." />
+  <meta name="twitter:description" content="Python cheat sheet and Articles for Beginner and Advanced Developers @pyCheatsheet" />
 {% endblock seo %}
 
 {% block stylesheet %}
@@ -83,7 +83,7 @@
 </div>
 
 <!-- quick search -->
-<button id="search-icon" class="material-search" title="Quick Search - ctrl/cmd+z">
+<button id="search-icon" class="material-search" title="Quick Search - ctrl+z">
   <i class="fas fa-search"></i>
 </button>
 
@@ -92,8 +92,8 @@
   <i class="fas fa-chevron-up"></i>
 </button>
 
-<!-- bottom notification -->
-{% include 'main/_bottom_notification.html' %}
+<!-- bottom notification disabled -->
+<!-- {% include 'main/_bottom_notification.html' %} -->
 
 {% endblock content%}
 
@@ -111,7 +111,8 @@
   <script type="text/javascript">
     var addthis_share = {
       url: "www.pythoncheatsheet.org",
-      title: "{{ title }}",
+      title: "Because anyone can forget how to do a for loop 🐍  @pyCheatsheet",
+      description: "#python #cheatsheet",
     };
   </script>
 {% endblock js %}
