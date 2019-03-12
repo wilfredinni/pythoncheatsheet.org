@@ -5,46 +5,46 @@ from app.models import User
 
 
 class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    remember_me = BooleanField('Remember Me')
+    username = StringField("Username", validators=[DataRequired()])
+    password = PasswordField("Password", validators=[DataRequired()])
+    remember_me = BooleanField("Remember Me")
 
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    username = StringField("Username", validators=[DataRequired()])
+    email = StringField("Email", validators=[DataRequired(), Email()])
+    password = PasswordField("Password", validators=[DataRequired()])
     password2 = PasswordField(
-        'Repeat Password', validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Register')
+        "Repeat Password", validators=[DataRequired(), EqualTo("password")]
+    )
+    submit = SubmitField("Register")
 
     def validate_username(self, username):
         """
         Check if a user exists or not. If Exists, Raise ValidationError.
         """
-
         user = User.query.filter_by(username=username.data).first()
 
         if user is not None:
-            raise ValidationError('Please use a different username.')
+            raise ValidationError("Please use a different username.")
 
     def validate_email(self, email):
         """
         Check if an Email exists or not. If Exists, Raise ValidationError.
         """
-
         user = User.query.filter_by(email=email.data).first()
 
         if user is not None:
-            raise ValidationError('Please use a different email address.')
+            raise ValidationError("Please use a different email address.")
 
 
 class ResetPasswordRequestForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    submit = SubmitField('')
+    email = StringField("Email", validators=[DataRequired(), Email()])
+    submit = SubmitField("")
 
 
 class ResetPasswordForm(FlaskForm):
-    password = PasswordField('Password', validators=[DataRequired()])
+    password = PasswordField("Password", validators=[DataRequired()])
     password2 = PasswordField(
-        'Repeat Password', validators=[DataRequired(), EqualTo('password')])
+        "Repeat Password", validators=[DataRequired(), EqualTo("password")]
+    )
