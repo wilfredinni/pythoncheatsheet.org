@@ -104,83 +104,66 @@
     <br>
     <p>{{ g.md(md_body)|safe }}</p>
     <hr>
-    <div class="level"><!-- tags -->
-    <div class="level-left">
-      <p>Tags: {% for tag in post.tag %}
-        <a href="{{ url_for('main.tag', tag=tag.name) }}">
-          <span class="tag is-warning">
-            {{tag.name}}
-          </span>
-        </a>
-        {% endfor %}
-      </p>
-    </div>
-
-    <!-- share -->
-    <div class="level-right">
-
-      <!-- twitter -->
-      <a target="blank" href="https://twitter.com/intent/tweet?status={{title}}+{{ url_for('main.article', url=post.url, _external=True) }}"
-        class="share twitter">
-        <span class="icon share-icon">
-          <i class="fab fa-twitter"></i>
-        </span>
-      </a>
-
-      <!-- facebook -->
-      <a target="blank" href="https://www.facebook.com/share.php?u={{ url_for('main.article', url=post.url, _external=True) }}&title={{title}}"
-        class="share facebook">
-        <span class="icon share-icon">
-          <i class="fab fa-facebook-f"></i>
-        </span>
-      </a>
-
-      <!-- google -->
-      <a target="blank" href="https://plus.google.com/share?url={{ url_for('main.article', url=post.url, _external=True) }}" class="share google">
-        <span class="icon share-icon">
-          <i class="fab fa-google"></i>
-        </span>
-      </a>
-    </div>
-  </div>
-</div>
-<br><br>
-
-<div id="disqus_thread">
-  <div id="comments"></div>
-  <script>
-    (function () { // DON'T EDIT BELOW THIS LINE
-      var d = document,
-        s = d.createElement('script');
-      s.src = 'https://python-cheatsheet.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-  </noscript>
-</div>
-
-<!-- delete modal -->
-<div id="deleteModal" class="modal">
-  <div id="articleModalBackground" class="modal-background"></div>
-  <div class="modal-content box has-text-centered section">
-    <h3 class="subtitle">Do you want to Delete {{ post.title }}?</h3>
-    <br>
-    <div class="columns is-centered">
-      <div class="column is-3">
-        <form action="{{ url_for('dashboard.delete_post', url=post.url) }}" method=post>
-          <input type="hidden" name="entry_id">
-          <button class="button is-danger is-outlined">Delete</button>
-        </form>
+    <div class="level">
+      <!-- tags -->
+      <div class="level-left">
+        <p>Tags: {% for tag in post.tag %}
+          <a href="{{ url_for('main.tag', tag=tag.name) }}">
+            <span class="tag is-warning">
+              {{tag.name}}
+            </span>
+          </a>
+          {% endfor %}
+        </p>
       </div>
-      <div class="column is-3">
-        <button id="cancel" class="button is-outlined">Cancel</button>
+
+      <!-- buy me a coffee -->
+      <div class="level-right">
+        <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
+        <a class="bmc-button has-text-centered"
+          target="_blank" href="https://www.buymeacoffee.com/8owKkSBUC"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"
+            alt="Buy me a coffee"><span style="margin-left:5px">Buy
+            me a coffee</span></a>
       </div>
     </div>
   </div>
-  <button id="closeBtn" class="modal-close is-large" aria-label="close"></button>
-</div>
+  <br><br>
+
+  <div id="disqus_thread">
+    <div id="comments"></div>
+    <script>
+      (function () { // DON'T EDIT BELOW THIS LINE
+        var d = document,
+          s = d.createElement('script');
+        s.src = 'https://python-cheatsheet.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+  <!-- delete modal -->
+  <div id="deleteModal" class="modal">
+    <div id="articleModalBackground" class="modal-background"></div>
+    <div class="modal-content box has-text-centered section">
+      <h3 class="subtitle">Do you want to Delete {{ post.title }}?</h3>
+      <br>
+      <div class="columns is-centered">
+        <div class="column is-3">
+          <form action="{{ url_for('dashboard.delete_post', url=post.url) }}" method=post>
+            <input type="hidden" name="entry_id">
+            <button class="button is-danger is-outlined">Delete</button>
+          </form>
+        </div>
+        <div class="column is-3">
+          <button id="cancel" class="button is-outlined">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <button id="closeBtn" class="modal-close is-large" aria-label="close"></button>
+  </div>
 {% endblock main_column %}
 
 <!-- sidebar -->
