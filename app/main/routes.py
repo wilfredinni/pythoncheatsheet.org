@@ -171,17 +171,17 @@ def bing():
     return send_from_directory("static", filename="BingSiteAuth.xml")
 
 
-@bp.route("/.well-known/acme-challenge/TRcOHURRJJEDaaas6wgHsP232DQaqY0HnHvadMU-SMY")
+@bp.route("/.well-known/acme-challenge/49sxVsh543x9w-wa22BLjM5ILhd77-Meb1XwDTJTqPU")
 def acme1():
     return send_from_directory(
         "static/.well-known/acme-challenge",
-        filename="TRcOHURRJJEDaaas6wgHsP232DQaqY0HnHvadMU-SMY",
+        filename="49sxVsh543x9w-wa22BLjM5ILhd77-Meb1XwDTJTqPU",
     )
 
 
-@bp.route("/.well-known/acme-challenge/zO6V6tGs5eWBqa77cRt_oaS9osezokFNHd_YNThG5sU")
+@bp.route("/.well-known/acme-challenge/wvATih2tDCB2EShG-LWZRdXYmbm5y1qdY0qtdpdpYnI")
 def acme2():
     return send_from_directory(
         "static/.well-known/acme-challenge",
-        filename="zO6V6tGs5eWBqa77cRt_oaS9osezokFNHd_YNThG5sU",
+        filename="wvATih2tDCB2EShG-LWZRdXYmbm5y1qdY0qtdpdpYnI",
     )
