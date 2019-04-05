@@ -20,6 +20,9 @@
     {% for post in all_posts.items %}
       {% include 'main/_post.html' %}
     {% endfor %}
+
+      {% include 'main/_pagination.html' %}
+
   {% endblock main_column %}
 
 
@@ -42,8 +45,6 @@
   {% endif %}
 {% endblock empty_blog %}
 
-{% block pagination %}
-  {% include 'main/_pagination.html' %}
-{% endblock pagination%}
+
 
 
